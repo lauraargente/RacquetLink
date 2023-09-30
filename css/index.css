@@ -1,0 +1,463 @@
+/* ――――――――― Header ――――――――― */
+/* Descripción: Estilos para la cabecera de la página */ 
+
+.Header{
+    width: 100%; 
+    padding: 1.25rem 4rem; 
+    color: var(--color-grey);
+    background-color: var(--color-white);
+    position: fixed;
+    
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+
+    animation: slideDown 2s ease 1;
+    z-index: 1;
+    
+    margin: auto;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Header-nav{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end; 
+    align-items: center;
+    width: 60%;
+
+    gap: 5rem; 
+    
+}
+
+.Header-svg{
+    width: 6rem;
+}
+
+.Header-ul{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 4rem;
+}
+
+.Header-li{
+    white-space: nowrap;
+    font-weight: 300;
+}
+
+.Header-li:hover{
+    font-weight: 400;
+    color: var(--color-primary);
+}
+
+.Header-li::after{
+    content: "";
+    height: 2px;
+    display: block;
+
+    background-color: var(--color-secondary);
+    transform-origin: left;
+    transform: scaleX(0);
+
+    transition: all 1s ease;    
+}
+
+.Header-li:not(:last-child):hover::after{
+    transform: scaleX(1);
+}
+
+.Header-button{
+    white-space: nowrap;
+    background-color: var(--color-primary);
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white); 
+    font-weight: 600;
+}
+
+.Header-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+    font-weight: 500;
+}
+
+.Header-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white);
+}
+
+.Header-burguer{
+    display: none;
+}
+/* ――――――――― Header ――――――――― */
+
+
+
+
+/* ――――――――― Contenido principal ――――――――― */
+/* Descripción: Estilos para el contenido principal de la página */ 
+
+.Main-cursor{ 
+    position: fixed;  
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    left: -15px; 
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+} 
+
+.cursor-text{
+    cursor: text;
+}
+
+.Main-cursor.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.Main{
+    background-color: #ffffff;
+}
+
+.Video-wrapper{
+    position: relative;
+    height:100vh;
+}
+
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 0rem 0rem 18.1875rem 0rem;
+}
+
+.Banner-wrapper{
+    position: absolute;
+    top: 40%;
+    left: 5%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2.5rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+   
+    color: white;
+}
+
+.Banner-h2{
+    font-size: var( --h2-size);
+    font-weight: 500;
+}
+
+.Banner-p{
+    font-size: var( --p-size);
+    line-height: 1.875rem;
+}
+
+.Banner-button{
+    white-space: nowrap;
+    background-color: var(--color-white);
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    display: inline-block;
+    width: auto;
+    font-weight: 600;
+    font-size: var(--h5-size);
+                
+    color: var(--color-primary); 
+} 
+
+
+.Banner-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+    font-weight: 500;
+}
+
+.Banner-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white);
+}
+
+
+/* ――――――――― Sección Intro ――――――――― */
+/* Descripción: Estilos para la sección de intro, primera sección después del banner */ 
+
+.Intro{
+    background-color:pink;
+}
+
+.Intro-h3{
+    font-size: var(--h3-size) ;
+    text-align: center;
+    padding: 2rem;
+}
+
+.Intro-article{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(700px, 1fr)); 
+    gap: .625rem;
+
+    margin: auto;
+}
+
+
+
+/* ――――――――― Sección Intro ――――――――― */
+
+
+
+
+/* Mouse icon */
+
+.Mouse-wrapper{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+}
+
+.Mouse-icon {
+    display: block;
+    position: absolute;
+    height: 3em;
+    width: 2em;
+    border: .25em solid #ffffff;
+    border-radius: 2em;
+}
+
+@keyframes scroll_2 {
+    0%   { transform: translateY(0); opacity: 1; }
+    25%  { opacity: 1; }
+    75%  { transform: translateY(.75em); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
+}
+
+.Mouse-icon-dot {
+    display: block;
+    position: absolute;
+    left: 50%;
+    background: #ffffff;
+    height: .5em;
+    width: .5em;
+    top: .6em;
+    margin-left: -.25em;
+    border-radius: 50%;
+    transform-origin: top center;
+    backface-visibility: hidden;
+    animation: scroll_2 2s ease-out infinite;
+}
+
+.Mouse-rectangle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ――――――――― Footer ――――――――― */
+/* Descripción: Estilos para el footer de la página */ 
+
+.Footer {
+    background-color: #025B7B;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.Footer-wrapper {
+    width: 80%;
+    margin: 4.25rem auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Footer-left-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #fff;
+    width: 13rem;
+}
+
+.Footer-left-group .Footer-text {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 66%;
+    margin-bottom: 1.5rem;
+    line-height: 1.5rem;
+}
+.Footer-left-group p {
+    margin-bottom: 1rem;
+}
+
+.Footer-logo {
+    width: 14rem;
+    margin-bottom: 1.25rem;
+}
+
+.Footer-right-group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    color: #fff;
+}
+
+.Footer-left-column {
+    margin-right: 5.5rem;
+}
+
+.Footer-left-column h3 {
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    font-size: 16px;
+}
+.Footer-right-column h3 {
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.Footer-left-column a {
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    opacity: 66%;
+    font-size: 16px;
+} 
+.Footer-right-column a {
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    opacity: 66%;
+    font-size: 16px;
+}
+
+.Footer-bottom{
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 5rem; 
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.Footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #7EC1D3;
+    margin-bottom: 1rem;
+}
+
+.Footer-bottom-items{
+    width: 80%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+}
+
+.Copyright-message{
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 66%;
+    color: #fff;
+    align-items: flex-start;
+}
+
+.Social-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    color: #fff;
+    justify-content: space-between;
+    width: 12rem;
+}
+
+
+/* ――――――――― Footer ――――――――― */
+
+
+
+
+
+
+/* ――――――――― Media Querys - 600px――――――――― */
+/* Descripción: Estilos para mobile */
+
+@media  (max-width:600px) {
+    .Header{
+        padding: 1.25rem 2rem;
+    }
+
+    .Header-nav{
+        display: none;
+    }
+
+    .Main-cursor{ 
+        display: none;
+    }
+
+    .Header-burguer{
+        display: block; 
+    }
+
+    .Header-a{
+        display: none;
+    }
+
+    .Meet-p{
+        width: 100%; 
+    }
+
+    .Main-cursor{
+        display: none;
+    }
+
+    .Banner-wrapper{
+        top: 20%;
+    }
+
+    video{
+        border-radius: 0rem 0rem 9rem 0rem;
+    }
+    
+    .Burguer-svg{
+        display: block;
+        width: 3rem;
+        height: 3rem;
+    }
+
+}
+
+/* ――――――――― Media Querys - 600px――――――――― */
