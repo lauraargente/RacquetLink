@@ -112,6 +112,10 @@
 /* ――――――――― Contenido principal ――――――――― */
 /* Descripción: Estilos para el contenido principal de la página */ 
 
+.Main{
+    width: 100%;
+}
+
 .Main-cursor{ 
     position: fixed;  
     width: 30px;
@@ -206,31 +210,128 @@ video {
     color: var(--color-white);
 }
 
-
 /* ――――――――― Sección Intro ――――――――― */
-/* Descripción: Estilos para la sección de intro, primera sección después del banner */ 
 
 .Intro{
-    background-color:pink;
+    background-color: pink;
+    margin: auto;
+    width: 90%;
 }
 
 .Intro-h3{
-    font-size: var(--h3-size) ;
     text-align: center;
-    padding: 2rem;
+}
+
+.Intro-wrapper{
+    background-color: lightgreen;
+    margin: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center; 
 }
 
 .Intro-article{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(700px, 1fr)); 
-    gap: .625rem;
+    background-color: lightblue;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
 
-    margin: auto;
+.Intro-img{
+    width: 50%;
 }
 
 
+/* ――――――――― Sección Talento ――――――――― */
+/* Descripción: Estilos para la sección de talento y oportunidad, donde se describe el mision y vision statement */ 
 
-/* ――――――――― Sección Intro ――――――――― */
+.Talento{
+    margin: auto;
+    padding: 2.5rem;
+    width: 90%;
+}
+
+.Talento-h3{
+    color: var(--color-primary);
+    font-size: var(--h3-size);
+    text-align: center;
+    font-weight: 500;
+}
+
+.Talento-p{
+    margin:2rem auto;
+    text-align: center;
+    width: 80%;
+}
+
+.Talento-articles{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8rem;
+    width: 60vw;
+    margin: 3rem auto;
+}
+
+.Talento-article{
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+    border-radius: 3.75rem;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Talento-article:hover{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transition: all ease 1s;
+}
+
+.Talento-article:hover .Talento-article-h4{
+    color: var(--color-secondary);
+    transition: all ease 1s;
+}
+
+
+.Talento-article:hover .Talento-svg{
+    fill: var(--color-secondary);
+    transition: all ease 1s;
+ }
+
+.Talento-article-h4{
+    text-align: center;
+    margin-top: 3rem;
+    font-size: var(--h4-size);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.Talento-article-p{
+    font-size: var(--p-size);
+}
+
+.Talento-article-svg{
+    margin: 0 auto 2rem;
+    padding: 20px;
+    object-fit: contain;
+}
+
+.Talento-svg{
+    height: 10vh;
+}
+
+
+/* ――――――――― Sección Talento ――――――――― */
+
+
+
 
 
 
@@ -281,6 +382,11 @@ video {
   align-items: center;
   justify-content: center;
 }
+
+
+
+
+
 
 /* ――――――――― Footer ――――――――― */
 /* Descripción: Estilos para el footer de la página */ 
@@ -412,6 +518,72 @@ video {
 
 
 
+/* ――――――――― Media Querys - 1200px――――――――― */
+/* Descripción: Estilos para mobile */
+
+@media  (max-width:1200px) {
+    .Header{
+        padding: 1.25rem 2rem;
+    }
+
+    .Header-nav{
+        display: none;
+    }
+
+    .Main-cursor{ 
+        display: none;
+    }
+
+    .Header-burguer{
+        display: block; 
+    }
+
+    .Header-a{
+        display: none;
+    }
+
+    .Meet-p{
+        width: 100%; 
+    }
+
+    .Main-cursor{
+        display: none;
+    }
+
+    .Banner-wrapper{
+        top: 20%;
+    }
+
+    video{
+        border-radius: 0rem 0rem 9rem 0rem;
+    }
+    
+    .Burguer-svg{
+        display: block;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .Mouse-wrapper{
+        display: none;
+    }
+
+
+    .Talento{
+        margin: auto;
+        padding: 2.5rem;
+        width: 100%;
+    }
+
+    .Talento-articles{
+        width: 80vw;
+    }
+
+}
+
+/* ――――――――― Media Querys - 1200px――――――――― */
+
+
 /* ――――――――― Media Querys - 600px――――――――― */
 /* Descripción: Estilos para mobile */
 
@@ -458,6 +630,44 @@ video {
         height: 3rem;
     }
 
+    .Mouse-wrapper{
+        display: none;
+    }
+
+    .Intro {
+       
+    }
+
+    .Intro-wrapper{
+        background-color: lightgreen;
+        margin: auto;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center; 
+    }
+
+    .Intro-img, .Intro-article{
+        width: 100%;
+    }
+
+    .Talento{
+        margin: auto;
+        padding: 2.5rem;
+        width: 100%;
+    }
+
+    .Talento-articles{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        gap: 3rem;
+    }
+
+
 }
 
 /* ――――――――― Media Querys - 600px――――――――― */
+
