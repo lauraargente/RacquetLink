@@ -648,24 +648,10 @@ video {
         margin-top: 2rem;
     }
 
-    .Intro-article:nth-child(1) {
+    .Intro-article {
         order: 2;
     }
-    .Intro-img:nth-child(1) {
-        order: 1; 
-    }
-
-    .Intro-article:nth-child(2) {
-        order: 2;
-    }
-    .Intro-img:nth-child(2) {
-        order: 1; 
-    }
-
-    .Intro-article:nth-child(3) {
-        order: 2;
-    }
-    .Intro-img:nth-child(3) {
+    .Intro-img {
         order: 1; 
     }
 
