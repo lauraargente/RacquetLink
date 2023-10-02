@@ -227,6 +227,7 @@ video {
     font-size: var(--h3-size);
     font-weight: 500;
     padding: 2.5rem;
+    color: var(--color-primary);
 }
 
 .Intro-h3{
