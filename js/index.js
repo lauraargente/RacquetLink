@@ -1,5 +1,7 @@
 'use strict'
 
+const main = document.querySelector('.Main')
+const footer = document.querySelector('.Footer')
 const cursor= document.querySelector('.Main-cursor')
 
 // Cuando cursor se desplaza/mueve hace una FUNCTION
@@ -11,7 +13,7 @@ const cursor= document.querySelector('.Main-cursor')
         cursor.style.transform = `translateX(${clientX}px) translateY(${clientY}px)`
         let cursorStyle = window.getComputedStyle(e.target)["cursor"]
         
-        const textArray = ['SPAN','P','H2','H3','H4','H5']
+        const textArray = ['SPAN','P','H2','H3','H4','H5', 'BUTTON']
         
         if(textArray.includes(e.target.tagName) || cursorStyle === "pointer"){
             cursor.classList.add('hide')

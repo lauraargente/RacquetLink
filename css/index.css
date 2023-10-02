@@ -188,7 +188,8 @@ video {
     font-weight: 600;
     font-size: var(--h5-size);
                 
-    color: var(--color-primary); 
+    color: var(--color-primary);
+    cursor: pointer;
 } 
 
 
