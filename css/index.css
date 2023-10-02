@@ -213,7 +213,6 @@ video {
 /* ――――――――― Sección Intro ――――――――― */
 
 .Intro{
-    background-color: pink;
     margin: auto;
     width: 90%;
 }
@@ -223,7 +222,6 @@ video {
 }
 
 .Intro-wrapper{
-    background-color: lightgreen;
     margin: auto;
     display: flex;
     flex-flow: row nowrap;
@@ -232,7 +230,6 @@ video {
 }
 
 .Intro-article{
-    background-color: lightblue;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -639,7 +636,6 @@ video {
     }
 
     .Intro-wrapper{
-        background-color: lightgreen;
         margin: auto;
         display: flex;
         flex-flow: column nowrap;
@@ -649,6 +645,28 @@ video {
 
     .Intro-img, .Intro-article{
         width: 100%;
+        margin-top: 2rem;
+    }
+
+    .Intro-article:nth-child(1) {
+        order: 2;
+    }
+    .Intro-img:nth-child(1) {
+        order: 1; 
+    }
+
+    .Intro-article:nth-child(2) {
+        order: 2;
+    }
+    .Intro-img:nth-child(2) {
+        order: 1; 
+    }
+
+    .Intro-article:nth-child(3) {
+        order: 2;
+    }
+    .Intro-img:nth-child(3) {
+        order: 1; 
     }
 
     .Talento{
