@@ -241,13 +241,13 @@
     box-shadow: 10px 10px 60px #bebebe;
 }
 
-.Profiles-li:hover{
+.Profiles .Profiles-li:hover{
     transform: scale(1.1);
     border-color: white;
 }
 
 .Profiles-p{
-    opacity: 0%;
+    opacity: 100%;
     transition: all 1s ease; 
     background-color: white;
     width: 25vw;
@@ -266,7 +266,7 @@
 }
 
 
-.Profiles-li:hover .Profiles-p{
+.Profiles .Profiles-li:hover .Profiles-p{
     opacity: 100%;
 }
 
@@ -279,9 +279,9 @@
     object-fit: cover;
 }
 
-.Profiles-img:hover{
+.Profiles .Profiles-img:hover{
     opacity: 0;
-} 
+}
 
 .Profiles-responsive{
     display: none;
@@ -302,13 +302,14 @@
 
 .Valores{
     width: 90%;
-    margin: 4rem auto 4rem auto;
+    margin: 5rem auto 5rem auto;
 
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
     gap: 3.125rem;
+    background-color: white;
 }
 
 .Valores-h3{
@@ -360,6 +361,79 @@
 
 /* ――――――――― Sección Valores ――――――――― */
 
+
+
+
+
+
+/* ――――――――― Sección Contact ――――――――― */
+/* Descripción: Estilos para la sección de contacto de la página */ 
+
+.Contact{
+    background-color: #F7F7F7;
+    padding: 3.125rem;
+    margin-top: 7rem;
+}
+
+.Contact-wrapper{
+    width: 70%;
+    margin: auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Contact-text{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3.125rem;
+}
+
+.Contact-h5{
+    font-size: var(--h5-size);
+}
+
+.Contact-button{
+    white-space: nowrap;
+    background-color: var(--color-primary);
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white); 
+    font-weight: 600;
+    width: auto;
+}
+
+.Contact-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+    font-weight: 500;
+}
+
+.Contact-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white);
+}
+
+.Contact-icon{
+    width: 12rem;
+    height: 12rem;
+}
+
+/* ――――――――― Sección Contact ――――――――― */
 
 
 
@@ -543,24 +617,33 @@
         display: none;
     }
 
-    .Profiles-img{
+    /* .Profiles-img{
         display: none;
-    }
+    } */
 
-    .Profiles-picture{
+    /* .Profiles-picture{
         height: 100%;
-    }
+    } */
 
-    .Profiles-responsive{
+    /* .Profiles-responsive{
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
+    } */
 
-    .Profiles-p{
+    /* .Profiles-p{
+        display: none;
+    } */
+
+    .Profiles {
         display: none;
     }
+
+    .Profiles-responsive{
+        display: block;
+    }
+    
 
     .Profiles-ul{
         width: 80%;
@@ -570,7 +653,7 @@
         position: relative;
     }
 
-    .Profiles-p-responsive{
+    /* .Profiles-p-responsive{
         display: block;
         position: absolute;
         top: 60%;
@@ -581,6 +664,18 @@
         justify-content: center;
         align-items: flex-start;
         gap: 1rem;
+    } */
+
+    
+    .Contact-wrapper{
+        width: 80%;
+        margin: auto;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
     }
 
     .Footer-wrapper {
@@ -710,15 +805,15 @@
         width: 80%;
     }
 
-    .Profiles-p-responsive{
+    /* .Profiles-p-responsive{
        top: 40%;
        color: white;
        font-weight: 500;
-    }
+    } */
 
-    .Profiles-img{
+    /* .Profiles-img{
         display: none;
-    }
+    } */
 
     .Valores{
         display: none;
@@ -769,6 +864,10 @@
 
     .Slider-li.isActive{
         background-color: var(--color-primary);
+    }
+
+    .Contact-icon{
+       display: none;
     }
 
 

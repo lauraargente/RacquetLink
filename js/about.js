@@ -8,6 +8,10 @@ const headerBurguer =document.querySelector('.Header-burguer')
 const headerNav = document.querySelector('.Header-nav')
 const sliderPoint= document.querySelectorAll('.Slider-li')
 const valoresResponsive= document.querySelectorAll('.Valores-li-responsive')
+const profiles = document.querySelectorAll('.Profiles-responsive .Profiles-li')
+const profilesText = document.querySelectorAll('.Profiles-responsive .Profiles-text')
+const profilesImage = document.querySelectorAll('.Profiles-responsive .Profiles-img')
+
 
 // Cuando cursor se desplaza/mueve hace una FUNCTION
      // del objeto e transforamos las propiedade translateX y translateY
@@ -90,5 +94,19 @@ const valoresResponsive= document.querySelectorAll('.Valores-li-responsive')
         sliderInterval = setInterval(startSlider, 3000)
     }
 
+console.log(profiles);
+profiles.forEach((eachProfile, index)=>{
+    eachProfile.addEventListener('click', ()=>{
+        console.log('hola');
+        profiles[index].style.transform = 'scale(1.1)';
+        profilesText[index].style.opacity = 1;
+        profilesImage[index].style.opacity = 0;
+    })
+    document.addEventListener('touchend', ()=>{
+        profiles[index].style.transform = 'scale(1)';
+        profilesText[index].style.opacity = 0;
+        profilesImage[index].style.opacity = 1;
+    })
+})
 
 
