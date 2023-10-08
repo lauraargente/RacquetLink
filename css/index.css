@@ -87,7 +87,6 @@
     background-color: var(--color-secondary);
     color: var(--color-primary);
     transition: all 1s ease;
-    font-weight: 500;
 }
 
 .Header-button:active{
@@ -198,7 +197,6 @@ video {
     background-color: var(--color-secondary);
     color: var(--color-primary);
     transition: all 1s ease;
-    font-weight: 500;
 }
 
 .Banner-button:active{
@@ -282,7 +280,6 @@ video {
     background-color: var(--color-secondary);
     color: var(--color-primary);
     transition: all 1s ease;
-    font-weight: 500;
 }
 
 .Intro-button:active{
