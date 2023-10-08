@@ -215,10 +215,6 @@ video {
 /* ――――――――― Sección Profiles ――――――――― */
 /* Descripción: Estilos para la sección de intro, primera sección después del banner */ 
 
-.Profiles{
-    
-}
-
 .Profiles-ul{
     margin: auto;
     display: grid;
@@ -226,7 +222,6 @@ video {
     gap: 10rem;
     width: 90%;
     padding: 5rem 0 5rem 0;  
-    background-color: orange; 
 }
 
 .Profiles-li{
@@ -271,16 +266,7 @@ video {
 }
 
 
-.Profiles-span{
-    width: 100%;
-    background-color: pink;
-}
 
-.Profiles-svg{
-    height: 1rem;
-    width: 1rem;
-    background-color: aqua;
-}
 
 .Profiles-li:hover .Profiles-p{
     opacity: 100%;
@@ -301,14 +287,11 @@ video {
     display: none;
 }
 
+.Profiles-p-responsive{
+    display: none;
+}
 
-
-
-
-
-/* ――――――――― Sección Intro ――――――――― */
-
-
+/* ――――――――― Sección Profiles ――――――――― */
 
 
 
@@ -370,7 +353,6 @@ video {
     font-weight: 500;
 }
 
-
 .Footer-ul{
     display: flex;
     flex-flow: column wrap;
@@ -420,6 +402,122 @@ video {
 /* ――――――――― Footer ――――――――― */
 
 
+/* ――――――――― Media Querys - 1200px――――――――― */
+/* Descripción: Estilos para tablet */
+
+@media  (max-width:1200px) {
+    .Header{
+        padding: 1.25rem 2rem;
+    }
+
+    .Header-nav{
+        display: none;
+    }
+
+    .Main-cursor{ 
+        display: none;
+    }
+
+    .Header-burguer{
+        display: block; 
+    }
+
+    .Header-a{
+        display: none;
+    }
+
+    .Meet-p{
+        width: 100%; 
+    }
+
+    .Main-cursor{
+        display: none;
+    }
+
+    .Banner-wrapper{
+        top: 20%;
+    }
+
+    video{
+        border-radius: 0rem 0rem 9rem 0rem;
+    }
+    
+    .Burguer-svg{
+        display: block;
+        width: 2.6rem;
+        height: 2.6rem;
+    }
+
+    .Mouse-wrapper{
+        display: none;
+    }
+
+    .Profiles-img{
+        display: none;
+    }
+
+    .Profiles-p{
+        display: none;
+    }
+
+    .Profiles-p-responsive{
+        display: block;
+        position: absolute;
+        top: 60%;
+        left: 5%;
+        color: white;
+        display: flex;
+        flex-flow:column nowrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+
+
+    .Profiles-responsive{
+        display: block;
+        object-fit: cover;
+    }
+
+    .Footer-wrapper {
+        width: 80%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Footer-right-group {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        color: #fff;
+        width: 100%;
+    }
+
+    .Footer-ul{
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: flex-start;
+        
+    }
+
+    .Footer-bottom-items{
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+        justify-content: center;
+        gap: 1.25rem;
+        
+    }
+
+}
+
+/* ――――――――― Media Querys - 1200px――――――――― */
+
 
 
 
@@ -465,8 +563,16 @@ video {
     
     .Burguer-svg{
         display: block;
-        width: 3rem;
-        height: 3rem;
+        width: 2.6rem;
+        height: 2.6rem;
+    }
+
+    .Profiles-img{
+        display: none;
+    }
+
+    .Profiles-responsive{
+        display: block;
     }
 
     .Footer-wrapper {
@@ -500,9 +606,7 @@ video {
         align-items: space-between;
         justify-content: center;
         gap: 1.25rem;
-        
     }
-
 
 }
 
@@ -510,103 +614,4 @@ video {
 
 
 
-
-/* ――――――――― Media Querys - 1200px――――――――― */
-/* Descripción: Estilos para tablet */
-
-@media  (max-width:1200px) {
-    .Header{
-        padding: 1.25rem 2rem;
-    }
-
-    .Header-nav{
-        display: none;
-    }
-
-    .Main-cursor{ 
-        display: none;
-    }
-
-    .Header-burguer{
-        display: block; 
-    }
-
-    .Header-a{
-        display: none;
-    }
-
-    .Meet-p{
-        width: 100%; 
-    }
-
-    .Main-cursor{
-        display: none;
-    }
-
-    .Banner-wrapper{
-        top: 20%;
-    }
-
-    video{
-        border-radius: 0rem 0rem 9rem 0rem;
-    }
-    
-    .Burguer-svg{
-        display: block;
-        width: 3rem;
-        height: 3rem;
-    }
-
-    .Mouse-wrapper{
-        display: none;
-    }
-
-
-    .Talento{
-        margin: auto;
-        padding: 2.5rem;
-        width: 100%;
-    }
-
-    .Talento-articles{
-        width: 80vw;
-    }
-
-    .Footer-wrapper {
-        width: 80%;
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .Footer-right-group {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: flex-start;
-        justify-content: flex-start;
-        color: #fff;
-        width: 100%;
-    }
-
-    .Footer-ul{
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        align-items: flex-start;
-        
-    }
-
-    .Footer-bottom-items{
-        display: flex;
-        flex-direction: column;
-        align-items: space-between;
-        justify-content: center;
-        gap: 1.25rem;
-        
-    }
-
-}
-
-/* ――――――――― Media Querys - 1200px――――――――― */
 

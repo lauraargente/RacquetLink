@@ -29,8 +29,7 @@ Estructura general:
     <header class="Header">
         <h1 class="Header-logo">    
             <a href="index.html" aria-label="Website logo">
-            <!-- <img src="assets/RacquetLinkLogo-14.svg" alt="Logotype">  -->
-            <svg class="Header-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                <svg class="Header-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 1000 508.37" style="enable-background:new 0 0 1000 508.37;" xml:space="preserve">
             <style type="text/css">
                 .st0{fill:#025B7B;}
@@ -105,7 +104,7 @@ Estructura general:
                     c2.66,0,5.32,1.01,7.35,3.04c2.03,2.03,4.69,3.04,7.35,3.04c2.66,0,5.32-1.01,7.35-3.04c4.05-4.05,10.63-4.05,14.68,0
                     c2.03,2.03,3.04,4.69,3.04,7.35C684.8,465.95,683.79,468.61,681.77,470.64z"/>
             </g>
-            </svg>
+                </svg>
             </a>
         </h1>
 
@@ -130,7 +129,7 @@ Estructura general:
                     <a href="contact.html" class="Header-item" aria-label="Contacto">Contacto</a>
                 </li>
                 <li class="Header-li">
-                    <a href="#Section-work" class="Header-item" aria-label="English">EN</a>
+                    <a href="about.html" class="Header-item" aria-label="English">EN</a>
                 </li>
                 <li class="Header-li">
                     <a href="login.html" class="Header-button" aria-label="Login">Log in</a>
@@ -142,7 +141,7 @@ Estructura general:
     <!-- 
         Contenido principal.
         Descripción: En este bloque encontramos el contenido principal de la página
-        compuesto de 4 secciones/bloques(Banner, Intro, XXXXXX).
+        compuesto de 4 secciones/bloques(Banner, Profiles, XXXXXX).
     -->
     <div class="Main">
         <div class="Video-wrapper">
@@ -154,7 +153,7 @@ Estructura general:
                     <br>
                     Estamos decididos a continuar construyendo una red global de talentos y oportunidades con una oferta 360º que transforme y profesionalice la industria.
                 </p>
-                <a href="#" class="Banner-button">Conócenos</a>
+                <a href="#Section-profiles" class="Banner-button">Conócenos</a>
             </div>
         </div>  
 
@@ -164,39 +163,46 @@ Estructura general:
                     <p class="Profiles-p">
                         Ex-jugadora de tenis en Division 1 para Eastern Kentucky University
                     </p>
-                        <!-- <span class="Profiles-span">
-                            <svg class="Profiles-svg" viewBox="0 0 34 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M31.9299 11.9521C30.5578 13.3174 28.7525 14 26.9472 14C25.1419 14 23.3487 13.3174 21.9646 11.9521C19.2205 9.22156 14.7674 9.22156 12.0113 11.9521C9.26723 14.6826 4.81411 14.6826 2.05801 11.9521C0.685971 10.5868 0 8.79042 0 6.99402C0 5.19761 0.685971 3.41317 2.05801 2.0479C3.43004 0.682635 5.23537 1.07074e-06 7.04068 1.07074e-06C8.84599 1.07074e-06 10.6393 0.682635 12.0234 2.0479C13.3954 3.41317 15.2006 4.09581 17.006 4.09581C18.8113 4.09581 20.6046 3.41317 21.9886 2.0479C24.7327 -0.682634 29.1858 -0.682634 31.9419 2.0479C33.314 3.41317 34 5.20958 34 7.00598C34 8.80239 33.314 10.5868 31.9419 11.9521H31.9299Z" fill="#025B7B"/>
-                            </svg>
-                        </span> -->
                     <p class="Profiles-p">
                         Gestión de conciertos y eventos deportivos
                     </p>
                     <p class="Profiles-p">
                         Trabajado en departamentos de marketing para empresas internacionales como Amazon o Coca-Cola
                     </p>
-                    <picture class="Work-picture">
-                        <source srcset="#" type="image/webp">
-                        <source srcset="#" type="image/jpg">
-                        <img class="Profiles-responsive" src="#" alt="Marina" loading="lazy"> 
+                    <div class="Profiles-p-responsive">
+                        <p>● Ex-jugadora de tenis en Division 1 para Eastern Kentucky University</p>
+                        <p>● Gestión de conciertos y eventos deportivos</p>
+                        <p>● Trabajado en departamentos de marketing para empresas internacional</p>
+                    </div>
+                    <picture class="Profiles-picture">
+                        <!-- <source srcset="#" type="image/webp"> -->
+                        <!-- <source srcset="assets/about/Marina.png" type="image/png"> -->
+                        <img class="Profiles-responsive" src="assets/about/AdobeStock_191850653 1 (1).jpg" alt="Marina" loading="lazy"> 
                     </picture>
                     <img class="Profiles-img" src="assets/about/AdobeStock_191850653 1 (1).jpg" alt="Marina" loading="lazy">
                 </li>
-        
-                <li class="Profiles-li"> 
+
+                <li class="Profiles-li">
                     <p class="Profiles-p">
                         Ex-jugadora de tenis en Division 1 para Eastern Kentucky University
-                        <br>
+                    </p>
+                    <p class="Profiles-p">
                         Gestión de conciertos y eventos deportivos
-                        <br>
+                    </p>
+                    <p class="Profiles-p">
                         Trabajado en departamentos de marketing para empresas internacionales como Amazon o Coca-Cola
                     </p>
-                    <picture class="Work-picture">
-                        <source srcset="#" type="image/webp"> 
-                        <source srcset="#" type="image/jpg">
-                        <img class="Profiles-responsive" src="#" alt="Alvaro" loading="lazy"> 
+                    <div class="Profiles-p-responsive">
+                        <p>● Ex-jugadora de tenis en Division 1 para Eastern Kentucky University</p>
+                        <p>● Gestión de conciertos y eventos deportivos</p>
+                        <p>● Trabajado en departamentos de marketing para empresas internacional</p>
+                    </div>
+                    <picture class="Profiles-picture">
+                        <!-- <source srcset="#" type="image/webp"> -->
+                        <!-- <source srcset="assets/about/Marina.png" type="image/png"> -->
+                        <img class="Profiles-responsive" src="assets/about/AdobeStock_191850653 1 (1).jpg" alt="Marina" loading="lazy"> 
                     </picture>
-                    <img class="Profiles-img" src="assets/about/AdobeStock_191850653 1 (1).jpg" alt="Alvaro" loading="lazy">
+                    <img class="Profiles-img" src="assets/about/AdobeStock_191850653 1 (1).jpg" alt="Marina" loading="lazy">
                 </li>
             </ul> 
 
