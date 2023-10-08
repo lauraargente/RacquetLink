@@ -19,7 +19,7 @@ const valoresResponsive= document.querySelectorAll('.Valores-li-responsive')
         let cursorStyle = window.getComputedStyle(e.target)["cursor"]
         
         const textArray = ['SPAN','P','H2','H3','H4','H5', 'BUTTON']
-        
+        console.log(e.target.tagName)
         if(textArray.includes(e.target.tagName) || cursorStyle === "pointer"){
             cursor.classList.add('hide')
             main.classList.add('cursor-text')
