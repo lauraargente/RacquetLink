@@ -437,6 +437,8 @@
 
 
 
+
+
 /* ――――――――― Footer ――――――――― */
 /* Descripción: Estilos para el footer de la página */ 
 
@@ -540,6 +542,10 @@
 
 
 /* ――――――――― Footer ――――――――― */
+
+
+
+
 
 
 /* ――――――――― Media Querys - 1200px――――――――― */
@@ -709,7 +715,6 @@
         align-items: space-between;
         justify-content: center;
         gap: 1.25rem;
-        
     }
 
 }
@@ -814,6 +819,23 @@
     /* .Profiles-img{
         display: none;
     } */
+
+    .Profiles-p{
+        width: 60vw;
+        font-size: 0.9em;
+        line-height: 1.2rem;
+    }
+
+    .Profiles-p:not(:first-child)::before{
+        content: "";
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: url(../assets/about/Vector.svg) center center no-repeat;
+        background-size: contain;
+        margin: 0.5rem auto;
+    }
+
 
     .Valores{
         display: none;
