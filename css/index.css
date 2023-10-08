@@ -171,6 +171,7 @@ video {
 .Banner-h2{
     font-size: var( --h2-size);
     font-weight: 500;
+    width: 70%;
 }
 
 .Banner-p{
@@ -229,6 +230,7 @@ video {
     font-weight: 500;
     padding: 2.5rem;
     color: var(--color-primary);
+    width: 80%;
 }
 
 .Intro-h3{
@@ -583,13 +585,10 @@ video {
         display: none;
     }
 
-    .Banner-wrapper{
-        top: 20%;
-    }
-
     video{
         border-radius: 0rem 0rem 9rem 0rem;
     }
+    
     
     .Burguer-svg{
         display: block;
@@ -709,6 +708,12 @@ video {
         display: none;
     }
 
+    .Banner-h2{
+        font-size: var( --h3-size);
+        font-weight: 500;
+        width: 90%;
+    }
+
     .Banner-wrapper{
         top: 20%;
     }
@@ -760,6 +765,12 @@ video {
         flex-flow: column nowrap;
         align-items: center;
         justify-content: center; 
+    }
+
+    .Intro-title{
+        text-align: center;
+        font-size: var(--h3-size);
+        width: 100%;
     }
 
     .Intro-img, .Intro-article{
