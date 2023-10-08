@@ -1,8 +1,11 @@
 'use strict'
 
+// Variables
 const main = document.querySelector('.Main')
 const footer = document.querySelector('.Footer')
 const cursor= document.querySelector('.Main-cursor')
+const headerBurguer =document.querySelector('.Header-burguer')
+const headerNav = document.querySelector('.Header-nav')
 
 // Cuando cursor se desplaza/mueve hace una FUNCTION
      // del objeto e transforamos las propiedade translateX y translateY
@@ -26,5 +29,13 @@ const cursor= document.querySelector('.Main-cursor')
             footer.classList.remove('cursor-text')
         }
     
+    })
+
+//Cuando hago CLICK en headerBurguer hace una FUNCTION
+    // a headerNav le TOGGLE la clase isActive
+   
+    headerBurguer.addEventListener(`click`, ()=>{
+        headerNav.classList.toggle('isActive')
+        console.log('hola')
     })
 
