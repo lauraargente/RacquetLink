@@ -92,7 +92,6 @@
     background-color: var(--color-secondary);
     color: var(--color-primary);
     transition: all 1s ease;
-    font-weight: 500;
 }
 
 .Header-button:active{
