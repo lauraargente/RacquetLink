@@ -117,7 +117,7 @@
 /* ――――――――― Contenido principal ――――――――― */
 /* Descripción: Estilos para el contenido principal de la página */ 
 
-.Main-cursor{ 
+/* .Main-cursor{ 
     position: fixed;  
     width: 30px;
     height: 30px;
@@ -127,7 +127,7 @@
     border-radius: 50%;
     z-index: 2;
     pointer-events: none;
-} 
+}  */
 
 .cursor-text{
     cursor: text;
