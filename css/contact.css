@@ -143,9 +143,8 @@
 .Main-presentation{
     padding: 6.25rem 2rem;
     width: 40%;
-    margin-left: 1.25rem;
+    margin-left: 2rem;
 }
-
 
 .Main-h3{
     font-size: var(--h3-size);
@@ -187,13 +186,21 @@
     width: 100%;
 }
 
-
 .Form-input{
     height: 5vh;
     border-bottom: 1px solid var(--color-secondary);
     color: #141c3a;
-    box-shadow: none;
     padding: .625rem;
+    transition: 0.3s;
+}
+
+.Form-input:focus{
+    border-color: var(--color-primary);
+    outline: none; 
+}
+
+.Form-input:focus::placeholder{
+    font-weight: 500;
 }
 
 .Form-error{
@@ -205,6 +212,14 @@ textarea{
     padding: .625rem;
 }
 
+textarea:focus{
+    border-color: var(--color-primary);
+    outline: none; 
+}
+
+textarea:focus::placeholder{
+    font-weight: 500;
+}
     
 .Form-button{
     white-space: nowrap;
@@ -223,7 +238,6 @@ textarea{
     background-color: var(--color-secondary);
     color: var(--color-primary);
     transition: all 1s ease;
-    font-weight: 500;
 }
 
 .Form-button:active{
@@ -506,6 +520,29 @@ textarea{
         height: 3rem;
     }
 
+    .Main{
+        background-color: #ffffff;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        margin: auto;
+    }
+
+    .Main-presentation{
+        padding:8rem 2rem 0 2rem;
+        width: 90%;
+    }
+
+    .Main-form{
+        width: 80%;
+        padding: 4rem 2rem;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 2.5rem;
+    }
+
     .Footer-wrapper {
         width: 80%;
         display: flex;
@@ -539,13 +576,36 @@ textarea{
         gap: 1.25rem;
         
     }
-
-
 }
 
 /* ――――――――― Media Querys - 600px――――――――― */
 
+@media (max-width:800px) {
 
+    .Main{
+        background-color: #ffffff;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        margin: auto;
+    }
+
+    .Main-presentation{
+        padding:8rem 2rem 0 2rem;
+        width: 90%;
+    }
+
+    .Main-form{
+        width: 80%;
+        padding: 4rem 2rem;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 2.5rem;
+    }
+    
+}
 
 
 /* ――――――――― Media Querys - 1200px――――――――― */
