@@ -117,17 +117,6 @@
 /* ――――――――― Contenido principal ――――――――― */
 /* Descripción: Estilos para el contenido principal de la página */ 
 
-/* .Main-cursor{ 
-    position: fixed;  
-    width: 30px;
-    height: 30px;
-    top: -15px;
-    left: -15px; 
-    background-color: var(--color-secondary);
-    border-radius: 50%;
-    z-index: 2;
-    pointer-events: none;
-}  */
 
 .cursor-text{
     cursor: text;
@@ -140,67 +129,104 @@
 
 .Main{
     background-color: #ffffff;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
 }
 
-.Video-wrapper{
-    position: relative;
-    height:80vh;
+
+/* ――――――――― Presentación ――――――――― */
+/* Descripción: Estilos para la breve presentación */ 
+
+.Main-presentation{
+    padding: 6.25rem 2rem;
+    width: 40%;
+    margin-left: 1.25rem;
 }
 
-video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    border-radius: 0rem 0rem 18.1875rem 0rem;
+
+.Main-h3{
+    font-size: var(--h3-size);
+    line-height: 1.8rem;
 }
 
-.Banner-wrapper{
-    position: absolute;
-    top: 30%;
-    left: 5%;
+.Main-p{
+    font-size: var(--p-size);
+    margin-top: 2rem;
+}
+/* ――――――――― Presentación ――――――――― */
 
+
+
+
+
+
+/* ――――――――― Formulario ――――――――― */
+/* Descripción: Estilos para el formulario */ 
+
+.Main-form{
+    /* max-width: 500px; */
+    /* margin: auto; */
+    width: 60%;
+    padding: 12rem 2rem;
     display: flex;
     flex-flow: column nowrap;
     gap: 2.5rem;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 90%;
-   
-    color: white;
 }
 
-.Banner-h2{
-    font-size: var( --h2-size);
-    font-weight: 500;
+.Form-top{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));  
+    /* grid-auto-rows:20vh;  */
+    gap: .625rem;
 }
 
-.Banner-p{
-    font-size: var( --p-size);
-    line-height: 1.875rem;
-    width: 80%;
+.Form-field{
+    width: 100%;
 }
 
-.Banner-button{
+
+.Form-input{
+    height: 5vh;
+    border-bottom: 1px solid var(--color-secondary);
+    color: #141c3a;
+    box-shadow: none;
+    padding: .625rem;
+}
+
+.Form-error{
+    border-color: red;
+}
+
+textarea{
+    border-bottom: 1px solid var(--color-secondary);
+    padding: .625rem;
+}
+
+    
+.Form-button{
     white-space: nowrap;
-    background-color: var(--color-white);
+    background-color: var(--color-primary);
     padding: 1rem 3rem;
     border-radius: 1rem;
-    display: inline-block;
-    width: auto;
-    font-weight: 600;
-    font-size: var(--h5-size);
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
                 
-    color: var(--color-primary); 
-} 
+    color: var(--color-white); 
+    font-weight: 600;
+    width: auto;
+}
 
-.Banner-button:hover{
+.Form-button:hover{
     background-color: var(--color-secondary);
     color: var(--color-primary);
     transition: all 1s ease;
     font-weight: 500;
 }
 
-.Banner-button:active{
+.Form-button:active{
     white-space: nowrap;
     background-color: aqua ;
     padding: 1rem 2rem;
@@ -211,6 +237,118 @@ video {
     color: var(--color-white);
 }
 
+/* ――――――――― Formulario ――――――――― */
+
+
+
+
+
+
+
+/* ――――――――― Pop up / Lightbox ――――――――― */
+/* Descripción: Estilos para el pop up que aparece cuando hacemos click al rellenar el formulario */ 
+
+.Lightbox{
+    position: fixed;
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4rem);
+    -webkit-backdrop-filter: blur(4rem);
+    background-color: rgba(255,255,255,.2);
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    gap:2rem;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.Lightbox.isActive{
+    opacity: 1;
+    pointer-events: auto;
+    transition: all .5s ease; 
+}
+
+.Lightbox-close{
+    width: 4rem;
+    background-color: var(--color-white);
+
+    padding: .4rem; 
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    transition: all .5s ease;
+
+    z-index: 1;
+}
+
+.Lightbox-close:hover{
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 1rem 0 rgba(255, 255, 255, .2);
+}
+
+.Lightbox-close:hover .Lightbox-svg{
+    fill: var(--color-white);
+}
+
+.Lightbox-close:active{
+    transform: scale(5);
+    opacity: 0;
+}
+
+.Lightbox-wrapper{
+    width: 60%;
+    max-width: 75rem;
+    /* height: 80vh; */
+    padding: 3.125rem;
+    background-color: var(--color-white);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+    border: 1px solid var(--color-white);
+
+    z-index:1;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.Lightbox-h2 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+  
+.Lightbox-p {
+    font-size: var(--p-size);
+    text-align: center;
+    margin-bottom: 40px;
+}
+  
+.Lightbox-svg {
+    fill: #84E6BC;
+    width: 2rem;
+    height: 2rem;
+}
+
+
+.Lightbox-bg{
+    position: absolute;
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+}
+/* ――――――――― Pop up / Lightbox ――――――――― */
 
 
 /* ――――――――― Footer ――――――――― */
