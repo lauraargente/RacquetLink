@@ -128,12 +128,17 @@
 }
 
 .Main{
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 2.5rem;
+    gap: 3rem;
+    width: 92%;
+    background-color: orange;
+    margin: auto;
+
+    padding: 12rem 0rem;
 }
 
 
@@ -141,9 +146,8 @@
 /* Descripción: Estilos para la breve presentación */ 
 
 .Main-presentation{
-    padding: 6.25rem 2rem;
     width: 40%;
-    margin-left: 2rem;
+    background-color: aqua;
 }
 
 .Main-h3{
@@ -166,20 +170,18 @@
 /* Descripción: Estilos para el formulario */ 
 
 .Main-form{
-    /* max-width: 500px; */
-    /* margin: auto; */
     width: 60%;
-    padding: 12rem 2rem;
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
     gap: 2.5rem;
 }
 
 .Form-top{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));  
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
     /* grid-auto-rows:20vh;  */
-    gap: .625rem;
+    gap: 2.5rem;
 }
 
 .Form-field{
@@ -209,7 +211,6 @@
 
 textarea{
     border-bottom: 1px solid var(--color-secondary);
-    padding: .625rem;
 }
 
 textarea:focus{
@@ -231,7 +232,7 @@ textarea:focus::placeholder{
                 
     color: var(--color-white); 
     font-weight: 600;
-    width: auto;
+    width: fit-content;
 }
 
 .Form-button:hover{
@@ -502,10 +503,6 @@ textarea:focus::placeholder{
         width: 100%; 
     }
 
-    .Main-cursor{
-        display: none;
-    }
-
     .Banner-wrapper{
         top: 20%;
     }
@@ -521,27 +518,35 @@ textarea:focus::placeholder{
     }
 
     .Main{
-        background-color: #ffffff;
+        background-color: #ffffff; 
         display: flex;
         flex-flow: column nowrap;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        gap: 2.5rem;
-        margin: auto;
+
+        width: 100%;
+       
+        padding: 12rem 0rem 6rem 0rem;
     }
 
     .Main-presentation{
-        padding:8rem 2rem 0 2rem;
-        width: 90%;
+        width: 80%;
     }
 
     .Main-form{
         width: 80%;
-        padding: 4rem 2rem;
         display: flex;
         flex-flow: column nowrap;
+        align-items: center;
+        justify-content: flex-start;
         gap: 2.5rem;
+        padding: 0;
     }
+
+    .Form-wrapper{
+        width: auto;
+    }
+
 
     .Footer-wrapper {
         width: 80%;
@@ -580,32 +585,7 @@ textarea:focus::placeholder{
 
 /* ――――――――― Media Querys - 600px――――――――― */
 
-@media (max-width:800px) {
 
-    .Main{
-        background-color: #ffffff;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        margin: auto;
-    }
-
-    .Main-presentation{
-        padding:8rem 2rem 0 2rem;
-        width: 90%;
-    }
-
-    .Main-form{
-        width: 80%;
-        padding: 4rem 2rem;
-        display: flex;
-        flex-flow: column nowrap;
-        gap: 2.5rem;
-    }
-    
-}
 
 
 /* ――――――――― Media Querys - 1200px――――――――― */
@@ -636,9 +616,31 @@ textarea:focus::placeholder{
         width: 100%; 
     }
 
-    .Main-cursor{
-        display: none;
+   
+    .Main{
+        background-color: #ffffff; 
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+       
+        padding: 12rem 0rem 6rem 0rem;
     }
+
+    .Main-presentation{
+        width: 80%;
+    }
+
+    .Main-form{
+        width: 80%;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 2.5rem;
+        padding: 0 2rem;
+    }
+
 
     .Banner-wrapper{
         top: 20%;
@@ -654,9 +656,6 @@ textarea:focus::placeholder{
         height: 3rem;
     }
 
-    .Mouse-wrapper{
-        display: none;
-    }
 
     .Footer-wrapper {
         width: 80%;
