@@ -97,7 +97,6 @@
 
 .Header-button:active{
     white-space: nowrap;
-    background-color: aqua ;
     padding: 1rem 2rem;
     border-radius: 1rem;
     box-shadow: 6px 6px 12px lightgrey,
@@ -147,7 +146,6 @@
 
 .Main-presentation{
     width: 40%;
-    background-color: aqua;
 }
 
 .Main-h3{
