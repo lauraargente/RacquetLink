@@ -117,14 +117,27 @@
 /* Descripción: Estilos para el contenido principal de la página */ 
 
 
-.cursor-text{
-    cursor: text;
-}
+.Main-cursor{ 
+    position: fixed;  
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    left: -15px; 
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+} 
 
 .Main-cursor.hide{
     opacity: 0;
     pointer-events: none;
 }
+
+.cursor-text{
+    cursor: text;
+}
+
 
 .Main{
     /* background-color: #ffffff; */
@@ -134,7 +147,6 @@
     align-items: center;
     gap: 3rem;
     width: 92%;
-    background-color: orange;
     margin: auto;
 
     padding: 12rem 0rem;
@@ -250,6 +262,11 @@ textarea:focus::placeholder{
     color: var(--color-white);
 }
 
+
+.Form-error{
+    border-color: red;
+}
+
 /* ――――――――― Formulario ――――――――― */
 
 
@@ -338,6 +355,7 @@ textarea:focus::placeholder{
     font-weight: bold;
     text-align: center;
     margin-bottom: 40px;
+    color: var(--color-primary);
 }
   
 .Lightbox-p {
@@ -347,7 +365,7 @@ textarea:focus::placeholder{
 }
   
 .Lightbox-svg {
-    fill: #84E6BC;
+    fill: var(--color-secondary);
     width: 2rem;
     height: 2rem;
 }
