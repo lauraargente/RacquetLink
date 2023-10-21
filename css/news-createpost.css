@@ -30,15 +30,21 @@
   resize: none; /* Evita que el usuario pueda cambiar el tamaño del textarea */
 }
 
-textarea {
+.titletextarea {
   font-size: 2rem;
   margin: 0 0 1rem 0.75rem;
+}
+
+.authortextarea {
+  font-size: 1rem;
+  margin: 0 0 1rem 0.75rem;
+  color: #025B7B;
 }
 
 #editorcontainer {
   width: 95vw;
   max-width: 600px;
-  margin: 8rem auto 2rem auto;
+  margin: 7rem auto 2rem auto;
   padding: 2rem;
 }
 
@@ -62,6 +68,7 @@ blockquote {
 #editor {
   border: none !important;
   font-family: "Lora", serif;
+  color: #555;
 }
 #editor p {
   margin-top: 1rem;
@@ -82,12 +89,34 @@ textarea:focus, input:focus {
   align-items: center;
   margin-right: 4rem;
   margin-left: 1rem;
+  margin-top: 2rem;
   color: #025B7B;
   transform: translateX(0%);
   transition: 0.5s;
 }
 #uploadbuttoncontainer.displaced {
-  transform: translateX(70%);
+  transform: translateX(60%);
+}
+
+#uploadtitle {
+  border: 2px solid #333;
+  padding: 0.5rem 1.5rem;
+  border-radius: 100px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background-color: #6ab376;
+  border: 2px solid #6ab376;
+  color: white;
+}
+#uploadtitle:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+#uploadtitle.publicarnobackground {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: black;
+  pointer-events: none;
 }
 
 .uploadbutton {
@@ -114,5 +143,47 @@ textarea:focus, input:focus {
 }
 
 #uploadbuttonconfirm {
-  background-color: #7ed38c;
+  border: 2px solid #333;
+  padding: 0.5rem 1.5rem;
+  border-radius: 100px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  background-color: #6ab376;
+  border: 2px solid #6ab376;
+  color: white;
+  margin-left: 1rem;
+}
+#uploadbuttonconfirm:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  border: 1px solid #CCC;
+  width: auto;
+  border-radius: 100px;
+  padding: 0.15rem 0.75rem;
+  color: #AAA;
+}
+.tag:hover {
+  border: 1px solid rgba(2, 91, 123, 0.8039215686);
+  cursor: pointer;
+}
+.tag svg path {
+  stroke: #AAA;
+}
+
+.tag-selected {
+  background-color: rgba(2, 91, 123, 0.8039215686);
+  color: white;
+  border: 1px solid rgba(2, 91, 123, 0.8039215686);
+}
+.tag-selected svg path {
+  stroke: white;
 }/*# sourceMappingURL=news-createpost.css.map */
