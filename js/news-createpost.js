@@ -1,26 +1,64 @@
+import { uploadArticle } from "./news-createpost-firebase.js"
+
 // Functions
 
-  // // Popup Logic
-  // var togglePopup = function(popupElement) {
-  //   popupElement.classList.toggle('popup-displayed')
-  //   body.classList.toggle('overflow-hide')
-  // }
-
+  // getNewsData obtiene los datos del artículo
   var articleTitle = ''
   var articleContent = ''
   var articleAuthor = ''
   var articleDate = ''
   var articleTags = []
 
-  var getNewsData = function() {
-    articleTitle = document.querySelector('#autoresize').innerHTML
-    articleAuthor = document.querySelector('#autoresize-author').innerHTML
+  var getNewsData = () => {
+    articleTitle = document.querySelector('#autoresize').value
+    articleAuthor = document.querySelector('#autoresize-author').value
     articleContent = document.querySelector('#editor').innerHTML
     var articleDate = Date()
     document.querySelectorAll('.tag-selected').forEach( tag => {
       articleTags.push(tag.classList.item(1));
     })
-    console.log(articleTags)
+    var articleToUploadArray = {articleTitle, articleAuthor, articleContent, articleDate, articleTags}
+
+    return articleToUploadArray
+  }
+
+  // setPrevisualizer obtiene los datos del artículo y muestra una previsualización idéntica a la que aparecerá en la página de artículos
+  var previewDateAndAuthor = document.querySelector('#prev-dateandauthor')
+  var previewTitle = document.querySelector('#prev-title')
+  var previewContent = document.querySelector('#prev-content')
+  var previewTags = document.querySelector('#prev-tags')
+  var previewImage = document.querySelector('#prev-image')
+
+  var setPrevisualizer = () => {
+
+
+    var articleToPrevArray = getNewsData()
+
+    // Regex por date
+    var fullDate = articleToPrevArray.articleDate.toString();
+    var regex = /([A-Za-z]{3} \d{1,2})/;
+    var match = fullDate.match(regex);
+
+    previewDateAndAuthor.innerHTML = `${match[0]} | ${articleToPrevArray.articleAuthor}`
+    // articleToPrevArray.articleTitle
+    previewTitle.innerHTML = `${articleToPrevArray.articleTitle}`
+
+    // Regex por content
+    articleContent = document.querySelector('#editor')
+    var pElements = articleContent.getElementsByTagName('p');
+
+    for (var i = 0; i < pElements.length; i++) {
+      var textContent = pElements[i].textContent;
+
+      // Verifica si el párrafo contiene solo texto (sin etiquetas HTML)
+      if (/^\s*[\w\s.,!?()-]*\s*$/.test(textContent)) {
+          console.log('Primer párrafo con contenido de solo texto:', textContent);
+          previewContent.innerHTML = textContent
+          break;
+      }
+  }
+
+    previewContent = `${articleToPrevArray.articleTitle}`
   }
 
 // Article Title resize logic
@@ -43,12 +81,11 @@ textareaAuthor.style.height = textareaAuthor.scrollHeight + 'px';
 
 
 
-// Publish logic
-
+const titleText = document.querySelector('#autoresize')
+const authorText = document.querySelector('#autoresize-author')
 
 const editor = document.querySelector('#editor')
 const editorToolbar = document.querySelector('.ql-toolbar')
-
 
 const buttonContainer= document.querySelector('#uploadbuttoncontainer')
 
@@ -56,36 +93,28 @@ const buttonPublicar = document.querySelector('#uploadtitle')
 const buttonBack = document.querySelector('#uploadbuttonback')
 const buttonConfirm = document.querySelector('#uploadbuttonconfirm')
 const buttonLoading = document.querySelector('#uploadbuttonloading')
-// const buttonPublicar = document.querySelector('#uploadtitle')
 
+const tagsContainer = document.querySelector('#tagscontainer')
 
-
-
+// Publish logic
 
 buttonPublicar.addEventListener('click', () => {
   buttonContainer.classList.toggle('displaced')
 
-  buttonPublicar.innerHTML = 'Publicar'
+  // buttonPublicar.innerHTML = 'Publicar'
   buttonPublicar.classList.toggle('hidden')
-
   buttonBack.classList.toggle('hidden')
   buttonConfirm.classList.toggle('hidden')
 
-  editor.classList.toggle('beforepublish')
-  editorToolbar.classList.toggle('zeroheight')
+  setPrevisualizer()
+
 })
 
 buttonBack.addEventListener('click', () => {
-  buttonContainer.classList.toggle('displaced')
 
-  buttonPublicar.innerHTML = 'Revisar y publicar'
   buttonPublicar.classList.toggle('hidden')
-
   buttonBack.classList.toggle('hidden')
   buttonConfirm.classList.toggle('hidden')
-  
-  editor.classList.toggle('beforepublish')
-  editorToolbar.classList.toggle('zeroheight')
 
 })
 
@@ -99,7 +128,7 @@ buttonConfirm.addEventListener('click', () => {
   buttonConfirm.classList.toggle('hidden')
   buttonLoading.classList.toggle('hidden')
 
-  getNewsData()
+  uploadArticle(getNewsData())
 
 })
 
