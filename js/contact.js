@@ -6,7 +6,7 @@ const lightBox = document.querySelector('.Lightbox')
 const lightBoxClose = document.querySelector('.Lightbox-close')
 const lightBoxBg = document.querySelector('.Lightbox-bg')
 const formButton = document.querySelector('.Form-button')
-const formFields = document.querySelectorAll('.Field') 
+const formFields = document.querySelectorAll('.Field')
 
 
 // Funciones

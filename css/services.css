@@ -1,34 +1,3 @@
-
-
-/* ――――――――― Contenido principal ――――――――― */
-/* Descripción: Estilos para el contenido principal de la página */ 
-
-.Main-cursor{ 
-    position: fixed;  
-    width: 30px;
-    height: 30px;
-    top: -15px;
-    left: -15px; 
-    background-color: var(--color-secondary);
-    border-radius: 50%;
-    z-index: 2;
-    pointer-events: none;
-} 
-
-.Main-cursor.hide{
-    opacity: 0;
-    pointer-events: none;
-}
-
-.cursor-text{
-    cursor: text;
-}
-
-/* ――――――――― Contenido principal ――――――――― */
-
-
-
-
 /* ――――――――― Banner principal ――――――――― */
 /* Descripción: Estilos para el banner principal de la página */ 
 

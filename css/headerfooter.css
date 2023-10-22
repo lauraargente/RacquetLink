@@ -110,7 +110,26 @@
 }
 /* ――――――――― Header ――――――――― */
 
+.Main-cursor{ 
+    position: fixed;  
+    width: 20px;
+    height: 20px;
+    top: -15px;
+    left: -15px; 
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+} 
 
+.cursor-text{
+    cursor: text;
+}
+
+.Main-cursor.hide{
+    opacity: 0;
+    pointer-events: none;
+}
 
 
 /* ――――――――― Footer ――――――――― */
@@ -325,10 +344,6 @@
     }
 
     .Header-nav{
-        display: none;
-    }
-
-    .Main-cursor{ 
         display: none;
     }
 

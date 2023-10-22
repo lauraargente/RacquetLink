@@ -6,27 +6,6 @@
     width: 100%;
 }
 
-.Main-cursor{ 
-    position: fixed;  
-    width: 30px;
-    height: 30px;
-    top: -15px;
-    left: -15px; 
-    background-color: var(--color-secondary);
-    border-radius: 50%;
-    z-index: 2;
-    pointer-events: none;
-} 
-
-.cursor-text{
-    cursor: text;
-}
-
-.Main-cursor.hide{
-    opacity: 0;
-    pointer-events: none;
-}
-
 .Main{
     background-color: #ffffff;
 }
@@ -101,6 +80,87 @@ video {
     color: var(--color-white);
 }
 
+/* ――――――――― Contenido principal ――――――――― */
+
+
+
+/* ――――――――― Sección Presentation ――――――――― */
+/* Descripción: Estilos para la sección de prsentación */ 
+.Presentation{
+    margin-top: 6rem;
+}
+
+.Presentation-wrapper{
+    width: 100%;
+    margin: 3rem auto;
+    text-align: center;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.Presentation-h3{
+    font-size: var(--h3-size);
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.Presentation-p{
+    font-size: var(--p-size);
+    width: 70%;
+}
+
+.Presentation-ul{
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   align-items: center;
+   margin-top: 1.875rem;
+}
+
+.Presentation-li-coach{
+    background-image: url(../assets/home/bgCoach.jpg);
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    height: 50vh;
+    text-align: center;
+    color: white;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Presentation-li-club{
+    background-image: url(../assets/home/bgClub.jpg);
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    height: 50vh;
+    text-align: center;
+    color: white;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Coach-p, .Club-p{
+    width: 70%;
+    margin: auto;
+    font-size: var(--p-size);
+}
+
+/* ――――――――― Sección Presentation ――――――――― */
+
+
+
 /* ――――――――― Sección Intro ――――――――― */
 
 .Intro{
@@ -117,7 +177,6 @@ video {
     text-align: center;
     font-size: var(--h3-size);
     font-weight: 500;
-    padding: 2.5rem;
     color: var(--color-primary);
     width: 80%;
 }
@@ -183,6 +242,9 @@ video {
 }
 
 
+
+
+
 /* ――――――――― Sección Talento ――――――――― */
 /* Descripción: Estilos para la sección de talento y oportunidad, donde se describe el mision y vision statement */ 
 
@@ -193,7 +255,7 @@ video {
 }
 
 .Main-section{
-    margin-top: 6.25rem;
+    margin-top: 5rem;
 }
 
 .Talento-h3{
@@ -224,6 +286,7 @@ video {
     box-shadow: 6px 6px 12px lightgrey,
                 -6px -6px 50px white;
     border-radius: 3.75rem;
+    background-color: #F7F7F7;
 
     display: flex;
     flex-flow: column;
@@ -417,7 +480,6 @@ video {
         border-radius: 0rem 0rem 9rem 0rem;
     }
     
-
     .Mouse-wrapper{
         display: none;
     }
@@ -454,16 +516,8 @@ video {
 
 @media  (max-width:600px) {
 
-    .Main-cursor{ 
-        display: none;
-    }
-
     .Meet-p{
         width: 100%; 
-    }
-
-    .Main-cursor{
-        display: none;
     }
 
     .Banner-h2{
@@ -490,7 +544,6 @@ video {
         display: none;
     }
 
-
     .Intro-wrapper{
         margin: auto;
         display: flex;
@@ -502,7 +555,7 @@ video {
     .Intro-title{
         text-align: center;
         font-size: var(--h3-size);
-        width: 100%;
+        width: 90%;
     }
 
     .Intro-img, .Intro-article{
@@ -534,6 +587,17 @@ video {
 
     .Contact-icon{
         display: none;
+     }
+
+     .Presentation-h3{
+        width: 90%;
+     }
+
+     .Presentation-ul{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
      }
 }
 
