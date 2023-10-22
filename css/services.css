@@ -290,17 +290,19 @@
 .Contact{
     background-color: #F7F7F7;
     padding: 3.125rem;
-    margin-top: 7rem;
+    padding: 2.5rem;
 }
 
 .Contact-wrapper{
-    width: 70%;
+    width: 90%;
     margin: auto;
 
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+
+    gap: 6.25rem;
 }
 
 .Contact-text{
@@ -352,6 +354,84 @@
 }
 
 /* ――――――――― Sección Contact ――――――――― */
+
+
+
+
+/* ――――――――― Sección FAQs ――――――――― */
+/* Descripción: Estilos para la sección de FAQs */ 
+
+.Faqs{
+    padding: 2.5rem;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.Faqs-h3{
+    font-size: var(--h4-size);
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.Faqs-ul{
+    width: 90%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.Faqs-li{
+    padding: 1rem 0;
+    width: 100%;
+    border-bottom: 1px solid var(--color-primary);
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+.Faqs-question{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.Faqs-question-p{
+    font-size: var(--p-size);
+    font-weight: 400;
+}
+
+.Faqs-svg-up{
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-primary);
+    display: none;
+}
+
+.Faqs-svg-down{
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-primary);
+}
+
+.Faqs-answer{
+    display:block;
+}
+
+/* ――――――――― Sección FAQs ――――――――― */
+
 
 
 
