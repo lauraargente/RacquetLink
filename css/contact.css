@@ -219,7 +219,9 @@
     border-color: red;
 }
 
-textarea{
+
+/* DC - Please seleccionad más específicamente esta clase para que no afecte a todos los textarea */
+/* textarea{
     border-bottom: 1px solid var(--color-secondary);
 }
 
@@ -230,7 +232,7 @@ textarea:focus{
 
 textarea:focus::placeholder{
     font-weight: 500;
-}
+} */
     
 .Form-button{
     white-space: nowrap;
