@@ -11,6 +11,8 @@ const valoresResponsive= document.querySelectorAll('.Valores-li-responsive')
 const profiles = document.querySelectorAll('.Profiles-responsive .Profiles-li')
 const profilesText = document.querySelectorAll('.Profiles-responsive .Profiles-text')
 const profilesImage = document.querySelectorAll('.Profiles-responsive .Profiles-img')
+const quotesPoint= document.querySelectorAll('.Quotes-li-dots')
+const quotesItems= document.querySelectorAll('.Quotes-li-responsive')
 
 
 // Cuando cursor se desplaza/mueve hace una FUNCTION
@@ -93,17 +95,55 @@ const profilesImage = document.querySelectorAll('.Profiles-responsive .Profiles-
         sliderInterval = setInterval(startSlider, 3000)
     }
 
-    profiles.forEach((eachProfile, index)=>{
-        eachProfile.addEventListener('click', ()=>{
-            profiles[index].style.transform = 'scale(1.1)';
-            profilesText[index].style.opacity = 1;
-            profilesImage[index].style.opacity = 0;
+    // profiles.forEach((eachProfile, index)=>{
+    //     eachProfile.addEventListener('click', ()=>{
+    //         profiles[index].style.transform = 'scale(1.1)';
+    //         profilesText[index].style.opacity = 1;
+    //         profilesImage[index].style.opacity = 0;
+    //     })
+    //     document.addEventListener('touchend', ()=>{
+    //         profiles[index].style.transform = 'scale(1)';
+    //         profilesText[index].style.opacity = 0;
+    //         profilesImage[index].style.opacity = 1;
+    //     })
+    // })
+
+    let quoteActive = 0;
+
+    let startQuotes = () => {
+        quoteActive++
+        if(quoteActive >= quotesItems.length){
+            quoteActive = 0
+        }
+        quotesItems.forEach(() =>{
+            activeQuotesCarousel();
         })
-        document.addEventListener('touchend', ()=>{
-            profiles[index].style.transform = 'scale(1)';
-            profilesText[index].style.opacity = 0;
-            profilesImage[index].style.opacity = 1;
+    }
+    
+    let quotesInterval = setInterval(startQuotes, 5000)
+
+// Cuando hago CLICK en cualquier Slider-li hace una FUNCTION
+    //le ADD la clase isActive
+
+    quotesPoint.forEach((eachPoint, index)=> {
+        quotesPoint[index].addEventListener('click',()=>{
+            quoteActive = index;
+            activeQuotesCarousel();
         })
     })
+
+    let activeQuotesCarousel = () => {
+        quotesPoint.forEach((eachPoint)=> {
+            eachPoint.classList.remove('isActive');
+            quotesPoint[quoteActive].classList.add('isActive');
+        })
+        quotesItems.forEach((eachQuote)=> {
+            eachQuote.classList.remove('isActive');
+            quotesItems[quoteActive].classList.add('isActive');
+        })
+        
+        clearInterval(quotesInterval)
+        quotesInterval = setInterval(startQuotes, 5000)
+    }
 
 
