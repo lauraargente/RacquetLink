@@ -622,24 +622,6 @@
         display: none;
     }
 
-    /* .Profiles-img{
-        display: none;
-    } */
-
-    /* .Profiles-picture{
-        height: 100%;
-    } */
-
-    /* .Profiles-responsive{
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    } */
-
-    /* .Profiles-p{
-        display: none;
-    } */
 
     .Profiles {
         display: none;
@@ -657,19 +639,6 @@
     .Profiles-li{
         position: relative;
     }
-
-    /* .Profiles-p-responsive{
-        display: block;
-        position: absolute;
-        top: 60%;
-        left: 5%;
-        color: white;
-        display: flex;
-        flex-flow:column nowrap;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 1rem;
-    } */
 
     
     .Contact-wrapper{
@@ -792,10 +761,6 @@
      .Banner-h2{
         font-size: var( --h3-size);
         font-weight: 500;
-    }
-
-    video{
-        border-radius: 0rem 0rem 9rem 0rem;
     }
     
     .Burguer-svg{
