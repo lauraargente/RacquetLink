@@ -110,6 +110,11 @@
 }
 /* ――――――――― Header ――――――――― */
 
+
+
+/* ――――――――― Cursor ――――――――― */
+/* Descripción: Estilos para el cursor */ 
+
 .Main-cursor{ 
     position: fixed;  
     width: 20px;
@@ -130,6 +135,9 @@
     opacity: 0;
     pointer-events: none;
 }
+/* ――――――――― Cursor ――――――――― */
+
+
 
 
 /* ――――――――― Footer ――――――――― */
@@ -290,7 +298,6 @@
         width: 2.6rem;
         height: 2.6rem;
     }
-
 
     .Footer-wrapper {
         width: 80%;
