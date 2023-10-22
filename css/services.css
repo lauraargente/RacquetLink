@@ -446,6 +446,7 @@ b{
     .Banner-wrapper{
         top: 20%;
     }
+    
 
     .Servicios-article{
         display: flex;
@@ -475,7 +476,7 @@ b{
     }
 
     .Consultoria-article{
-       height: 50vh;
+       min-height: auto;
     }
     
 }
@@ -489,7 +490,7 @@ b{
 /* ――――――――― Media Querys - 600px――――――――― */
 /* Descripción: Estilos para tablet */
 
-@media (max-width:600px) {
+@media (max-width:800px) {
     
     .Banner{
         border-radius: 0rem 0rem 10rem 0rem;

@@ -331,6 +331,18 @@
         gap: 1.25rem;
     }
 
+    .Main-cursor{
+        display: none;
+    }
+
+    body{
+        cursor: auto;
+    }
+
+    button:hover, .Burguer-svg:hover{
+        cursor: pointer;
+    }
+
 }
 
 /* ――――――――― Media Querys - 1200px――――――――― */
