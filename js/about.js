@@ -42,7 +42,6 @@ const profilesImage = document.querySelectorAll('.Profiles-responsive .Profiles-
    
     headerBurguer.addEventListener(`click`, ()=>{
         headerNav.classList.toggle('isActive')
-        console.log('hola')
     })
 
 // Cuando pasan 3 segundos, sliderActive aumenta para mostrar la siguiente imagen
@@ -94,19 +93,17 @@ const profilesImage = document.querySelectorAll('.Profiles-responsive .Profiles-
         sliderInterval = setInterval(startSlider, 3000)
     }
 
-console.log(profiles);
-profiles.forEach((eachProfile, index)=>{
-    eachProfile.addEventListener('click', ()=>{
-        console.log('hola');
-        profiles[index].style.transform = 'scale(1.1)';
-        profilesText[index].style.opacity = 1;
-        profilesImage[index].style.opacity = 0;
+    profiles.forEach((eachProfile, index)=>{
+        eachProfile.addEventListener('click', ()=>{
+            profiles[index].style.transform = 'scale(1.1)';
+            profilesText[index].style.opacity = 1;
+            profilesImage[index].style.opacity = 0;
+        })
+        document.addEventListener('touchend', ()=>{
+            profiles[index].style.transform = 'scale(1)';
+            profilesText[index].style.opacity = 0;
+            profilesImage[index].style.opacity = 1;
+        })
     })
-    document.addEventListener('touchend', ()=>{
-        profiles[index].style.transform = 'scale(1)';
-        profilesText[index].style.opacity = 0;
-        profilesImage[index].style.opacity = 1;
-    })
-})
 
 
