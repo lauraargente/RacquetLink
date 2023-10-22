@@ -73,7 +73,7 @@
 
 
  /* ――――――――― Sección Servicios ――――――――― */
-/* Descripción: Estilos para la sección de Servicios y oportunidad, donde se describe el mision y vision statement */ 
+/* Descripción: Estilos para la sección de Servicios donde se describen las ventajas para entrenador y club */ 
 
 .Servicios{
     padding: 2.5rem;
@@ -178,13 +178,96 @@
     margin-right: 5px;
 } */
 
-
-
-
-
-
 /* ――――――――― Sección Servicios ――――――――― */
  
+
+
+
+
+/* ――――――――― Sección Consultoria ――――――――― */
+/* Descripción: Estilos para la sección de servicios de consultoria */ 
+
+
+
+
+
+
+
+/* ――――――――― Sección Consultoria ――――――――― */
+
+
+
+
+
+
+/* ――――――――― Sección Contact ――――――――― */
+/* Descripción: Estilos para la sección de contacto de la página */ 
+
+.Contact{
+    background-color: #F7F7F7;
+    padding: 3.125rem;
+    margin-top: 7rem;
+}
+
+.Contact-wrapper{
+    width: 70%;
+    margin: auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Contact-text{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3.125rem;
+}
+
+.Contact-h5{
+    font-size: var(--h5-size);
+}
+
+.Contact-button{
+    white-space: nowrap;
+    background-color: var(--color-primary);
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white); 
+    font-weight: 600;
+    width: auto;
+}
+
+.Contact-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+    font-weight: 500;
+}
+
+.Contact-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white);
+}
+
+.Contact-icon{
+    width: 12rem;
+    height: 12rem;
+}
+
+/* ――――――――― Sección Contact ――――――――― */
 
 
 
