@@ -236,7 +236,7 @@ b{
     justify-content: flex-start;
     gap: 20px;
     width: 33%;
-    height: 40vh;
+    min-height: auto;
     background-color: #F7F7F7;
 }
 
@@ -268,6 +268,7 @@ b{
     font-size: var(--p-size);
     text-align: center;
     width: 90%;
+    margin-bottom: 2rem;
 }
 
 .Consultoria-article-svg{
