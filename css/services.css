@@ -97,6 +97,10 @@
     border-radius: 30px;
 }
 
+.Servicios-article-mobile{
+    display: none;
+}
+
 .Servicios-article-text{
     display: flex;
     flex-flow:column nowrap;
@@ -453,9 +457,16 @@ b{
         padding: 5rem;
     }
 
-    .Servicios-article-img{
+    .Servicios-article-mobile{
+        display: block;
         width: 100%;
         order: 2;
+        border-radius: 30px;
+        box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .Servicios-article-img{
+        display: none;
     }
 
     .Consultoria-articles{
@@ -505,11 +516,6 @@ b{
         background-color: #F7F7F7;
         padding: 2rem;
         width: 100%;
-    }
-
-    .Servicios-article-img{
-        width: 100%;
-        order: 2;
     }
 
     .Consultoria{
