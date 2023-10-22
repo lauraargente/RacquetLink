@@ -404,6 +404,10 @@ b{
     gap: 1.25rem;
 }
 
+.Faqs-li p{
+    width: 100%;
+}
+
 .Faqs-question{
     display: flex;
     flex-flow: row nowrap;
@@ -546,6 +550,15 @@ b{
 
     .Contact-icon{
         display: none;
+    }
+
+    .Faqs-question{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.8rem;
+        width: 100%;
     }
     
 }
