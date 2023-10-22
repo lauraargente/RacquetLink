@@ -182,6 +182,103 @@
 
 
 
+
+/* ――――――――― Sección Presentation ――――――――― */
+/* Descripción: Estilos para la sección de prsentación */ 
+.Presentation{
+    margin-top: 6rem;
+}
+
+.Presentation-wrapper{
+    width: 90%;
+    margin: 3rem auto;
+    text-align: center;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.Presentation-h3{
+    font-size: var(--h3-size);
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.Presentation-p{
+    font-size: var(--p-size);
+}
+
+/* ――――――――― Sección Presentation ――――――――― */
+
+
+
+/* ――――――――― Sección Quotes ――――――――― */
+/* Descripción: Estilos para la sección de prsentación */ 
+
+.Quotes{
+    width: 100%;
+    background-image: url(../assets/about/bgpicture.jpg);
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    height: 60vh;
+    margin: 3.125rem 0;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Quotes-wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 3rem;
+    width: 90%;
+    margin: auto;
+}
+
+.Quote-wrapper{
+    width: 90%;
+    margin: 3rem auto;
+    text-align: center;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.Quotes-h3{
+    font-size: var(--h4-size);
+    color: var(--color-white);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.Quotes-p{
+    font-size: var(--p-size);
+    color: var(--color-white);
+    font-weight: 300;
+}
+
+.Quotes-span{
+    color: var(--color-secondary);
+}
+
+/* ――――――――― Sección Presentation ――――――――― */
+
+
+
+
+
 /* ――――――――― Sección Valores ――――――――― */
 /* Descripción: Estilos para la sección de valores */ 
 
@@ -495,6 +592,17 @@
 
     .Contact-icon{
        display: none;
+    }
+
+    .Quotes-wrapper{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    
+        gap: 3rem;
+        width: 90%;
+        margin: auto;
     }
 }
 
