@@ -27,6 +27,13 @@
     opacity: 0 !important;
     height: 0 !important;
     padding: 0 !important;
+    pointer-events: none;
+    transition: 0.25;
+}
+
+.lowopacity {
+    opacity: 0.2;
+    pointer-events: none;
 }
 
 .zeroheight {
@@ -98,7 +105,12 @@ blockquote {
     p {
         margin-top: 1rem;
         line-height: 150%;
+        font-size: 14px;
     }
+}
+
+#article-content > div.ql-editor > p {
+    margin-top: 1rem;
 }
 
 textarea:focus, input:focus{
@@ -116,8 +128,7 @@ textarea:focus, input:focus{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // margin-right: 4rem;
-    // margin-left: 1rem;
+    font-size: 14px;
     margin-top: 2rem;
     color: #025B7B;
     transform: translateX(0%);
@@ -128,21 +139,21 @@ textarea:focus, input:focus{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #333;
-    padding: 0.5rem;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 100px;
     // color: black;
-    font-size: 14px;
     letter-spacing: 1px;
-    width: 2.5rem;
-    height: 2.5rem;
     &:hover {
         cursor: pointer;
         opacity: 0.8;
+        background-color: rgba(0, 0, 0, 0.05);
+        // border: 1px solid #025b7b00;
     }
-    background-color: #6ab376;
-    border: 2px solid #6ab376;
-    color: white;
+    // background-color: #6ab376;
+    border: 1px solid #555;
+    color: #555;
+
     &.publicarnobackground {
         background-color: rgba($color: (#000000), $alpha: 0.0);
         border: none;
@@ -152,14 +163,12 @@ textarea:focus, input:focus{
 }
 
 .uploadbutton {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: #7EC1D3;
-    border-radius: 100rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 100rem;
     cursor: pointer;
     &:hover {
         opacity: 0.8;
@@ -170,25 +179,36 @@ textarea:focus, input:focus{
 }
 
 #uploadbuttonback {
-    background-color: #AAAAAA;
+    display: flex;
+    gap: 0.5rem;
+    background-color: #aaaaaa00;
+    border: 1px solid #555;
+    color: #555;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+        background-color: rgba(0, 0, 0, 0.05);
+        // border: 1px solid #025b7b00;
+    }
+
 }
 
 #uploadbuttonconfirm {
+    padding: 0.5rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0.5rem;
+    color: white;
     border-radius: 100px;
     transition: 0.2s;
-    width: 2.5rem;
-    height: 2.5rem;
     &:hover {
         cursor: pointer;
         opacity: 0.6;
     }
     background-color: #6ab376;
     border: 2px solid #6ab376;
-    color: white;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 // Tags
@@ -237,24 +257,45 @@ textarea:focus, input:focus{
     }
 }
 
+#firstscreen {
+    transition: 0.25s;
+    z-index: 10;
+}
+
 // Previsualizer
 #previsualizercontainer {
     display: flex;
     align-items: center;
     margin-top: 2rem;
+    max-width: 95vw;
     justify-content: space-between;
+    transition: 0.25s;
+    transform: translateY(0);
+    z-index: -10;
 }
 
+#previsualizertextcontainer {
+    width: 60%;
+    padding-right: 20px;
+}
+
+#previsualizerimagecontainer {
+    width: 150px;
+    height: 100px;
+}
+
+
 #prev-dateandauthor {
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 0.75rem;
     color: #AAA;
 }
 
 #prev-content {
-    font-size: 12px;
+    font-size: 14px;
     color: #AAA;
     font-family: 'Lora', serif;
+    line-height: 150%;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* number of lines to show */
@@ -288,9 +329,9 @@ textarea:focus, input:focus{
     align-items: center;
     width: 150px;
     height: 100px;
+    margin-top: 0;
     overflow: hidden; /* Oculta el contenido que se desborda del contenedor */
     position: relative; /* Para poder posicionar la imagen dentro del contenedor */
-    margin-left: 2rem;
     img {
         display: block;
         max-width:150px;

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+
+
+* {
+    cursor: auto !important;
+}
+
+.hidden {
+    display: none;
+}
+
+#article-container {
+    margin: 8rem auto;
+    width: 600px;
+    max-width: 90vw;
+}
+
+.article-item {
+    margin-top: 1rem;
+}
+
+#article-content {
+    font-family: 'Lora', serif;
+    color: #555;
+    line-height: 150%;
+    font-size: 14px;
+    p {
+        line-height: 150%;
+    }
+}
+
+#article-content > div.ql-editor {
+    padding: 0;
+}
+
+#article-title {
+    font-size: 32px;
+}
+#article-content > div.ql-editor > p {
+    margin-top: 1rem;
+}
+
+#article-tags {
+    display: flex;
+    gap: 1rem;
+}
+
+#article-dateandauthor {
+    font-size: 14px;
+}
+
+.article-tag {
+    background-color: #EEE;
+    color: #025B7B;
+    font-size: 12px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+}

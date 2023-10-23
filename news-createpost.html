@@ -24,7 +24,8 @@ Estructura general:
     <link rel="stylesheet" href="css/news-createpost.css">
     <!-- Quill JS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/headerfooter.css
+    ">
     <!-- <script src="js/index.js" defer></script> -->
 
 </head>
@@ -34,139 +35,118 @@ Estructura general:
         Descripción: En esta bloque encontramos el menu de navegación a las diferentes páginas del sitio web.
     -->
 
-<body>
-    <header class="Header" style="top: 0">
-        <h1 class="Header-logo">
-            <a href="index.html" aria-label="Website logo">
-                <!-- <img src="assets/RacquetLinkLogo-14.svg" alt="Logotype">  -->
-                <svg class="Header-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 508.37"
-                    style="enable-background:new 0 0 1000 508.37;" xml:space="preserve">
-                    <style type="text/css">
-                        .st0 {
-                            fill: #025B7B;
-                        }
-
-                        .st1 {
-                            fill: #FFFFFF;
-                        }
-
-                        .st2 {
-                            fill: none;
-                        }
-
-                        .st3 {
-                            fill: #010202;
-                        }
-
-                        .st4 {
-                            fill: #7EC1D3;
-                        }
-
-                        .st5 {
-                            fill: url(#);
-                        }
-                    </style>
+    <body>
+        <header class="Header">
+            <h1 class="Header-logo">    
+                <a href="index.html" aria-label="Website logo">
+                 <svg class="Header-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 1000 508.37" style="enable-background:new 0 0 1000 508.37;" xml:space="preserve">
+                <style type="text/css">
+                    .st0{fill:#025B7B;}
+                    .st1{fill:#FFFFFF;}
+                    .st2{fill:none;}
+                    .st3{fill:#010202;}
+                    .st4{fill:#7EC1D3;}
+                    .st5{fill:url(#);}
+                </style>
+                <g>
                     <g>
+                        <path class="st0" d="M472.81,58.94c-54.82,0-99.41,44.59-99.41,99.4c0,54.82,44.59,99.41,99.41,99.41h99.4v-99.41
+                            C572.2,103.53,527.61,58.94,472.81,58.94z M542.74,228.27h-69.93c-38.57,0-69.93-31.36-69.93-69.93
+                            c0-38.56,31.36-69.93,69.93-69.93c38.56,0,69.93,31.38,69.93,69.93V228.27z"/>
+                        <path class="st4" d="M472.8,117.29c-22.67,0-41.05,18.38-41.05,41.05c0,22.67,18.38,41.05,41.05,41.05h41.05v-41.05
+                            C513.85,135.67,495.47,117.29,472.8,117.29z"/>
                         <g>
-                            <path class="st0" d="M472.81,58.94c-54.82,0-99.41,44.59-99.41,99.4c0,54.82,44.59,99.41,99.41,99.41h99.4v-99.41
-                        C572.2,103.53,527.61,58.94,472.81,58.94z M542.74,228.27h-69.93c-38.57,0-69.93-31.36-69.93-69.93
-                        c0-38.56,31.36-69.93,69.93-69.93c38.56,0,69.93,31.38,69.93,69.93V228.27z" />
-                            <path class="st4" d="M472.8,117.29c-22.67,0-41.05,18.38-41.05,41.05c0,22.67,18.38,41.05,41.05,41.05h41.05v-41.05
-                        C513.85,135.67,495.47,117.29,472.8,117.29z" />
-                            <g>
-                                <path class="st4" d="M622.56,322.83L622.56,322.83c0,8.14,6.6,14.73,14.73,14.73h0c8.14,0,14.73-6.6,14.73-14.73v0
-                            c0-8.14-6.6-14.73-14.73-14.73h0C629.15,308.09,622.56,314.69,622.56,322.83z" />
-                            </g>
-                            <path class="st4" d="M631.14,272.47c0,4.07-1.65,7.75-4.32,10.42c-2.67,2.67-6.35,4.32-10.42,4.32c-8.13,0-14.73,6.6-14.73,14.74
-                        c0,8.13-6.6,14.73-14.74,14.73c-4.07,0-7.75-1.65-10.42-4.32c-2.67-2.67-4.32-6.34-4.32-10.41s1.65-7.75,4.32-10.42
-                        c2.67-2.67,6.35-4.32,10.42-4.32s7.75-1.65,10.42-4.32c2.67-2.67,4.32-6.35,4.32-10.42c0-8.13,6.6-14.73,14.73-14.73
-                        c4.07,0,7.75,1.65,10.42,4.32C629.49,264.73,631.14,268.4,631.14,272.47z" />
-                            <g>
-                                <path class="st0" d="M473.05,0c-87.51-0.14-158.72,71.08-158.59,158.59c0.14,87.63,72.4,158.09,160.02,158.09H528
-                            c8.14,0,14.73-6.6,14.73-14.73v0c0-8.14-6.6-14.73-14.73-14.73h-53.66c-71.3,0-130.82-58.33-130.41-129.63
-                            c0.41-70.46,57.65-127.7,128.11-128.11c71.29-0.41,129.63,59.11,129.63,130.41v53.66c0,8.14,6.6,14.73,14.73,14.73l0,0
-                            c8.14,0,14.73-6.6,14.73-14.73v-53.52C631.14,72.4,560.68,0.14,473.05,0z" />
-                            </g>
+                            <path class="st4" d="M622.56,322.83L622.56,322.83c0,8.14,6.6,14.73,14.73,14.73h0c8.14,0,14.73-6.6,14.73-14.73v0
+                                c0-8.14-6.6-14.73-14.73-14.73h0C629.15,308.09,622.56,314.69,622.56,322.83z"/>
                         </g>
+                        <path class="st4" d="M631.14,272.47c0,4.07-1.65,7.75-4.32,10.42c-2.67,2.67-6.35,4.32-10.42,4.32c-8.13,0-14.73,6.6-14.73,14.74
+                            c0,8.13-6.6,14.73-14.74,14.73c-4.07,0-7.75-1.65-10.42-4.32c-2.67-2.67-4.32-6.34-4.32-10.41s1.65-7.75,4.32-10.42
+                            c2.67-2.67,6.35-4.32,10.42-4.32s7.75-1.65,10.42-4.32c2.67-2.67,4.32-6.35,4.32-10.42c0-8.13,6.6-14.73,14.73-14.73
+                            c4.07,0,7.75,1.65,10.42,4.32C629.49,264.73,631.14,268.4,631.14,272.47z"/>
                         <g>
-                            <path class="st0" d="M72.2,492.76c-5.07,0-6.92-1.4-12.3-9.29l-6.33-12.98c12.51-3.36,19.39-12.09,19.39-24.66
-                        c0-15.58-10.73-25.64-27.36-25.64H0.33v86.2h13.53v-32.16c5.27-2.72,10.81-3.1,15.55-3.1h9.58l10.24,21.5
-                        c6.66,13.77,16.98,13.77,26.97,13.77h0.54v-13.78l-3.28,0.14H72.2z M13.86,433.71h31.74c6.37,0,13.95,1.99,13.95,11.44
-                        c0,10.3-7.58,12.46-13.95,12.46h-16.2c-5.05,0-10.4,0.24-15.55,2.94V433.71z" />
-                            <path class="st0" d="M132.67,418.7h-14.88l4.92,11.03L85.59,506.4h14.66l2.32-4.28c1.79-3.28,10.02-8.16,25.31-8.16h25.55
-                        l5.59,12.44h15.14l-41.33-87.38L132.67,418.7z M147.29,480.32h-14.85c-11.41,0-17.35,2.01-20.35,3.75c0,0,17.52-37.91,17.52-37.91
-                        L147.29,480.32z" />
-                            <path class="st0" d="M252.03,481.1l-0.44,0.58c-6.26,8.35-15.96,13.13-26.6,13.13c-18.27,0-33.12-14.04-33.12-31.29
-                        c0-18.66,13.88-32.21,33.01-32.21c9.37,0,18.29,3.68,24.49,10.11l0.41,0.43l8.7-10.19l-0.36-0.36
-                        c-8.78-8.79-20.55-13.63-33.12-13.63c-25.6,0-46.42,19.9-46.42,44.36c0,25.96,20.33,46.3,46.3,46.3
-                        c13.53,0,26.37-5.68,35.21-15.59l0.29-0.32L252.03,481.1z" />
-                            <path class="st0" d="M353.72,492.03C353.72,492.03,353.72,492.02,353.72,492.03c6.98-8.26,10.67-18.14,10.67-28.62
-                        c0-25.64-20.33-45.72-46.3-45.72c-25.59,0-46.42,19.9-46.42,44.36c0,25.96,20.34,46.3,46.31,46.3c9.06,0,17.72-2.45,25.08-7.08
-                        c0,0,0,0,0,0c4.77,3.35,9.64,6.38,16.27,7.07l0.36,0.04l6.89-11.9l-0.86-0.06C362.15,496.16,358.12,494.68,353.72,492.03z
-                        M314.09,485.01l0.89,0.05c5.98,0.31,9.26,2.25,15.94,7.2c0,0,0,0,0,0c-4.07,1.69-8.39,2.55-12.83,2.55
-                        c-18.26,0-33.11-14.04-33.11-31.29c0-18.66,13.87-32.21,33.01-32.21c18.51,0,33,13.8,33,31.41c0,7.95-2.95,15.53-8.3,21.41
-                        l-1.8-1.34c-9.26-6.9-12.38-9.23-19.55-9.66l-0.33-0.02L314.09,485.01z" />
-                            <path class="st0" d="M447.51,472.76c0,14.22-9,22.05-25.36,22.05c-16.35,0-25.35-7.83-25.35-22.05v-52.57h-13.41v52.57
-                        c0,22.27,14.49,35.58,38.76,35.58c24.28,0,38.77-13.3,38.77-35.58v-52.57h-13.41V472.76z" />
-                            <path class="st0" d="M497.31,472.06c5.28-2.72,10.82-3.09,15.55-3.09H532v-13.76h-19.14c-5.04,0-10.39,0.24-15.55,2.94v-24.33
-                        h47.47v-13.64H483.8v86.2h66.01v-13.53h-52.49V472.06z" />
-                            <rect x="785.54" y="420.19" class="st0" width="13.3" height="86.2" />
-                            <polygon class="st0" points="886.18,484.27 832.49,420.39 832.33,420.19 814.82,420.19 825.37,432.91 825.37,506.4 838.66,506.4 
-                        838.66,448.82 886.54,506.2 886.7,506.4 899.82,506.4 899.82,420.19 886.18,420.19 		" />
-                            <path class="st0" d="M996.38,492.76h-0.8c-3.1,0-7.34-1.07-12.78-9.34l-15.08-22.63l28.33-40.6h-16.27l-42.41,62.33v-62.33h-13.53
-                        v86.2h13.27l22.63-33.66l12.45,19.95c8.04,12.75,14.6,13.74,22.46,13.74c0.71,0,1.44-0.01,2.16-0.01
-                        c0.76-0.01,1.53-0.02,2.31-0.02h0.55v-13.78L996.38,492.76z" />
-                            <g>
-                                <polygon class="st0"
-                                    points="724.56,492.87 724.56,470.06 711.03,470.06 711.03,506.4 771.8,506.4 771.8,492.87 			" />
-                                <rect x="711.03" y="420.19" class="st0" width="13.53" height="36.34" />
-                            </g>
-                            <g>
-                                <rect x="589.91" y="470.06" class="st0" width="13.18" height="36.34" />
-                                <polygon class="st0" points="559.56,420.19 559.56,433.83 589.91,433.83 589.91,456.53 603.09,456.53 603.09,433.83 
-                            633.09,433.83 633.09,420.19 			" />
-                            </g>
+                            <path class="st0" d="M473.05,0c-87.51-0.14-158.72,71.08-158.59,158.59c0.14,87.63,72.4,158.09,160.02,158.09H528
+                                c8.14,0,14.73-6.6,14.73-14.73v0c0-8.14-6.6-14.73-14.73-14.73h-53.66c-71.3,0-130.82-58.33-130.41-129.63
+                                c0.41-70.46,57.65-127.7,128.11-128.11c71.29-0.41,129.63,59.11,129.63,130.41v53.66c0,8.14,6.6,14.73,14.73,14.73l0,0
+                                c8.14,0,14.73-6.6,14.73-14.73v-53.52C631.14,72.4,560.68,0.14,473.05,0z"/>
                         </g>
-                        <path class="st4" d="M681.77,470.64c-2.03,2.03-4.69,3.04-7.35,3.04c-2.66,0-5.32-1.01-7.35-3.04c-4.05-4.05-10.63-4.05-14.69,0.01
-                    c-4.05,4.05-10.63,4.05-14.69-0.01c-2.03-2.03-3.04-4.69-3.04-7.35c0-2.66,1.01-5.31,3.04-7.34c2.03-2.03,4.69-3.04,7.35-3.04
-                    c2.66,0,5.32,1.01,7.35,3.04c2.03,2.03,4.69,3.04,7.35,3.04c2.66,0,5.32-1.01,7.35-3.04c4.05-4.05,10.63-4.05,14.68,0
-                    c2.03,2.03,3.04,4.69,3.04,7.35C684.8,465.95,683.79,468.61,681.77,470.64z" />
                     </g>
+                    <g>
+                        <path class="st0" d="M72.2,492.76c-5.07,0-6.92-1.4-12.3-9.29l-6.33-12.98c12.51-3.36,19.39-12.09,19.39-24.66
+                            c0-15.58-10.73-25.64-27.36-25.64H0.33v86.2h13.53v-32.16c5.27-2.72,10.81-3.1,15.55-3.1h9.58l10.24,21.5
+                            c6.66,13.77,16.98,13.77,26.97,13.77h0.54v-13.78l-3.28,0.14H72.2z M13.86,433.71h31.74c6.37,0,13.95,1.99,13.95,11.44
+                            c0,10.3-7.58,12.46-13.95,12.46h-16.2c-5.05,0-10.4,0.24-15.55,2.94V433.71z"/>
+                        <path class="st0" d="M132.67,418.7h-14.88l4.92,11.03L85.59,506.4h14.66l2.32-4.28c1.79-3.28,10.02-8.16,25.31-8.16h25.55
+                            l5.59,12.44h15.14l-41.33-87.38L132.67,418.7z M147.29,480.32h-14.85c-11.41,0-17.35,2.01-20.35,3.75c0,0,17.52-37.91,17.52-37.91
+                            L147.29,480.32z"/>
+                        <path class="st0" d="M252.03,481.1l-0.44,0.58c-6.26,8.35-15.96,13.13-26.6,13.13c-18.27,0-33.12-14.04-33.12-31.29
+                            c0-18.66,13.88-32.21,33.01-32.21c9.37,0,18.29,3.68,24.49,10.11l0.41,0.43l8.7-10.19l-0.36-0.36
+                            c-8.78-8.79-20.55-13.63-33.12-13.63c-25.6,0-46.42,19.9-46.42,44.36c0,25.96,20.33,46.3,46.3,46.3
+                            c13.53,0,26.37-5.68,35.21-15.59l0.29-0.32L252.03,481.1z"/>
+                        <path class="st0" d="M353.72,492.03C353.72,492.03,353.72,492.02,353.72,492.03c6.98-8.26,10.67-18.14,10.67-28.62
+                            c0-25.64-20.33-45.72-46.3-45.72c-25.59,0-46.42,19.9-46.42,44.36c0,25.96,20.34,46.3,46.31,46.3c9.06,0,17.72-2.45,25.08-7.08
+                            c0,0,0,0,0,0c4.77,3.35,9.64,6.38,16.27,7.07l0.36,0.04l6.89-11.9l-0.86-0.06C362.15,496.16,358.12,494.68,353.72,492.03z
+                            M314.09,485.01l0.89,0.05c5.98,0.31,9.26,2.25,15.94,7.2c0,0,0,0,0,0c-4.07,1.69-8.39,2.55-12.83,2.55
+                            c-18.26,0-33.11-14.04-33.11-31.29c0-18.66,13.87-32.21,33.01-32.21c18.51,0,33,13.8,33,31.41c0,7.95-2.95,15.53-8.3,21.41
+                            l-1.8-1.34c-9.26-6.9-12.38-9.23-19.55-9.66l-0.33-0.02L314.09,485.01z"/>
+                        <path class="st0" d="M447.51,472.76c0,14.22-9,22.05-25.36,22.05c-16.35,0-25.35-7.83-25.35-22.05v-52.57h-13.41v52.57
+                            c0,22.27,14.49,35.58,38.76,35.58c24.28,0,38.77-13.3,38.77-35.58v-52.57h-13.41V472.76z"/>
+                        <path class="st0" d="M497.31,472.06c5.28-2.72,10.82-3.09,15.55-3.09H532v-13.76h-19.14c-5.04,0-10.39,0.24-15.55,2.94v-24.33
+                            h47.47v-13.64H483.8v86.2h66.01v-13.53h-52.49V472.06z"/>
+                        <rect x="785.54" y="420.19" class="st0" width="13.3" height="86.2"/>
+                        <polygon class="st0" points="886.18,484.27 832.49,420.39 832.33,420.19 814.82,420.19 825.37,432.91 825.37,506.4 838.66,506.4 
+                            838.66,448.82 886.54,506.2 886.7,506.4 899.82,506.4 899.82,420.19 886.18,420.19 		"/>
+                        <path class="st0" d="M996.38,492.76h-0.8c-3.1,0-7.34-1.07-12.78-9.34l-15.08-22.63l28.33-40.6h-16.27l-42.41,62.33v-62.33h-13.53
+                            v86.2h13.27l22.63-33.66l12.45,19.95c8.04,12.75,14.6,13.74,22.46,13.74c0.71,0,1.44-0.01,2.16-0.01
+                            c0.76-0.01,1.53-0.02,2.31-0.02h0.55v-13.78L996.38,492.76z"/>
+                        <g>
+                            <polygon class="st0" points="724.56,492.87 724.56,470.06 711.03,470.06 711.03,506.4 771.8,506.4 771.8,492.87 			"/>
+                            <rect x="711.03" y="420.19" class="st0" width="13.53" height="36.34"/>
+                        </g>
+                        <g>
+                            <rect x="589.91" y="470.06" class="st0" width="13.18" height="36.34"/>
+                            <polygon class="st0" points="559.56,420.19 559.56,433.83 589.91,433.83 589.91,456.53 603.09,456.53 603.09,433.83 
+                                633.09,433.83 633.09,420.19 			"/>
+                        </g>
+                    </g>
+                    <path class="st4" d="M681.77,470.64c-2.03,2.03-4.69,3.04-7.35,3.04c-2.66,0-5.32-1.01-7.35-3.04c-4.05-4.05-10.63-4.05-14.69,0.01
+                        c-4.05,4.05-10.63,4.05-14.69-0.01c-2.03-2.03-3.04-4.69-3.04-7.35c0-2.66,1.01-5.31,3.04-7.34c2.03-2.03,4.69-3.04,7.35-3.04
+                        c2.66,0,5.32,1.01,7.35,3.04c2.03,2.03,4.69,3.04,7.35,3.04c2.66,0,5.32-1.01,7.35-3.04c4.05-4.05,10.63-4.05,14.68,0
+                        c2.03,2.03,3.04,4.69,3.04,7.35C684.8,465.95,683.79,468.61,681.77,470.64z"/>
+                </g>
                 </svg>
-            </a>
-        </h1>
-
-        <div class="Header-burguer">
-            <svg class="Burguer-svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-            </svg>
-        </div>
-
-        <nav class="Header-nav">
-            <ul class="Header-ul">
-                <li class="Header-li">
-                    <a href="about.html" class="Header-item" aria-label="Sobre Nosotros">Sobre Nosotros</a>
-                </li>
-                <li class="Header-li">
-                    <a href="services.html" class="Header-item" aria-label="Servicios">Servicios</a>
-                </li>
-                <li class="Header-li">
-                    <a href="news.html" class="Header-selected" aria-label="Noticias">Noticias</a>
-                </li>
-                <li class="Header-li">
-                    <a href="contact.html" class="Header-item" aria-label="Contacto">Contacto</a>
-                </li>
-                <li class="Header-li">
-                    <a href="#Section-work" class="Header-item" aria-label="English">EN</a>
-                </li>
-                <li class="Header-li">
-                    <a href="login.html" class="Header-button" aria-label="Login">Log in</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+                </a>
+            </h1>
+    
+            <div class="Header-burguer">
+                <svg class="Burguer-svg" xmlns="http://www.w3.org/2000/svg"  fill="currentColor"  viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </div>
+    
+            <nav class="Header-nav">
+                <ul class="Header-ul">
+                    <li class="Header-li">
+                        <a href="about.html" class="Header-item" aria-label="Sobre Nosotros">Sobre Nosotros</a>
+                    </li>
+                    <li class="Header-li">
+                        <a href="services.html" class="Header-item" aria-label="Servicios">Servicios</a>
+                    </li>
+                    <li class="Header-li">
+                        <a href="#Section-work" class="Header-item" aria-label="Noticias">Noticias</a>
+                    </li>
+                    <li class="Header-li">
+                        <a href="contact.html" class="Header-item" aria-label="Contacto">Contacto</a>
+                    </li>
+                    <li class="Header-li">
+                        <a href="#Section-work" class="Header-item" aria-label="English">EN</a>
+                    </li>
+                    <li class="Header-li">
+                        <a href="login.html" class="Header-button" aria-label="Login">Log in</a>
+                    </li>
+                </ul>  
+            </nav>
+        </header>
 
     <!-- 
         Contenido principal.
@@ -195,44 +175,48 @@ Estructura general:
     <!-- Quill JS Container -->
     <div id="editorcontainer">
         <!-- <div style="margin-bottom: 2rem; color: #025B7B;">Nuevo Artículo</div> -->
-        <textarea id="autoresize" class="titletextarea" rows="1" placeholder="Título..."></textarea>
-        <textarea id="autoresize-author" class="authortextarea" rows="1" placeholder="Autor/a..." maxlength="40"></textarea>
-        <div id="editor">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-    
-        <div id="tagscontainer" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px;">
-            <div class="tag padel">Pádel<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="9" stroke="black" stroke-width="2"/>
-                <path d="M14.9846 2C12.5738 6.2 14.981 14 18 14" stroke="black" stroke-width="2"/>
-                <path d="M2.04408 7.43286C5.88621 9.77661 8.35887 17.1559 6.31407 18.4832" stroke="black" stroke-width="1.5"/>
-                </svg></div>
-              <div class="tag tenis">Tenis<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="9" stroke="black" stroke-width="2"/>
-                <path d="M14.9846 2C12.5738 6.2 14.981 14 18 14" stroke="black" stroke-width="2"/>
-                <path d="M2.04408 7.43286C5.88621 9.77661 8.35887 17.1559 6.31407 18.4832" stroke="black" stroke-width="1.5"/>
-                </svg></div>
-              <div class="tag pickleball">Pickleball<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="9" stroke="black" stroke-width="2"/>
-                <path d="M14.9846 2C12.5738 6.2 14.981 14 18 14" stroke="black" stroke-width="2"/>
-                <path d="M2.04408 7.43286C5.88621 9.77661 8.35887 17.1559 6.31407 18.4832" stroke="black" stroke-width="1.5"/>
-                </svg></div>
-              <div class="tag torneos">Torneos<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path d="M12 15C8.68629 15 6 12.3137 6 9V3.44444C6 3.0306 6 2.82367 6.06031 2.65798C6.16141 2.38021 6.38021 2.16141 6.65798 2.06031C6.82367 2 7.0306 2 7.44444 2H16.5556C16.9694 2 17.1763 2 17.342 2.06031C17.6198 2.16141 17.8386 2.38021 17.9397 2.65798C18 2.82367 18 3.0306 18 3.44444V9C18 12.3137 15.3137 15 12 15ZM12 15V18M18 4H20.5C20.9659 4 21.1989 4 21.3827 4.07612C21.6277 4.17761 21.8224 4.37229 21.9239 4.61732C22 4.80109 22 5.03406 22 5.5V6C22 6.92997 22 7.39496 21.8978 7.77646C21.6204 8.81173 20.8117 9.62038 19.7765 9.89778C19.395 10 18.93 10 18 10M6 4H3.5C3.03406 4 2.80109 4 2.61732 4.07612C2.37229 4.17761 2.17761 4.37229 2.07612 4.61732C2 4.80109 2 5.03406 2 5.5V6C2 6.92997 2 7.39496 2.10222 7.77646C2.37962 8.81173 3.18827 9.62038 4.22354 9.89778C4.60504 10 5.07003 10 6 10M7.44444 22H16.5556C16.801 22 17 21.801 17 21.5556C17 19.5919 15.4081 18 13.4444 18H10.5556C8.59188 18 7 19.5919 7 21.5556C7 21.801 7.19898 22 7.44444 22Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg></div>
-              <div class="tag noticias">Noticias<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path d="M11 4H7.8C6.11984 4 5.27976 4 4.63803 4.32698C4.07354 4.6146 3.6146 5.07354 3.32698 5.63803C3 6.27976 3 7.11984 3 8.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V13M13 17H7M15 13H7M20.1213 3.87868C21.2929 5.05025 21.2929 6.94975 20.1213 8.12132C18.9497 9.29289 17.0503 9.29289 15.8787 8.12132C14.7071 6.94975 14.7071 5.05025 15.8787 3.87868C17.0503 2.70711 18.9497 2.70711 20.1213 3.87868Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg></div>
+        <div id="firstscreen">
+            <textarea id="autoresize" class="titletextarea" rows="1" placeholder="Título..."></textarea>
+            <textarea id="autoresize-author" class="authortextarea" rows="1" placeholder="Autor/a..." maxlength="40"></textarea>
+            <div id="editor">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div id="tagscontainer" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px;">
+                <div class="tag padel">Pádel<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="9" stroke="black" stroke-width="2"/>
+                    <path d="M14.9846 2C12.5738 6.2 14.981 14 18 14" stroke="black" stroke-width="2"/>
+                    <path d="M2.04408 7.43286C5.88621 9.77661 8.35887 17.1559 6.31407 18.4832" stroke="black" stroke-width="1.5"/>
+                    </svg></div>
+                  <div class="tag tenis">Tenis<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="9" stroke="black" stroke-width="2"/>
+                    <path d="M14.9846 2C12.5738 6.2 14.981 14 18 14" stroke="black" stroke-width="2"/>
+                    <path d="M2.04408 7.43286C5.88621 9.77661 8.35887 17.1559 6.31407 18.4832" stroke="black" stroke-width="1.5"/>
+                    </svg></div>
+                  <div class="tag pickleball">Pickleball<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="9" stroke="black" stroke-width="2"/>
+                    <path d="M14.9846 2C12.5738 6.2 14.981 14 18 14" stroke="black" stroke-width="2"/>
+                    <path d="M2.04408 7.43286C5.88621 9.77661 8.35887 17.1559 6.31407 18.4832" stroke="black" stroke-width="1.5"/>
+                    </svg></div>
+                  <div class="tag torneos">Torneos<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 15C8.68629 15 6 12.3137 6 9V3.44444C6 3.0306 6 2.82367 6.06031 2.65798C6.16141 2.38021 6.38021 2.16141 6.65798 2.06031C6.82367 2 7.0306 2 7.44444 2H16.5556C16.9694 2 17.1763 2 17.342 2.06031C17.6198 2.16141 17.8386 2.38021 17.9397 2.65798C18 2.82367 18 3.0306 18 3.44444V9C18 12.3137 15.3137 15 12 15ZM12 15V18M18 4H20.5C20.9659 4 21.1989 4 21.3827 4.07612C21.6277 4.17761 21.8224 4.37229 21.9239 4.61732C22 4.80109 22 5.03406 22 5.5V6C22 6.92997 22 7.39496 21.8978 7.77646C21.6204 8.81173 20.8117 9.62038 19.7765 9.89778C19.395 10 18.93 10 18 10M6 4H3.5C3.03406 4 2.80109 4 2.61732 4.07612C2.37229 4.17761 2.17761 4.37229 2.07612 4.61732C2 4.80109 2 5.03406 2 5.5V6C2 6.92997 2 7.39496 2.10222 7.77646C2.37962 8.81173 3.18827 9.62038 4.22354 9.89778C4.60504 10 5.07003 10 6 10M7.44444 22H16.5556C16.801 22 17 21.801 17 21.5556C17 19.5919 15.4081 18 13.4444 18H10.5556C8.59188 18 7 19.5919 7 21.5556C7 21.801 7.19898 22 7.44444 22Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg></div>
+                  <div class="tag noticias">Noticias<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M11 4H7.8C6.11984 4 5.27976 4 4.63803 4.32698C4.07354 4.6146 3.6146 5.07354 3.32698 5.63803C3 6.27976 3 7.11984 3 8.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V13M13 17H7M15 13H7M20.1213 3.87868C21.2929 5.05025 21.2929 6.94975 20.1213 8.12132C18.9497 9.29289 17.0503 9.29289 15.8787 8.12132C14.7071 6.94975 14.7071 5.05025 15.8787 3.87868C17.0503 2.70711 18.9497 2.70711 20.1213 3.87868Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg></div>
+            </div>
         </div>
 
-        <div id="previsualizercontainer">
+        <div id="previsualizercontainer" class="hidden locked-translate">
             <div id="previsualizertextcontainer">
                 <div id="prev-dateandauthor" class="prev-item">Oct 21 | Diego Colino</div>
                 <div id="prev-title" class="prev-item">Aquí va el título</div>
                 <div id="prev-content" class="prev-item">Aquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc</div>
                 <div id="prev-tags" class="prev-item">
-                    <div class="prev-tag">tenis</div>
-                    <div class="prev-tag">noticias</div>
+                    <div class="prev-tag"></div>
+                    <div class="prev-tag"></div>
+                    <div class="prev-tag"></div>
+                    <div class="prev-tag"></div>
+                    <div class="prev-tag"></div>
                 </div>
             </div>
             <div id="previsualizerimagecontainer">
@@ -241,14 +225,15 @@ Estructura general:
         </div>
 
         <div id="uploadbuttoncontainer">
-            <div id="uploadbuttonback" class="uploadbutton hidden"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 20 15" fill="none">
-                <path d="M1 5H14.5C16.9853 5 19 7.01472 19 9.5C19 11.9853 16.9853 14 14.5 14H10M1 5L5 1M1 5L5 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <div id="uploadbuttonback" class="uploadbutton hidden">volver<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 15" fill="none">
+                <path d="M1 5H14.5C16.9853 5 19 7.01472 19 9.5C19 11.9853 16.9853 14 14.5 14H10M1 5L5 1M1 5L5 9" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg></div>
-            <div id="uploadtitle"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
-                <path d="M14 9V6C14 3.23858 11.7614 1 9 1C6.23858 1 4 3.23858 4 6V9M5.8 19H12.2C13.8802 19 14.7202 19 15.362 18.673C15.9265 18.3854 16.3854 17.9265 16.673 17.362C17 16.7202 17 15.8802 17 14.2V13.8C17 12.1198 17 11.2798 16.673 10.638C16.3854 10.0735 15.9265 9.6146 15.362 9.32698C14.7202 9 13.8802 9 12.2 9H5.8C4.11984 9 3.27976 9 2.63803 9.32698C2.07354 9.6146 1.6146 10.0735 1.32698 10.638C1 11.2798 1 12.1198 1 13.8V14.2C1 15.8802 1 16.7202 1.32698 17.362C1.6146 17.9265 2.07354 18.3854 2.63803 18.673C3.27976 19 4.11984 19 5.8 19Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <div id="uploadtitle">previsualizar<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 22 16" fill="none">
+                <path d="M1.42012 8.71318C1.28394 8.49754 1.21584 8.38972 1.17772 8.22342C1.14909 8.0985 1.14909 7.9015 1.17772 7.77658C1.21584 7.61028 1.28394 7.50246 1.42012 7.28682C2.54553 5.50484 5.8954 1 11.0004 1C16.1054 1 19.4553 5.50484 20.5807 7.28682C20.7169 7.50246 20.785 7.61028 20.8231 7.77658C20.8517 7.9015 20.8517 8.0985 20.8231 8.22342C20.785 8.38972 20.7169 8.49754 20.5807 8.71318C19.4553 10.4952 16.1054 15 11.0004 15C5.8954 15 2.54553 10.4952 1.42012 8.71318Z" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.0004 11C12.6573 11 14.0004 9.65685 14.0004 8C14.0004 6.34315 12.6573 5 11.0004 5C9.34355 5 8.0004 6.34315 8.0004 8C8.0004 9.65685 9.34355 11 11.0004 11Z" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg></div>
 
-            <div id="uploadbuttonconfirm" class="hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <div id="uploadbuttonconfirm" class="hidden">publicar<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path d="M20 12.5V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H12M14 11H8M10 15H8M16 7H8M14.5 19L16.5 21L21 16.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg></div>
               <div id="uploadbuttonloading" class="uploadbutton hidden">

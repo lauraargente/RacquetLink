@@ -14,6 +14,7 @@ import { uploadArticle } from "./news-createpost-firebase.js"
     articleAuthor = document.querySelector('#autoresize-author').value
     articleContent = document.querySelector('#editor').innerHTML
     var articleDate = Date()
+    articleTags = []
     document.querySelectorAll('.tag-selected').forEach( tag => {
       articleTags.push(tag.classList.item(1));
     })
@@ -26,39 +27,46 @@ import { uploadArticle } from "./news-createpost-firebase.js"
   var previewDateAndAuthor = document.querySelector('#prev-dateandauthor')
   var previewTitle = document.querySelector('#prev-title')
   var previewContent = document.querySelector('#prev-content')
-  var previewTags = document.querySelector('#prev-tags')
+  var previewTags = document.querySelectorAll('.prev-tag')
   var previewImage = document.querySelector('#prev-image')
 
   var setPrevisualizer = () => {
 
-
     var articleToPrevArray = getNewsData()
 
-    // Regex por date
+    // Date and Author
     var fullDate = articleToPrevArray.articleDate.toString();
     var regex = /([A-Za-z]{3} \d{1,2})/;
     var match = fullDate.match(regex);
-
     previewDateAndAuthor.innerHTML = `${match[0]} | ${articleToPrevArray.articleAuthor}`
-    // articleToPrevArray.articleTitle
+
+    // Title
     previewTitle.innerHTML = `${articleToPrevArray.articleTitle}`
 
-    // Regex por content
+    // Content
     articleContent = document.querySelector('#editor')
     var pElements = articleContent.getElementsByTagName('p');
-
     for (var i = 0; i < pElements.length; i++) {
       var textContent = pElements[i].textContent;
-
-      // Verifica si el párrafo contiene solo texto (sin etiquetas HTML)
-      if (/^\s*[\w\s.,!?()-]*\s*$/.test(textContent)) {
-          console.log('Primer párrafo con contenido de solo texto:', textContent);
+      if ((!(textContent === '')) && (/^\s*[\w\s.,!?()-]*\s*$/.test(textContent))) {
           previewContent.innerHTML = textContent
           break;
       }
-  }
+    }
+    // Tags
+    previewTags.forEach( (tag, id) => {
+      console.log(articleToPrevArray.articleTags[id])
+      if ((articleToPrevArray.articleTags[id])) {
+        tag.style.display = 'flex';
+        tag.innerHTML = articleToPrevArray.articleTags[id];
+      } else {
+        tag.style.display = 'none';
+        tag.innerHTML = '';
+      }
 
-    previewContent = `${articleToPrevArray.articleTitle}`
+    })
+
+
   }
 
 // Article Title resize logic
@@ -96,9 +104,17 @@ const buttonLoading = document.querySelector('#uploadbuttonloading')
 
 const tagsContainer = document.querySelector('#tagscontainer')
 
+var firstScreen = document.querySelector('#firstscreen')
+var secondScreen = document.querySelector('#previsualizercontainer')
+
 // Publish logic
 
 buttonPublicar.addEventListener('click', () => {
+
+  firstScreen.classList.toggle('lowopacity')
+  secondScreen.classList.toggle('hidden')
+  secondScreen.classList.toggle('locked-translate')
+
   buttonContainer.classList.toggle('displaced')
 
   // buttonPublicar.innerHTML = 'Publicar'
@@ -106,15 +122,23 @@ buttonPublicar.addEventListener('click', () => {
   buttonBack.classList.toggle('hidden')
   buttonConfirm.classList.toggle('hidden')
 
+  window.scrollBy(0, 200);
+
   setPrevisualizer()
 
 })
 
 buttonBack.addEventListener('click', () => {
 
+  firstScreen.classList.toggle('lowopacity')
+  secondScreen.classList.toggle('hidden')
+  secondScreen.classList.toggle('locked-translate')
+
   buttonPublicar.classList.toggle('hidden')
   buttonBack.classList.toggle('hidden')
   buttonConfirm.classList.toggle('hidden')
+
+  window.scrollBy(0, -200);
 
 })
 
@@ -123,6 +147,7 @@ buttonConfirm.addEventListener('click', () => {
   buttonPublicar.innerHTML = 'Publicando...'
   buttonPublicar.classList.toggle('hidden')
   buttonPublicar.classList.toggle('publicarnobackground')
+
 
   buttonBack.classList.toggle('hidden')
   buttonConfirm.classList.toggle('hidden')

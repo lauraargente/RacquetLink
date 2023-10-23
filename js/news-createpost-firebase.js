@@ -35,13 +35,15 @@
               Title: articleToUploadArray.articleTitle,
               Author: articleToUploadArray.articleAuthor,
               Content: articleToUploadArray.articleContent,
-              Tags: articleToUploadArray.articleDate,
-              Date: articleToUploadArray.articleTags,
+              Tags: articleToUploadArray.articleTags,
+              Date: articleToUploadArray.articleDate,
           })
+          // Aquí faltaría redirigir a la página de artículo
           resolve()
       } catch (e) {
           console.error('Error adding document: ', e)
       }
+      console.log(docRef.id)
   })
   }
 
