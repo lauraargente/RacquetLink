@@ -1,1 +1,71 @@
-/*# sourceMappingURL=news.css.map */
+* {
+  cursor: auto !important;
+}
+
+.shimmerBG {
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: #ddd;
+  background: linear-gradient(to right, #E6E6E6 8%, #E0E0E0 18%, #E6E6E6 33%);
+  background-size: 1200px 100%;
+}
+
+#articles-container {
+  margin-top: 8rem;
+  display: flex;
+  margin: 8rem auto 2rem auto;
+  width: 600px;
+  max-width: 90vw;
+  flex-direction: column;
+}
+
+.article-loading {
+  margin-top: 4rem;
+}
+
+.article-loading-top {
+  width: 100%;
+  max-width: 200px;
+  height: 1.5rem;
+  border-radius: 10rem;
+}
+
+.article-loading-subcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-loading-left {
+  width: 100%;
+}
+.article-loading-left div {
+  width: 100%;
+  max-width: 300px;
+  height: 0.5rem;
+  border-radius: 10rem;
+  margin: 1rem 0;
+}
+.article-loading-left div:nth-child(1) {
+  max-width: 360px;
+}
+.article-loading-left div:nth-child(3) {
+  max-width: 390px;
+}
+
+.article-loading-right {
+  width: 100%;
+  max-width: 6rem;
+  height: 6rem;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}/*# sourceMappingURL=news.css.map */

@@ -28,7 +28,7 @@ import { uploadArticle } from "./news-createpost-firebase.js"
   var previewTitle = document.querySelector('#prev-title')
   var previewContent = document.querySelector('#prev-content')
   var previewTags = document.querySelectorAll('.prev-tag')
-  var previewImage = document.querySelector('#prev-image')
+  var previewImage = document.querySelector('#prev-image img')
 
   var setPrevisualizer = () => {
 
@@ -53,6 +53,16 @@ import { uploadArticle } from "./news-createpost-firebase.js"
           break;
       }
     }
+    // Image
+    for (var i = 0; i < pElements.length; i++) {
+      if(pElements[i].querySelector('img')) {
+        var imgContent = pElements[i].querySelector('img');
+        var src = imgContent.getAttribute('src')
+        previewImage.setAttribute('src', src)
+        break
+      }
+    }
+    
     // Tags
     previewTags.forEach( (tag, id) => {
       console.log(articleToPrevArray.articleTags[id])
@@ -63,10 +73,11 @@ import { uploadArticle } from "./news-createpost-firebase.js"
         tag.style.display = 'none';
         tag.innerHTML = '';
       }
-
     })
 
-
+    // // Preview Image
+    // previewImage.
+    // var primeraImagen = divElement.querySelector('img');
   }
 
 // Article Title resize logic

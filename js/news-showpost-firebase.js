@@ -25,7 +25,7 @@
 
 
 
-  var firebaseFetchArticle = (Id) => {
+  var firebaseFetchArticleById = (Id) => {
       return new Promise(function (resolve, reject) {
         let outputData = {}
     
@@ -69,4 +69,4 @@
       })
     }
     // Making fuction global
-    export { firebaseFetchArticle }
+    export { firebaseFetchArticleById }

@@ -1,12 +1,20 @@
-import { firebaseFetchArticle } from "./news-showpost-firebase.js"
+import { firebaseFetchArticleById } from "./news-showpost-firebase.js"
 
-var id = 'GulRQCjqBCuPFXfo2riU'
+
+// URL de ejemplo
+var url = window.location.href;
+
+// Obtener la cadena de consulta
+var id = url.split('?')[1];
+
+// var id = 'GulRQCjqBCuPFXfo2riU'
 
 
 
 
 // console.log(firebaseFetchArticle(id))
 
+var loaderContainer = document.querySelector('#article-loader-container')
 var showTitle = document.querySelector('#article-title')
 var showContent = document.querySelector('#article-content')
 var showDateAndAuthor= document.querySelector('#article-dateandauthor')
@@ -15,7 +23,7 @@ var showDateAndAuthor= document.querySelector('#article-dateandauthor')
 var showTags = document.querySelectorAll('.article-tag')
 
 
-firebaseFetchArticle(id)
+firebaseFetchArticleById(id)
   .then( (result) => {
     console.log(result.author);
     showTitle.innerHTML = result.title;
@@ -40,4 +48,5 @@ firebaseFetchArticle(id)
     element.setAttribute("contenteditable", "false");
 
     // result.Title =
+    loaderContainer.style.display = 'none'
   })

@@ -37,6 +37,7 @@
               Content: articleToUploadArray.articleContent,
               Tags: articleToUploadArray.articleTags,
               Date: articleToUploadArray.articleDate,
+              DateMagnitude: (new Date).getTime(),
           })
           // Aquí faltaría redirigir a la página de artículo
           resolve()
