@@ -1,20 +1,141 @@
 import { firebaseFetchArticlesByDate } from "./news-allposts-firebase.js"
-import { firebaseFetchNewArticlesByDate } from "./news-allposts-firebase.js"
 import { firebaseFetchArticleById } from "./news-showpost-firebase.js"
+import { firebaseGetArticleNumber } from "./news-createpost-firebase.js";
+
+var loadmoreButton = document.querySelector('#loadmore')
 
 var arrayOfArticles = []
+var referenceArticle
 
-firebaseFetchArticlesByDate()
-  .then( (result) => {
-    console.log(result);
-    // InjectReducedArticles
-    result.forEach(element => {
-        firebaseFetchArticleById(element)
-            .then( (result2) => {
-                arrayOfArticles.push(result2)
+var loadingContainer = document.querySelector('#articles-loading-display')
+
+firebaseGetArticleNumber()
+  .then((referenceArticleToLoadFrom) => {
+    firebaseFetchArticlesByDate(referenceArticleToLoadFrom)
+      .then(([outputData, newReferenceArticle]) => {
+        console.log(outputData);
+        // For each ID, get the data of the article
+        outputData.forEach(element => {
+          firebaseFetchArticleById(element)
+            .then((articleData) => {
+              // For each article data, inject in the page
+              injectArticleFromData(articleData)
             })
-        // Aquí habría que inyectar cada artículo
-    });
+        });
+        // Set a new reference article for further loading
+        referenceArticle = newReferenceArticle
+        loadingContainer.style.display = 'none'
+      })
   })
 
 // Aquí incluir un OnClick con la función firebaseFetchNewArticlesByDate que funcione como la de arriba pero añadiendo nuevos artículos a la carga
+
+
+loadmoreButton.addEventListener('click', () => {
+  // Get articles ID by reference Article (not Date actually, to be updated)
+  firebaseFetchArticlesByDate(referenceArticle - 1)
+    .then(([outputData, newReferenceArticle]) => {
+      console.log(outputData);
+      // For each ID, get the data of the article
+      outputData.forEach(element => {
+        firebaseFetchArticleById(element)
+          .then((articleData) => {
+            // For each article data, inject in the page
+            injectArticleFromData(articleData)
+          })
+      });
+      // Set a new reference article for further loading
+      referenceArticle = newReferenceArticle
+    })
+})
+
+var articleIteration = 0;
+
+var injectArticleFromData = (articleToPrevArray) => {
+
+  var newDiv = document.createElement('div')
+  newDiv.classList.add('previsualizercontainer')
+  loadmoreButton.insertAdjacentElement('beforebegin', newDiv)
+
+  newDiv.innerHTML = `
+    <div class="previsualizertextcontainer _${articleIteration}">
+    <div class="prev-dateandauthor _${articleIteration}" class="prev-item">Oct 21 | Diego Colino</div>
+    <div class="prev-title _${articleIteration}" class="prev-item">Aquí va el título</div>
+    <div class="prev-content _${articleIteration}" class="prev-item">Aquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc</div>
+    <div class="prev-tags _${articleIteration}" class="prev-item">
+        <div class="prev-tag _${articleIteration}"></div>
+        <div class="prev-tag _${articleIteration}"></div>
+        <div class="prev-tag _${articleIteration}"></div>
+        <div class="prev-tag _${articleIteration}"></div>
+        <div class="prev-tag _${articleIteration}"></div>
+    </div>
+    </div>
+    <div class="previsualizerimagecontainer _${articleIteration}">
+      <div class="prev-image _${articleIteration}" class="prev-item"><img src=""></div>
+    </div>
+`;
+
+  var articleIterationString = articleIteration.toString()
+
+  // setPrevisualizer obtiene los datos del artículo y muestra una previsualización idéntica a la que aparecerá en la página de artículos
+  var previewDateAndAuthor = document.querySelector('.prev-dateandauthor._' + articleIterationString);
+  var previewTitle = document.querySelector('.prev-title._' + articleIterationString)
+  var previewContent = document.querySelector('.prev-content._' + articleIterationString)
+  var previewTags = document.querySelectorAll('.prev-tag._' + articleIterationString)
+  var previewImage = document.querySelector('.prev-image._' + articleIterationString + ' > img')
+
+  // Date and Author
+  var fullDate = articleToPrevArray.date.toString();
+  var regex = /([A-Za-z]{3} \d{1,2})/;
+  var match = fullDate.match(regex);
+  previewDateAndAuthor.innerHTML = `${match[0]} | ${articleToPrevArray.author}`
+
+  // Title
+  previewTitle.innerHTML = `${articleToPrevArray.title}`
+
+  // Content
+  previewContent.innerHTML = articleToPrevArray.content
+  var articleContent = document.querySelector('.prev-content._' + articleIterationString)
+  var pElements = articleContent.getElementsByTagName('p');
+    // Image
+  for (var i = 0; i < pElements.length; i++) {
+    if (pElements[i].querySelector('img')) {
+      var imgContent = pElements[i].querySelector('img');
+      var src = imgContent.getAttribute('src')
+      previewImage.setAttribute('src', src)
+      break
+    }
+  }
+  for (var i = 0; i < pElements.length; i++) {
+    var textContent = pElements[i].textContent;
+    if (!(textContent === '')) {
+      previewContent.innerHTML = textContent
+      break;
+    }
+  }
+  // Image
+  for (var i = 0; i < pElements.length; i++) {
+    if (pElements[i].querySelector('img')) {
+      var imgContent = pElements[i].querySelector('img');
+      var src = imgContent.getAttribute('src')
+      previewImage.setAttribute('src', src)
+      break
+    }
+  }
+
+  // Tags
+  console.log(previewTags)
+  previewTags.forEach( (tag, id) => {
+    console.log(articleToPrevArray.tags[id])
+    if ((articleToPrevArray.tags[id])) {
+      tag.style.display = 'flex';
+      tag.innerHTML = articleToPrevArray.tags[id];
+    } else {
+      tag.style.display = 'none';
+      tag.innerHTML = '';
+    }
+  })
+
+  articleIteration = articleIteration + 1
+}
+

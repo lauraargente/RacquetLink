@@ -4,7 +4,7 @@
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
-  import { getFirestore, collection, addDoc, getDocs, getDoc, orderBy, where, query, limit, doc, deleteDoc} from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js'
+  import { getFirestore, collection, addDoc, getDocs, getDoc, orderBy, startAt, where, query, limit, doc, deleteDoc} from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js'
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -25,22 +25,26 @@
 
   var lastDateMagnitude
 
-  var firebaseFetchArticlesByDate = () => {
+  var firebaseFetchArticlesByDate = (referenceArticleToLoadFrom) => {
       return new Promise(function (resolve, reject) {
     
         const q = query(
           collection(db, 'articles'),
-          orderBy("DateMagnitude", "desc"),
-          limit(5)
+          orderBy("articleNumber", "desc"),
+          startAt(referenceArticleToLoadFrom),
+          limit(4)
         )
         var outputData = []
+        var newReferenceArticle
 
         getDocs(q).then((querySnapshot) => {
           querySnapshot.forEach((docSnapshot) => {
             outputData.push(docSnapshot.id)
             lastDateMagnitude = docSnapshot.data().DateMagnitude
+            newReferenceArticle = docSnapshot.data().articleNumber
           })
-          resolve(outputData)
+          // console.log(outputData)
+          resolve([outputData,newReferenceArticle])
         })
 
         })
@@ -49,27 +53,27 @@
     // Making fuction global
     export { firebaseFetchArticlesByDate }
 
-    var firebaseFetchNewArticlesByDate = () => {
-      return new Promise(function (resolve, reject) {
+    // var firebaseFetchNewArticlesByDate = () => {
+    //   return new Promise(function (resolve, reject) {
     
-        const q = query(
-          collection(db, 'articles'),
-          orderBy("DateMagnitude", "desc"),
-          startAfter(lastDateMagnitude),
-          limit(5)
-        )
-        var outputData = []
+    //     const q = query(
+    //       collection(db, 'articles'),
+    //       orderBy("DateMagnitude", "desc"),
+    //       startAfter(lastDateMagnitude),
+    //       limit(5)
+    //     )
+    //     var outputData = []
 
-        getDocs(q).then((querySnapshot) => {
-          querySnapshot.forEach((docSnapshot) => {
-            outputData.push(docSnapshot.id)
-            lastDateMagnitude = docSnapshot.data().DateMagnitude
-          })
-          resolve(outputData)
-        })
+    //     getDocs(q).then((querySnapshot) => {
+    //       querySnapshot.forEach((docSnapshot) => {
+    //         outputData.push(docSnapshot.id)
+    //         lastDateMagnitude = docSnapshot.data().DateMagnitude
+    //       })
+    //       resolve(outputData)
+    //     })
 
-        })
+    //     })
       
-    }
-    // Making fuction global
-    export { firebaseFetchNewArticlesByDate }
+    // }
+    // // Making fuction global
+    // export { firebaseFetchNewArticlesByDate }
