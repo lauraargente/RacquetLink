@@ -80,6 +80,10 @@ video {
     color: var(--color-white);
 }
 
+.Banner-button-mobile{
+    display: none;
+}
+
 /* ――――――――― Contenido principal ――――――――― */
 
 
@@ -131,9 +135,10 @@ video {
     color: white;
 
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    gap: 3.125rem;
 }
 
 .Presentation-li-club{
@@ -146,15 +151,42 @@ video {
     color: white;
 
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    gap: 3.125rem;
 }
 
 .Coach-p, .Club-p{
     width: 70%;
-    margin: auto;
     font-size: var(--p-size);
+}
+
+
+.Presentation-button{
+    white-space: nowrap;
+    background-color: var(--color-white);
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+                
+    color: var(--color-primary); 
+    font-weight: 600;
+    width: auto;
+}
+
+.Presentation-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+}
+
+.Presentation-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+                
+    color: var(--color-white);
 }
 
 /* ――――――――― Sección Presentation ――――――――― */
@@ -599,6 +631,35 @@ video {
         justify-content: center;
         align-items: center;
      }
+
+     .Banner-button-mobile{
+        white-space: nowrap;
+        background-color: var(--color-white);
+        padding: 1rem 3rem;
+        border-radius: 1rem;
+        display: inline-block;
+        width: auto;
+        font-weight: 600;
+        font-size: var(--h5-size);
+                    
+        color: var(--color-primary);
+        cursor: pointer;
+    } 
+    
+    .Banner-button-mobile:active{
+        white-space: nowrap;
+        background-color: aqua ;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 6px 6px 12px lightgrey,
+                    -6px -6px 50px white;
+                    
+        color: var(--color-white);
+    }
+
+    .Banner-button{
+        display: none;
+    }
 }
 
 /* ――――――――― Media Querys - 600px――――――――― */

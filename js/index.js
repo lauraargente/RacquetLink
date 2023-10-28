@@ -6,6 +6,7 @@ const footer = document.querySelector('.Footer')
 const cursor= document.querySelector('.Main-cursor')
 const headerBurguer =document.querySelector('.Header-burguer')
 const headerNav = document.querySelector('.Header-nav')
+const element = document.getElementById('Section-presentation')
 
 // Cuando cursor se desplaza/mueve hace una FUNCTION
      // del objeto e transforamos las propiedade translateX y translateY
@@ -37,4 +38,10 @@ const headerNav = document.querySelector('.Header-nav')
         headerNav.classList.toggle('isActive')
         console.log('hola')
     })
+
+
+// //Cuando hago CLICK en el botón registrate, hace scroll down a la sección de presentación
+//     setTimeout(() => {
+//         element.scrollIntoView({ behavior: 'smooth'})
+//     }, 1000);
 
