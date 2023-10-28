@@ -14,6 +14,11 @@
     cursor: auto !important;
 }
 
+#pagetitle {
+    font-size: 2rem;
+    color: #025B7B;
+}
+
 .shimmerBG {
     animation-duration: 2.2s;
     animation-fill-mode: forwards;
@@ -76,6 +81,7 @@
 }
 
 // Previsualizer
+
 .previsualizercontainer {
     display: flex;
     align-items: center;
@@ -92,20 +98,20 @@
 }
 
 .previsualizerimagecontainer {
-    width: 150px;
-    height: 100px;
+    width: 170px;
+    // height: 100px;
 }
 
 
 .prev-dateandauthor {
     font-size: 14px;
     margin-bottom: 0.75rem;
-    color: #AAA;
+    color: #7da8b9;
 }
 
 .prev-content {
     font-size: 14px;
-    color: #AAA;
+    color: #BBB;
     font-family: 'Lora', serif;
     line-height: 150%;
     overflow: hidden;
@@ -113,6 +119,11 @@
     -webkit-line-clamp: 3; /* number of lines to show */
             line-clamp: 3; 
     -webkit-box-orient: vertical;
+    margin-top: 4px;
+}
+
+.prev-title {
+    font-size: 1.25rem;
 }
 
 .prev-content {
@@ -155,15 +166,15 @@
 .prev-image {
     display: flex;
     align-items: center;
-    width: 150px;
-    height: 100px;
+    width: 170px;
+    // height: 150px;
     margin-top: 0;
     overflow: hidden; /* Oculta el contenido que se desborda del contenedor */
     position: relative; /* Para poder posicionar la imagen dentro del contenedor */
     img {
         display: block;
-        max-width:150px;
-        max-height:100px;
+        max-width:250px;
+        // max-height:150px;
         width: auto;
         height: auto;
         border-radius: 0.5rem;
@@ -178,6 +189,33 @@
     font-size: 14px;
     &:hover {
         cursor: pointer !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #pagetitle {
+        text-align: center;
+    }
+    .previsualizercontainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+    }
+    .previsualizertextcontainer {
+        padding: 0;
+        width: 100%;
+    }
+    .previsualizerimagecontainer {
+        margin-top: 1rem;
+        width: 100vw;
+        .prev-image {
+            width: 100vw;
+            img {
+                width: 100vw;
+                max-width: 100vw;
+                border-radius: 0;
+            }
+        }
     }
 }
 

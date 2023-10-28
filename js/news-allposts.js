@@ -24,7 +24,6 @@ firebaseGetArticleNumber()
         });
         // Set a new reference article for further loading
         referenceArticle = newReferenceArticle
-        loadingContainer.style.display = 'none'
       })
   })
 
@@ -63,7 +62,8 @@ var injectArticleFromData = (articleToPrevArray) => {
   newDiv.href = `http://127.0.0.1:5500/news-post.html?${arrayOfArticlesIds[articleIteration]}`
   loadmoreButton.insertAdjacentElement('beforebegin', newDiv)
 
-  newDiv.innerHTML = `
+  // if (articleIteration % 2 === 0) {
+    newDiv.innerHTML = `
     <div class="previsualizertextcontainer _${articleIteration}">
     <div class="prev-dateandauthor _${articleIteration}" class="prev-item">Oct 21 | Diego Colino</div>
     <div class="prev-title _${articleIteration}" class="prev-item">Aquí va el título</div>
@@ -79,7 +79,26 @@ var injectArticleFromData = (articleToPrevArray) => {
     <div class="previsualizerimagecontainer _${articleIteration}">
       <div class="prev-image _${articleIteration}" class="prev-item"><img src=""></div>
     </div>
-`;
+  `;
+//   } else {
+//     newDiv.innerHTML = `
+//     <div class="previsualizerimagecontainer _${articleIteration}">
+//     <div class="prev-image _${articleIteration}" class="prev-item"><img src=""></div>
+//     </div>
+//     <div class="previsualizertextcontainer _${articleIteration}">
+//     <div class="prev-dateandauthor _${articleIteration}" class="prev-item">Oct 21 | Diego Colino</div>
+//     <div class="prev-title _${articleIteration}" class="prev-item">Aquí va el título</div>
+//     <div class="prev-content _${articleIteration}" class="prev-item">Aquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc</div>
+//     <div class="prev-tags _${articleIteration}" class="prev-item">
+//         <div class="prev-tag _${articleIteration}"></div>
+//         <div class="prev-tag _${articleIteration}"></div>
+//         <div class="prev-tag _${articleIteration}"></div>
+//         <div class="prev-tag _${articleIteration}"></div>
+//         <div class="prev-tag _${articleIteration}"></div>
+//     </div>
+//     </div>
+// `;
+//   }
 
   var articleIterationString = articleIteration.toString()
 
@@ -103,7 +122,7 @@ var injectArticleFromData = (articleToPrevArray) => {
   previewContent.innerHTML = articleToPrevArray.content
   var articleContent = document.querySelector('.prev-content._' + articleIterationString)
   var pElements = articleContent.getElementsByTagName('p');
-    // Image
+  // Image
   for (var i = 0; i < pElements.length; i++) {
     if (pElements[i].querySelector('img')) {
       var imgContent = pElements[i].querySelector('img');
@@ -130,7 +149,7 @@ var injectArticleFromData = (articleToPrevArray) => {
   }
 
   // Tags
-  previewTags.forEach( (tag, id) => {
+  previewTags.forEach((tag, id) => {
     if ((articleToPrevArray.tags[id])) {
       tag.style.display = 'flex';
       tag.innerHTML = articleToPrevArray.tags[id];
@@ -139,6 +158,9 @@ var injectArticleFromData = (articleToPrevArray) => {
       tag.innerHTML = '';
     }
   })
+
+  // Hiding the loading container 
+  loadingContainer.style.display = 'none'
 
   articleIteration = articleIteration + 1
 }

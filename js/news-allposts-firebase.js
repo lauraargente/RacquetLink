@@ -32,7 +32,7 @@
           collection(db, 'articles'),
           orderBy("articleNumber", "desc"),
           startAt(referenceArticleToLoadFrom),
-          limit(4)
+          limit(10)
         )
         var outputData = []
         var newReferenceArticle
