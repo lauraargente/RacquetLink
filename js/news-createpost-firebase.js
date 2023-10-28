@@ -31,20 +31,22 @@
     return new Promise(function (resolve, reject) {
 
       try {
+        firebaseGetArticleNumber().then( articleNumber => {
           const docRef = addDoc(collection(db, 'articles'), {
-              Title: articleToUploadArray.articleTitle,
-              Author: articleToUploadArray.articleAuthor,
-              Content: articleToUploadArray.articleContent,
-              Tags: articleToUploadArray.articleTags,
-              Date: articleToUploadArray.articleDate,
-              DateMagnitude: (new Date).getTime(),
-          })
-          // Aquí faltaría redirigir a la página de artículo
-          resolve()
+            Title: articleToUploadArray.articleTitle,
+            Author: articleToUploadArray.articleAuthor,
+            Content: articleToUploadArray.articleContent,
+            Tags: articleToUploadArray.articleTags,
+            Date: articleToUploadArray.articleDate,
+            articleNumber: (articleNumber+1),
+            DateMagnitude: (new Date).getTime(),
+        })
+        // Aquí faltaría redirigir a la página de artículo
+        resolve()
+        })
       } catch (e) {
           console.error('Error adding document: ', e)
       }
-      console.log(docRef.id)
   })
   }
 

@@ -1,6 +1,6 @@
 import { uploadArticle } from "./news-createpost-firebase.js"
 
-// Functions
+// ------------------------------------------------------- FUNCTIONS
 
   // getNewsData obtiene los datos del artículo
   var articleTitle = ''
@@ -48,7 +48,7 @@ import { uploadArticle } from "./news-createpost-firebase.js"
     var pElements = articleContent.getElementsByTagName('p');
     for (var i = 0; i < pElements.length; i++) {
       var textContent = pElements[i].textContent;
-      if ((!(textContent === '')) && (/^\s*[\w\s.,!?()-]*\s*$/.test(textContent))) {
+      if (!(textContent === '')) {
           previewContent.innerHTML = textContent
           break;
       }
@@ -80,6 +80,8 @@ import { uploadArticle } from "./news-createpost-firebase.js"
     // var primeraImagen = divElement.querySelector('img');
   }
 
+// ------------------------------------------------------- RESIZE LOGIC
+
 // Article Title resize logic
 const textarea = document.getElementById('autoresize');
 textarea.addEventListener('input', function () {
@@ -89,7 +91,7 @@ textarea.addEventListener('input', function () {
 textarea.style.height = 'auto';
 textarea.style.height = textarea.scrollHeight + 'px';
 
-// Article Title resize logic
+// Article Author resize logic
 const textareaAuthor = document.getElementById('autoresize-author');
 textareaAuthor.addEventListener('input', function () {
   this.style.height = 'auto'; // Restablece la altura a automática
@@ -98,7 +100,7 @@ textareaAuthor.addEventListener('input', function () {
 textareaAuthor.style.height = 'auto';
 textareaAuthor.style.height = textareaAuthor.scrollHeight + 'px';
 
-
+// ------------------------------------------------------- MAIN FLOW LOGIC
 
 const titleText = document.querySelector('#autoresize')
 const authorText = document.querySelector('#autoresize-author')
@@ -159,16 +161,19 @@ buttonConfirm.addEventListener('click', () => {
   buttonPublicar.classList.toggle('hidden')
   buttonPublicar.classList.toggle('publicarnobackground')
 
-
   buttonBack.classList.toggle('hidden')
   buttonConfirm.classList.toggle('hidden')
   buttonLoading.classList.toggle('hidden')
 
-  uploadArticle(getNewsData())
+  uploadArticle(getNewsData()).then( () => {
+    setTimeout(function() {
+      window.location.href = 'http://127.0.0.1:5500/news.html';
+    }, 4000);
+  })
 
 })
 
-// Tags selection
+// ------------------------------------------------------- TAGS SELECTION LOGIC
 
 var tags = document.querySelectorAll('.tag')
 

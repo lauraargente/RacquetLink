@@ -42,6 +42,7 @@
                 date: docSnapshot.data().Date,
                 tags: docSnapshot.data().Tags,
                 title: docSnapshot.data().Title,
+                articleNumber: docSnapshot.data().articleNumber,
               }
               resolve(outputData)
             } else {

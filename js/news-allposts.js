@@ -4,7 +4,7 @@ import { firebaseGetArticleNumber } from "./news-createpost-firebase.js";
 
 var loadmoreButton = document.querySelector('#loadmore')
 
-var arrayOfArticles = []
+var arrayOfArticlesIds = []
 var referenceArticle
 
 var loadingContainer = document.querySelector('#articles-loading-display')
@@ -13,9 +13,9 @@ firebaseGetArticleNumber()
   .then((referenceArticleToLoadFrom) => {
     firebaseFetchArticlesByDate(referenceArticleToLoadFrom)
       .then(([outputData, newReferenceArticle]) => {
-        console.log(outputData);
         // For each ID, get the data of the article
         outputData.forEach(element => {
+          arrayOfArticlesIds.push(element)
           firebaseFetchArticleById(element)
             .then((articleData) => {
               // For each article data, inject in the page
@@ -28,16 +28,13 @@ firebaseGetArticleNumber()
       })
   })
 
-// Aquí incluir un OnClick con la función firebaseFetchNewArticlesByDate que funcione como la de arriba pero añadiendo nuevos artículos a la carga
-
-
 loadmoreButton.addEventListener('click', () => {
   // Get articles ID by reference Article (not Date actually, to be updated)
   firebaseFetchArticlesByDate(referenceArticle - 1)
     .then(([outputData, newReferenceArticle]) => {
-      console.log(outputData);
       // For each ID, get the data of the article
       outputData.forEach(element => {
+        arrayOfArticlesIds.push(element)
         firebaseFetchArticleById(element)
           .then((articleData) => {
             // For each article data, inject in the page
@@ -53,8 +50,17 @@ var articleIteration = 0;
 
 var injectArticleFromData = (articleToPrevArray) => {
 
-  var newDiv = document.createElement('div')
+  console.log(articleToPrevArray.articleNumber)
+
+  if (articleToPrevArray.articleNumber === 1) {
+    // loadmoreButton.style.display = 'none'
+    loadmoreButton.style.opacity = '0'
+    loadmoreButton.style.pointerEvents = 'none'
+  }
+
+  var newDiv = document.createElement('a')
   newDiv.classList.add('previsualizercontainer')
+  newDiv.href = `http://127.0.0.1:5500/news-post.html?${arrayOfArticlesIds[articleIteration]}`
   loadmoreButton.insertAdjacentElement('beforebegin', newDiv)
 
   newDiv.innerHTML = `
@@ -124,9 +130,7 @@ var injectArticleFromData = (articleToPrevArray) => {
   }
 
   // Tags
-  console.log(previewTags)
   previewTags.forEach( (tag, id) => {
-    console.log(articleToPrevArray.tags[id])
     if ((articleToPrevArray.tags[id])) {
       tag.style.display = 'flex';
       tag.innerHTML = articleToPrevArray.tags[id];
