@@ -40,8 +40,4 @@ const element = document.getElementById('Section-presentation')
     })
 
 
-// //Cuando hago CLICK en el botón registrate, hace scroll down a la sección de presentación
-//     setTimeout(() => {
-//         element.scrollIntoView({ behavior: 'smooth'})
-//     }, 1000);
 

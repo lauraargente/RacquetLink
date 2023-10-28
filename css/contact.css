@@ -98,7 +98,7 @@
     white-space: nowrap;
     background-color: var(--color-primary);
     padding: 1rem 3rem;
-    border-radius: 1rem;
+    border-radius: 10rem;
     box-shadow: 6px 6px 12px lightgrey,
                 -6px -6px 50px white;
                 
@@ -117,7 +117,7 @@
     white-space: nowrap;
     background-color: aqua ;
     padding: 1rem 2rem;
-    border-radius: 1rem;
+    border-radius: 10rem;
     box-shadow: 6px 6px 12px lightgrey,
                 -6px -6px 50px white;
                 
