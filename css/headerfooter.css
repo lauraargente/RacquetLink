@@ -112,30 +112,6 @@
 
 
 
-/* ――――――――― Cursor ――――――――― */
-/* Descripción: Estilos para el cursor */ 
-
-.Main-cursor{ 
-    position: fixed;  
-    width: 20px;
-    height: 20px;
-    top: -15px;
-    left: -15px; 
-    background-color: var(--color-secondary);
-    border-radius: 50%;
-    z-index: 2;
-    pointer-events: none;
-} 
-
-.cursor-text{
-    cursor: text;
-}
-
-.Main-cursor.hide{
-    opacity: 0;
-    pointer-events: none;
-}
-/* ――――――――― Cursor ――――――――― */
 
 
 
@@ -329,14 +305,6 @@
         align-items: space-between;
         justify-content: center;
         gap: 1.25rem;
-    }
-
-    .Main-cursor{
-        display: none;
-    }
-
-    body{
-        cursor: auto;
     }
 
     button:hover, .Burguer-svg:hover{
