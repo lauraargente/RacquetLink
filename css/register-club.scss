@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+body {
+    overflow-y: hidden;
+}
+
+#title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+}
+
+#progress-bar {
+    margin-bottom: 2.5rem;
+    width: 100vw;
+    height: 0.5rem;
+    background-color: rgb(240, 240, 240);
+    position: relative;
+}
+
+#current-progress {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-primary);
+    transition: 1s;
+}
+
+#register-container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    // height: 100vh;
+    width: 100vw;
+    transition: 1s;
+}
+
+.register-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    max-width: 1200px;
+    height: 100vh;
+    // border: 2px solid var(--color-primary);
+}
+
+.register-element-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    border-radius: 100px;
+}
+
+.register-element-content {
+    display: flex;
+    gap: 4rem;
+    // flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    width: 600px;
+    // border: 2px solid var(--color-primary);
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+.register-element-left {
+    width: 20%;
+}
+.register-element-right {
+    width: 80%;
+}
+
+.register-element-question {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-top: 1rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.register-element-textanswer {
+    font-size: 1.2rem;
+    // font-weight: 500;
+    // color: var(--color-primary);
+    margin-top: 1rem;
+    &:focus {
+        outline: none;
+    }
+}
+
+.register-element-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100px;
+    padding: 0.5rem;
+    border: 2px solid black;
+    margin: 2rem auto;
+    font-weight: 400;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.4;
+    }
+}
+
+.register-element-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100px;
+    padding: 0.5rem;
+    border: 2px solid var(--color-primary);
+    margin: 2rem auto;
+    font-weight: 400;
+    background-color: var(--color-primary);
+    &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+}
