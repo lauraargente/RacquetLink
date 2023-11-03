@@ -21,7 +21,7 @@ strong {
   font-family: "Lora", serif;
   color: #555;
   line-height: 150%;
-  font-size: 14px;
+  font-size: 1rem;
 }
 #article-content p {
   line-height: 150%;
@@ -32,7 +32,7 @@ strong {
 }
 
 #article-title {
-  font-size: 32px;
+  font-size: 2rem;
 }
 
 #article-content > div.ql-editor > p {
@@ -45,13 +45,13 @@ strong {
 }
 
 #article-dateandauthor {
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .article-tag {
   background-color: #EEE;
   color: #025B7B;
-  font-size: 12px;
+  font-size: 0.8rem;
   padding: 0.25rem 0.75rem;
   border-radius: 100px;
 }

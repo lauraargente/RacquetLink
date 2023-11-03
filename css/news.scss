@@ -16,7 +16,7 @@
 }
 
 #pagetitle {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #025B7B;
 }
 
@@ -120,13 +120,13 @@
 
 
 .prev-dateandauthor {
-    font-size: 14px;
+    font-size: 1rem;
     margin-bottom: 0.75rem;
     color: #7da8b9;
 }
 
 .prev-content {
-    font-size: 14px;
+    font-size: 1rem;
     color: #BBB;
     font-family: 'Lora', serif;
     line-height: 150%;
@@ -139,13 +139,13 @@
 }
 
 .prev-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
 
 .prev-content {
     div {
         p {
-            font-size: 14px;
+            font-size: 1rem;
             color: #AAA;
             font-family: 'Lora', serif;
             line-height: 150%;
@@ -172,7 +172,7 @@
 .prev-tag {
     background-color: #EEE;
     padding: 0.15rem 1rem;
-    font-size: 10px;
+    font-size: 0.8rem;
     border-radius: 100px;
     margin-top: 0.75rem;
     font-weight: 500;
@@ -202,7 +202,7 @@
     padding: 0.5rem 1.5rem;
     border: 1px solid black;
     border-radius: 10rem;
-    font-size: 14px;
+    font-size: 1rem;
     &:hover {
         cursor: pointer !important;
     }

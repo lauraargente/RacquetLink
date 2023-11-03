@@ -100,7 +100,7 @@ blockquote {
     p {
         margin-top: 1rem;
         line-height: 150%;
-        font-size: 14px;
+        font-size: 1rem;
     }
 }
 
@@ -123,7 +123,7 @@ textarea:focus, input:focus{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 1rem;
     margin-top: 2rem;
     color: #025B7B;
     transform: translateX(0%);
@@ -218,7 +218,7 @@ textarea:focus, input:focus{
     justify-content: center;
     align-items: center;
     gap: 12px;
-    font-size: 12px;
+    font-size: 0.8rem;
     border: 1px solid #CCC;
     width: auto;
     border-radius: 100px;
@@ -281,13 +281,13 @@ textarea:focus, input:focus{
 
 
 #prev-dateandauthor {
-    font-size: 14px;
+    font-size: 1rem;
     margin-bottom: 0.75rem;
     color: #AAA;
 }
 
 #prev-content {
-    font-size: 14px;
+    font-size: 1rem;
     color: #AAA;
     font-family: 'Lora', serif;
     line-height: 150%;
@@ -312,7 +312,7 @@ textarea:focus, input:focus{
 .prev-tag {
     background-color: #EEE;
     padding: 0.15rem 1rem;
-    font-size: 10px;
+    font-size: 0.8rem;
     border-radius: 100px;
     margin-top: 0.75rem;
     font-weight: 500;
