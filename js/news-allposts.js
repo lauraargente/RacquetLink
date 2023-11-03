@@ -48,7 +48,7 @@ loadmoreButton.addEventListener('click', () => {
 var createNew = document.querySelector('#createNew')
 
 createNew.addEventListener('click', () => {
-  window.location.href = '/news-createpost.html'
+  window.location.href = 'RacquetLink/news-createpost.html'
 })
 
 var articleIteration = 0;
@@ -66,7 +66,7 @@ var injectArticleFromData = (articleToPrevArray) => {
 
   var newDiv = document.createElement('a')
   newDiv.classList.add('previsualizercontainer')
-  newDiv.href = `/news-post.html?${arrayOfArticlesIds[articleIteration]}`
+  newDiv.href = `RacquetLink/news-post.html?${arrayOfArticlesIds[articleIteration]}`
   loadmoreButton.insertAdjacentElement('beforebegin', newDiv)
 
   // if (articleIteration % 2 === 0) {
