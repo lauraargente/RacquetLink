@@ -1,10 +1,26 @@
-* {
-  cursor: auto !important;
+#topcontainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 #pagetitle {
   font-size: 2rem;
   color: #025B7B;
+}
+
+#createNew {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #025B7B;
+  background-color: #025B7B;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10rem;
+}
+#createNew:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .shimmerBG {

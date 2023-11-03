@@ -45,7 +45,14 @@ loadmoreButton.addEventListener('click', () => {
     })
 })
 
+var createNew = document.querySelector('#createNew')
+
+createNew.addEventListener('click', () => {
+  window.location.href = '/news-createpost.html'
+})
+
 var articleIteration = 0;
+var currentHref = window.location.href;
 
 var injectArticleFromData = (articleToPrevArray) => {
 
@@ -59,7 +66,7 @@ var injectArticleFromData = (articleToPrevArray) => {
 
   var newDiv = document.createElement('a')
   newDiv.classList.add('previsualizercontainer')
-  newDiv.href = `http://127.0.0.1:5500/news-post.html?${arrayOfArticlesIds[articleIteration]}`
+  newDiv.href = `/news-post.html?${arrayOfArticlesIds[articleIteration]}`
   loadmoreButton.insertAdjacentElement('beforebegin', newDiv)
 
   // if (articleIteration % 2 === 0) {
