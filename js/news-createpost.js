@@ -167,7 +167,7 @@ buttonConfirm.addEventListener('click', () => {
 
   uploadArticle(getNewsData()).then( () => {
     setTimeout(function() {
-      window.location.href = 'RacquetLink/news.html';
+      window.location.href = 'news.html';
     }, 4000);
   })
 
