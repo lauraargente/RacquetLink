@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
 body {
   overflow-y: hidden;
 }
@@ -13,10 +14,11 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 2.5rem;
+  color: var(--color-primary);
 }
 
 #progress-bar {
-  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
   width: 100vw;
   height: 0.5rem;
   background-color: rgb(240, 240, 240);
@@ -25,7 +27,7 @@ body {
 
 #current-progress {
   position: absolute;
-  width: 0%;
+  width: 10%;
   height: 100%;
   background-color: var(--color-primary);
   transition: 1s;
@@ -61,7 +63,7 @@ body {
   display: flex;
   gap: 4rem;
   justify-content: center;
-  width: 600px;
+  width: 800px;
   border-radius: 2rem;
   padding: 2rem;
 }
@@ -124,4 +126,329 @@ body {
 .register-element-next:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+
+.register-checkbox-container {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.register-checkbox-fields-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.register-checkbox-fields {
+  border: 1px solid var(--border-color);
+  color: #757575;
+  border-radius: 10rem;
+  padding: 0.25rem 0.75rem;
+}
+.register-checkbox-fields.active {
+  border: 1px solid var(--color-primary);
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.register-checkbox-label {
+  color: #757575;
+  border: 1px solid var(--border-color);
+  border-radius: 10rem;
+  padding: 0.5rem 1.5rem;
+}
+.register-checkbox-label.active {
+  border: 1px solid var(--color-primary);
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.register-checkbox {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+}
+
+.numberpistas {
+  color: #ababab;
+  font-weight: 300;
+}
+
+.activable:hover {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  font-size: 1rem;
+}
+
+:root {
+  --border-radius: 0.75em;
+  --border-color: #c3c3c3;
+  --border-color-active: #0047a5;
+  --dropdown-border-color: #eaeaec;
+  --dropdown-trigger-background-color: #f3f5f9;
+  --dropdown-trigger-hover-background-color: #e6eaf1;
+  --input-error-color: #ff0000;
+  --input-label-color: #85898f;
+  --input-prefix-color: #656b73;
+  --input-phonenumber-color: #081627;
+  --list-item-hover-background: #f3f5f9;
+}
+
+.pn-select {
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-out;
+  max-width: 20em;
+  width: 100%;
+  z-index: 10;
+  margin-top: 1rem;
+}
+
+.pn-dropdown {
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--dropdown-border-color);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.135);
+  opacity: 0;
+  padding: 0 0.5em 0.5em;
+  pointer-events: none;
+  position: absolute;
+  top: 140%;
+  transform-origin: left top;
+  transition: all 0.15s ease-out;
+  width: 100%;
+  visibility: hidden;
+}
+.pn-select--open .pn-dropdown {
+  pointer-events: all;
+  transform: none;
+  opacity: 1;
+  top: 120%;
+  visibility: visible;
+}
+
+.pn-search {
+  position: relative;
+  display: flex;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: var(--dropdown-border-color);
+  margin-bottom: 0.5em;
+}
+.pn-search svg {
+  display: block;
+  height: 1.25rem;
+  left: 0.5em;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+}
+.pn-search input[type=search] {
+  padding-left: 2.5rem;
+  height: 3rem;
+  width: 100%;
+}
+.pn-search input[type=search]::-webkit-search-decoration, .pn-search input[type=search]::-webkit-search-cancel-button, .pn-search input[type=search]::-webkit-search-results-button, .pn-search input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.pn-list {
+  margin-right: -0.5em;
+  max-height: 10.5em;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #ffffff;
+  position: relative;
+}
+.pn-list::-webkit-scrollbar {
+  width: 10px;
+}
+.pn-list:hover {
+  --scrollbar-background: #ffffff;
+  --thumb-background: #c0c4ca;
+  scrollbar-color: var(--thumb-background) var(--scrollbar-background);
+}
+.pn-list:hover::-webkit-scrollbar-track {
+  background: var(--scrollbar-background);
+}
+.pn-list:hover::-webkit-scrollbar-thumb {
+  background-color: var(--thumb-background);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-background);
+}
+.pn-list--no-scroll {
+  margin-right: 0;
+}
+
+.pn-selected-prefix {
+  align-items: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: var(--dropdown-trigger-background-color);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  transition: background 0.2s ease-out;
+}
+.pn-selected-prefix:hover, .pn-selected-prefix:focus {
+  background: var(--dropdown-trigger-hover-background-color);
+}
+.pn-selected-prefix__flag {
+  height: auto;
+  width: 1.25rem;
+}
+.pn-selected-prefix__icon {
+  display: block;
+  height: 1.25rem;
+  margin-left: 0.5em;
+  margin-right: -0.25em;
+  transition: all 0.15s ease-out;
+  width: 1.25rem;
+}
+.pn-select--open .pn-selected-prefix__icon {
+  transform: rotate(180deg);
+}
+
+.pn-input {
+  background: #ffffff;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  line-height: 1;
+  overflow: hidden;
+  padding: 1em;
+}
+.pn-input__container {
+  display: flex;
+  flex-direction: row;
+}
+.pn-input__label {
+  color: var(--input-label-color);
+  font-size: 0.7rem;
+  position: relative;
+  top: -0.25em;
+}
+.pn-input__error {
+  bottom: 0;
+  color: var(--input-error-color);
+  font-size: 0.785rem;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  z-index: -1;
+}
+.pn-input input[type=text] {
+  background: transparent;
+  position: absolute;
+  color: var(--input-prefix-color);
+  pointer-events: none;
+}
+.pn-input input[type=tel] {
+  color: var(--input-phonenumber-color);
+  padding-left: calc(var(--prefix-length) * 1ch + 1.5ch);
+  font-weight: 500;
+}
+.pn-input input[type=tel]:not(:-moz-placeholder-shown):invalid + .pn-input__error {
+  opacity: 1;
+  transform: translateY(175%);
+}
+.pn-input input[type=tel]:not(:placeholder-shown):invalid + .pn-input__error {
+  opacity: 1;
+  transform: translateY(175%);
+}
+
+.pn-list-item {
+  align-items: center;
+  border-radius: 0.5em;
+  display: flex;
+  font-weight: 400;
+  padding: 0.6em 0.75em;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  outline: none;
+}
+.pn-list-item__flag {
+  width: 1.25em;
+  height: auto;
+  margin-right: 1em;
+  display: block;
+}
+.pn-list-item__country {
+  margin-right: 0.25em;
+}
+.pn-list-item:hover, .pn-list-item:focus {
+  background-color: var(--list-item-hover-background);
+}
+.pn-list-item--selected {
+  pointer-events: none;
+  font-weight: 500;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23103155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-position: right 0.75em top 50%;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  background-position: right 0.75em top 50%;
+}
+.pn-list-item--no-results {
+  pointer-events: none;
+}
+
+#js_number-prefix2 {
+  color: black;
+}
+
+#js_input-phonenumber2 {
+  cursor: auto;
+}
+
+#city-container {
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-out;
+  max-width: 20em;
+  width: 100%;
+  z-index: 1;
+  margin-top: 1rem;
+}
+#city-container #city-icon {
+  background-color: var(--dropdown-trigger-background-color);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  background-image: url("https://cdn-icons-png.flaticon.com/512/1183/1183878.png");
+  background-size: 1.8rem;
+  background-repeat: no-repeat;
+  background-position: center;
 }/*# sourceMappingURL=register-club.css.map */
