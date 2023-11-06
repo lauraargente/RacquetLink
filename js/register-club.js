@@ -2,9 +2,33 @@ var backButtons = document.querySelectorAll('.register-element-back')
 var nextButtons = document.querySelectorAll('.register-element-next')
 var registerContainer = document.querySelector('#register-container')
 var currentProgress = document.querySelector('#current-progress')
+var adjustableWidthElements = document.querySelectorAll('.adjustablewidth')
 
 var currentPosition = 0
 var currentProgressValue = 10
+
+function ajustarAncho(input) {
+  const longitudTexto = input.value.length;
+
+  const anchoMinimo = 20; // Ajusta este valor según tus necesidades
+
+  const nuevoAncho = Math.max(anchoMinimo, longitudTexto * 10); // Ajusta este valor según tus necesidades
+
+  input.style.width = `${nuevoAncho}px`;
+}
+
+adjustableWidthElements.forEach(inputElement => {
+  inputElement.addEventListener('input', function() {
+    const longitudTexto = inputElement.value.length;
+    console.log(longitudTexto)
+    const anchoMinimo = 214; // Ajusta este valor según tus necesidades
+    const nuevoAncho = Math.max(anchoMinimo, longitudTexto * 10); // Ajusta este valor según tus necesidades
+    inputElement.style.width = `${nuevoAncho}px`;
+  });
+})
+
+
+
 
 var checkPossibleMotionBack = function() {
     if (currentPosition === 0) {

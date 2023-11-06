@@ -92,6 +92,29 @@ body {
 .register-element-textanswer:focus {
   outline: none;
 }
+.register-element-textanswer::-moz-placeholder {
+  color: var(--border-color);
+}
+.register-element-textanswer::placeholder {
+  color: var(--border-color);
+}
+
+.input-text-style {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-out;
+  max-width: 100%;
+  width: 21rem;
+  z-index: 10;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
 
 .register-element-back {
   display: flex;
@@ -130,9 +153,30 @@ body {
 
 .register-checkbox-container {
   margin-top: 1rem;
+  margin-right: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+  color: #757575;
+  border: 1px solid var(--border-color);
+  border-radius: 10rem;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--dropdown-trigger-background-color);
+}
+.register-checkbox-container.active {
+  border: 1px solid var(--color-primary);
+  background-color: #025b7b;
+}
+.register-checkbox-container.active .register-checkbox-label {
+  color: white;
+}
+.register-checkbox-container.active svg path {
+  stroke: white;
+}
+
+.register-checkbox-wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .register-checkbox-fields-container {
@@ -145,7 +189,6 @@ body {
   border: 1px solid var(--border-color);
   color: #757575;
   border-radius: 10rem;
-  padding: 0.25rem 0.75rem;
 }
 .register-checkbox-fields.active {
   border: 1px solid var(--color-primary);
@@ -155,14 +198,16 @@ body {
 
 .register-checkbox-label {
   color: #757575;
+}
+
+.register-checkbox-input {
+  color: black;
   border: 1px solid var(--border-color);
-  border-radius: 10rem;
+  border-radius: 0.7rem;
   padding: 0.5rem 1.5rem;
 }
-.register-checkbox-label.active {
-  border: 1px solid var(--color-primary);
-  color: white;
-  background-color: var(--color-primary);
+.register-checkbox-input:hover {
+  cursor: auto !important;
 }
 
 .register-checkbox {
@@ -179,6 +224,10 @@ body {
   border-radius: 0.15em;
 }
 
+.register-checkbox-wrapper {
+  display: flex;
+}
+
 .numberpistas {
   color: #ababab;
   font-weight: 300;
@@ -186,6 +235,10 @@ body {
 
 .activable:hover {
   cursor: pointer;
+}
+
+.entrenadores {
+  flex-wrap: wrap;
 }
 
 input {
@@ -429,7 +482,7 @@ input {
   cursor: auto;
 }
 
-#city-container {
+.textinput-container {
   position: relative;
   border-width: 1px;
   border-style: solid;
@@ -439,16 +492,22 @@ input {
   border-radius: var(--border-radius);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-out;
-  max-width: 20em;
-  width: 100%;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 95vw;
   z-index: 1;
   margin-top: 1rem;
 }
-#city-container #city-icon {
+.textinput-container .textinput-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--dropdown-trigger-background-color);
   border-radius: var(--border-radius) 0 0 var(--border-radius);
-  background-image: url("https://cdn-icons-png.flaticon.com/512/1183/1183878.png");
   background-size: 1.8rem;
   background-repeat: no-repeat;
   background-position: center;
+}
+.textinput-container .textinput-icon#city-icon {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/1183/1183878.png");
 }/*# sourceMappingURL=register-club.css.map */
