@@ -1,5 +1,27 @@
 var backButtons = document.querySelectorAll('.register-element-back')
 var nextButtons = document.querySelectorAll('.register-element-next')
+
+var nextConditionalClub = document.querySelector('#next-conditional-club')
+var nextConditionalCountry = document.querySelector('#next-conditional-country')
+var nextConditionalSports = document.querySelector('#next-conditional-sport')
+var nextConditionalField  = document.querySelector('#next-conditional-fields')
+var nextConditionalState = document.querySelector('#next-conditional-state')
+var nextConditionalConsulting = document.querySelector('#next-conditional-consulting')
+var nextConditionalEmail = document.querySelector('#next-conditional-email')
+var nextConditionalPhone = document.querySelector('#next-conditional-phone')
+var nextConditionalPassword = document.querySelector('#next-conditional-pass')
+
+// var clubCountry = document.querySelector('#js_selected-flag2')
+// var clubCity = document.querySelector('#city-container > input')
+// var clubSports = document.querySelectorAll('.data-sport-option')
+// var clubField = document.querySelectorAll('.data-fields-option')
+// var clubState = document.querySelectorAll('.data-state-option')
+// var clubConsulting = document.querySelectorAll('.data-consulting-option')
+// var clubEmail = document.querySelector('#email-container > input')
+// var clubNumber = document.querySelector('#js_input-phonenumber')
+// var clubPrefix = document.querySelector('#js_number-prefix')
+
+
 var registerContainer = document.querySelector('#register-container')
 var currentProgress = document.querySelector('#current-progress')
 var adjustableWidthElements = document.querySelectorAll('.adjustablewidth')
@@ -27,9 +49,9 @@ adjustableWidthElements.forEach(inputElement => {
   });
 })
 
+// #region motionLogic
 
-
-
+// Motion Back
 var checkPossibleMotionBack = function() {
     if (currentPosition === 0) {
         backButtons[0].style.pointerEvents = 'none'
@@ -53,16 +75,142 @@ backButtons.forEach( (backButtons) => {
     })
 })
 
-nextButtons.forEach(nextButtons => {
-    nextButtons.addEventListener('click', () => {
-        // checkPossibleMotion()
-        currentPosition = currentPosition - 100
-        // checkPossibleMotionBack(backButtons)
-        registerContainer.style.transform = `translateY(${currentPosition}vh)`
-        currentProgressValue = currentProgressValue + 10
-        currentProgress.style.width = `${currentProgressValue}%`
-    })
+// Motion Forward
+var moveForward = function() {
+  currentPosition = currentPosition - 100
+  registerContainer.style.transform = `translateY(${currentPosition}vh)`
+  currentProgressValue = currentProgressValue + 10
+  currentProgress.style.width = `${currentProgressValue}%`
+}
+
+var shakeAnimation = function(element) {
+  console.log(element)
+  element.style.animation = "shake 0.5s";
+  // Restablecer la animación cuando termine
+  element.addEventListener("animationend", () => {
+    element.style.animation = "";
+  });
+}
+
+// Next Club
+nextConditionalClub.addEventListener('click', (e) => {
+  if (clubName.value === '') {
+    shakeAnimation(e.target)
+  } else {
+    moveForward()
+  }
 })
+
+// Next City
+nextConditionalCountry.addEventListener('click', (e) => {
+  if (clubCity.value === '') {
+    shakeAnimation(e.target)
+  } else {
+    moveForward()
+  }
+})
+
+// Next Sport
+nextConditionalSports.addEventListener('click', (e) => {
+  var breaker = true
+  clubSports.forEach(sport => {
+    if ((sport.classList.contains('active')) && (breaker)) {
+      moveForward()
+      breaker = false
+    }
+  })
+  if ((!(additionalSport.value === '')) && (breaker)) {
+    moveForward()
+    breaker = false
+  }
+  if (breaker) {
+    shakeAnimation(e.target)
+  }
+})
+
+// Next Fields
+nextConditionalField.addEventListener('click', (e) => {
+  var breaker = true
+  clubField.forEach(field => {
+    if ((field.classList.contains('active')) && (breaker)) {
+      moveForward()
+      breaker = false
+    }
+  })
+  if (breaker) {
+    shakeAnimation(e.target)
+  }
+})
+
+// Next State
+nextConditionalState.addEventListener('click', (e) => {
+  var breaker = true
+  clubState.forEach(state => {
+    if ((state.classList.contains('active')) && (breaker)) {
+      moveForward()
+      breaker = false
+    }
+  })
+  if (breaker) {
+    shakeAnimation(e.target)
+  }
+})
+
+// Next Consulting
+nextConditionalConsulting.addEventListener('click', (e) => {
+  var breaker = true
+  clubConsulting.forEach(consulting => {
+    if ((consulting.classList.contains('active')) && (breaker)) {
+      moveForward()
+      breaker = false
+    }
+  })
+  if (breaker) {
+    shakeAnimation(e.target)
+  }
+})
+
+// Next Email
+nextConditionalEmail.addEventListener('click', (e) => {
+  if (clubEmail.value === '') {
+    shakeAnimation(e.target)
+  } else {
+    moveForward()
+  }
+})
+
+// Next Number
+nextConditionalPhone.addEventListener('click', (e) => {
+  if (clubNumber.value === '') {
+    shakeAnimation(e.target)
+  } else {
+    moveForward()
+  }
+})
+
+// Next Password
+nextConditionalPassword.addEventListener('click', (e) => {
+  const pass = clubPassword.value;
+
+  if (pass === '') {
+    shakeAnimation(e.target);
+  } else if (!isPassSafe(pass)) {
+    shakeAnimation(e.target);
+  } else {
+    moveForward();
+  }
+});
+
+function isPassSafe(pass) {
+  return (
+    pass.length >= 8 &&
+    /[A-Z]/.test(pass) &&
+    /[a-z]/.test(pass) &&
+    /\d/.test(pass)
+  );
+}
+
+//#endregion
 
 var activableElements = document.querySelectorAll('.activable')
 
@@ -737,3 +885,134 @@ const countries2 = [
 init2(countries2);
 
 //#endregion PhoneNumber
+
+// #region RegisterLogic
+
+var registerData = {
+  clubName: '',
+  clubCountry: '',
+  clubCity: '',
+  clubSports: [],
+  clubField: '',
+  clubState: '',
+  clubConsulting: '',
+  clubEmail: '',
+  clubNumber: '',
+  clubPassword: '',
+}
+
+// registerData
+
+var clubName = document.querySelector('#name-container > input')
+var clubCountry = document.querySelector('#js_selected-flag2')
+var clubCity = document.querySelector('#city-container > input')
+var clubSports = document.querySelectorAll('.data-sport-option')
+var clubField = document.querySelectorAll('.data-fields-option')
+var clubState = document.querySelectorAll('.data-state-option')
+var clubConsulting = document.querySelectorAll('.data-consulting-option')
+var clubEmail = document.querySelector('#email-container > input')
+var clubNumber = document.querySelector('#js_input-phonenumber')
+var clubPrefix = document.querySelector('#js_number-prefix')
+var clubPassword = document.querySelector('#pass-container > input')
+
+var additionalSport = document.querySelector('#additional-sport')
+
+
+
+// logic not to select various at the time
+clubField.forEach(field => {
+  field.addEventListener('click', () => {
+    clubField.forEach(field => {
+      field.classList.remove('active')
+    })
+    field.classList.toggle('active')
+  })
+})
+
+clubState.forEach(state => {
+  state.addEventListener('click', () => {
+    clubState.forEach(state => {
+      state.classList.remove('active')
+    })
+    state.classList.toggle('active')
+  })
+})
+
+clubConsulting.forEach(consulting => {
+  consulting.addEventListener('click', () => {
+    clubConsulting.forEach(consulting => {
+      consulting.classList.remove('active')
+    })
+    consulting.classList.toggle('active')
+  })
+})
+
+
+// var lastNextButton = document.querySelector('#register-phone > div.register-element-next')
+var lastNextButton = document.querySelector('body > header')
+
+var writeRegisterData = function() {
+
+  // Club Name
+  registerData.clubName = clubName.value
+
+  // Club Country
+  const countryRegex = /\/([a-zA-Z]+)\.png$/;
+  const coincidencia = clubCountry.src.match(countryRegex);
+
+  if (coincidencia) {
+    const parteDeseada = coincidencia[1];
+    registerData.clubCountry = parteDeseada
+  } else {
+    registerData.clubCountry = ''
+  }
+
+  // Club City
+  registerData.clubCity = clubCity.value
+
+  // Club Sports
+  registerData.clubSports.length = 0
+  clubSports.forEach(sport => {
+    if (sport.classList.contains('active')) {
+      registerData.clubSports.push(sport.getAttribute("data-sport"))
+    }
+  })
+
+  // Club Fields
+  clubField.forEach(field => {
+    if (field.classList.contains('active')) {
+      registerData.clubField = field.getAttribute("data-fields")
+    }
+  })
+
+  // Club Trainer
+  clubState.forEach(trainer => {
+    if (trainer.classList.contains('active')) {
+      registerData.clubState = trainer.getAttribute("data-state")
+    }
+  })
+
+  // Club Consulting
+  clubConsulting.forEach(consulting => {
+    if (consulting.classList.contains('active')) {
+      registerData.clubConsulting = consulting.getAttribute("data-state")
+    }
+  })
+
+  // Club Email
+  registerData.clubEmail = clubEmail.value
+
+  // Club Phone
+  registerData.clubNumber = `${clubPrefix.value} ${clubNumber.value}`
+
+  // Club Password
+  registerData.clubPassword = clubPassword.value
+
+  console.log(registerData)
+}
+
+lastNextButton.addEventListener('click', () => {
+  writeRegisterData()
+})
+
+// #endregion

@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
-body {
-  overflow-y: hidden;
-}
-
 #title {
   display: flex;
   flex-direction: column;
@@ -67,6 +63,9 @@ body {
   border-radius: 2rem;
   padding: 2rem;
 }
+.register-element-content.finish {
+  padding-bottom: 0.5rem;
+}
 
 .register-element-left {
   width: 20%;
@@ -83,6 +82,14 @@ body {
   margin-top: 1rem;
   padding-bottom: 0.2rem;
   border-bottom: 2px solid var(--color-primary);
+}
+
+.register-element-finish {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-top: 1rem;
+  padding-bottom: 0.2rem;
 }
 
 .register-element-textanswer {
@@ -149,6 +156,9 @@ body {
 .register-element-next:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+.register-element-next svg {
+  pointer-events: none;
 }
 
 .register-checkbox-container {
@@ -239,6 +249,10 @@ body {
 
 .entrenadores {
   flex-wrap: wrap;
+}
+
+#next-conditional-finish {
+  margin-top: 1rem;
 }
 
 input {
@@ -504,10 +518,19 @@ input {
   align-items: center;
   background-color: var(--dropdown-trigger-background-color);
   border-radius: var(--border-radius) 0 0 var(--border-radius);
-  background-size: 1.8rem;
-  background-repeat: no-repeat;
-  background-position: center;
 }
-.textinput-container .textinput-icon#city-icon {
-  background-image: url("https://cdn-icons-png.flaticon.com/512/1183/1183878.png");
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }/*# sourceMappingURL=register-club.css.map */

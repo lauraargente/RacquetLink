@@ -207,7 +207,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-club" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -266,14 +266,22 @@ Estructura general:
                         </div>
                     </div>
                     <div id="city-container" class="textinput-container">
-                        <div id="city-icon" class="textinput-icon"></div>
+                        <div id="city-icon" class="textinput-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 8.99953V14.9995C22 17.4995 21.5 19.2495 20.38 20.3795L14 13.9995L21.73 6.26953C21.91 7.05953 22 7.95953 22 8.99953Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21.73 6.27L6.26999 21.73C3.25999 21.04 2 18.96 2 15V9C2 4 4 2 9 2H15C18.96 2 21.04 3.26 21.73 6.27Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.3795 20.38C19.2495 21.5 17.4995 22 14.9995 22H8.99954C7.95954 22 7.05953 21.91 6.26953 21.73L13.9995 14L20.3795 20.38Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.24124 7.97875C6.92124 5.04875 11.3212 5.04875 12.0012 7.97875C12.3912 9.69875 11.3112 11.1588 10.3612 12.0588C9.67123 12.7188 8.58125 12.7188 7.88125 12.0588C6.93125 11.1588 5.84124 9.69875 6.24124 7.97875Z" stroke="#025b7b" stroke-width="1.5"/>
+                                <path d="M9.09375 8.69922H9.10274" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                        </div>
                         <input type="text" class="register-element-textanswer textinput-text" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Madrid">
                         </input>
                     </div>
 
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-country" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -296,7 +304,7 @@ Estructura general:
                         ¿Qué deportes ofrece u ofrecerá el proyecto?
                     </div>
                     <div class="register-checkbox-wrapper">
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-sport-option" data-sport="tenis">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <rect x="2" y="3" width="4" height="18" fill="#B9CBD4"/>
@@ -305,14 +313,14 @@ Estructura general:
                               </svg>
                             <div class="register-checkbox-label">Tenis</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-sport-option" data-sport="padel">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 7.5V3H19V7.5M5 7.5V16.5M5 7.5H12M19 7.5V16.5M19 7.5H12M5 16.5V21H19V16.5M5 16.5H12M19 16.5H12M12 16.5V7.5" stroke="#025b7b" stroke-width="1.5" stroke-linejoin="round"/>
                               </svg>
                             <div class="register-checkbox-label">Pádel</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-sport-option" data-sport="pickleball">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <rect x="5" y="9" width="14" height="6" fill="#B9CBD4"/>
@@ -322,13 +330,13 @@ Estructura general:
                         </div>
                         <div class="register-checkbox-container">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <input type="text" class="register-element-textanswer" style="margin-top: 0; font-size: 1rem; width: 8rem;" placeholder="Otro...">
+                            <input id="additional-sport" type="text" class="register-element-textanswer" style="margin-top: 0; font-size: 1rem; width: 8rem;" placeholder="Otro...">
                             </input>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-sport" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -351,7 +359,7 @@ Estructura general:
                         ¿De cuántas pistas dispone en total?
                     </div>
                     <div class="register-checkbox-wrapper">
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-fields-option" data-fields="low">
                             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="36" viewBox="0 0 11 36" fill="none">
                                 <g clip-path="url(#clip0_11_115)">
                                   <path d="M1 15.3199L1 10.9999H9.64001V15.3199M1 15.3199L1 21.0799M1 15.3199H5.32001M9.64001 15.3199V21.0799M9.64001 15.3199H5.32001M1 21.0799L1 25.3999H9.64001V21.0799M1 21.0799H5.32001M9.64001 21.0799H5.32001M5.32001 15.3199L5.32001 21.0799" stroke="#025b7b" stroke-width="1.5" stroke-linejoin="round"/>
@@ -365,7 +373,7 @@ Estructura general:
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <div class=" register-checkbox-label">Menos de 5</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-fields-option" data-fields="mid">
                             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="36" viewBox="0 0 23 36" fill="none">
                                 <g clip-path="url(#clip0_10_102)">
                                   <path d="M1 13.3199L1 8.99988H9.64001V13.3199M1 13.3199L1 19.0799M1 13.3199H5.32001M9.64001 13.3199V19.0799M9.64001 13.3199H5.32001M1 19.0799L1 23.3999H9.64001V19.0799M1 19.0799H5.32001M9.64001 19.0799H5.32001M5.32001 13.3199L5.32001 19.0799" stroke="#025b7b" stroke-width="1.5" stroke-linejoin="round"/>
@@ -380,7 +388,7 @@ Estructura general:
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <div class=" register-checkbox-label">Entre 5 y 10</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-fields-option" data-fields="hig">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                                 <path d="M1 10.5L1 6H10L10 10.5M1 10.5L1 16.5M1 10.5H5.5M10 10.5V16.5M10 10.5H5.5M1 16.5L1 21H10V16.5M1 16.5H5.5M10 16.5H5.5M5.5 10.5L5.5 16.5" stroke="#025b7b" stroke-width="1.5" stroke-linejoin="round"/>
                                 <path d="M13.5 15L13.5 10.5H22.5V15M13.5 15V21M13.5 15H18M22.5 15V21M22.5 15H18M13.5 21L13.5 25.5H22.5V21M13.5 21H18M22.5 21H18M18 15V21" stroke="#025b7b" stroke-width="1.5" stroke-linejoin="round"/>
@@ -392,7 +400,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-fields" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -415,21 +423,21 @@ Estructura general:
                         ¿Necesitas entrenadores?
                     </div>
                     <div class="register-checkbox-wrapper entrenadores">
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-state-option" data-state="yes">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M16 5L18 7L22 3M22 12V17.2C22 18.8802 22 19.7202 21.673 20.362C21.3854 20.9265 20.9265 21.3854 20.362 21.673C19.7202 22 18.8802 22 17.2 22H6.8C5.11984 22 4.27976 22 3.63803 21.673C3.07354 21.3854 2.6146 20.9265 2.32698 20.362C2 19.7202 2 18.8802 2 17.2V6.8C2 5.11984 2 4.27976 2.32698 3.63803C2.6146 3.07354 3.07354 2.6146 3.63803 2.32698C4.27976 2 5.11984 2 6.8 2H12M2.14551 19.9263C2.61465 18.2386 4.16256 17 5.99977 17H12.9998C13.9291 17 14.3937 17 14.7801 17.0769C16.3669 17.3925 17.6073 18.6329 17.9229 20.2196C17.9998 20.606 17.9998 21.0707 17.9998 22M14 9.5C14 11.7091 12.2091 13.5 10 13.5C7.79086 13.5 6 11.7091 6 9.5C6 7.29086 7.79086 5.5 10 5.5C12.2091 5.5 14 7.29086 14 9.5Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                             <div class=" register-checkbox-label">Necesitamos entrenadores de forma inmediata</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-state-option" data-state="prx">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M19 8L22 5M22 5L19 2M22 5L16 5M22 12V17.2C22 18.8802 22 19.7202 21.673 20.362C21.3854 20.9265 20.9265 21.3854 20.362 21.673C19.7202 22 18.8802 22 17.2 22H6.8C5.11984 22 4.27976 22 3.63803 21.673C3.07354 21.3854 2.6146 20.9265 2.32698 20.362C2 19.7202 2 18.8802 2 17.2V6.8C2 5.11984 2 4.27976 2.32698 3.63803C2.6146 3.07354 3.07354 2.6146 3.63803 2.32698C4.27976 2 5.11984 2 6.8 2H12M2.14551 19.9263C2.61465 18.2386 4.16256 17 5.99977 17H12.9998C13.9291 17 14.3937 17 14.7801 17.0769C16.3669 17.3925 17.6073 18.6329 17.9229 20.2196C17.9998 20.606 17.9998 21.0707 17.9998 22M14 9.5C14 11.7091 12.2091 13.5 10 13.5C7.79086 13.5 6 11.7091 6 9.5C6 7.29086 7.79086 5.5 10 5.5C12.2091 5.5 14 7.29086 14 9.5Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                             <div class=" register-checkbox-label">Necesitaremos entrenadores próximamente</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-state-option" data-state="not">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M16.5 2.5L21.5 7.5M21.5 2.5L16.5 7.5M22 12V17.2C22 18.8802 22 19.7202 21.673 20.362C21.3854 20.9265 20.9265 21.3854 20.362 21.673C19.7202 22 18.8802 22 17.2 22H6.8C5.11984 22 4.27976 22 3.63803 21.673C3.07354 21.3854 2.6146 20.9265 2.32698 20.362C2 19.7202 2 18.8802 2 17.2V6.8C2 5.11984 2 4.27976 2.32698 3.63803C2.6146 3.07354 3.07354 2.6146 3.63803 2.32698C4.27976 2 5.11984 2 6.8 2H12M2.14551 19.9263C2.61465 18.2386 4.16256 17 5.99977 17H12.9998C13.9291 17 14.3937 17 14.7801 17.0769C16.3669 17.3925 17.6073 18.6329 17.9229 20.2196C17.9998 20.606 17.9998 21.0707 17.9998 22M14 9.5C14 11.7091 12.2091 13.5 10 13.5C7.79086 13.5 6 11.7091 6 9.5C6 7.29086 7.79086 5.5 10 5.5C12.2091 5.5 14 7.29086 14 9.5Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -439,7 +447,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-state" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -462,21 +470,21 @@ Estructura general:
                         ¿Te interesa nuestro servicio de consultoría?
                     </div>
                     <div class="register-checkbox-wrapper entrenadores">
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-consulting-option" data-state="yes">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
                                 <path d="M7.99962 12C7.99962 12 9.31213 13.5 11.4996 13.5C13.6871 13.5 14.9996 12 14.9996 12M14.2496 7H14.2596M8.74962 7H8.75962M11.4996 18C16.194 18 19.9996 14.1944 19.9996 9.5C19.9996 4.80558 16.194 1 11.4996 1C6.8052 1 2.99962 4.80558 2.99962 9.5C2.99962 10.45 3.15547 11.3636 3.443 12.2166C3.55119 12.5376 3.60529 12.6981 3.61505 12.8214C3.62469 12.9432 3.6174 13.0286 3.58728 13.1469C3.55677 13.2668 3.48942 13.3915 3.35472 13.6408L1.71906 16.6684C1.48575 17.1002 1.36909 17.3161 1.3952 17.4828C1.41794 17.6279 1.50337 17.7557 1.6288 17.8322C1.7728 17.9201 2.01692 17.8948 2.50517 17.8444L7.62619 17.315C7.78127 17.299 7.85881 17.291 7.92949 17.2937C7.999 17.2963 8.04807 17.3029 8.11586 17.3185C8.18478 17.3344 8.27145 17.3678 8.44478 17.4345C9.39283 17.7998 10.4228 18 11.4996 18ZM14.7496 7C14.7496 7.27614 14.5258 7.5 14.2496 7.5C13.9735 7.5 13.7496 7.27614 13.7496 7C13.7496 6.72386 13.9735 6.5 14.2496 6.5C14.5258 6.5 14.7496 6.72386 14.7496 7ZM9.24962 7C9.24962 7.27614 9.02577 7.5 8.74962 7.5C8.47348 7.5 8.24962 7.27614 8.24962 7C8.24962 6.72386 8.47348 6.5 8.74962 6.5C9.02577 6.5 9.24962 6.72386 9.24962 7Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                             <div class=" register-checkbox-label">Sí, buscamos consultoría y asesoramiento cuanto antes</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-consulting-option" data-state="prx">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M9.49962 11.5L11.4996 13.5L15.9996 9M12.4996 20C17.194 20 20.9996 16.1944 20.9996 11.5C20.9996 6.80558 17.194 3 12.4996 3C7.8052 3 3.99962 6.80558 3.99962 11.5C3.99962 12.45 4.15547 13.3636 4.443 14.2166C4.55119 14.5376 4.60529 14.6981 4.61505 14.8214C4.62469 14.9432 4.6174 15.0286 4.58728 15.1469C4.55677 15.2668 4.48942 15.3915 4.35472 15.6408L2.71906 18.6684C2.48575 19.1002 2.36909 19.3161 2.3952 19.4828C2.41794 19.6279 2.50337 19.7557 2.6288 19.8322C2.7728 19.9201 3.01692 19.8948 3.50517 19.8444L8.62619 19.315C8.78127 19.299 8.85881 19.291 8.92949 19.2937C8.999 19.2963 9.04807 19.3029 9.11586 19.3185C9.18478 19.3344 9.27145 19.3678 9.44478 19.4345C10.3928 19.7998 11.4228 20 12.4996 20Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                             <div class=" register-checkbox-label">Sí, estamos dispuestos a considerarlo próximamente</div>
                         </div>
-                        <div class="register-checkbox-container activable">
+                        <div class="register-checkbox-container activable data-consulting-option" data-state="not">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M9.99962 9L14.9996 14M14.9996 9L9.99962 14M12.4996 20C17.194 20 20.9996 16.1944 20.9996 11.5C20.9996 6.80558 17.194 3 12.4996 3C7.8052 3 3.99962 6.80558 3.99962 11.5C3.99962 12.45 4.15547 13.3636 4.443 14.2166C4.55119 14.5376 4.60529 14.6981 4.61505 14.8214C4.62469 14.9432 4.6174 15.0286 4.58728 15.1469C4.55677 15.2668 4.48942 15.3915 4.35472 15.6408L2.71906 18.6684C2.48575 19.1002 2.36909 19.3161 2.3952 19.4828C2.41794 19.6279 2.50337 19.7557 2.6288 19.8322C2.7728 19.9201 3.01692 19.8948 3.50517 19.8444L8.62619 19.315C8.78127 19.299 8.85881 19.291 8.92949 19.2937C8.999 19.2963 9.04807 19.3029 9.11586 19.3185C9.18478 19.3344 9.27145 19.3678 9.44478 19.4345C10.3928 19.7998 11.4228 20 12.4996 20Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -486,7 +494,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-consulting" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -519,7 +527,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-email" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -539,7 +547,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿Y tu teléfono de contacto?
+                        ¿Y tu número de contacto?
                     </div>
                     <div class="pn-select" id="js_pn-select" style="--prefix-length: 2">
                         <!-- Selected prefix -->
@@ -579,10 +587,70 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div class="register-element-next">
+            <div id="next-conditional-phone" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+            </div>
+        </div>
+        <div class="register-element" id="register-pass">
+            <div class="register-element-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+            </div>
+            <div class="register-element-content">
+                <div class="register-element-left">
+                    <div class="register-element-number">
+                        9
+                    </div>
+                </div>
+                <div class="register-element-right">
+                    <div class="register-element-question">
+                        Y por último... Elige una contraseña segura
+                    </div>
+                    <div id="pass-container" class="textinput-container">
+                        <div id="pass-icon" class="textinput-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 18 22" fill="none">
+                                <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                        </div>
+                        <input type="password" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="***********">
+                        </input>
+                    </div>
+                </div>
+            </div>
+            <div style="color: #AAA; text-align: center; max-width: 600px;">La contraseña debe contener al menos ocho caracteres, una minúscula, una mayúscula y un número.</div>
+            <div id="next-conditional-pass" class="register-element-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+            </div>
+        </div>
+        <div class="register-element" id="register-finish">
+            <div class="register-element-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+            </div>
+            <div class="register-element-content finish">
+                <div class="register-element-left">
+                    <div class="register-element-number">
+                        10
+                    </div>
+                </div>
+                <div class="register-element-right">
+                    <div class="register-element-finish">
+                        ¡Bienvenid@ a Racquet-Link!
+                    </div>
+                </div>
+            </div>
+            <div style="color: black; text-align: center; font-size: 1.2rem; max-width: 500px;">Te hemos enviado un email de verificación para que puedas completar tu registro </div>
+            <div style="color: #025B7B; text-align: center; font-size: 1rem; max-width: 500px; margin-top: 2rem;">Haz click aquí para acceder al portal de login </div>
+            <div id="next-conditional-finish" class="register-element-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
+                    <path d="M18 19L21 16M21 16L18 13M21 16H15M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
             </div>
         </div>
 
