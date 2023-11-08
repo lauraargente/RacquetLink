@@ -85,11 +85,12 @@
 }
 
 .register-element-finish {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 500;
   color: var(--color-primary);
   margin-top: 1rem;
   padding-bottom: 0.2rem;
+  text-align: center;
 }
 
 .register-element-textanswer {

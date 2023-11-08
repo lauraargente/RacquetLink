@@ -1,3 +1,6 @@
+import { firebaseCreateUser } from "./register-club-firebase.js"
+import { firebaseSaveUserData } from "./register-club-firebase.js"
+
 var backButtons = document.querySelectorAll('.register-element-back')
 var nextButtons = document.querySelectorAll('.register-element-next')
 
@@ -11,17 +14,6 @@ var nextConditionalEmail = document.querySelector('#next-conditional-email')
 var nextConditionalPhone = document.querySelector('#next-conditional-phone')
 var nextConditionalPassword = document.querySelector('#next-conditional-pass')
 
-// var clubCountry = document.querySelector('#js_selected-flag2')
-// var clubCity = document.querySelector('#city-container > input')
-// var clubSports = document.querySelectorAll('.data-sport-option')
-// var clubField = document.querySelectorAll('.data-fields-option')
-// var clubState = document.querySelectorAll('.data-state-option')
-// var clubConsulting = document.querySelectorAll('.data-consulting-option')
-// var clubEmail = document.querySelector('#email-container > input')
-// var clubNumber = document.querySelector('#js_input-phonenumber')
-// var clubPrefix = document.querySelector('#js_number-prefix')
-
-
 var registerContainer = document.querySelector('#register-container')
 var currentProgress = document.querySelector('#current-progress')
 var adjustableWidthElements = document.querySelectorAll('.adjustablewidth')
@@ -29,20 +21,9 @@ var adjustableWidthElements = document.querySelectorAll('.adjustablewidth')
 var currentPosition = 0
 var currentProgressValue = 10
 
-function ajustarAncho(input) {
-  const longitudTexto = input.value.length;
-
-  const anchoMinimo = 20; // Ajusta este valor según tus necesidades
-
-  const nuevoAncho = Math.max(anchoMinimo, longitudTexto * 10); // Ajusta este valor según tus necesidades
-
-  input.style.width = `${nuevoAncho}px`;
-}
-
 adjustableWidthElements.forEach(inputElement => {
   inputElement.addEventListener('input', function() {
     const longitudTexto = inputElement.value.length;
-    console.log(longitudTexto)
     const anchoMinimo = 214; // Ajusta este valor según tus necesidades
     const nuevoAncho = Math.max(anchoMinimo, longitudTexto * 10); // Ajusta este valor según tus necesidades
     inputElement.style.width = `${nuevoAncho}px`;
@@ -70,7 +51,6 @@ backButtons.forEach( (backButtons) => {
         checkPossibleMotionBack()
         registerContainer.style.transform = `translateY(${currentPosition}vh)`
         currentProgressValue = currentProgressValue - 10
-        console.log(currentProgressValue)
         currentProgress.style.width = `${currentProgressValue}%`
     })
 })
@@ -84,7 +64,6 @@ var moveForward = function() {
 }
 
 var shakeAnimation = function(element) {
-  console.log(element)
   element.style.animation = "shake 0.5s";
   // Restablecer la animación cuando termine
   element.addEventListener("animationend", () => {
@@ -191,13 +170,30 @@ nextConditionalPhone.addEventListener('click', (e) => {
 // Next Password
 nextConditionalPassword.addEventListener('click', (e) => {
   const pass = clubPassword.value;
-
   if (pass === '') {
     shakeAnimation(e.target);
   } else if (!isPassSafe(pass)) {
     shakeAnimation(e.target);
   } else {
-    moveForward();
+    e.target.style.transform = 'rotate(3600deg)'
+    e.target.style.transition = '30s'
+    e.target.style.transitionTimingFunction = 'linear'
+    firebaseCreateUser(registerData)
+    .then(user => {
+      registerData.clubId = user
+      firebaseSaveUserData(registerData)
+      moveForward();
+    })
+    .catch(error => {
+        e.target.style.transform = ''
+        e.target.style.transition = ''
+        e.target.style.transitionTimingFunction = ''
+        alert('El email no es válido o está en uso')
+        currentPosition = currentPosition + 100
+        registerContainer.style.transform = `translateY(${currentPosition}vh)`
+        currentProgressValue = currentProgressValue - 10
+        currentProgress.style.width = `${currentProgressValue}%`
+    })
   }
 });
 
@@ -286,20 +282,17 @@ const init = async (countries) => {
   let countdown;
 
   const closeOnMouseLeave = () => {
-    // console.log("countdown activated");
     countdown = setTimeout(() => closeDropdown(), 2000);
   };
 
   const clearTimeOut = () => clearTimeout(countdown);
 
   const attatchDropdownEvents = () => {
-    // console.log("Adding event listeners");
     dropdownContainer.addEventListener("mouseleave", closeOnMouseLeave);
     dropdownContainer.addEventListener("mouseenter", clearTimeOut);
   };
 
   const removeDropdownEvents = () => {
-    // console.log("Removing event listeners and countdown");
     clearTimeout(countdown);
     dropdownContainer.removeEventListener("mouseleave", closeOnMouseLeave);
     dropdownContainer.removeEventListener("mouseenter", clearTimeOut);
@@ -379,7 +372,6 @@ const init = async (countries) => {
 
     // Add 'updated' listener for search results
     countryList.on("updated", (list) => {
-        console.log('jsoajdosa')
       if (list.matchingItems.length < 5)
         listContainer.classList.toggle("pn-list--no-scroll");
 
@@ -567,7 +559,6 @@ let countryList2;
 
 const init2 = async (countries2) => {
   const selectCountry = (e) => {
-    console.log(e.target.closest("li").dataset)
     const { name, flag, prefix } = e.target.closest("li").dataset;
     setNewSelected(prefix, flag, name);
     closeDropdown();
@@ -618,20 +609,17 @@ const init2 = async (countries2) => {
   let countdown;
 
   const closeOnMouseLeave = () => {
-    // console.log("countdown activated");
     countdown = setTimeout(() => closeDropdown(), 2000);
   };
 
   const clearTimeOut = () => clearTimeout(countdown);
 
   const attatchDropdownEvents = () => {
-    // console.log("Adding event listeners");
     dropdownContainer2.addEventListener("mouseleave", closeOnMouseLeave);
     dropdownContainer2.addEventListener("mouseenter", clearTimeOut);
   };
 
   const removeDropdownEvents = () => {
-    // console.log("Removing event listeners and countdown");
     clearTimeout(countdown);
     dropdownContainer2.removeEventListener("mouseleave", closeOnMouseLeave);
     dropdownContainer2.removeEventListener("mouseenter", clearTimeOut);
@@ -899,6 +887,7 @@ var registerData = {
   clubEmail: '',
   clubNumber: '',
   clubPassword: '',
+  clubId: ''
 }
 
 // registerData
@@ -948,8 +937,7 @@ clubConsulting.forEach(consulting => {
 })
 
 
-// var lastNextButton = document.querySelector('#register-phone > div.register-element-next')
-var lastNextButton = document.querySelector('body > header')
+var lastNextButton = document.querySelector('#next-conditional-pass')
 
 var writeRegisterData = function() {
 
@@ -977,6 +965,9 @@ var writeRegisterData = function() {
       registerData.clubSports.push(sport.getAttribute("data-sport"))
     }
   })
+  if (!(additionalSport.value === '')) {
+    registerData.clubSports.push(additionalSport.value)
+  }
 
   // Club Fields
   clubField.forEach(field => {

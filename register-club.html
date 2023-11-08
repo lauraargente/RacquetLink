@@ -500,7 +500,7 @@ Estructura general:
                     </svg>
             </div>
         </div>
-        <div class="register-element" id="register-email">
+        <div class="register-element" id="register-phone">
             <div class="register-element-back">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -514,45 +514,12 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¡Ya casi está! ¿Cuál es tu email de contacto?
-                    </div>
-                    <div id="email-container" class="textinput-container">
-                        <div id="email-icon" class="textinput-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
-                        </div>
-                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="tuclub@gmail.com">
-                        </input>
-                    </div>
-                </div>
-            </div>
-            <div id="next-conditional-email" class="register-element-next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-            </div>
-        </div>
-        <div class="register-element" id="register-phone">
-            <div class="register-element-back">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-            </div>
-            <div class="register-element-content">
-                <div class="register-element-left">
-                    <div class="register-element-number">
-                        8
-                    </div>
-                </div>
-                <div class="register-element-right">
-                    <div class="register-element-question">
-                        ¿Y tu número de contacto?
+                        ¡Ya casi está! ¿Cuál es tu número de contacto?
                     </div>
                     <div class="pn-select" id="js_pn-select" style="--prefix-length: 2">
                         <!-- Selected prefix -->
                         <button class="pn-selected-prefix" aria-label="Select phonenumber prefix" id="js_trigger-dropdown" tabindex="1">
-                        <img class="pn-selected-prefix__flag" id="js_selected-flag" src="https://flagpedia.net/data/flags/icon/36x27/nl.png" />
+                        <img class="pn-selected-prefix__flag" id="js_selected-flag" src="https://flagpedia.net/data/flags/icon/36x27/es.png" />
                         <!-- prettier-ignore -->
                         <svg class="pn-selected-prefix__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9" />
@@ -561,7 +528,7 @@ Estructura general:
                         <!-- Phone number input -->
                         <div class="pn-input">
                         <div class="pn-input__container">
-                            <input class="pn-input__prefix" value="+31" type="text" name="phonenumber-prefix" id="js_number-prefix" tabindex="-1" />
+                            <input class="pn-input__prefix" value="+34" type="text" name="phonenumber-prefix" id="js_number-prefix" tabindex="-1" />
                             <input class="pn-input__phonenumber" id="js_input-phonenumber" type="tel" name="phonenumber" pattern="\d*" value="" placeholder=" " autocomplete="nope" required max="10" tabindex="0" />
                             <small class="pn-input__error">
                             Este no es un teléfono válido
@@ -593,6 +560,39 @@ Estructura general:
                     </svg>
             </div>
         </div>
+        <div class="register-element" id="register-email">
+            <div class="register-element-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+            </div>
+            <div class="register-element-content">
+                <div class="register-element-left">
+                    <div class="register-element-number">
+                        8
+                    </div>
+                </div>
+                <div class="register-element-right">
+                    <div class="register-element-question">
+                        ¿Y tu email de contacto?
+                    </div>
+                    <div id="email-container" class="textinput-container">
+                        <div id="email-icon" class="textinput-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                        </div>
+                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="tuclub@gmail.com">
+                        </input>
+                    </div>
+                </div>
+            </div>
+            <div id="next-conditional-email" class="register-element-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+            </div>
+        </div>
         <div class="register-element" id="register-pass">
             <div class="register-element-back">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -615,7 +615,7 @@ Estructura general:
                                 <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
-                        <input type="password" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="***********">
+                        <input type="password" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;">
                         </input>
                     </div>
                 </div>
@@ -628,17 +628,7 @@ Estructura general:
             </div>
         </div>
         <div class="register-element" id="register-finish">
-            <div class="register-element-back">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-            </div>
             <div class="register-element-content finish">
-                <div class="register-element-left">
-                    <div class="register-element-number">
-                        10
-                    </div>
-                </div>
                 <div class="register-element-right">
                     <div class="register-element-finish">
                         ¡Bienvenid@ a Racquet-Link!
@@ -842,6 +832,7 @@ Estructura general:
     <!-- Autoresize input text -->
     <!-- <script src="js/news-allposts-firebase.js" type="module"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script src="js/register-club-firebase.js" type="module"></script>
     <script src="js/register-club.js" type="module"></script>
     
 
