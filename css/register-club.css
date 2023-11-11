@@ -45,6 +45,7 @@
   width: 100vw;
   max-width: 1200px;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .register-element-number {
@@ -60,6 +61,7 @@
   gap: 4rem;
   justify-content: center;
   width: 800px;
+  max-width: 100vw;
   border-radius: 2rem;
   padding: 2rem;
 }
@@ -67,6 +69,21 @@
   padding-bottom: 0.5rem;
 }
 
+@media (max-width: 600px) {
+  .register-element-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    padding: 0;
+  }
+  .register-element-left {
+    display: none;
+  }
+  #register-container {
+    margin-top: 5rem;
+  }
+}
 .register-element-left {
   width: 20%;
 }
@@ -79,7 +96,6 @@
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--color-primary);
-  margin-top: 1rem;
   padding-bottom: 0.2rem;
   border-bottom: 2px solid var(--color-primary);
 }
@@ -183,6 +199,10 @@
 }
 .register-checkbox-container.active svg path {
   stroke: white;
+}
+
+#additional-sport {
+  padding: 0.1rem 0;
 }
 
 .register-checkbox-wrapper {

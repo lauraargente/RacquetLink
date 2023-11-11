@@ -36,9 +36,7 @@
 #register-container {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
-    // height: 100vh;
     width: 100vw;
     transition: 1s;
 }
@@ -51,6 +49,7 @@
     width: 100vw;
     max-width: 1200px;
     height: 100vh;
+    overflow-x: hidden;
     // border: 2px solid var(--color-primary);
 }
 
@@ -69,12 +68,31 @@
     justify-content: center;
     // align-items: center;
     width: 800px;
+    max-width: 100vw;
     // border: 2px solid var(--color-primary);
     border-radius: 2rem;
     padding: 2rem;
+    // overflow-x: hidden;
+    // overflow-y: hidden;
     &.finish {
         padding-bottom: 0.5rem;
     }
+}
+
+@media (max-width: 600px) {
+  .register-element-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    padding: 0;
+  }
+  .register-element-left {
+    display: none;
+  }
+  #register-container {
+    margin-top: 5rem;
+  }
 }
 
 .register-element-left {
@@ -88,7 +106,6 @@
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--color-primary);
-    margin-top: 1rem;
     padding-bottom: 0.2rem;
     border-bottom: 2px solid var(--color-primary);
 }
@@ -193,6 +210,10 @@
         }
         background-color: #025b7b;
     }
+}
+
+#additional-sport {
+  padding: 0.1rem 0;
 }
 
 .register-checkbox-wrapper {
