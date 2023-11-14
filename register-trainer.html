@@ -181,7 +181,7 @@ Estructura general:
     </div>
     <div id="register-container">
         <div class="register-element" id="register-personalinfo">
-            <div class="register-element-back">
+            <div class="register-element-back" style="opacity: 0; pointer-events: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
@@ -226,7 +226,7 @@ Estructura general:
                                 <path d="M11.6636 0L10.9346 1.06542C10.9346 1.06542 10.4509 1.74182 9.98131 2.5514C9.74649 2.95794 9.5257 3.38201 9.33645 3.81308C9.1472 4.24416 8.97196 4.64019 8.97196 5.15888C8.97196 6.63435 10.1881 7.85047 11.6636 7.85047C13.139 7.85047 14.3551 6.63435 14.3551 5.15888C14.3551 4.64019 14.1799 4.24416 13.9907 3.81308C13.8014 3.38201 13.5806 2.95794 13.3458 2.5514C12.8762 1.74182 12.3925 1.06542 12.3925 1.06542L11.6636 0ZM11.6636 7.85047H8.97196V11.4393H3.58878C1.60514 11.4393 0 13.0444 0 15.028C0 15.9393 0.336449 16.7769 0.897196 17.4112V24H22.4299V17.4112C22.9907 16.7769 23.3271 15.9393 23.3271 15.028C23.3271 13.0444 21.722 11.4393 19.7383 11.4393H14.3551V7.85047H11.6636ZM11.6636 3.25234C11.7231 3.35047 11.7161 3.34346 11.7757 3.4486C11.9895 3.81659 12.2173 4.20911 12.3645 4.54206C12.5117 4.875 12.5607 5.18341 12.5607 5.15888C12.5607 5.65654 12.1612 6.05607 11.6636 6.05607C11.1659 6.05607 10.7664 5.65654 10.7664 5.15888C10.7664 5.18341 10.8154 4.875 10.9626 4.54206C11.1098 4.20911 11.3376 3.81659 11.5514 3.4486C11.611 3.34346 11.604 3.35047 11.6636 3.25234ZM10.7664 9.64486H12.5607V11.4393H10.7664V9.64486ZM3.58878 13.2336H19.7383C20.8072 13.2336 21.5327 13.9591 21.5327 15.028C21.5327 16.097 20.8072 16.8224 19.7383 16.8224C18.6694 16.8224 17.9439 16.097 17.9439 15.028H16.1495C16.1495 16.097 15.4241 16.8224 14.3551 16.8224C13.2862 16.8224 12.5607 16.097 12.5607 15.028H10.7664C10.7664 16.097 10.0409 16.8224 8.97196 16.8224C7.90304 16.8224 7.17757 16.097 7.17757 15.028H5.38318C5.38318 16.097 4.65771 16.8224 3.58878 16.8224C2.51986 16.8224 1.79439 16.097 1.79439 15.028C1.79439 13.9591 2.51986 13.2336 3.58878 13.2336ZM6.28037 17.4112C6.93925 18.1542 7.89953 18.6168 8.97196 18.6168C10.0444 18.6168 11.0047 18.1542 11.6636 17.4112C12.3224 18.1542 13.2827 18.6168 14.3551 18.6168C15.4276 18.6168 16.3878 18.1542 17.0467 17.4112C17.7056 18.1542 18.6659 18.6168 19.7383 18.6168C20.0502 18.6168 20.3481 18.5502 20.6355 18.4766V22.2056H2.69159V18.4766C2.97897 18.5502 3.27687 18.6168 3.58878 18.6168C4.66122 18.6168 5.6215 18.1542 6.28037 17.4112Z" fill="#265A78"/>
                               </svg>
                         </div>
-                        <input type="date" class="calendar">
+                        <input type="date" class="calendar dateinput-date">
                     </div>
                     <div class="register-element-question-smaller">
                         Género
@@ -249,7 +249,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-club" class="register-element-next">
+            <div id="next-conditional-info" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -389,7 +389,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-phone" class="register-element-next">
+            <div id="next-conditional-nations" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -570,7 +570,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-sport" class="register-element-next">
+            <div id="next-conditional-experience" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -635,7 +635,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-sport" class="register-element-next">
+            <div id="next-conditional-experiencetwo" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -722,7 +722,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-sport" class="register-element-next">
+            <div id="next-conditional-experiencethree" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -828,7 +828,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-sport" class="register-element-next">
+            <div id="next-conditional-preferences" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -913,7 +913,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-sport" class="register-element-next">
+            <div id="next-conditional-preferencestwo" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -998,7 +998,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-sport" class="register-element-next">
+            <div id="next-conditional-preferencesthree" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -1085,7 +1085,7 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div id="next-conditional-phone" class="register-element-next">
+            <div id="next-conditional-data" class="register-element-next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>

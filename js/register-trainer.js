@@ -1,10 +1,111 @@
 var activableElements = document.querySelectorAll('.activable')
+var backButtons = document.querySelectorAll('.register-element-back')
 
-activableElements.forEach(element => {
-  element.addEventListener('click', () => {
-    element.classList.toggle('active')
-  } )
+var allTextInputs = document.querySelectorAll('.textinput-text')
+var allDateInputs = document.querySelectorAll('.dateinput-date')
+
+var registerContainer = document.querySelector('#register-container')
+var currentProgress = document.querySelector('#current-progress')
+
+var currentPosition = 0
+var currentProgressValue = 10
+
+
+// Data elements
+
+var userName = document.querySelector('#name-container > input')
+var userSurName = document.querySelector('#surname-container > input')
+var userBirthday = document.querySelector('#birthday-container > input')
+
+
+var nextConditionalInfo = document.querySelector('#next-conditional-info')
+
+// Activable elements logic
+// activableElements.forEach(element => {
+//   element.addEventListener('click', () => {
+//     element.classList.toggle('active')
+//   } )
+// })
+
+// On unfocus make colores if right answer
+allTextInputs.forEach(textinput => {
+  textinput.addEventListener('blur', () => {
+    if (!(textinput.value === '')) {
+      textinput.style.backgroundColor = '#f3f5f9'
+      textinput.style.borderRadius = '0 0.75em 0.75em 0'
+    } else {
+      textinput.style.backgroundColor = 'rgba(0,0,0,0)'
+      textinput.style.borderRadius = '0' 
+    }
+  })
 })
+
+allDateInputs.forEach(dateinput => {
+  dateinput.addEventListener('blur', () => {
+    if (!(dateinput.value === '')) {
+      dateinput.style.backgroundColor = '#f3f5f9'
+      dateinput.style.borderRadius = '0 0.75em 0.75em 0'
+    } else {
+      dateinput.style.backgroundColor = 'rgba(0,0,0,0)'
+      dateinput.style.borderRadius = '0' 
+    }
+  })
+})
+
+// Motion Backwards
+backButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    currentPosition = currentPosition + 100
+    registerContainer.style.transform = `translateY(${currentPosition}vh)`
+    currentProgressValue = currentProgressValue - 10
+    currentProgress.style.width = `${currentProgressValue}%`
+  })
+})
+
+
+// Motion Forward
+var moveForward = function() {
+  currentPosition = currentPosition - 100
+  registerContainer.style.transform = `translateY(${currentPosition}vh)`
+  currentProgressValue = currentProgressValue + 10
+  currentProgress.style.width = `${currentProgressValue}%`
+}
+
+// Shake Animation
+var shakeAnimation = function(element) {
+  element.style.animation = "shake 0.5s";
+  // Restablecer la animación cuando termine
+  element.addEventListener("animationend", () => {
+    element.style.animation = "";
+  });
+}
+
+// Each button going forward conditions
+
+// 1 ---- Info
+
+var optionsGender = document.querySelectorAll('.data-gender-option')
+
+optionsGender.forEach(option => {
+  option.addEventListener('click', () => {
+    optionsGender.forEach(option => {
+      option.classList.remove('active')
+    })
+    option.classList.add('active')
+  })
+})
+
+nextConditionalInfo.addEventListener('click', (e) => {
+  if ((userName.value === '') || (userSurName.value === '') || (userBirthday.value === '')) {
+    shakeAnimation(e.target)
+  } else {
+    moveForward()
+  }
+})
+
+
+
+
 
 const countries = [
   {

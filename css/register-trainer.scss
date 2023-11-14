@@ -144,7 +144,7 @@
         outline: none;
     }
     &::placeholder {
-        color: var(--border-color);
+        color: var(--border-color) ;
     }
 }
 
@@ -205,27 +205,32 @@
 
 .register-checkbox-container {
     margin-top: 0.4rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.8rem;
     margin-right: 1rem;
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: #757575;
+    color: var(--border-color);
     border: 1px solid var(--border-color);
     border-radius: 10rem;
     padding: 0.5rem 1.5rem;
-    background-color: var(--dropdown-trigger-background-color);
+    svg {
+        path {
+            stroke: var(--border-color);
+        }
+    }
+    // background-color: var(--dropdown-trigger-background-color);
     &.active {
-        border: 1px solid var(--color-primary);
+        // border: 1px solid var(--color-primary);
         .register-checkbox-label {
-            color: white;
+            color: #025b7b;
         }
         svg {
             path {
-                stroke: white;
+                stroke: #025b7b;
             }
         }
-        background-color: #025b7b;
+        background-color: var(--dropdown-trigger-background-color);
     }
 }
 
@@ -251,7 +256,7 @@
 }
 
 .register-checkbox-label {
-    color: #757575;
+    color: var(--border-color);
 }
 
 .register-checkbox {
@@ -570,7 +575,7 @@ input {
 // --------------------------------------------------- //
 
 .pn-input {
-  background: #ffffff;
+  background: var(--dropdown-trigger-background-color);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
   line-height: 1;
   overflow: hidden;
@@ -675,6 +680,10 @@ input {
 // Country
 #js_number-prefix2 {
     color: black;
+}
+
+#js_number-prefix3 {
+  color: black;
 }
 
 #js_input-phonenumber2 {
