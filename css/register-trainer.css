@@ -58,12 +58,12 @@
 
 .register-element-content {
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
   justify-content: center;
   width: 800px;
   max-width: 100vw;
   border-radius: 2rem;
-  padding: 2rem;
+  padding-top: 1rem;
 }
 .register-element-content.finish {
   padding-bottom: 0.5rem;
@@ -93,12 +93,26 @@
 }
 
 .register-element-question {
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 500;
   color: var(--color-primary);
   padding-bottom: 0.2rem;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.register-element-question-smaller {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
   text-transform: uppercase;
-  border-bottom: 2px solid var(--color-primary);
+  letter-spacing: 1px;
+  color: #025b7b;
+  padding-bottom: 0.2rem;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .register-element-finish {
@@ -180,7 +194,8 @@
 }
 
 .register-checkbox-container {
-  margin-top: 1rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
   margin-right: 1rem;
   display: flex;
   align-items: center;
@@ -202,19 +217,13 @@
   stroke: white;
 }
 
-#additional-sport {
-  padding: 0.1rem 0;
-}
-
 .register-checkbox-wrapper {
   display: flex;
   flex-wrap: wrap;
 }
-
-.register-checkbox-fields-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.register-checkbox-wrapper.withmargin {
+  margin-bottom: 1rem;
+  margin-left: 2.8rem;
 }
 
 .register-checkbox-fields {
@@ -230,16 +239,6 @@
 
 .register-checkbox-label {
   color: #757575;
-}
-
-.register-checkbox-input {
-  color: black;
-  border: 1px solid var(--border-color);
-  border-radius: 0.7rem;
-  padding: 0.5rem 1.5rem;
-}
-.register-checkbox-input:hover {
-  cursor: auto !important;
 }
 
 .register-checkbox {
@@ -260,21 +259,49 @@
   display: flex;
 }
 
-.numberpistas {
-  color: #ababab;
-  font-weight: 300;
-}
-
 .activable:hover {
   cursor: pointer;
 }
 
-.entrenadores {
-  flex-wrap: wrap;
+.calendar {
+  padding: 1rem;
 }
 
-#next-conditional-finish {
+.flag-label {
   margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .languages-wrapper {
+    justify-content: center;
+  }
+}
+.experience-label {
+  font-weight: 400;
+}
+
+.data-gender-option {
+  margin-top: 0;
+}
+
+.data-language-option {
+  display: flex;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  width: 5rem;
+}
+.data-language-option.active {
+  color: white;
+}
+.data-language-option.active .language-flag {
+  filter: saturate(100%) !important;
+}
+
+.language-flag {
+  width: 1.2rem;
+  filter: saturate(0%);
 }
 
 input {
@@ -309,7 +336,11 @@ input {
   max-width: 20em;
   width: 100%;
   z-index: 10;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+}
+.pn-select#js_pn-select2 {
+  z-index: 20;
 }
 
 .pn-dropdown {
@@ -532,7 +563,8 @@ input {
   width: max-content;
   max-width: 95vw;
   z-index: 1;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
 }
 .textinput-container .textinput-icon {
   display: flex;
@@ -555,4 +587,4 @@ input {
   100% {
     transform: translateX(0);
   }
-}/*# sourceMappingURL=register-club.css.map */
+}/*# sourceMappingURL=register-trainer.css.map */
