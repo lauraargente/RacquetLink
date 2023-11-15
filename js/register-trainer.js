@@ -1,24 +1,56 @@
-var activableElements = document.querySelectorAll('.activable')
-var backButtons = document.querySelectorAll('.register-element-back')
+var activableElements = document.querySelectorAll(".activable");
+var backButtons = document.querySelectorAll(".register-element-back");
 
-var allTextInputs = document.querySelectorAll('.textinput-text')
-var allDateInputs = document.querySelectorAll('.dateinput-date')
+var allTextInputs = document.querySelectorAll(".textinput-text");
+var allDateInputs = document.querySelectorAll(".dateinput-date");
 
-var registerContainer = document.querySelector('#register-container')
-var currentProgress = document.querySelector('#current-progress')
+var registerContainer = document.querySelector("#register-container");
+var currentProgress = document.querySelector("#current-progress");
 
-var currentPosition = 0
-var currentProgressValue = 10
-
+var currentPosition = 0;
+var currentProgressValue = 10;
 
 // Data elements
+var userName = document.querySelector("#name-container > input");
+var userSurname = document.querySelector("#surname-container > input");
+var userBirthday = document.querySelector("#birthday-container > input");
+var userNationality = document.querySelector("#js_number-prefix2");
+var userResidence = document.querySelector("#js_number-prefix3");
+var userAdditionalSport = document.querySelector("#additional-sport");
 
-var userName = document.querySelector('#name-container > input')
-var userSurName = document.querySelector('#surname-container > input')
-var userBirthday = document.querySelector('#birthday-container > input')
+// Checkbox elements
+var optionsGenders = document.querySelectorAll(".data-gender-option");
+var optionsLanguages = document.querySelectorAll(".data-language-option");
+var optionsSports = document.querySelectorAll(".data-sport-option");
+var optionsExperience = document.querySelectorAll(".data-experience-option");
+var optionsExp = document.querySelectorAll(".data-clubexp-option");
+var optionsClinic = document.querySelectorAll(".data-clinicexp-option");
+var optionsCoaches = document.querySelectorAll(".data-othercoachexp-option");
+var optionsTourOrg = document.querySelectorAll(".data-tourorg-option");
+var optionsTourJuz = document.querySelectorAll(".data-tourjuz-option");
+var optionsProfExp = document.querySelectorAll(".data-profexp-option");
+var optionsCompNow = document.querySelectorAll(".data-compnow-option");
+var optionsIntExp = document.querySelectorAll(".data-intexp-option");
+var optionsHours = document.querySelectorAll(".data-hours-option");
+var optionsLevel = document.querySelectorAll(".data-level-option");
+var optionsStartingTime = document.querySelectorAll(".data-startingtime-option");
+var optionsMobility= document.querySelectorAll(".data-mobility-option");
+var optionsOportunity= document.querySelectorAll(".data-oportunity-option");
+var optionsSalary = document.querySelectorAll(".data-salary-option");
 
 
-var nextConditionalInfo = document.querySelector('#next-conditional-info')
+// Next buttons
+var nextConditionalInfo = document.querySelector("#next-conditional-info");
+var nextConditionalNation = document.querySelector("#next-conditional-nations");
+var nextConditionalSport = document.querySelector("#next-conditional-sport");
+var nextConditionalExpOne = document.querySelector("#next-conditional-experienceone");
+var nextConditionalExpTwo = document.querySelector("#next-conditional-experiencetwo");
+var nextConditionalExpThree = document.querySelector("#next-conditional-experiencethree");
+var nextConditionalPrefOne = document.querySelector("#next-conditional-preferencesone");
+var nextConditionalPrefTwo = document.querySelector("#next-conditional-preferencestwo");
+var nextConditionalPrefThree = document.querySelector("#next-conditional-preferencesthree");
+var nextConditionalData = document.querySelector("#next-conditional-preferencesthree");
+var nextConditionalPass = document.querySelector("#next-conditional-preferencesthree");
 
 // Activable elements logic
 // activableElements.forEach(element => {
@@ -28,80 +60,494 @@ var nextConditionalInfo = document.querySelector('#next-conditional-info')
 // })
 
 // On unfocus make colores if right answer
-allTextInputs.forEach(textinput => {
-  textinput.addEventListener('blur', () => {
-    if (!(textinput.value === '')) {
-      textinput.style.backgroundColor = '#f3f5f9'
-      textinput.style.borderRadius = '0 0.75em 0.75em 0'
+allTextInputs.forEach((textinput) => {
+  textinput.addEventListener("blur", () => {
+    if (!(textinput.value === "")) {
+      textinput.style.backgroundColor = "#f3f5f9";
+      textinput.style.borderRadius = "0 0.75em 0.75em 0";
     } else {
-      textinput.style.backgroundColor = 'rgba(0,0,0,0)'
-      textinput.style.borderRadius = '0' 
+      textinput.style.backgroundColor = "rgba(0,0,0,0)";
+      textinput.style.borderRadius = "0";
     }
-  })
-})
+  });
+});
 
-allDateInputs.forEach(dateinput => {
-  dateinput.addEventListener('blur', () => {
-    if (!(dateinput.value === '')) {
-      dateinput.style.backgroundColor = '#f3f5f9'
-      dateinput.style.borderRadius = '0 0.75em 0.75em 0'
+allDateInputs.forEach((dateinput) => {
+  dateinput.addEventListener("blur", () => {
+    if (!(dateinput.value === "")) {
+      dateinput.style.backgroundColor = "#f3f5f9";
+      dateinput.style.borderRadius = "0 0.75em 0.75em 0";
     } else {
-      dateinput.style.backgroundColor = 'rgba(0,0,0,0)'
-      dateinput.style.borderRadius = '0' 
+      dateinput.style.backgroundColor = "rgba(0,0,0,0)";
+      dateinput.style.borderRadius = "0";
     }
-  })
-})
+  });
+});
 
 // Motion Backwards
-backButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    currentPosition = currentPosition + 100
-    registerContainer.style.transform = `translateY(${currentPosition}vh)`
-    currentProgressValue = currentProgressValue - 10
-    currentProgress.style.width = `${currentProgressValue}%`
-  })
-})
-
+backButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    currentPosition = currentPosition + 100;
+    registerContainer.style.transform = `translateY(${currentPosition}vh)`;
+    currentProgressValue = currentProgressValue - 10;
+    currentProgress.style.width = `${currentProgressValue}%`;
+  });
+});
 
 // Motion Forward
-var moveForward = function() {
-  currentPosition = currentPosition - 100
-  registerContainer.style.transform = `translateY(${currentPosition}vh)`
-  currentProgressValue = currentProgressValue + 10
-  currentProgress.style.width = `${currentProgressValue}%`
-}
+var moveForward = function () {
+  currentPosition = currentPosition - 100;
+  registerContainer.style.transform = `translateY(${currentPosition}vh)`;
+  currentProgressValue = currentProgressValue + 10;
+  currentProgress.style.width = `${currentProgressValue}%`;
+};
 
 // Shake Animation
-var shakeAnimation = function(element) {
+var shakeAnimation = function (element) {
   element.style.animation = "shake 0.5s";
   // Restablecer la animación cuando termine
   element.addEventListener("animationend", () => {
     element.style.animation = "";
   });
-}
+};
 
 // Each button going forward conditions
 
+var registerData = {
+  userName: "",
+  userSurame: "",
+  userBirthday: "",
+  userGender: "",
+  userNationality: "",
+  userResidence: "",
+  userLanguages: [],
+  userSports: [],
+  userExperience: "",
+  userClubExp: "",
+  userClinicExp: "",
+  userOtherCoachExp: "",
+  userToursJuzge: "",
+  userToursOrganized: "",
+  userProfessionalExperience: "",
+  userCompetingNow: "",
+  userInternationalExperience: "",
+  userWeeklyHours: "",
+  userPreferredLevel: [],
+  userAvailability: "",
+  userMobilityPossibility: "",
+  userOportunityType: [],
+  userExpectedSalary: "",
+};
+
+
+var optionsHours = document.querySelectorAll(".data-hours-option");
+var optionsLevel = document.querySelectorAll(".data-level-option");
+var optionsStartingTime = document.querySelectorAll(".data-startingtime-option");
+var optionsMobility= document.querySelectorAll(".data-mobility-option");
+var optionsOportunity= document.querySelectorAll(".data-oportunity-option");
+var optionsSalary = document.querySelectorAll(".data-salary-option");
+
 // 1 ---- Info
 
-var optionsGender = document.querySelectorAll('.data-gender-option')
+optionsGenders.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsGenders.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
 
-optionsGender.forEach(option => {
-  option.addEventListener('click', () => {
-    optionsGender.forEach(option => {
-      option.classList.remove('active')
-    })
-    option.classList.add('active')
-  })
-})
+nextConditionalInfo.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
 
-nextConditionalInfo.addEventListener('click', (e) => {
-  if ((userName.value === '') || (userSurName.value === '') || (userBirthday.value === '')) {
-    shakeAnimation(e.target)
-  } else {
-    moveForward()
-  }
-})
+  userName.value === "" ? moveForwardVariable = false : registerData.userName = userName.value
+  userSurname.value === "" ? moveForwardVariable = false : registerData.userSurame = userSurname.value
+  userBirthday.value === "" ? moveForwardVariable = false : registerData.userBirthday = userBirthday.value
+
+  var stopper = true;
+  optionsGenders.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userGender = field.getAttribute("data-gender");
+      stopper = false;
+    }
+  });
+  stopper ? moveForwardVariable = false : ''
+
+  console.log(registerData)
+  console.log(moveForwardVariable)
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+// 2 ---- Nationality
+
+optionsLanguages.forEach((option) => {
+  option.addEventListener("click", () => {
+    option.classList.toggle("active");
+  });
+});
+
+nextConditionalNation.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  userNationality.value === "" ? moveForwardVariable = false : registerData.userNationality = userNationality.value
+  userResidence.value === "" ? moveForwardVariable = false : registerData.userResidence = userResidence.value
+
+  optionsLanguages.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userLanguages.push(field.getAttribute("data-language"));
+    }
+  });
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+// 3 ---- Sports
+
+optionsSports.forEach((option) => {
+  option.addEventListener("click", () => {
+    option.classList.toggle("active");
+  });
+});
+
+optionsExperience.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsExperience.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+nextConditionalSport.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  var stopper = true;
+  optionsSports.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userSports.push(field.getAttribute("data-sport"));
+      stopper = false;
+    }
+  });
+  stopper ? moveForwardVariable = false : ''
+
+  var stopper2 = true;
+  optionsExperience.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userExperience = field.getAttribute("data-experience");
+      stopper2 = false;
+    }
+  });
+  stopper2 ? moveForwardVariable = false : ''
+
+  userAdditionalSport.value === "" ? "" : registerData.userSports.push(userAdditionalSport.value)
+
+  console.log(registerData)
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+// 4 ---- Experience
+
+optionsExp.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsExp.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+optionsClinic.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsClinic.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+optionsCoaches.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsCoaches.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+nextConditionalExpOne.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  var stopper1 = true;
+  optionsExp.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userClubExp = field.getAttribute("data-clubexp");
+      stopper1 = false;
+    }
+  });
+  stopper1 ? moveForwardVariable = false : ''
+
+  var stopper2 = true;
+  optionsClinic.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userClinicExp = field.getAttribute("data-clinicexp");
+      stopper2 = false;
+    }
+  });
+  stopper2 ? moveForwardVariable = false : ''
+
+  var stopper3 = true;
+  optionsCoaches.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userOtherCoachExp = field.getAttribute("data-othercoachexp");
+      stopper3 = false;
+    }
+  });
+  stopper3 ? moveForwardVariable = false : ''
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+// 5 ---- Experience Two
+
+optionsTourOrg.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsTourOrg.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+optionsTourJuz.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsTourJuz.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+nextConditionalExpTwo.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  var stopper1 = true;
+  optionsTourOrg.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userToursOrganized = field.getAttribute("data-tourorg");
+      stopper1 = false;
+    }
+  });
+  stopper1 ? moveForwardVariable = false : ''
+
+  var stopper2 = true;
+  optionsTourJuz.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userToursJuzge = field.getAttribute("data-tourjuz");
+      stopper2 = false;
+    }
+  });
+  stopper2 ? moveForwardVariable = false : ''
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+// 6 ----- Experience Three
+
+optionsProfExp.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsProfExp.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+optionsCompNow.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsCompNow.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+optionsIntExp.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsIntExp.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+nextConditionalExpThree.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  var stopper1 = true;
+  optionsProfExp.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userProfessionalExperience = field.getAttribute("data-profexp");
+      stopper1 = false;
+    }
+  });
+  stopper1 ? moveForwardVariable = false : ''
+
+  var stopper2 = true;
+  optionsCompNow.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userCompetingNow = field.getAttribute("data-compnow");
+      stopper2 = false;
+    }
+  });
+  stopper2 ? moveForwardVariable = false : ''
+
+  var stopper3 = true;
+  optionsIntExp.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userInternationalExp = field.getAttribute("data-intexp");
+      stopper3 = false;
+    }
+  });
+  stopper3 ? moveForwardVariable = false : ''
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+// 7 ----- Preferences One
+
+optionsHours.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsHours.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+optionsLevel.forEach((option) => {
+  option.addEventListener("click", () => {
+    option.classList.toggle("active");
+  });
+});
+
+nextConditionalPrefOne.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  var stopper1 = true;
+  optionsHours.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userWeeklyHours = field.getAttribute("data-hours");
+      stopper1 = false;
+    }
+  });
+  stopper1 ? moveForwardVariable = false : ''
+
+  var stopper2 = true;
+  optionsLevel.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userPreferredLevel.push(field.getAttribute("data-level"));
+      stopper2 = false;
+    }
+  });
+  stopper2 ? moveForwardVariable = false : ''
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+
+// 8 ----- Preferences Two
+
+optionsStartingTime.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsStartingTime.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+optionsMobility.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsMobility.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+nextConditionalPrefTwo.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  var stopper1 = true;
+  optionsStartingTime.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userAvailability = field.getAttribute("data-startingtime");
+      stopper1 = false;
+    }
+  });
+  stopper1 ? moveForwardVariable = false : ''
+
+  var stopper2 = true;
+  optionsMobility.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userMobilityPossibility = field.getAttribute("data-mobility");
+      stopper2 = false;
+    }
+  });
+  stopper2 ? moveForwardVariable = false : ''
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+// 9 ----- Preferences Three
+
+optionsOportunity.forEach((option) => {
+  option.addEventListener("click", () => {
+    option.classList.add("active");
+  });
+});
+
+optionsSalary.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsSalary.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
+nextConditionalPrefThree.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  var stopper1 = true;
+  optionsOportunity.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userOportunityType.push(field.getAttribute("data-oportunity"));
+      stopper1 = false;
+    }
+  });
+  stopper1 ? moveForwardVariable = false : ''
+
+  var stopper2 = true;
+  optionsSalary.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userExpectedSalary = field.getAttribute("data-salary");
+      stopper2 = false;
+    }
+  });
+  stopper2 ? moveForwardVariable = false : ''
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
 
 
 
@@ -380,7 +826,9 @@ const init2 = async (countries) => {
 
   const attatchListItemEventListeners = () =>
     new Promise((resolve, _) => {
-      const listItems = [...document.getElementsByClassName("js_pn-list-item-2")];
+      const listItems = [
+        ...document.getElementsByClassName("js_pn-list-item-2"),
+      ];
 
       listItems.forEach((item, index, listItems) => {
         item.addEventListener("click", (event) => {
@@ -557,7 +1005,9 @@ const init3 = async (countries) => {
 
   const attatchListItemEventListeners = () =>
     new Promise((resolve, _) => {
-      const listItems = [...document.getElementsByClassName("js_pn-list-item-3")];
+      const listItems = [
+        ...document.getElementsByClassName("js_pn-list-item-3"),
+      ];
 
       listItems.forEach((item, index, listItems) => {
         item.addEventListener("click", (event) => {
@@ -609,8 +1059,6 @@ const init3 = async (countries) => {
     isOpen ? closeDropdown() : openDropdown();
   });
 };
-
-
 
 init3(countries);
 

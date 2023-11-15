@@ -5,20 +5,16 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: var(--color-primary);
 }
 
 #progress-bar {
-  margin-top: 2.5rem;
+  position: absolute;
+  margin-top: 10.5rem;
   width: 100vw;
   height: 0.5rem;
   background-color: rgb(240, 240, 240);
-  position: relative;
 }
 
 #current-progress {
@@ -93,7 +89,7 @@
 }
 
 .register-element-question {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--color-primary);
   padding-bottom: 0.2rem;

@@ -1,0 +1,35 @@
+<div id="coeficiente2" style="font-size: 40px;">0</div>
+  <script>
+    var inicio2 = 0;
+    function animarNumero2(final, inicio, duracion) {
+      const elementoNumero = document.getElementById('coeficiente2');
+      const incremento = ((final-inicio)/duracion);
+      const intervalo = duracion / (final - inicio);
+      let valorActual = inicio;
+      const animacion = setInterval(() => {
+        valorActual += incremento;
+        var valorActualToDisplay = Math.floor(valorActual)
+        elementoNumero.innerHTML = `${valorActualToDisplay.toLocaleString('en')} t`;
+        if (valorActual >= final) {
+          clearInterval(animacion);
+        }
+      }, intervalo);
+    }
+  var numeroAntiguo = 0;
+  function obtenerCoeficiente2() {
+    const fechaInicio2023 = new Date('2023-01-01T00:00:00').getTime();
+    const fechaActual = new Date().getTime();
+    const tiempoTranscurrido = fechaActual - fechaInicio2023;
+    const minutosTranscurridos = Math.floor(tiempoTranscurrido / 60000);
+    const suma = minutosTranscurridos * 278;
+    const coeficiente = suma * 2.11355322 / 1000;
+    // Sumar "1,449,940" al coeficiente
+    const coeficienteConSuma = coeficiente + 1449940;
+    const coeficienteReducidoString = coeficienteConSuma.toFixed(2);
+    const coeficienteReducidoNumber = parseInt(coeficienteReducidoString);
+    animarNumero2(coeficienteReducidoNumber,inicio2,2000)
+    inicio2 = coeficienteReducidoNumber
+  }
+  obtenerCoeficiente2(); // Actualizar al cargar la página
+  setInterval(obtenerCoeficiente2, 60000); // Actualizar cada minuto
+</script>
