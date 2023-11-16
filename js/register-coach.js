@@ -1,3 +1,6 @@
+import { firebaseCreateCoach } from "./register-coach-firebase.js"
+import { firebaseSaveCoachData } from "./register-coach-firebase.js"
+
 var activableElements = document.querySelectorAll(".activable");
 var backButtons = document.querySelectorAll(".register-element-back");
 
@@ -8,7 +11,7 @@ var registerContainer = document.querySelector("#register-container");
 var currentProgress = document.querySelector("#current-progress");
 
 var currentPosition = 0;
-var currentProgressValue = 10;
+var currentProgressValue = 9;
 
 // Data elements
 var userName = document.querySelector("#name-container > input");
@@ -17,6 +20,12 @@ var userBirthday = document.querySelector("#birthday-container > input");
 var userNationality = document.querySelector("#js_number-prefix2");
 var userResidence = document.querySelector("#js_number-prefix3");
 var userAdditionalSport = document.querySelector("#additional-sport");
+var userPhoneNumberPrefix = document.querySelector("#js_number-prefix");
+var userPhoneNumber = document.querySelector("#js_input-phonenumber");
+var userLinkedin = document.querySelector("#linkedin-container > input");
+var userInsta = document.querySelector("#insta-container > input");
+var userEmail = document.querySelector("#email-container > input");
+var userPass = document.querySelector("#pass-container > input");
 
 // Checkbox elements
 var optionsGenders = document.querySelectorAll(".data-gender-option");
@@ -49,8 +58,16 @@ var nextConditionalExpThree = document.querySelector("#next-conditional-experien
 var nextConditionalPrefOne = document.querySelector("#next-conditional-preferencesone");
 var nextConditionalPrefTwo = document.querySelector("#next-conditional-preferencestwo");
 var nextConditionalPrefThree = document.querySelector("#next-conditional-preferencesthree");
-var nextConditionalData = document.querySelector("#next-conditional-preferencesthree");
-var nextConditionalPass = document.querySelector("#next-conditional-preferencesthree");
+var nextConditionalData = document.querySelector("#next-conditional-data");
+var nextConditionalPass = document.querySelector("#next-conditional-pass");
+
+var nonFilledFieldsMessage = document.querySelectorAll('.non-filled-fields-message')
+var nonFilledFieldsMessageEmail = document.querySelector('.non-filled-fields-message-email')
+var nonFilledFieldsMessagePass = document.querySelector('.non-filled-fields-message-pass')
+
+var createCoachLoadingIcon = document.querySelector('#create-coach-loading-icon')
+var createCoachOkIcon = document.querySelector('#create-coach-ok-icon')
+
 
 // Activable elements logic
 // activableElements.forEach(element => {
@@ -65,9 +82,13 @@ allTextInputs.forEach((textinput) => {
     if (!(textinput.value === "")) {
       textinput.style.backgroundColor = "#f3f5f9";
       textinput.style.borderRadius = "0 0.75em 0.75em 0";
+      textinput.style.color = "#025b7b";
+      textinput.style.fontWeight = "500";
     } else {
       textinput.style.backgroundColor = "rgba(0,0,0,0)";
       textinput.style.borderRadius = "0";
+      textinput.style.color = "#c3c3c3";
+      textinput.style.fontWeight = "300";
     }
   });
 });
@@ -77,9 +98,13 @@ allDateInputs.forEach((dateinput) => {
     if (!(dateinput.value === "")) {
       dateinput.style.backgroundColor = "#f3f5f9";
       dateinput.style.borderRadius = "0 0.75em 0.75em 0";
+      dateinput.style.color = "#025b7b";
+      dateinput.style.fontWeight = "500";
     } else {
       dateinput.style.backgroundColor = "rgba(0,0,0,0)";
       dateinput.style.borderRadius = "0";
+      dateinput.style.color = "#c3c3c3";
+      dateinput.style.fontWeight = "300";
     }
   });
 });
@@ -89,7 +114,7 @@ backButtons.forEach((button) => {
   button.addEventListener("click", () => {
     currentPosition = currentPosition + 100;
     registerContainer.style.transform = `translateY(${currentPosition}vh)`;
-    currentProgressValue = currentProgressValue - 10;
+    currentProgressValue = currentProgressValue - 9;
     currentProgress.style.width = `${currentProgressValue}%`;
   });
 });
@@ -98,7 +123,7 @@ backButtons.forEach((button) => {
 var moveForward = function () {
   currentPosition = currentPosition - 100;
   registerContainer.style.transform = `translateY(${currentPosition}vh)`;
-  currentProgressValue = currentProgressValue + 10;
+  currentProgressValue = currentProgressValue + 9;
   currentProgress.style.width = `${currentProgressValue}%`;
 };
 
@@ -109,6 +134,16 @@ var shakeAnimation = function (element) {
   element.addEventListener("animationend", () => {
     element.style.animation = "";
   });
+
+  nonFilledFieldsMessage.forEach(message => {
+    message.style.visibility = 'visible'
+    message.style.opacity = '1'
+    setTimeout(function() {
+      message.style.visibility = 'hidden'
+    message.style.opacity = '0'
+
+    }, 1000); // 1000 milisegundos = 1 segundo
+  })
 };
 
 // Each button going forward conditions
@@ -128,15 +163,22 @@ var registerData = {
   userOtherCoachExp: "",
   userToursJuzge: "",
   userToursOrganized: "",
-  userProfessionalExperience: "",
+  userProfessionalExp: "",
   userCompetingNow: "",
-  userInternationalExperience: "",
+  userInternationalExp: "",
   userWeeklyHours: "",
   userPreferredLevel: [],
   userAvailability: "",
   userMobilityPossibility: "",
   userOportunityType: [],
   userExpectedSalary: "",
+  userPhoneNumber: "",
+  userLinkedin: "",
+  userInstagram: "",
+  userEmail: "",
+  userPass: "",
+  coachId: "",
+  registerDate: ""
 };
 
 
@@ -392,7 +434,7 @@ nextConditionalExpThree.addEventListener("click", (e) => {
   var stopper1 = true;
   optionsProfExp.forEach((field) => {
     if (field.classList.contains("active")) {
-      registerData.userProfessionalExperience = field.getAttribute("data-profexp");
+      registerData.userProfessionalExp = field.getAttribute("data-profexp");
       stopper1 = false;
     }
   });
@@ -548,6 +590,77 @@ nextConditionalPrefThree.addEventListener("click", (e) => {
 
   moveForwardVariable ? moveForward() : shakeAnimation(e.target)
 });
+
+
+// 10 ---- Contact Information
+
+nextConditionalData.addEventListener("click", (e) => {
+  var moveForwardVariable = true;
+
+  userPhoneNumber.value === "" ? moveForwardVariable = false : registerData.userPhoneNumber = `${userPhoneNumberPrefix} ${userPhoneNumber}`
+  userLinkedin.value === "" ? "" : registerData.userLinkedin = userLinkedin.value
+  userInsta.value === "" ? "" : registerData.userInsta = userInsta.value
+
+  moveForwardVariable ? moveForward() : shakeAnimation(e.target)
+});
+
+
+// 11 ---- Contact Credentials
+
+nextConditionalPass.addEventListener("click", (e) => {
+  var moveForwardVariablePass = true;
+  var moveForwardVariableEmail = true;
+
+  userEmail.value === "" ? moveForwardVariableEmail = false : registerData.userEmail = userEmail.value
+  isPassSafe(userPass.value) ? registerData.userPass = userPass.value : moveForwardVariablePass = false
+
+  console.log(registerData)
+  console.log(isPassSafe(userPass.value))
+  
+  // Logic for register
+
+  if(moveForwardVariablePass) {
+  createCoachLoadingIcon.style.visibility = 'visible'
+  createCoachOkIcon.style.visibility = 'hidden'
+    firebaseCreateCoach(registerData)
+    .then(user => {
+      registerData.coachId = user
+      registerData.registerDate = Date()
+      firebaseSaveCoachData(registerData).then( () => {
+        moveForward();
+      } )
+    })
+    .catch(error => {
+    createCoachLoadingIcon.style.visibility = 'hidden'
+    createCoachOkIcon.style.visibility = 'visible'
+      shakeAnimation(e.target)
+      nonFilledFieldsMessageEmail.style.visibility = 'visible'
+      nonFilledFieldsMessageEmail.style.opacity = '1'
+      setTimeout(function() {
+      nonFilledFieldsMessageEmail.style.visibility = 'hidden'
+      nonFilledFieldsMessageEmail.style.opacity = '0'
+      }, 1000); // 1000 milisegundos = 1 segundo
+  })
+  } else {
+    shakeAnimation(e.target)
+    nonFilledFieldsMessagePass.style.visibility = 'visible'
+    nonFilledFieldsMessagePass.style.opacity = '1'
+    setTimeout(function() {
+    nonFilledFieldsMessagePass.style.visibility = 'hidden'
+    nonFilledFieldsMessagePass.style.opacity = '0'
+    }, 1000); // 1000 milisegundos = 1 segundo
+  }
+
+});
+
+function isPassSafe(pass) {
+  return (
+    pass.length >= 8 &&
+    /[A-Z]/.test(pass) &&
+    /[a-z]/.test(pass) &&
+    /\d/.test(pass)
+  );
+}
 
 
 

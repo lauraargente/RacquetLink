@@ -30,11 +30,11 @@ const auth = getAuth()
 // --------------------------------------------------------------- USER REGISTER
 
 
-function firebaseCreateClub(registerData) {
-    console.log(registerData.clubEmail)
-    console.log(registerData.clubPassword)
+function firebaseCreateCoach(registerData) {
+    console.log(registerData.userEmail)
+    console.log(registerData.userPass)
 	return new Promise(function (resolve, reject) {
-		createUserWithEmailAndPassword(auth, registerData.clubEmail, registerData.clubPassword)
+		createUserWithEmailAndPassword(auth, registerData.userEmail, registerData.userPass)
 			.then((userCredential) => {
                 // Get user Id
                 const user = userCredential.user.uid;
@@ -54,27 +54,46 @@ function firebaseCreateClub(registerData) {
 }
 
 // Making fuction global
-export { firebaseCreateClub }
+export { firebaseCreateCoach }
 
 // FIRESTORE DATABASE
 // --------------------------------------------------------------- USER DATA SAVE
 
 // uploadArticle toma un array de artículo y lo publica en firebase
-var firebaseSaveClubData = (registerData) => {
+var firebaseSaveCoachData = (registerData) => {
 
 return new Promise(function (resolve, reject) {
     try {
-        const docRef = addDoc(collection(db, 'clubsData'), {
-        clubName: registerData.clubName,
-        clubCountry: registerData.clubCountry,
-        clubCity: registerData.clubCity,
-        clubSports: registerData.clubSports,
-        clubField: registerData.clubField,
-        clubState: registerData.clubState,
-        clubConsulting: registerData.clubConsulting,
-        clubEmail: registerData.clubEmail,
-        clubNumber: registerData.clubNumber,
-        clubId: registerData.clubId,
+        const docRef = addDoc(collection(db, 'coachesData'), {
+        userName: registerData.userName,
+        userSurame: registerData.userSurame,
+        userBirthday: registerData.userBirthday,
+        userGender: registerData.userGender,
+        userNationality: registerData.userNationality,
+        userResidence: registerData.userResidence,
+        userLanguages: registerData.userLanguages,
+        userSports: registerData.userSports,
+        userExperience: registerData.userExperience,
+        userClubExp: registerData.userClubExp,
+        userClinicExp: registerData.userClinicExp,
+        userOtherCoachExp: registerData.userOtherCoachExp,
+        userToursJuzge: registerData.userToursJuzge,
+        userToursOrganized: registerData.userToursOrganized,
+        userProfessionalExp: registerData.userProfessionalExp,
+        userCompetingNow: registerData.userCompetingNow,
+        userInternationalExp: registerData.userInternationalExp,
+        userWeeklyHours: registerData.userWeeklyHours,
+        userPreferredLevel: registerData.userPreferredLevel,
+        userAvailability: registerData.userAvailability,
+        userMobilityPossibility: registerData.userMobilityPossibility,
+        userOportunityType: registerData.userOportunityType,
+        userExpectedSalary: registerData.userExpectedSalary,
+        userPhoneNumber: registerData.userPhoneNumber,
+        userLinkedin: registerData.userLinkedin,
+        userInstagram: registerData.userInstagram,
+        userPass: registerData.userPass,
+        coachId: registerData.coachId,
+        registerDate: registerData.registerDate
     })
     // Aquí faltaría redirigir a la página de artículo
     resolve()
@@ -84,4 +103,4 @@ return new Promise(function (resolve, reject) {
 })
 }
 
-  export { firebaseSaveClubData }
+  export { firebaseSaveCoachData }

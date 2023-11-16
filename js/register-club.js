@@ -1,5 +1,5 @@
-import { firebaseCreateUser } from "./register-club-firebase.js"
-import { firebaseSaveUserData } from "./register-club-firebase.js"
+import { firebaseCreateClub } from "./register-club-firebase.js"
+import { firebaseSaveClubData } from "./register-club-firebase.js"
 
 var backButtons = document.querySelectorAll('.register-element-back')
 var nextButtons = document.querySelectorAll('.register-element-next')
@@ -178,10 +178,10 @@ nextConditionalPassword.addEventListener('click', (e) => {
     e.target.style.transform = 'rotate(3600deg)'
     e.target.style.transition = '30s'
     e.target.style.transitionTimingFunction = 'linear'
-    firebaseCreateUser(registerData)
+    firebaseCreateClub(registerData)
     .then(user => {
       registerData.clubId = user
-      firebaseSaveUserData(registerData)
+      firebaseSaveClubData(registerData)
       moveForward();
     })
     .catch(error => {

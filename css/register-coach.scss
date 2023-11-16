@@ -117,7 +117,6 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
-  // color: #025b7bAA;
   color: #025b7b;
   padding-bottom: 0.4rem;
   // border-bottom: 2px solid var(--color-primary);
@@ -189,7 +188,7 @@
     border-radius: 100px;
     padding: 0.5rem;
     border: 2px solid var(--color-primary);
-    margin: 2rem auto;
+    margin: 2rem auto 1rem auto;
     font-weight: 400;
     background-color: var(--color-primary);
     &:hover {
@@ -199,6 +198,10 @@
     svg {
         pointer-events: none;
     }
+}
+
+.non-filled-fields-message {
+  color: #025B7B;
 }
 
 .register-checkbox-container {
@@ -220,9 +223,11 @@
     // background-color: var(--dropdown-trigger-background-color);
     &.active {
         // border: 1px solid var(--color-primary);
-        color: black;
+        color: #025b7b;
+        font-weight: 500;
         .register-checkbox-label {
             color: #025b7b;
+            font-weight: 500;
         }
         svg {
             path {
@@ -306,7 +311,7 @@
 .data-language-option {
   display: flex;
   justify-content: center;
-  padding: 0.4rem 0.8rem;
+  padding: 0.6rem 0.8rem;
   gap: 0.5rem;
   margin-top: 0.5rem;
   width: 5rem;
@@ -677,11 +682,13 @@ input {
 
 // Country
 #js_number-prefix2 {
-    color: black;
+    color: #025b7b;
+    font-weight: 500;
 }
 
 #js_number-prefix3 {
-  color: black;
+  color: #025b7b;
+  font-weight: 500;
 }
 
 #js_input-phonenumber2 {
@@ -701,7 +708,8 @@ input {
     // max-width: 20em;
     // width: 100%;
     // width: max-content;
-    max-width: 425px;
+    max-width: 100%;
+    width: 425px;
     z-index: 1;
     margin-bottom: 1rem;
     .textinput-icon {

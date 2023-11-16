@@ -179,7 +179,7 @@
   border-radius: 100px;
   padding: 0.5rem;
   border: 2px solid var(--color-primary);
-  margin: 2rem auto;
+  margin: 2rem auto 1rem auto;
   font-weight: 400;
   background-color: var(--color-primary);
 }
@@ -189,6 +189,10 @@
 }
 .register-element-next svg {
   pointer-events: none;
+}
+
+.non-filled-fields-message {
+  color: #025B7B;
 }
 
 .register-checkbox-container {
@@ -207,11 +211,13 @@
   stroke: var(--border-color);
 }
 .register-checkbox-container.active {
-  color: black;
+  color: #025b7b;
+  font-weight: 500;
   background-color: var(--dropdown-trigger-background-color);
 }
 .register-checkbox-container.active .register-checkbox-label {
   color: #025b7b;
+  font-weight: 500;
 }
 .register-checkbox-container.active svg path {
   stroke: #025b7b;
@@ -287,7 +293,7 @@
 .data-language-option {
   display: flex;
   justify-content: center;
-  padding: 0.4rem 0.8rem;
+  padding: 0.6rem 0.8rem;
   gap: 0.5rem;
   margin-top: 0.5rem;
   width: 5rem;
@@ -539,11 +545,13 @@ input {
 }
 
 #js_number-prefix2 {
-  color: black;
+  color: #025b7b;
+  font-weight: 500;
 }
 
 #js_number-prefix3 {
-  color: black;
+  color: #025b7b;
+  font-weight: 500;
 }
 
 #js_input-phonenumber2 {
@@ -560,7 +568,8 @@ input {
   border-radius: var(--border-radius);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-out;
-  max-width: 425px;
+  max-width: 100%;
+  width: 425px;
   z-index: 1;
   margin-bottom: 1rem;
 }
@@ -585,4 +594,4 @@ input {
   100% {
     transform: translateX(0);
   }
-}/*# sourceMappingURL=register-trainer.css.map */
+}/*# sourceMappingURL=register-coach.css.map */
