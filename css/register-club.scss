@@ -1,24 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
-// body {
-//     overflow-y: hidden;
-// }
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
 
 #title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    font-size: 3rem;
+    margin-bottom: 2rem;
     color: var(--color-primary);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
 }
 
 #progress-bar {
-    position: absolute;
-    margin-top: 10.5rem;
-    width: 100vw;
-    height: 0.5rem;
-    background-color: rgb(240, 240, 240);
+  position: absolute;
+  // margin-top: 5.6rem;
+  width: 100vw;
+  height: 1rem;
+  background-color: rgb(240, 240, 240);
+  z-index: 20;
+  top: 5.6rem;
 }
 
 #current-progress {
@@ -35,18 +41,18 @@
     align-items: center;
     width: 100vw;
     transition: 1s;
+    margin-top: 12rem;
 }
 
 .register-element {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     width: 100vw;
     max-width: 1200px;
     height: 100vh;
     overflow-x: hidden;
-    // border: 2px solid var(--color-primary);
 }
 
 .register-element-number {
@@ -59,7 +65,7 @@
 
 .register-element-content {
     display: flex;
-    gap: 4rem;
+    gap: 2rem;
     // flex-direction: column;
     justify-content: center;
     // align-items: center;
@@ -75,22 +81,6 @@
     }
 }
 
-@media (max-width: 600px) {
-  .register-element-content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0rem;
-    padding: 0;
-  }
-  .register-element-left {
-    display: none;
-  }
-  #register-container {
-    margin-top: 5rem;
-  }
-}
-
 .register-element-left {
     width: 20%;
 }
@@ -99,17 +89,17 @@
 }
 
 .register-element-question {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 400;
     color: var(--color-primary);
-    padding-bottom: 0.2rem;
+    padding-bottom: 0.4rem;
     text-transform: uppercase;
-    border-bottom: 2px solid var(--color-primary);
+    // border-bottom: 2px solid var(--color-primary);
 }
 
 .register-element-finish {
     font-size: 2.4rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--color-primary);
     margin-top: 1rem;
     padding-bottom: 0.2rem;
@@ -118,7 +108,7 @@
 
 .register-element-textanswer {
     font-size: 1.2rem;
-    // font-weight: 500;
+    // font-weight: 400;
     // color: var(--color-primary);
     margin-top: 1rem;
     &:focus {
@@ -172,7 +162,7 @@
     border-radius: 100px;
     padding: 0.5rem;
     border: 2px solid var(--color-primary);
-    margin: 2rem auto;
+    margin: 2rem auto 1rem auto;
     font-weight: 400;
     background-color: var(--color-primary);
     &:hover {
@@ -184,28 +174,33 @@
     }
 }
 
+.non-filled-fields-message {
+  color: #025B7B;
+}
+
 .register-checkbox-container {
     margin-top: 1rem;
     margin-right: 1rem;
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: #757575;
+    color: var(--border-color);
     border: 1px solid var(--border-color);
     border-radius: 10rem;
     padding: 0.5rem 1.5rem;
-    background-color: var(--dropdown-trigger-background-color);
     &.active {
-        border: 1px solid var(--color-primary);
-        .register-checkbox-label {
-            color: white;
+      color: #025b7b;
+      font-weight: 400;
+      .register-checkbox-label {
+          color: #025b7b;
+          font-weight: 400;
         }
         svg {
             path {
-                stroke: white;
+              stroke: #025b7b;
             }
         }
-        background-color: #025b7b;
+        background-color: var(--dropdown-trigger-background-color);
     }
 }
 
@@ -286,6 +281,40 @@
     margin-top: 1rem
 }
 
+@media (max-width: 600px) {
+  :root {
+    font-size: 14px;
+  }
+  .register-element-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    padding: 0;
+  }
+  .register-element-left {
+    display: none;
+  }
+  #title {
+    text-transform: uppercase;
+    font-size: 5.2vw;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+  }
+  .register-element-next {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .register-element-back {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 0.4rem;
+    margin-bottom: 2rem;
+  }
+}
+
 // #region country and Phone Number
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
@@ -364,10 +393,11 @@ input {
   border-radius: var(--border-radius);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-out;
-  max-width: 20em;
+  max-width: 425px;
   width: 100%;
   z-index: 10;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
 
 //   &:focus,
 //   &:focus-within {
@@ -532,7 +562,7 @@ input {
 // --------------------------------------------------- //
 
 .pn-input {
-  background: #ffffff;
+  background: var(--dropdown-trigger-background-color);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
   line-height: 1;
   overflow: hidden;
@@ -576,7 +606,7 @@ input {
     // background: rgba(black, 0.2);
     color: var(--input-phonenumber-color);
     padding-left: calc(calc(var(--prefix-length) * 1ch) + 1.5ch);
-    font-weight: 500;
+    font-weight: 400;
 
     &:not(:placeholder-shown):invalid + .pn-input__error {
       opacity: 1;
@@ -621,7 +651,7 @@ input {
 
   &--selected {
     pointer-events: none;
-    font-weight: 500;
+    font-weight: 400;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23103155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
     background-position: right 0.75em top 50%;
     background-repeat: no-repeat;
@@ -644,21 +674,22 @@ input {
 }
 
 .textinput-container {
-    position: relative;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--border-color);
-    display: grid;
-    grid-template-columns: 4.5em 1fr;
-    border-radius: var(--border-radius);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-out;
-    // max-width: 20em;
-    // width: 100%;
-    width: max-content;
-    max-width: 95vw;
-    z-index: 1;
-    margin-top: 1rem;
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-out;
+  // max-width: 20em;
+  // width: 100%;
+  // width: max-content;
+  max-width: 100%;
+  width: 425px;
+  z-index: 1;
+  margin-bottom: 1rem;
     .textinput-icon {
         display: flex;
         justify-content: center;

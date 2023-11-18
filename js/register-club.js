@@ -1,199 +1,226 @@
-import { firebaseCreateClub } from "./register-club-firebase.js"
-import { firebaseSaveClubData } from "./register-club-firebase.js"
+import { firebaseCreateClub } from "./register-club-firebase.js";
+import { firebaseSaveClubData } from "./register-club-firebase.js";
 
-var backButtons = document.querySelectorAll('.register-element-back')
-var nextButtons = document.querySelectorAll('.register-element-next')
+var allTextInputs = document.querySelectorAll(".textinput-text");
 
-var nextConditionalClub = document.querySelector('#next-conditional-club')
-var nextConditionalCountry = document.querySelector('#next-conditional-country')
-var nextConditionalSports = document.querySelector('#next-conditional-sport')
-var nextConditionalField  = document.querySelector('#next-conditional-fields')
-var nextConditionalState = document.querySelector('#next-conditional-state')
-var nextConditionalConsulting = document.querySelector('#next-conditional-consulting')
-var nextConditionalEmail = document.querySelector('#next-conditional-email')
-var nextConditionalPhone = document.querySelector('#next-conditional-phone')
-var nextConditionalPassword = document.querySelector('#next-conditional-pass')
+var backButtons = document.querySelectorAll(".register-element-back");
+var nextButtons = document.querySelectorAll(".register-element-next");
 
-var registerContainer = document.querySelector('#register-container')
-var currentProgress = document.querySelector('#current-progress')
-var adjustableWidthElements = document.querySelectorAll('.adjustablewidth')
+var nextConditionalClub = document.querySelector("#next-conditional-club");
+var nextConditionalCountry = document.querySelector(
+  "#next-conditional-country"
+);
+var nextConditionalSports = document.querySelector("#next-conditional-sport");
+var nextConditionalField = document.querySelector("#next-conditional-fields");
+var nextConditionalState = document.querySelector("#next-conditional-state");
+var nextConditionalConsulting = document.querySelector(
+  "#next-conditional-consulting"
+);
+var nextConditionalEmail = document.querySelector("#next-conditional-email");
+var nextConditionalPhone = document.querySelector("#next-conditional-phone");
+var nextConditionalPassword = document.querySelector("#next-conditional-pass");
 
-var currentPosition = 0
-var currentProgressValue = 10
+var registerContainer = document.querySelector("#register-container");
+var currentProgress = document.querySelector("#current-progress");
 
-adjustableWidthElements.forEach(inputElement => {
-  inputElement.addEventListener('input', function() {
-    const longitudTexto = inputElement.value.length;
-    const anchoMinimo = 214; // Ajusta este valor según tus necesidades
-    const nuevoAncho = Math.max(anchoMinimo, longitudTexto * 10); // Ajusta este valor según tus necesidades
-    inputElement.style.width = `${nuevoAncho}px`;
+var nonFilledFieldsMessage = document.querySelectorAll(
+  ".non-filled-fields-message"
+);
+var nonFilledFieldsMessageEmail = document.querySelector(
+  ".non-filled-fields-message-email"
+);
+var nonFilledFieldsMessagePass = document.querySelector(
+  ".non-filled-fields-message-pass"
+);
+
+var createCoachLoadingIcon = document.querySelector(
+  "#create-coach-loading-icon"
+);
+var createCoachOkIcon = document.querySelector("#create-coach-ok-icon");
+
+var currentPosition = 0;
+var currentProgressValue = 12;
+
+// On unfocus make colores if right answer
+allTextInputs.forEach((textinput) => {
+  textinput.addEventListener("blur", () => {
+    if (!(textinput.value === "")) {
+      textinput.style.backgroundColor = "#f3f5f9";
+      textinput.style.borderRadius = "0 0.75em 0.75em 0";
+      textinput.style.color = "#025b7b";
+    } else {
+      textinput.style.backgroundColor = "rgba(0,0,0,0)";
+      textinput.style.borderRadius = "0";
+      textinput.style.color = "black";
+    }
   });
-})
+});
 
 // #region motionLogic
 
-// Motion Back
-var checkPossibleMotionBack = function() {
-    if (currentPosition === 0) {
-        backButtons[0].style.pointerEvents = 'none'
-        backButtons[0].style.opacity = '0'
-    } else {
-        backButtons[0].style.pointerEvents = 'auto'
-        backButtons[0].style.opacity = '1'
-    }
-}
-
-checkPossibleMotionBack()
-
-backButtons.forEach( (backButtons) => {
-    backButtons.addEventListener('click', () => {
-        currentPosition = currentPosition + 100
-        checkPossibleMotionBack()
-        registerContainer.style.transform = `translateY(${currentPosition}vh)`
-        currentProgressValue = currentProgressValue - 10
-        currentProgress.style.width = `${currentProgressValue}%`
-    })
-})
+backButtons.forEach((backButtons) => {
+  backButtons.addEventListener("click", () => {
+    currentPosition = currentPosition + 100;
+    registerContainer.style.transform = `translateY(${currentPosition}vh)`;
+    currentProgressValue = currentProgressValue - 11;
+    currentProgress.style.width = `${currentProgressValue}%`;
+  });
+});
 
 // Motion Forward
-var moveForward = function() {
-  currentPosition = currentPosition - 100
-  registerContainer.style.transform = `translateY(${currentPosition}vh)`
-  currentProgressValue = currentProgressValue + 10
-  currentProgress.style.width = `${currentProgressValue}%`
-}
+var moveForward = function () {
+  currentPosition = currentPosition - 100;
+  registerContainer.style.transform = `translateY(${currentPosition}vh)`;
+  currentProgressValue = currentProgressValue + 11;
+  currentProgress.style.width = `${currentProgressValue}%`;
+};
 
-var shakeAnimation = function(element) {
+var shakeAnimation = function (element) {
   element.style.animation = "shake 0.5s";
   // Restablecer la animación cuando termine
   element.addEventListener("animationend", () => {
     element.style.animation = "";
   });
-}
+
+  nonFilledFieldsMessage.forEach((message) => {
+    message.style.visibility = "visible";
+    message.style.opacity = "1";
+    setTimeout(function () {
+      message.style.visibility = "hidden";
+      message.style.opacity = "0";
+    }, 1000); // 1000 milisegundos = 1 segundo
+  });
+};
 
 // Next Club
-nextConditionalClub.addEventListener('click', (e) => {
-  if (clubName.value === '') {
-    shakeAnimation(e.target)
+nextConditionalClub.addEventListener("click", (e) => {
+  if (clubName.value === "") {
+    shakeAnimation(e.target);
   } else {
-    moveForward()
+    moveForward();
   }
-})
+});
 
 // Next City
-nextConditionalCountry.addEventListener('click', (e) => {
-  if (clubCity.value === '') {
-    shakeAnimation(e.target)
+nextConditionalCountry.addEventListener("click", (e) => {
+  if (clubCity.value === "") {
+    shakeAnimation(e.target);
   } else {
-    moveForward()
+    moveForward();
   }
-})
+});
 
 // Next Sport
-nextConditionalSports.addEventListener('click', (e) => {
-  var breaker = true
-  clubSports.forEach(sport => {
-    if ((sport.classList.contains('active')) && (breaker)) {
-      moveForward()
-      breaker = false
+nextConditionalSports.addEventListener("click", (e) => {
+  var breaker = true;
+  clubSports.forEach((sport) => {
+    if (sport.classList.contains("active") && breaker) {
+      moveForward();
+      breaker = false;
     }
-  })
-  if ((!(additionalSport.value === '')) && (breaker)) {
-    moveForward()
-    breaker = false
+  });
+  if (!(additionalSport.value === "") && breaker) {
+    moveForward();
+    breaker = false;
   }
   if (breaker) {
-    shakeAnimation(e.target)
+    shakeAnimation(e.target);
   }
-})
+});
 
 // Next Fields
-nextConditionalField.addEventListener('click', (e) => {
-  var breaker = true
-  clubField.forEach(field => {
-    if ((field.classList.contains('active')) && (breaker)) {
-      moveForward()
-      breaker = false
+nextConditionalField.addEventListener("click", (e) => {
+  var breaker = true;
+  clubField.forEach((field) => {
+    if (field.classList.contains("active") && breaker) {
+      moveForward();
+      breaker = false;
     }
-  })
+  });
   if (breaker) {
-    shakeAnimation(e.target)
+    shakeAnimation(e.target);
   }
-})
+});
 
 // Next State
-nextConditionalState.addEventListener('click', (e) => {
-  var breaker = true
-  clubState.forEach(state => {
-    if ((state.classList.contains('active')) && (breaker)) {
-      moveForward()
-      breaker = false
+nextConditionalState.addEventListener("click", (e) => {
+  var breaker = true;
+  clubState.forEach((state) => {
+    if (state.classList.contains("active") && breaker) {
+      moveForward();
+      breaker = false;
     }
-  })
+  });
   if (breaker) {
-    shakeAnimation(e.target)
+    shakeAnimation(e.target);
   }
-})
+});
 
 // Next Consulting
-nextConditionalConsulting.addEventListener('click', (e) => {
-  var breaker = true
-  clubConsulting.forEach(consulting => {
-    if ((consulting.classList.contains('active')) && (breaker)) {
-      moveForward()
-      breaker = false
+nextConditionalConsulting.addEventListener("click", (e) => {
+  var breaker = true;
+  clubConsulting.forEach((consulting) => {
+    if (consulting.classList.contains("active") && breaker) {
+      moveForward();
+      breaker = false;
     }
-  })
+  });
   if (breaker) {
-    shakeAnimation(e.target)
+    shakeAnimation(e.target);
   }
-})
-
-// Next Email
-nextConditionalEmail.addEventListener('click', (e) => {
-  if (clubEmail.value === '') {
-    shakeAnimation(e.target)
-  } else {
-    moveForward()
-  }
-})
+});
 
 // Next Number
-nextConditionalPhone.addEventListener('click', (e) => {
-  if (clubNumber.value === '') {
-    shakeAnimation(e.target)
+nextConditionalPhone.addEventListener("click", (e) => {
+  if (clubNumber.value === "") {
+    shakeAnimation(e.target);
   } else {
-    moveForward()
+    moveForward();
   }
-})
+});
 
 // Next Password
-nextConditionalPassword.addEventListener('click', (e) => {
+nextConditionalPassword.addEventListener("click", (e) => {
   const pass = clubPassword.value;
-  if (pass === '') {
+  if (pass === "") {
     shakeAnimation(e.target);
+    nonFilledFieldsMessagePass.style.visibility = "visible";
+    nonFilledFieldsMessagePass.style.opacity = "1";
+    setTimeout(function () {
+      nonFilledFieldsMessagePass.style.visibility = "hidden";
+      nonFilledFieldsMessagePass.style.opacity = "0";
+    }, 1000); // 1000 milisegundos = 1 segundo
   } else if (!isPassSafe(pass)) {
     shakeAnimation(e.target);
+    nonFilledFieldsMessagePass.style.visibility = "visible";
+    nonFilledFieldsMessagePass.style.opacity = "1";
+    setTimeout(function () {
+      nonFilledFieldsMessagePass.style.visibility = "hidden";
+      nonFilledFieldsMessagePass.style.opacity = "0";
+    }, 1000); // 1000 milisegundos = 1 segundo
   } else {
-    e.target.style.transform = 'rotate(3600deg)'
-    e.target.style.transition = '30s'
-    e.target.style.transitionTimingFunction = 'linear'
-    firebaseCreateClub(registerData)
-    .then(user => {
-      registerData.clubId = user
-      firebaseSaveClubData(registerData)
-      moveForward();
-    })
-    .catch(error => {
-        e.target.style.transform = ''
-        e.target.style.transition = ''
-        e.target.style.transitionTimingFunction = ''
-        alert('El email no es válido o está en uso')
-        currentPosition = currentPosition + 100
-        registerContainer.style.transform = `translateY(${currentPosition}vh)`
-        currentProgressValue = currentProgressValue - 10
-        currentProgress.style.width = `${currentProgressValue}%`
-    })
+    createCoachLoadingIcon.style.visibility = "visible";
+    createCoachOkIcon.style.visibility = "hidden";
+    // TimeOut to make loading appear more time
+    setTimeout(function () {
+      firebaseCreateClub(registerData)
+        .then((user) => {
+          registerData.clubId = user;
+          firebaseSaveClubData(registerData);
+          moveForward();
+        })
+        .catch((error) => {
+          createCoachLoadingIcon.style.visibility = "hidden";
+          createCoachOkIcon.style.visibility = "visible";
+          shakeAnimation(e.target);
+          nonFilledFieldsMessageEmail.style.visibility = "visible";
+          nonFilledFieldsMessageEmail.style.opacity = "1";
+          setTimeout(function () {
+            nonFilledFieldsMessageEmail.style.visibility = "hidden";
+            nonFilledFieldsMessageEmail.style.opacity = "0";
+          }, 1000); // 1000 milisegundos = 1 segundo
+        });
+    }, 1000); // 1000 milisegundos = 1 segundo
   }
 });
 
@@ -208,13 +235,13 @@ function isPassSafe(pass) {
 
 //#endregion
 
-var activableElements = document.querySelectorAll('.activable')
+var activableElements = document.querySelectorAll(".activable");
 
-activableElements.forEach(element => {
-    element.addEventListener('click', () => {
-        element.classList.toggle('active')
-    })
-})
+activableElements.forEach((element) => {
+  element.addEventListener("click", () => {
+    element.classList.toggle("active");
+  });
+});
 
 // #region PhoneNumber
 
@@ -391,157 +418,157 @@ const init = async (countries) => {
 };
 
 const countries = [
-    {
-      name: "Austria",
-      prefix: 43,
-      flag: "at",
-    },
-    {
-      name: "Bélgica",
-      prefix: 32,
-      flag: "be",
-    },
-    {
-      name: "Bulgaria",
-      prefix: 359,
-      flag: "bg",
-    },
-    {
-      name: "Croacia",
-      prefix: 385,
-      flag: "hr",
-    },
-    {
-      name: "Chipre",
-      prefix: 357,
-      flag: "cy",
-    },
-    {
-      name: "República Checa",
-      prefix: 420,
-      flag: "cz",
-    },
-    {
-      name: "Dinamarca",
-      prefix: 45,
-      flag: "dk",
-    },
-    {
-      name: "Estonia",
-      prefix: 372,
-      flag: "ee",
-    },
-    {
-      name: "Finlandia",
-      prefix: 358,
-      flag: "fi",
-    },
-    {
-      name: "Francia",
-      prefix: 33,
-      flag: "fr",
-    },
-    {
-      name: "Alemania",
-      prefix: 49,
-      flag: "de",
-    },
-    {
-      name: "Grecia",
-      prefix: 30,
-      flag: "gr",
-    },
-    {
-      name: "Hungría",
-      prefix: 36,
-      flag: "hu",
-    },
-    {
-      name: "Islandia",
-      prefix: 354,
-      flag: "is",
-    },
-    {
-      name: "República de Irlanda",
-      prefix: 353,
-      flag: "ie",
-    },
-    {
-      name: "Italia",
-      prefix: 39,
-      flag: "it",
-    },
-    {
-      name: "Letonia",
-      prefix: 371,
-      flag: "lv",
-    },
-    {
-      name: "Liechtenstein",
-      prefix: 423,
-      flag: "li",
-    },
-    {
-      name: "Lituania",
-      prefix: 370,
-      flag: "lt",
-    },
-    {
-      name: "Luxemburgo",
-      prefix: 352,
-      flag: "lu",
-    },
-    {
-      name: "Malta",
-      prefix: 356,
-      flag: "mt",
-    },
-    {
-      name: "Países Bajos",
-      prefix: 31,
-      flag: "nl",
-    },
-    {
-      name: "Noruega",
-      prefix: 47,
-      flag: "no",
-    },
-    {
-      name: "Polonia",
-      prefix: 48,
-      flag: "pl",
-    },
-    {
-      name: "Portugal",
-      prefix: 351,
-      flag: "pt",
-    },
-    {
-      name: "Rumania",
-      prefix: 40,
-      flag: "ro",
-    },
-    {
-      name: "Eslovaquia",
-      prefix: 421,
-      flag: "sk",
-    },
-    {
-      name: "Eslovenia",
-      prefix: 386,
-      flag: "si",
-    },
-    {
-      name: "España",
-      prefix: 34,
-      flag: "es",
-    },
-    {
-      name: "Suecia",
-      prefix: 46,
-      flag: "se",
-    },
-  ];
+  {
+    name: "Austria",
+    prefix: 43,
+    flag: "at",
+  },
+  {
+    name: "Bélgica",
+    prefix: 32,
+    flag: "be",
+  },
+  {
+    name: "Bulgaria",
+    prefix: 359,
+    flag: "bg",
+  },
+  {
+    name: "Croacia",
+    prefix: 385,
+    flag: "hr",
+  },
+  {
+    name: "Chipre",
+    prefix: 357,
+    flag: "cy",
+  },
+  {
+    name: "República Checa",
+    prefix: 420,
+    flag: "cz",
+  },
+  {
+    name: "Dinamarca",
+    prefix: 45,
+    flag: "dk",
+  },
+  {
+    name: "Estonia",
+    prefix: 372,
+    flag: "ee",
+  },
+  {
+    name: "Finlandia",
+    prefix: 358,
+    flag: "fi",
+  },
+  {
+    name: "Francia",
+    prefix: 33,
+    flag: "fr",
+  },
+  {
+    name: "Alemania",
+    prefix: 49,
+    flag: "de",
+  },
+  {
+    name: "Grecia",
+    prefix: 30,
+    flag: "gr",
+  },
+  {
+    name: "Hungría",
+    prefix: 36,
+    flag: "hu",
+  },
+  {
+    name: "Islandia",
+    prefix: 354,
+    flag: "is",
+  },
+  {
+    name: "República de Irlanda",
+    prefix: 353,
+    flag: "ie",
+  },
+  {
+    name: "Italia",
+    prefix: 39,
+    flag: "it",
+  },
+  {
+    name: "Letonia",
+    prefix: 371,
+    flag: "lv",
+  },
+  {
+    name: "Liechtenstein",
+    prefix: 423,
+    flag: "li",
+  },
+  {
+    name: "Lituania",
+    prefix: 370,
+    flag: "lt",
+  },
+  {
+    name: "Luxemburgo",
+    prefix: 352,
+    flag: "lu",
+  },
+  {
+    name: "Malta",
+    prefix: 356,
+    flag: "mt",
+  },
+  {
+    name: "Países Bajos",
+    prefix: 31,
+    flag: "nl",
+  },
+  {
+    name: "Noruega",
+    prefix: 47,
+    flag: "no",
+  },
+  {
+    name: "Polonia",
+    prefix: 48,
+    flag: "pl",
+  },
+  {
+    name: "Portugal",
+    prefix: 351,
+    flag: "pt",
+  },
+  {
+    name: "Rumania",
+    prefix: 40,
+    flag: "ro",
+  },
+  {
+    name: "Eslovaquia",
+    prefix: 421,
+    flag: "sk",
+  },
+  {
+    name: "Eslovenia",
+    prefix: 386,
+    flag: "si",
+  },
+  {
+    name: "España",
+    prefix: 34,
+    flag: "es",
+  },
+  {
+    name: "Suecia",
+    prefix: 46,
+    flag: "se",
+  },
+];
 
 init(countries);
 
@@ -663,7 +690,9 @@ const init2 = async (countries2) => {
 
   const attatchListItemEventListeners = () =>
     new Promise((resolve, _) => {
-      const listItems = [...document.getElementsByClassName("js_pn-list-item-2")];
+      const listItems = [
+        ...document.getElementsByClassName("js_pn-list-item-2"),
+      ];
 
       listItems.forEach((item, index, listItems) => {
         item.addEventListener("click", (event) => {
@@ -717,158 +746,157 @@ const init2 = async (countries2) => {
 };
 
 const countries2 = [
-    {
-      name: "Austria",
-      prefix: 43,
-      flag: "at",
-    },
-    {
-      name: "Bélgica",
-      prefix: 32,
-      flag: "be",
-    },
-    {
-      name: "Bulgaria",
-      prefix: 359,
-      flag: "bg",
-    },
-    {
-      name: "Croacia",
-      prefix: 385,
-      flag: "hr",
-    },
-    {
-      name: "Chipre",
-      prefix: 357,
-      flag: "cy",
-    },
-    {
-      name: "República Checa",
-      prefix: 420,
-      flag: "cz",
-    },
-    {
-      name: "Dinamarca",
-      prefix: 45,
-      flag: "dk",
-    },
-    {
-      name: "Estonia",
-      prefix: 372,
-      flag: "ee",
-    },
-    {
-      name: "Finlandia",
-      prefix: 358,
-      flag: "fi",
-    },
-    {
-      name: "Francia",
-      prefix: 33,
-      flag: "fr",
-    },
-    {
-      name: "Alemania",
-      prefix: 49,
-      flag: "de",
-    },
-    {
-      name: "Grecia",
-      prefix: 30,
-      flag: "gr",
-    },
-    {
-      name: "Hungría",
-      prefix: 36,
-      flag: "hu",
-    },
-    {
-      name: "Islandia",
-      prefix: 354,
-      flag: "is",
-    },
-    {
-      name: "República de Irlanda",
-      prefix: 353,
-      flag: "ie",
-    },
-    {
-      name: "Italia",
-      prefix: 39,
-      flag: "it",
-    },
-    {
-      name: "Letonia",
-      prefix: 371,
-      flag: "lv",
-    },
-    {
-      name: "Liechtenstein",
-      prefix: 423,
-      flag: "li",
-    },
-    {
-      name: "Lituania",
-      prefix: 370,
-      flag: "lt",
-    },
-    {
-      name: "Luxemburgo",
-      prefix: 352,
-      flag: "lu",
-    },
-    {
-      name: "Malta",
-      prefix: 356,
-      flag: "mt",
-    },
-    {
-      name: "Países Bajos",
-      prefix: 31,
-      flag: "nl",
-    },
-    {
-      name: "Noruega",
-      prefix: 47,
-      flag: "no",
-    },
-    {
-      name: "Polonia",
-      prefix: 48,
-      flag: "pl",
-    },
-    {
-      name: "Portugal",
-      prefix: 351,
-      flag: "pt",
-    },
-    {
-      name: "Rumania",
-      prefix: 40,
-      flag: "ro",
-    },
-    {
-      name: "Eslovaquia",
-      prefix: 421,
-      flag: "sk",
-    },
-    {
-      name: "Eslovenia",
-      prefix: 386,
-      flag: "si",
-    },
-    {
-      name: "España",
-      prefix: 34,
-      flag: "es",
-    },
-    {
-      name: "Suecia",
-      prefix: 46,
-      flag: "se",
-    },
-  ];
-  
+  {
+    name: "Austria",
+    prefix: 43,
+    flag: "at",
+  },
+  {
+    name: "Bélgica",
+    prefix: 32,
+    flag: "be",
+  },
+  {
+    name: "Bulgaria",
+    prefix: 359,
+    flag: "bg",
+  },
+  {
+    name: "Croacia",
+    prefix: 385,
+    flag: "hr",
+  },
+  {
+    name: "Chipre",
+    prefix: 357,
+    flag: "cy",
+  },
+  {
+    name: "República Checa",
+    prefix: 420,
+    flag: "cz",
+  },
+  {
+    name: "Dinamarca",
+    prefix: 45,
+    flag: "dk",
+  },
+  {
+    name: "Estonia",
+    prefix: 372,
+    flag: "ee",
+  },
+  {
+    name: "Finlandia",
+    prefix: 358,
+    flag: "fi",
+  },
+  {
+    name: "Francia",
+    prefix: 33,
+    flag: "fr",
+  },
+  {
+    name: "Alemania",
+    prefix: 49,
+    flag: "de",
+  },
+  {
+    name: "Grecia",
+    prefix: 30,
+    flag: "gr",
+  },
+  {
+    name: "Hungría",
+    prefix: 36,
+    flag: "hu",
+  },
+  {
+    name: "Islandia",
+    prefix: 354,
+    flag: "is",
+  },
+  {
+    name: "República de Irlanda",
+    prefix: 353,
+    flag: "ie",
+  },
+  {
+    name: "Italia",
+    prefix: 39,
+    flag: "it",
+  },
+  {
+    name: "Letonia",
+    prefix: 371,
+    flag: "lv",
+  },
+  {
+    name: "Liechtenstein",
+    prefix: 423,
+    flag: "li",
+  },
+  {
+    name: "Lituania",
+    prefix: 370,
+    flag: "lt",
+  },
+  {
+    name: "Luxemburgo",
+    prefix: 352,
+    flag: "lu",
+  },
+  {
+    name: "Malta",
+    prefix: 356,
+    flag: "mt",
+  },
+  {
+    name: "Países Bajos",
+    prefix: 31,
+    flag: "nl",
+  },
+  {
+    name: "Noruega",
+    prefix: 47,
+    flag: "no",
+  },
+  {
+    name: "Polonia",
+    prefix: 48,
+    flag: "pl",
+  },
+  {
+    name: "Portugal",
+    prefix: 351,
+    flag: "pt",
+  },
+  {
+    name: "Rumania",
+    prefix: 40,
+    flag: "ro",
+  },
+  {
+    name: "Eslovaquia",
+    prefix: 421,
+    flag: "sk",
+  },
+  {
+    name: "Eslovenia",
+    prefix: 386,
+    flag: "si",
+  },
+  {
+    name: "España",
+    prefix: 34,
+    flag: "es",
+  },
+  {
+    name: "Suecia",
+    prefix: 46,
+    flag: "se",
+  },
+];
 
 init2(countries2);
 
@@ -877,72 +905,68 @@ init2(countries2);
 // #region RegisterLogic
 
 var registerData = {
-  clubName: '',
-  clubCountry: '',
-  clubCity: '',
+  clubName: "",
+  clubCountry: "",
+  clubCity: "",
   clubSports: [],
-  clubField: '',
-  clubState: '',
-  clubConsulting: '',
-  clubEmail: '',
-  clubNumber: '',
-  clubPassword: '',
-  clubId: ''
-}
+  clubField: "",
+  clubState: "",
+  clubConsulting: "",
+  clubEmail: "",
+  clubNumber: "",
+  clubPassword: "",
+  clubId: "",
+};
 
 // registerData
 
-var clubName = document.querySelector('#name-container > input')
-var clubCountry = document.querySelector('#js_selected-flag2')
-var clubCity = document.querySelector('#city-container > input')
-var clubSports = document.querySelectorAll('.data-sport-option')
-var clubField = document.querySelectorAll('.data-fields-option')
-var clubState = document.querySelectorAll('.data-state-option')
-var clubConsulting = document.querySelectorAll('.data-consulting-option')
-var clubEmail = document.querySelector('#email-container > input')
-var clubNumber = document.querySelector('#js_input-phonenumber')
-var clubPrefix = document.querySelector('#js_number-prefix')
-var clubPassword = document.querySelector('#pass-container > input')
+var clubName = document.querySelector("#name-container > input");
+var clubCountry = document.querySelector("#js_selected-flag2");
+var clubCity = document.querySelector("#city-container > input");
+var clubSports = document.querySelectorAll(".data-sport-option");
+var clubField = document.querySelectorAll(".data-fields-option");
+var clubState = document.querySelectorAll(".data-state-option");
+var clubConsulting = document.querySelectorAll(".data-consulting-option");
+var clubEmail = document.querySelector("#email-container > input");
+var clubNumber = document.querySelector("#js_input-phonenumber");
+var clubPrefix = document.querySelector("#js_number-prefix");
+var clubPassword = document.querySelector("#pass-container > input");
 
-var additionalSport = document.querySelector('#additional-sport')
-
-
+var additionalSport = document.querySelector("#additional-sport");
 
 // logic not to select various at the time
-clubField.forEach(field => {
-  field.addEventListener('click', () => {
-    clubField.forEach(field => {
-      field.classList.remove('active')
-    })
-    field.classList.toggle('active')
-  })
-})
+clubField.forEach((field) => {
+  field.addEventListener("click", () => {
+    clubField.forEach((field) => {
+      field.classList.remove("active");
+    });
+    field.classList.toggle("active");
+  });
+});
 
-clubState.forEach(state => {
-  state.addEventListener('click', () => {
-    clubState.forEach(state => {
-      state.classList.remove('active')
-    })
-    state.classList.toggle('active')
-  })
-})
+clubState.forEach((state) => {
+  state.addEventListener("click", () => {
+    clubState.forEach((state) => {
+      state.classList.remove("active");
+    });
+    state.classList.toggle("active");
+  });
+});
 
-clubConsulting.forEach(consulting => {
-  consulting.addEventListener('click', () => {
-    clubConsulting.forEach(consulting => {
-      consulting.classList.remove('active')
-    })
-    consulting.classList.toggle('active')
-  })
-})
+clubConsulting.forEach((consulting) => {
+  consulting.addEventListener("click", () => {
+    clubConsulting.forEach((consulting) => {
+      consulting.classList.remove("active");
+    });
+    consulting.classList.toggle("active");
+  });
+});
 
+var lastNextButton = document.querySelector("#next-conditional-pass");
 
-var lastNextButton = document.querySelector('#next-conditional-pass')
-
-var writeRegisterData = function() {
-
+var writeRegisterData = function () {
   // Club Name
-  registerData.clubName = clubName.value
+  registerData.clubName = clubName.value;
 
   // Club Country
   const countryRegex = /\/([a-zA-Z]+)\.png$/;
@@ -950,60 +974,60 @@ var writeRegisterData = function() {
 
   if (coincidencia) {
     const parteDeseada = coincidencia[1];
-    registerData.clubCountry = parteDeseada
+    registerData.clubCountry = parteDeseada;
   } else {
-    registerData.clubCountry = ''
+    registerData.clubCountry = "";
   }
 
   // Club City
-  registerData.clubCity = clubCity.value
+  registerData.clubCity = clubCity.value;
 
   // Club Sports
-  registerData.clubSports.length = 0
-  clubSports.forEach(sport => {
-    if (sport.classList.contains('active')) {
-      registerData.clubSports.push(sport.getAttribute("data-sport"))
+  registerData.clubSports.length = 0;
+  clubSports.forEach((sport) => {
+    if (sport.classList.contains("active")) {
+      registerData.clubSports.push(sport.getAttribute("data-sport"));
     }
-  })
-  if (!(additionalSport.value === '')) {
-    registerData.clubSports.push(additionalSport.value)
+  });
+  if (!(additionalSport.value === "")) {
+    registerData.clubSports.push(additionalSport.value);
   }
 
   // Club Fields
-  clubField.forEach(field => {
-    if (field.classList.contains('active')) {
-      registerData.clubField = field.getAttribute("data-fields")
+  clubField.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.clubField = field.getAttribute("data-fields");
     }
-  })
+  });
 
   // Club Trainer
-  clubState.forEach(trainer => {
-    if (trainer.classList.contains('active')) {
-      registerData.clubState = trainer.getAttribute("data-state")
+  clubState.forEach((trainer) => {
+    if (trainer.classList.contains("active")) {
+      registerData.clubState = trainer.getAttribute("data-state");
     }
-  })
+  });
 
   // Club Consulting
-  clubConsulting.forEach(consulting => {
-    if (consulting.classList.contains('active')) {
-      registerData.clubConsulting = consulting.getAttribute("data-state")
+  clubConsulting.forEach((consulting) => {
+    if (consulting.classList.contains("active")) {
+      registerData.clubConsulting = consulting.getAttribute("data-state");
     }
-  })
+  });
 
   // Club Email
-  registerData.clubEmail = clubEmail.value
+  registerData.clubEmail = clubEmail.value;
 
   // Club Phone
-  registerData.clubNumber = `${clubPrefix.value} ${clubNumber.value}`
+  registerData.clubNumber = `${clubPrefix.value} ${clubNumber.value}`;
 
   // Club Password
-  registerData.clubPassword = clubPassword.value
+  registerData.clubPassword = clubPassword.value;
 
-  console.log(registerData)
-}
+  // console.log(registerData)
+};
 
-lastNextButton.addEventListener('click', () => {
-  writeRegisterData()
-})
+lastNextButton.addEventListener("click", () => {
+  writeRegisterData();
+});
 
 // #endregion

@@ -31,8 +31,10 @@ const auth = getAuth()
 
 
 function firebaseCreateClub(registerData) {
+    console.log(registerData)
     console.log(registerData.clubEmail)
     console.log(registerData.clubPassword)
+    console.log(registerData.clubNumber)
 	return new Promise(function (resolve, reject) {
 		createUserWithEmailAndPassword(auth, registerData.clubEmail, registerData.clubPassword)
 			.then((userCredential) => {

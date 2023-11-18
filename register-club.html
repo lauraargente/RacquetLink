@@ -180,11 +180,6 @@ Estructura general:
             <div id="title">
                 Registro Club
             </div>
-            <div class="register-element-back">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-            </div>
             <div class="register-element-content">
                 <div class="register-element-left">
                     <div class="register-element-number">
@@ -193,7 +188,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¡Hola! ¿Cuál es el nombre de tu proyecto o club?
+                        Nombre del club
                     </div>
                     <div id="name-container" class="textinput-container">
                         <div id="name-icon" class="textinput-icon">
@@ -201,7 +196,7 @@ Estructura general:
                                 <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
-                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Club Monteverde">
+                        <input type="text" class="register-element-textanswer textinput-text" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Club Monteverde">
                         </input>
                     </div>
                 </div>
@@ -211,6 +206,8 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
+                        <div class="non-filled-fields-message" style="visibility: hidden; opacity: 0; transition: 1s;">Hay campos obligatorios sin rellenar</div>
+
         </div>
         <div class="register-element" id="register-location">
             <div class="register-element-back">
@@ -226,7 +223,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿Dónde se encuentra el proyecto?
+                        País
                     </div>
                     <div class="pn-select" id="js_pn-select2" style="--prefix-length: 2">
                         <!-- Selected prefix -->
@@ -264,6 +261,9 @@ Estructura general:
                         </div>
                         </div>
                     </div>
+                    <div class="register-element-question">
+                        Ciudad sede
+                    </div>
                     <div id="city-container" class="textinput-container">
                         <div id="city-icon" class="textinput-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -285,6 +285,8 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
+                        <div class="non-filled-fields-message" style="visibility: hidden; opacity: 0; transition: 1s;">Hay campos obligatorios sin rellenar</div>
+
         </div>
         <div class="register-element" id="register-sports">
             <div class="register-element-back">
@@ -300,7 +302,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿Qué deportes ofrece u ofrecerá el proyecto?
+                        Oferta en deportes
                     </div>
                     <div class="register-checkbox-wrapper">
                         <div class="register-checkbox-container activable data-sport-option" data-sport="tenis">
@@ -340,6 +342,8 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
+                        <div class="non-filled-fields-message" style="visibility: hidden; opacity: 0; transition: 1s;">Hay campos obligatorios sin rellenar</div>
+
         </div>
         <div class="register-element" id="register-sports">
             <div class="register-element-back">
@@ -355,7 +359,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿De cuántas pistas dispone en total?
+                        Número de pistas
                     </div>
                     <div class="register-checkbox-wrapper">
                         <div class="register-checkbox-container activable data-fields-option" data-fields="low">
@@ -404,6 +408,8 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
+                        <div class="non-filled-fields-message" style="visibility: hidden; opacity: 0; transition: 1s;">Hay campos obligatorios sin rellenar</div>
+
         </div>
         <div class="register-element" id="register-trainers">
             <div class="register-element-back">
@@ -419,7 +425,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿Necesitas entrenadores?
+                        ¿Necesita el club entrenadores?
                     </div>
                     <div class="register-checkbox-wrapper entrenadores">
                         <div class="register-checkbox-container activable data-state-option" data-state="yes">
@@ -451,6 +457,8 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
+                        <div class="non-filled-fields-message" style="visibility: hidden; opacity: 0; transition: 1s;">Hay campos obligatorios sin rellenar</div>
+
         </div>
         <div class="register-element" id="register-consulting">
             <div class="register-element-back">
@@ -466,7 +474,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿Te interesa nuestro servicio de consultoría?
+                        ¿Le interesa al club nuestro servicio de consultoría?
                     </div>
                     <div class="register-checkbox-wrapper entrenadores">
                         <div class="register-checkbox-container activable data-consulting-option" data-state="yes">
@@ -498,6 +506,8 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
+                        <div class="non-filled-fields-message" style="visibility: hidden; opacity: 0; transition: 1s;">Hay campos obligatorios sin rellenar</div>
+
         </div>
         <div class="register-element" id="register-phone">
             <div class="register-element-back">
@@ -513,7 +523,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¡Ya casi está! ¿Cuál es tu número de contacto?
+                        Número de contacto
                     </div>
                     <div class="pn-select" id="js_pn-select" style="--prefix-length: 2">
                         <!-- Selected prefix -->
@@ -558,39 +568,8 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-        </div>
-        <div class="register-element" id="register-email">
-            <div class="register-element-back">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 20V4M12 4L6 10M12 4L18 10" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-            </div>
-            <div class="register-element-content">
-                <div class="register-element-left">
-                    <div class="register-element-number">
-                        8
-                    </div>
-                </div>
-                <div class="register-element-right">
-                    <div class="register-element-question">
-                        ¿Y tu email de contacto?
-                    </div>
-                    <div id="email-container" class="textinput-container">
-                        <div id="email-icon" class="textinput-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
-                        </div>
-                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="tuclub@gmail.com">
-                        </input>
-                    </div>
-                </div>
-            </div>
-            <div id="next-conditional-email" class="register-element-next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-            </div>
+                        <div class="non-filled-fields-message" style="visibility: hidden; opacity: 0; transition: 1s;">Hay campos obligatorios sin rellenar</div>
+
         </div>
         <div class="register-element" id="register-pass">
             <div class="register-element-back">
@@ -606,7 +585,19 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        Y por último... Elige una contraseña segura
+                        Email
+                    </div>
+                    <div id="email-container" class="textinput-container">
+                        <div id="email-icon" class="textinput-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                        </div>
+                        <input type="text" class="register-element-textanswer textinput-text" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="tuclub@gmail.com">
+                        </input>
+                    </div>
+                    <div class="register-element-question">
+                        Contraseña
                     </div>
                     <div id="pass-container" class="textinput-container">
                         <div id="pass-icon" class="textinput-icon">
@@ -614,16 +605,25 @@ Estructura general:
                                 <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
-                        <input type="password" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;">
+                        <input type="password" class="register-element-textanswer textinput-text" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;">
                         </input>
                     </div>
                 </div>
             </div>
             <div style="color: #AAA; text-align: center; max-width: 600px;">La contraseña debe contener al menos ocho caracteres, una minúscula, una mayúscula y un número.</div>
-            <div id="next-conditional-pass" class="register-element-next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <div id="next-conditional-pass" class="register-element-next" style="width: auto; position: relative; padding: 8px 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" style="position: absolute;" id="create-coach-ok-icon">
                     <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto; visibility: hidden;" width="24px" height="24px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" id="create-coach-loading-icon">
+                    <circle cx="50" cy="50" fill="none" stroke="white" stroke-width="8" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                      <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+                    </circle>
+                    </svg>
+            </div>
+            <div style="position: relative; width: 400px; max-width: 100%; display: flex; justify-content: center;">
+                <div class="non-filled-fields-message-email" style="visibility: hidden; opacity: 0; transition: 1s; position: absolute; color: #025B7B;">Email no válido o en uso</div>
+                <div class="non-filled-fields-message-pass" style="visibility: hidden; opacity: 0; transition: 1s; position: absolute; color: #025B7B;">La contraseña no cumple los requisitos</div>
             </div>
         </div>
         <div class="register-element" id="register-finish">
