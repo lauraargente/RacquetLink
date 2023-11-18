@@ -226,7 +226,7 @@
 /* ――――――――― Media Querys - 1200px――――――――― */
 /* Descripción: Estilos para tablet */
 
-@media  (max-width:1200px) {
+@media  (max-width:800px) {
     
     .Header{
         padding: 1.25rem 2rem;
