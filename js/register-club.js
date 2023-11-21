@@ -210,6 +210,7 @@ nextConditionalPassword.addEventListener("click", (e) => {
           moveForward();
         })
         .catch((error) => {
+          console.log(error)
           createCoachLoadingIcon.style.visibility = "hidden";
           createCoachOkIcon.style.visibility = "visible";
           shakeAnimation(e.target);

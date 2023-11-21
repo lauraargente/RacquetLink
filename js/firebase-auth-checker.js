@@ -3,6 +3,11 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase
 
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, sendEmailVerification, updateProfile, sendPasswordResetEmail} from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js'
 
+// var headerRegister = document.querySelector('#register-button')
+var headerLogin = document.querySelector('#login-button')
+var headerLogged = document.querySelector('#logged-user')
+var headerLoggedName = document.querySelector('#logged-user-text')
+
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
@@ -20,18 +25,58 @@ const app = initializeApp(firebaseConfig);
 // Initialize Authenticator
 const auth = getAuth()
 
-var loginTestButton = document.querySelector('body > header > nav > ul > li:nth-child(6) > a')
+checkIfStoredUserCookie();
 
 onAuthStateChanged(auth, (user) => {
+  console.log('test')
   if (user) {
-    console.log(user)
-    loginTestButton.innerHTML = user.email
-    loginTestButton.style.backgroundColor = 'rgba(0,0,0,0)'
-    loginTestButton.style.boxShadow = 'none'
-    loginTestButton.style.color = 'black'
+    setCookie('loggedUser', user.displayName, 30);
     // ...
   } else {
     // User is signed out
     // ...
+    headerLogged.style.display = 'none'
+    // headerRegister.style.display = 'flex'
+    headerLogin.style.display = 'flex'
   }
 });
+
+function setCookie(nombre, valor, diasExpiracion) {
+  console.log('settingcookie')
+  const fecha = new Date();
+  fecha.setTime(fecha.getTime() + (diasExpiracion * 24 * 60 * 60 * 1000));
+  const expiracion = "expires=" + fecha.toUTCString();
+  document.cookie = nombre + "=" + valor + ";" + expiracion + ";path=/";
+}
+
+function checkIfStoredUserCookie() {
+  const nombreCookie = "loggedUser";
+  const valorCookie = getCookie(nombreCookie); // Suponiendo que ya tienes una función getCookie definida
+
+  if (valorCookie !== null) {
+    setUserNameOnHeader(valorCookie)
+  } else {
+    setUserNameOnHeader(valorCookie)
+
+  }
+}
+
+function getCookie(nombre) {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(nombre + '=')) {
+      return cookie.substring(nombre.length + 1);
+    }
+  }
+  return null;
+}
+
+function setUserNameOnHeader(displayName) {
+  console.log(displayName)
+  console.log(headerLogged)
+  headerLogged.style.display = 'flex'
+  headerLoggedName.innerHTML = displayName
+  // headerRegister.style.display = 'none'
+  headerLogin.style.display = 'none'
+} 

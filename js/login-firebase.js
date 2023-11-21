@@ -37,3 +37,20 @@ function firebaseLogIn(email, password) {
 
 // Making fuction global
 export { firebaseLogIn }
+
+
+// --------------------------------------------------------------- PASSWORD RESET
+function firebaseResetPassword(email) {
+	return new Promise(function (resolve, reject) {
+        sendPasswordResetEmail(auth, email)
+        .then(() => {
+            resolve()
+        })
+        .catch((error) => {
+            reject(error)
+        });
+    })
+}
+
+// Get user data
+export { firebaseResetPassword }

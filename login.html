@@ -13,7 +13,8 @@ Estructura general:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Log In</title>
+    <link rel="icon" href="assets/RacquetLink-19.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -141,8 +142,19 @@ Estructura general:
                     <li class="Header-li">
                         <a href="news.html" class="Header-item" aria-label="English">EN</a>
                     </li>
-                    <li class="Header-li">
+                    <li class="Header-li" style="display: none;" id="login-button">
                         <a href="login.html" class="Header-button" aria-label="Login">Log in</a>
+                    </li>
+                    <li class="Header-li">
+                        <a href="login.html" id="logged-user" class="Header-item" style="display: flex; justify-content: center; align-items: center; gap: 1rem;" aria-label="Profile">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="9.24004" stroke="#025B7B" stroke-width="1"/>
+                                <path d="M6 5C5.03796 9.16002 6.20738 10.2033 7.26344 13C8.65933 16.6967 6.7197 17.6 6.02657 19.2" stroke="#025B7B" stroke-width="1"/>
+                                <path d="M13.5 21C12.5001 18 11.9999 16 15.5 13C17.3914 11.3788 20.0001 10 20.0001 7.5" stroke="#025B7B" stroke-width="1"/>
+                              </svg> -->
+                            <div id="logged-user-text"></div>
+
+                        </a>
                     </li>
                 </ul>  
             </nav>
@@ -176,11 +188,6 @@ Estructura general:
                 Inicio de sesión
             </div>
             <div class="login-element-content">
-                <div class="login-element-left">
-                    <div class="login-element-number">
-                        <!-- 11 -->
-                    </div>
-                </div>
                 <div class="login-element-right">
                     <div class="login-element-question-smaller">
                         Email
@@ -188,10 +195,10 @@ Estructura general:
                     <div id="email-container" class="textinput-container">
                         <div id="email-icon" class="textinput-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
-                        <input type="text" class="login-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="coach-or-club@gmail.com">
+                        <input type="text" class="login-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="tuemail@gmail.com">
                         </input>
                     </div>
                     <div class="login-element-question-smaller">
@@ -200,13 +207,14 @@ Estructura general:
                     <div id="pass-container" class="textinput-container" style="margin-bottom: 0.6rem;">
                         <div id="pass-icon" class="textinput-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 18 22" fill="none">
-                                <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
                         <input type="password" class="login-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="&#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183;">
                         </input>
                     </div>
-                    <div style="color: #025B7B; text-align: left; max-width: 600px; font-size: 0.9rem;">He olvidado mi contraseña</div>
+                    <div id="reset-password">He olvidado mi contraseña</div>
+                    <div id="reset-password-message"></div>
                 </div>
             </div>
             <div id="next-conditional-pass" class="login-element-next" style="width: auto; position: relative; padding: 8px 10px;">
@@ -219,7 +227,7 @@ Estructura general:
                     </circle>
                     </svg>
             </div>
-            <div style="color: black; text-align: center; max-width: 300px;">¿No tienes una cuenta? Regístrate <span style="text-decoration: underline; color: #025B7B;"> como coach</span> o <span style="text-decoration: underline;  color: #025B7B;">como club</span></div>
+            <div style="color: #AAA; text-align: center; max-width: 300px; line-height: 132%;">¿No tienes una cuenta? Regístrate <div style="display: flex; justify-content: center; gap: 0.8rem;"><a href="register-coach.html" class="login-toregister"> como coach</a> o <a href="register-club.html"  class="login-toregister" >como club</a></div></div>
             <div style="position: relative; width: 400px; max-width: 100%; display: flex; justify-content: center;">
                 <div class="non-filled-fields-message-email" style="visibility: hidden; opacity: 0; transition: 1s; position: absolute; color: #025B7B;">Email no válido o en uso</div>
                 <div class="non-filled-fields-message-pass" style="visibility: hidden; opacity: 0; transition: 1s; position: absolute; color: #025B7B;">La contraseña no cumple los requisitos</div>
@@ -407,8 +415,6 @@ Estructura general:
             </div>
         </div>
     </div>
-
-    <div class="Main-cursor"></div>
 
     <script src="js/login.js" type="module"></script>
     <script src="js/firebase-auth-checker.js" type="module"></script>

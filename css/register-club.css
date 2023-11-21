@@ -138,7 +138,7 @@ body {
   height: 3rem;
   border-radius: 100px;
   padding: 0.5rem;
-  border: 2px solid black;
+  border: 1px solid var(--color-primary);
   margin: 2rem auto;
   font-weight: 400;
 }
@@ -180,10 +180,12 @@ body {
   gap: 1rem;
   color: var(--border-color);
   border: 1px solid var(--border-color);
+  border-color: var(--dropdown-border-color);
   border-radius: 10rem;
   padding: 0.5rem 1.5rem;
 }
 .register-checkbox-container.active {
+  border-color: var(--color-primary);
   color: #025b7b;
   font-weight: 400;
   background-color: var(--dropdown-trigger-background-color);
@@ -327,7 +329,7 @@ input {
   position: relative;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--border-color);
+  border-color: var(--dropdown-border-color);
   display: grid;
   grid-template-columns: 4.5em 1fr;
   border-radius: var(--border-radius);
@@ -550,7 +552,7 @@ input {
   position: relative;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--border-color);
+  border-color: var(--dropdown-border-color);
   display: grid;
   grid-template-columns: 4.5em 1fr;
   border-radius: var(--border-radius);

@@ -37,16 +37,18 @@ function firebaseCreateClub(registerData) {
     console.log(registerData.clubNumber)
 	return new Promise(function (resolve, reject) {
 		createUserWithEmailAndPassword(auth, registerData.clubEmail, registerData.clubPassword)
-			.then((userCredential) => {
-                // Get user Id
-                const user = userCredential.user.uid;
-				// Send Email Verification
-                sendEmailVerification(auth.currentUser).then( () => {
-				// Signed in
-				resolve(user)
-                })
-
-			})
+        .then((userCredential) => {
+            // Update relevant data
+            updateProfile(userCredential.user, {displayName : registerData.clubName}).then(() => {
+              // Get user Id
+              const user = userCredential.user.uid;
+              // Send Email Verification
+              sendEmailVerification(auth.currentUser).then(() => {
+                // Signed in
+                resolve(user);
+              });
+            });
+          })
 			.catch((error) => {
 				// console.log(error.code)
 				reject(error.message)
