@@ -53,6 +53,9 @@ loginButton.addEventListener("click", () => {
       .catch((error) => {
         loginLoadingIcon.style.visibility = "hidden";
         loginOkIcon.style.visibility = "visible";
+        resetPasswordMessage.classList.add("displayed");
+        resetPasswordMessage.innerHTML =
+          "Email o contraseña incorrectos";
       });
   }, 1000);
 });

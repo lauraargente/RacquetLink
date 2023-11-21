@@ -163,12 +163,16 @@ var shakeAnimation = function (element) {
   });
 
   nonFilledFieldsMessage.forEach((message) => {
-    message.style.visibility = "visible";
-    message.style.opacity = "1";
+    // message.style.visibility = "visible";
+    // message.style.opacity = "1";
+    message.classList.add('displayed')
+
     setTimeout(function () {
-      message.style.visibility = "hidden";
-      message.style.opacity = "0";
-    }, 1000); // 1000 milisegundos = 1 segundo
+      // message.style.visibility = "hidden";
+      // message.style.opacity = "0";
+      message.classList.add('displayed')
+
+    }, 2000); // 1000 milisegundos = 1 segundo
   });
 };
 
@@ -691,24 +695,30 @@ nextConditionalPass.addEventListener("click", (e) => {
           createCoachLoadingIcon.style.visibility = "hidden";
           createCoachOkIcon.style.visibility = "visible";
           shakeAnimation(e.target);
-          nonFilledFieldsMessageEmail.style.visibility = "visible";
-          nonFilledFieldsMessageEmail.style.opacity = "1";
+          // nonFilledFieldsMessageEmail.style.visibility = "visible";
+          // nonFilledFieldsMessageEmail.style.opacity = "1";
+          nonFilledFieldsMessageEmail.classList.add('displayed')
+
           setTimeout(function () {
-            nonFilledFieldsMessageEmail.style.visibility = "hidden";
-            nonFilledFieldsMessageEmail.style.opacity = "0";
-          }, 1000); // 1000 milisegundos = 1 segundo
+            // nonFilledFieldsMessageEmail.style.visibility = "hidden";
+            // nonFilledFieldsMessageEmail.style.opacity = "0";
+            nonFilledFieldsMessageEmail.classList.remove('displayed')
+
+          }, 2000); // 1000 milisegundos = 1 segundo
         });
     }, 1000); // 1000 milisegundos = 1 segundo
 
   } else {
     // If non valid password, display error
     shakeAnimation(e.target);
-    nonFilledFieldsMessagePass.style.visibility = "visible";
-    nonFilledFieldsMessagePass.style.opacity = "1";
+    // nonFilledFieldsMessagePass.style.visibility = "visible";
+    // nonFilledFieldsMessagePass.style.opacity = "1";
+    nonFilledFieldsMessagePass.classList.add('displayed')
     setTimeout(function () {
-      nonFilledFieldsMessagePass.style.visibility = "hidden";
-      nonFilledFieldsMessagePass.style.opacity = "0";
-    }, 1000); // 1000 milisegundos = 1 segundo
+      // nonFilledFieldsMessagePass.style.visibility = "hidden";
+      // nonFilledFieldsMessagePass.style.opacity = "0";
+      nonFilledFieldsMessagePass.classList.remove('displayed')
+    }, 2000); // 1000 milisegundos = 1 segundo
   }
 });
 

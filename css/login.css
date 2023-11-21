@@ -131,16 +131,6 @@ body {
   color: #025b7b;
 }
 
-#logged-user {
-  display: none;
-  font-weight: 400;
-  color: #025b7b;
-  background-color: var(--dropdown-trigger-hover-background-color);
-  background-color: var(--dropdown-trigger-background-color);
-  padding: 0.7rem 2rem;
-  border-radius: 10rem;
-}
-
 #reset-password {
   color: #025b7b;
   text-align: left;
@@ -159,14 +149,14 @@ body {
   opacity: 0;
   transform: translateY(-1rem);
   text-align: center;
-  color: black;
+  color: #996B71;
   width: -moz-max-content;
   width: max-content;
   font-size: 0.9rem;
   margin: 0.8rem auto 0 auto;
   padding: 0.4rem 1.2rem;
   border-radius: 0.6rem;
-  background-color: #c6f1ea;
+  background-color: #FFC0B7;
 }
 #reset-password-message.displayed {
   visibility: visible;

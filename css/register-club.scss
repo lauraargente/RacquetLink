@@ -174,8 +174,74 @@ body {
     }
 }
 
+// .non-filled-fields-message {
+//   color: #025B7B;
+// }
+
 .non-filled-fields-message {
-  color: #025B7B;
+  visibility: hidden;
+  // height: 0;
+  opacity: 0;
+  transform: translateY(-1rem);
+  text-align: center;
+  color: #996B71;
+  width: max-content;
+  font-size: 0.9rem;
+  margin: 0.8rem auto 0 auto;
+  padding: 0.4rem 1.2rem;
+  border-radius: 0.6rem;
+  background-color: #FFC0B7;
+  transition: 1s;
+  &.displayed {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+}
+
+
+.non-filled-fields-message-email {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1rem);
+  text-align: center;
+  color: #996B71;
+  width: max-content;
+  font-size: 0.9rem;
+  margin: 0.8rem auto 0 auto;
+  padding: 0.4rem 1.2rem;
+  border-radius: 0.6rem;
+  background-color: #FFC0B7;
+  transition: 1s;
+
+  &.displayed {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+}
+
+.non-filled-fields-message-pass {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1rem);
+  text-align: center;
+  color: #996B71;
+  width: max-content;
+  font-size: 0.9rem;
+  margin: 0.8rem auto 0 auto;
+  padding: 0.4rem 1.2rem;
+  border-radius: 0.6rem;
+  background-color: #FFC0B7;
+  transition: 1s;
+
+  &.displayed {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .register-checkbox-container {
