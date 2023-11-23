@@ -170,7 +170,7 @@ var shakeAnimation = function (element) {
     setTimeout(function () {
       // message.style.visibility = "hidden";
       // message.style.opacity = "0";
-      message.classList.add('displayed')
+      message.classList.remove('displayed')
 
     }, 2000); // 1000 milisegundos = 1 segundo
   });
