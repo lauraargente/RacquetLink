@@ -62,7 +62,7 @@ function firebaseCreateCoach(registerData) {
       .then((userCredential) => {
         // Update relevant data
         updateProfile(auth.currentUser, {
-          displayName: registerData.userName
+          displayName: `Coach ${registerData.userName}`,
         }).then(() => {
           // Get user Id
           const user = userCredential.user.uid;
@@ -113,12 +113,12 @@ var firebaseSaveCoachData = (registerData) => {
         userWeeklyHours: registerData.userWeeklyHours,
         userPreferredLevel: registerData.userPreferredLevel,
         userAvailability: registerData.userAvailability,
-        userMobilityPossibility: registerData.userMobilityPossibility,
+        userMobilityContinents: registerData.userMobilityContinents,
         userOportunityType: registerData.userOportunityType,
         userExpectedSalary: registerData.userExpectedSalary,
         userPhoneNumber: registerData.userPhoneNumber,
         userLinkedin: registerData.userLinkedin,
-        userInsta: registerData.userInstagram,
+        userInsta: registerData.userInsta,
         coachId: registerData.coachId,
         registerDate: registerData.registerDate,
       });

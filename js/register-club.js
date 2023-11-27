@@ -1,5 +1,6 @@
 import { firebaseCreateClub } from "./register-club-firebase.js";
 import { firebaseSaveClubData } from "./register-club-firebase.js";
+import { setUserNameOnHeader } from "./firebase-auth-checker.js";
 
 var allTextInputs = document.querySelectorAll(".textinput-text");
 var specialTextInput = document.querySelector("#additional-sport");
@@ -260,8 +261,9 @@ nextConditionalPassword.addEventListener("click", (e) => {
       firebaseCreateClub(registerData)
         .then((user) => {
           registerData.clubId = user;
-          firebaseSaveClubData(registerData);
+          firebaseSaveClubData(registerData).then;
           moveForward();
+          setUserNameOnHeader(`Club ${registerData.clubName}`, registerData.clubId)
         })
         .catch((error) => {
           console.log(error)

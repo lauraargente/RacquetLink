@@ -30,9 +30,9 @@ checkIfStoredUserCookie();
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log(user)
     setCookie('loggedUser', user.displayName, 30);
-    setCookieId('loggedUserId', user.uid, 30);
+    setCookie('loggedUserId', user.uid, 30);
+    checkIfStoredUserCookie();
   } else {
     // User is signed out
     // ...
@@ -42,16 +42,9 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-function setCookieId(nombre, valor, diasExpiracion) {
-  console.log('settingcookie')
-  const fecha = new Date();
-  fecha.setTime(fecha.getTime() + (diasExpiracion * 24 * 60 * 60 * 1000));
-  const expiracion = "expires=" + fecha.toUTCString();
-  document.cookie = nombre + "=" + valor + ";" + expiracion + ";path=/";
-}
-
 function setCookie(nombre, valor, diasExpiracion) {
-  console.log('settingcookie')
+  console.log(nombre)
+  console.log(valor)
   const fecha = new Date();
   fecha.setTime(fecha.getTime() + (diasExpiracion * 24 * 60 * 60 * 1000));
   const expiracion = "expires=" + fecha.toUTCString();
@@ -82,13 +75,19 @@ function getCookie(nombre) {
 }
 
 function setUserNameOnHeader(displayName, displayNameId) {
+
+  var typeOfUser = displayName.trim().split(' ')[0]
+  console.log(typeOfUser)
+  typeOfUser === 'Coach' ? headerLogged.href = `/profile-coach.html?id=${displayNameId}` : headerLogged.href = `/profile-club.html?id=${displayNameId}`
   headerLogged.style.display = 'flex'
-  headerLogged.href = `/profile-coach.html?id=${displayNameId}`
   headerLoggedName.innerHTML = displayName
+  headerLoggedName.innerHTML = displayName.replace(/^\w+\s*/, '')
+
   // headerRegister.style.display = 'none'
   headerLogin.style.display = 'none'
-} 
+}
 
+export {setUserNameOnHeader}
 // function checkIfCookieIdMatchesURL(valorCookieId) {
 // const url = window.location.href;
 

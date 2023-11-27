@@ -1,6 +1,7 @@
 // Import firebase scripts
 import { firebaseCreateCoach } from "./register-coach-firebase.js";
 import { firebaseSaveCoachData } from "./register-coach-firebase.js";
+import { setUserNameOnHeader } from "./firebase-auth-checker.js";
 
 var registerContainer = document.querySelector("#register-container");
 var currentProgress = document.querySelector("#current-progress");
@@ -28,9 +29,9 @@ var dropdownOptions = document.querySelectorAll('.dropdown-option')
 var userName = document.querySelector("#name-container > input");
 var userSurname = document.querySelector("#surname-container > input");
 var userBirthday = document.querySelector("#birthday-container > input");
-var userNationality = document.querySelector("#js_number-prefix2");
+var userNationality = document.querySelector("#js_selected-flag2");
 var userOtherNationality = document.querySelector("#othernations-container > input");
-var userResidence = document.querySelector("#js_number-prefix3");
+var userResidence = document.querySelector("#js_selected-flag3");
 var userAdditionalSport = document.querySelector("#additional-sport");
 var userPhoneNumberPrefix = document.querySelector("#js_number-prefix");
 var userPhoneNumber = document.querySelector("#js_input-phonenumber");
@@ -255,6 +256,7 @@ var registerData = {
   userBirthday: "",
   userGender: "",
   userNationality: "",
+  userOtherNationality: "",
   userResidence: "",
   userLanguages: [],
   userSports: [],
@@ -274,7 +276,7 @@ var registerData = {
   userExpectedSalary: "",
   userPhoneNumber: "",
   userLinkedin: "",
-  userInstagram: "",
+  userInsta: "",
   userEmail: "",
   userPass: "",
   coachId: "",
@@ -339,15 +341,17 @@ optionsLanguages.forEach((option) => {
 nextConditionalNation.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
-  userNationality.value === ""
-    ? (moveForwardVariable = false)
-    : (registerData.userNationality = userNationality.value);
+  const countryRegex = /\/([a-zA-Z]+)\.png$/;
   
+  const coincidenciaNationality = userNationality.src.match(countryRegex);
+  coincidenciaNationality ? registerData.userNationality = coincidenciaNationality[1] : ""
+
   registerData.userOtherNationality = userOtherNationality.value;
 
-  userResidence.value === ""
-    ? (moveForwardVariable = false)
-    : (registerData.userResidence = userResidence.value);
+  const coincidenciaResidence = userResidence.src.match(countryRegex);
+  coincidenciaResidence ? registerData.userResidence = coincidenciaResidence[1] : ""
+
+  console.log(registerData)
 
 
   registerData.userLanguages = []
@@ -765,6 +769,7 @@ nextConditionalPass.addEventListener("click", (e) => {
           // Send all the data in Firebase Database
           firebaseSaveCoachData(registerData).then(() => {
             moveForward();
+            setUserNameOnHeader(`Coach ${registerData.userName}`, registerData.coachId)
           });
         })
         .catch((error) => {
