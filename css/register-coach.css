@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
-body {
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
 #title {
   display: flex;
   flex-direction: column;
@@ -250,6 +245,31 @@ body {
   transform: translateY(0);
 }
 
+.non-filled-fields-message-privacy {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1rem);
+  text-align: center;
+  color: #996B71;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 0.9rem;
+  margin: 0.8rem auto 0 auto;
+  padding: 0.4rem 1.2rem;
+  border-radius: 0.6rem;
+  background-color: #FFC0B7;
+  transition: 1s;
+}
+.non-filled-fields-message-privacy.displayed {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#privacy-policy-box:checked {
+  accent-color: var(--color-primary);
+}
+
 .register-checkbox-container {
   margin-top: 0.4rem;
   margin-bottom: 0.8rem;
@@ -268,6 +288,7 @@ body {
 .register-checkbox-container.active {
   color: #025b7b;
   font-weight: 400;
+  border: 1px solid var(--color-primary);
   background-color: var(--dropdown-trigger-background-color);
 }
 .register-checkbox-container.active .register-checkbox-label {
@@ -276,6 +297,19 @@ body {
 }
 .register-checkbox-container.active svg path {
   stroke: #025b7b;
+}
+
+#additional-sport {
+  padding: 0.6rem 1rem;
+  width: 12rem !important;
+}
+
+#additional-sport-container {
+  padding: 0 !important;
+}
+
+#pn-input-blur {
+  background-color: white;
 }
 
 .register-checkbox-wrapper {
@@ -318,6 +352,66 @@ body {
 
 .register-checkbox-wrapper {
   display: flex;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  height: 2rem;
+  width: 425px;
+  max-width: 100%;
+  background-color: var(--dropdown-trigger-background-color);
+  border-radius: 0.8rem;
+  padding: 1.6rem 1.6rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  color: var(--color-primary);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 30%;
+  transition: 0.4s;
+}
+.dropdown-arrow.rotated {
+  transform: translateY(-25%) rotateX(180deg);
+}
+
+.dropdown-options {
+  position: absolute;
+  border-radius: 0.8rem;
+  width: 100%;
+  top: 120%;
+  left: 0;
+  z-index: 10;
+  overflow-x: hidden;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  height: 12rem;
+  visibility: visible;
+  opacity: 0;
+  transform: translateY(-4rem);
+  transition: 0.4s;
+  pointer-events: none;
+  cursor: pointer;
+}
+.dropdown-options.displayed {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dropdown-options .dropdown-option {
+  background-color: white;
+  width: 100%;
+  padding: 0.8rem 2rem;
+}
+.dropdown-options .dropdown-option:hover {
+  background-color: var(--dropdown-trigger-background-color);
 }
 
 .activable:hover {

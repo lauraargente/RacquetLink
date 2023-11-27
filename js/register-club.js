@@ -92,7 +92,6 @@ specialTextInput.addEventListener("blur", () => {
 });
 
 clubNumber.addEventListener("blur", () => {
-  console.log('121203u01')
   if (!(clubNumber.value === "")) {
     specialTextInputPhone.style.backgroundColor = "#f3f5f9";
     specialTextInputPhone.style.borderRadius = "0 0.75em 0.75em 0";
@@ -234,35 +233,22 @@ nextConditionalPassword.addEventListener("click", (e) => {
   console.log(privacyPolicyCheckbox.checked)
   if (!(privacyPolicyCheckbox.checked)) {
     shakeAnimation(e.target);
-    // nonFilledFieldsMessagePass.style.visibility = "visible";
-    // nonFilledFieldsMessagePass.style.opacity = "1";
     nonFilledFieldsMessagePrivacy.classList.add('displayed');
     setTimeout(function () {
-      // nonFilledFieldsMessagePass.style.visibility = "hidden";
-      // nonFilledFieldsMessagePass.style.opacity = "0";
       nonFilledFieldsMessagePrivacy.classList.remove('displayed');
-
     }, 2000); // 1000 milisegundos = 1 segundo
   } else if (pass === "") {
     shakeAnimation(e.target);
-    // nonFilledFieldsMessagePass.style.visibility = "visible";
-    // nonFilledFieldsMessagePass.style.opacity = "1";
     nonFilledFieldsMessagePass.classList.add('displayed');
     setTimeout(function () {
-      // nonFilledFieldsMessagePass.style.visibility = "hidden";
-      // nonFilledFieldsMessagePass.style.opacity = "0";
     nonFilledFieldsMessagePass.classList.remove('displayed');
 
     }, 2000); // 1000 milisegundos = 1 segundo
   } else if (!isPassSafe(pass)) {
     shakeAnimation(e.target);
-    // nonFilledFieldsMessagePass.style.visibility = "visible";
-    // nonFilledFieldsMessagePass.style.opacity = "1";
     nonFilledFieldsMessagePass.classList.add('displayed');
 
     setTimeout(function () {
-      // nonFilledFieldsMessagePass.style.visibility = "hidden";
-      // nonFilledFieldsMessagePass.style.opacity = "0";
     nonFilledFieldsMessagePass.classList.remove('displayed');
 
     }, 2000); // 1000 milisegundos = 1 segundo

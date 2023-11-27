@@ -9,12 +9,27 @@ var backButtons = document.querySelectorAll(".register-element-back");
 
 var allTextInputs = document.querySelectorAll(".textinput-text");
 var allDateInputs = document.querySelectorAll(".dateinput-date");
+var specialTextInput = document.querySelector("#additional-sport");
+var specialTextInputPhone = document.querySelector("#pn-input-blur");
+
+
+
+//#region (v) custom dropdown 
+
+var dropdown = document.querySelector('.dropdown')
+var dropdownSelection = document.querySelector('.dropdown-selection')
+var dropdownArrow = document.querySelector('.dropdown-arrow')
+var dropdownOptionsContainer = document.querySelector('.dropdown-options')
+var dropdownOptions = document.querySelectorAll('.dropdown-option')
+
+//#endregion
 
 //#region (v) input or seleciton elements
 var userName = document.querySelector("#name-container > input");
 var userSurname = document.querySelector("#surname-container > input");
 var userBirthday = document.querySelector("#birthday-container > input");
 var userNationality = document.querySelector("#js_number-prefix2");
+var userOtherNationality = document.querySelector("#othernations-container > input");
 var userResidence = document.querySelector("#js_number-prefix3");
 var userAdditionalSport = document.querySelector("#additional-sport");
 var userPhoneNumberPrefix = document.querySelector("#js_number-prefix");
@@ -32,7 +47,6 @@ var optionsLanguages = document.querySelectorAll(".data-language-option");
 var optionsSports = document.querySelectorAll(".data-sport-option");
 var optionsExperience = document.querySelectorAll(".data-experience-option");
 var optionsExp = document.querySelectorAll(".data-clubexp-option");
-var optionsClinic = document.querySelectorAll(".data-clinicexp-option");
 var optionsCoaches = document.querySelectorAll(".data-othercoachexp-option");
 var optionsTourOrg = document.querySelectorAll(".data-tourorg-option");
 var optionsTourJuz = document.querySelectorAll(".data-tourjuz-option");
@@ -84,6 +98,10 @@ var nonFilledFieldsMessageEmail = document.querySelector(
 var nonFilledFieldsMessagePass = document.querySelector(
   ".non-filled-fields-message-pass"
 );
+var nonFilledFieldsMessagePrivacy = document.querySelector(
+  ".non-filled-fields-message-privacy"
+);
+var privacyPolicyCheckbox = document.querySelector('#privacy-policy-box')
 
 var createCoachLoadingIcon = document.querySelector(
   "#create-coach-loading-icon"
@@ -111,6 +129,32 @@ allTextInputs.forEach((textinput) => {
       textinput.style.color = "black";
     }
   });
+});
+
+specialTextInput.addEventListener("blur", () => {
+  if (!(specialTextInput.value === "")) {
+    specialTextInput.style.backgroundColor = "#f3f5f9";
+    specialTextInput.style.border = "1px solid #025B7B"
+    specialTextInput.style.borderRadius = "2rem";
+    specialTextInput.style.color = "#025b7b";
+  } else {
+    specialTextInput.style.backgroundColor = "rgba(0,0,0,0)";
+    specialTextInput.style.border = "1px solid rgba(0,0,0,0)"
+    specialTextInput.style.borderRadius = "2rem";
+    specialTextInput.style.color = "black";
+  }
+});
+
+userPhoneNumber.addEventListener("blur", () => {
+  if (!(userPhoneNumber.value === "")) {
+    specialTextInputPhone.style.backgroundColor = "#f3f5f9";
+    specialTextInputPhone.style.borderRadius = "0 0.75em 0.75em 0";
+    specialTextInputPhone.style.color = "#025b7b";
+  } else {
+    specialTextInputPhone.style.backgroundColor = "rgba(0,0,0,0)";
+    specialTextInputPhone.style.borderRadius = "2rem";
+    specialTextInputPhone.style.color = "black";
+  }
 });
 
 allDateInputs.forEach((dateinput) => {
@@ -178,11 +222,36 @@ var shakeAnimation = function (element) {
 
 //#endregion
 
+//#region (f) dropdownDisplay
+
+window.addEventListener('click', (event) => {
+  if (!dropdown.contains(event.target)) {
+    // Si el clic no ocurrió dentro del dropdown
+    dropdownOptionsContainer.classList.remove('displayed');
+    dropdownArrow.classList.remove('rotated');
+  }
+});
+dropdown.addEventListener('click', () => {
+  dropdownArrow.classList.toggle('rotated')
+  dropdownOptionsContainer.classList.toggle('displayed')
+})
+
+
+dropdownOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    dropdownSelection.innerHTML = option.innerHTML
+    registerData.userRecommendation = option.innerHTML
+  })
+})
+
+//#endregion
+
 // Each button going forward conditions
 
 var registerData = {
   userName: "",
   userSurame: "",
+  userRecommendation: "No",
   userBirthday: "",
   userGender: "",
   userNationality: "",
@@ -191,7 +260,6 @@ var registerData = {
   userSports: [],
   userExperience: "",
   userClubExp: "",
-  userClinicExp: "",
   userOtherCoachExp: "",
   userToursJuzge: "",
   userToursOrganized: "",
@@ -201,7 +269,7 @@ var registerData = {
   userWeeklyHours: "",
   userPreferredLevel: [],
   userAvailability: "",
-  userMobilityPossibility: "",
+  userMobilityContinents: [],
   userOportunityType: [],
   userExpectedSalary: "",
   userPhoneNumber: "",
@@ -274,6 +342,9 @@ nextConditionalNation.addEventListener("click", (e) => {
   userNationality.value === ""
     ? (moveForwardVariable = false)
     : (registerData.userNationality = userNationality.value);
+  
+  registerData.userOtherNationality = userOtherNationality.value;
+
   userResidence.value === ""
     ? (moveForwardVariable = false)
     : (registerData.userResidence = userResidence.value);
@@ -351,15 +422,6 @@ optionsExp.forEach((option) => {
   });
 });
 
-optionsClinic.forEach((option) => {
-  option.addEventListener("click", () => {
-    optionsClinic.forEach((option) => {
-      option.classList.remove("active");
-    });
-    option.classList.add("active");
-  });
-});
-
 optionsCoaches.forEach((option) => {
   option.addEventListener("click", () => {
     optionsCoaches.forEach((option) => {
@@ -380,15 +442,6 @@ nextConditionalExpOne.addEventListener("click", (e) => {
     }
   });
   stopper1 ? (moveForwardVariable = false) : "";
-
-  var stopper2 = true;
-  optionsClinic.forEach((field) => {
-    if (field.classList.contains("active")) {
-      registerData.userClinicExp = field.getAttribute("data-clinicexp");
-      stopper2 = false;
-    }
-  });
-  stopper2 ? (moveForwardVariable = false) : "";
 
   var stopper3 = true;
   optionsCoaches.forEach((field) => {
@@ -423,6 +476,15 @@ optionsTourJuz.forEach((option) => {
   });
 });
 
+optionsIntExp.forEach((option) => {
+  option.addEventListener("click", () => {
+    optionsIntExp.forEach((option) => {
+      option.classList.remove("active");
+    });
+    option.classList.add("active");
+  });
+});
+
 nextConditionalExpTwo.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
@@ -443,6 +505,15 @@ nextConditionalExpTwo.addEventListener("click", (e) => {
     }
   });
   stopper2 ? (moveForwardVariable = false) : "";
+
+  var stopper3 = true;
+  optionsIntExp.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userInternationalExp = field.getAttribute("data-intexp");
+      stopper3 = false;
+    }
+  });
+  stopper3 ? (moveForwardVariable = false) : "";
 
   moveForwardVariable ? moveForward() : shakeAnimation(e.target);
 });
@@ -469,14 +540,7 @@ optionsCompNow.forEach((option) => {
   });
 });
 
-optionsIntExp.forEach((option) => {
-  option.addEventListener("click", () => {
-    optionsIntExp.forEach((option) => {
-      option.classList.remove("active");
-    });
-    option.classList.add("active");
-  });
-});
+
 
 nextConditionalExpThree.addEventListener("click", (e) => {
   var moveForwardVariable = true;
@@ -498,15 +562,6 @@ nextConditionalExpThree.addEventListener("click", (e) => {
     }
   });
   stopper2 ? (moveForwardVariable = false) : "";
-
-  var stopper3 = true;
-  optionsIntExp.forEach((field) => {
-    if (field.classList.contains("active")) {
-      registerData.userInternationalExp = field.getAttribute("data-intexp");
-      stopper3 = false;
-    }
-  });
-  stopper3 ? (moveForwardVariable = false) : "";
 
   moveForwardVariable ? moveForward() : shakeAnimation(e.target);
 });
@@ -570,10 +625,7 @@ optionsStartingTime.forEach((option) => {
 
 optionsMobility.forEach((option) => {
   option.addEventListener("click", () => {
-    optionsMobility.forEach((option) => {
-      option.classList.remove("active");
-    });
-    option.classList.add("active");
+      option.classList.toggle("active");
   });
 });
 
@@ -590,10 +642,13 @@ nextConditionalPrefTwo.addEventListener("click", (e) => {
   stopper1 ? (moveForwardVariable = false) : "";
 
   var stopper2 = true;
+  registerData.userMobilityContinents = []
+
   optionsMobility.forEach((field) => {
     if (field.classList.contains("active")) {
-      registerData.userMobilityPossibility =
-        field.getAttribute("data-mobility");
+      registerData.userMobilityContinents.push(
+        field.getAttribute("data-mobility")
+      );
       stopper2 = false;
     }
   });
@@ -607,7 +662,7 @@ nextConditionalPrefTwo.addEventListener("click", (e) => {
 //#region 9 preferences three tab
 optionsOportunity.forEach((option) => {
   option.addEventListener("click", () => {
-    option.classList.add("active");
+    option.classList.toggle("active");
   });
 });
 
@@ -671,6 +726,7 @@ nextConditionalData.addEventListener("click", (e) => {
 nextConditionalPass.addEventListener("click", (e) => {
   var moveForwardVariablePass = true;
   var moveForwardVariableEmail = true;
+  var moveForwardVariablePrivacy = true;
 
   userEmail.value === ""
     ? (moveForwardVariableEmail = false)
@@ -680,8 +736,19 @@ nextConditionalPass.addEventListener("click", (e) => {
     ? (registerData.userPass = userPass.value)
     : (moveForwardVariablePass = false);
 
+  (privacyPolicyCheckbox.checked)
+  ? ""
+  : (moveForwardVariablePrivacy = false);
+
   // Logic for register
-  if (moveForwardVariablePass) {
+
+  if (!(moveForwardVariablePrivacy)) {
+    shakeAnimation(e.target);
+    nonFilledFieldsMessagePrivacy.classList.add('displayed');
+    setTimeout(function () {
+      nonFilledFieldsMessagePrivacy.classList.remove('displayed');
+    }, 2000); // 1000 milisegundos = 1 segundo
+  } else if (moveForwardVariablePass) {
 
     // Set loading state
     createCoachLoadingIcon.style.visibility = "visible";
@@ -705,13 +772,9 @@ nextConditionalPass.addEventListener("click", (e) => {
           createCoachLoadingIcon.style.visibility = "hidden";
           createCoachOkIcon.style.visibility = "visible";
           shakeAnimation(e.target);
-          // nonFilledFieldsMessageEmail.style.visibility = "visible";
-          // nonFilledFieldsMessageEmail.style.opacity = "1";
           nonFilledFieldsMessageEmail.classList.add('displayed')
 
           setTimeout(function () {
-            // nonFilledFieldsMessageEmail.style.visibility = "hidden";
-            // nonFilledFieldsMessageEmail.style.opacity = "0";
             nonFilledFieldsMessageEmail.classList.remove('displayed')
 
           }, 2000); // 1000 milisegundos = 1 segundo
@@ -721,12 +784,8 @@ nextConditionalPass.addEventListener("click", (e) => {
   } else {
     // If non valid password, display error
     shakeAnimation(e.target);
-    // nonFilledFieldsMessagePass.style.visibility = "visible";
-    // nonFilledFieldsMessagePass.style.opacity = "1";
     nonFilledFieldsMessagePass.classList.add('displayed')
     setTimeout(function () {
-      // nonFilledFieldsMessagePass.style.visibility = "hidden";
-      // nonFilledFieldsMessagePass.style.opacity = "0";
       nonFilledFieldsMessagePass.classList.remove('displayed')
     }, 2000); // 1000 milisegundos = 1 segundo
   }
