@@ -115,11 +115,11 @@ Estructura general:
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </div>
-
+        
         <nav class="Header-nav">
             <ul class="Header-ul">
                 <li class="Header-li">
-                    <a href="about.html" class="Header-selected" aria-label="Sobre Nosotros">Sobre Nosotros</a>
+                    <a href="about.html" class="Header-item" aria-label="Sobre Nosotros">Sobre Nosotros</a>
                 </li>
                 <li class="Header-li">
                     <a href="services.html" class="Header-item" aria-label="Servicios">Servicios</a>
@@ -131,10 +131,21 @@ Estructura general:
                     <a href="contact.html" class="Header-item" aria-label="Contacto">Contacto</a>
                 </li>
                 <li class="Header-li">
-                    <a href="about.html" class="Header-item" aria-label="English">EN</a>
+                    <a href="news.html" class="Header-item" aria-label="English">EN</a>
+                </li>
+                <li class="Header-li" style="display: none;" id="login-button">
+                    <a href="login.html" class="Header-button" aria-label="Login">Log in</a>
                 </li>
                 <li class="Header-li">
-                    <a href="login.html" class="Header-button" aria-label="Login">Log in</a>
+                    <a href="login.html" id="logged-user" class="Header-item" style="display: flex; justify-content: center; align-items: center; gap: 1rem;" aria-label="Profile">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9.24004" stroke="#025B7B" stroke-width="1"/>
+                            <path d="M6 5C5.03796 9.16002 6.20738 10.2033 7.26344 13C8.65933 16.6967 6.7197 17.6 6.02657 19.2" stroke="#025B7B" stroke-width="1"/>
+                            <path d="M13.5 21C12.5001 18 11.9999 16 15.5 13C17.3914 11.3788 20.0001 10 20.0001 7.5" stroke="#025B7B" stroke-width="1"/>
+                          </svg> -->
+                        <div id="logged-user-text"></div>
+
+                    </a>
                 </li>
             </ul>  
         </nav>

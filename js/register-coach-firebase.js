@@ -117,8 +117,7 @@ var firebaseSaveCoachData = (registerData) => {
         userExpectedSalary: registerData.userExpectedSalary,
         userPhoneNumber: registerData.userPhoneNumber,
         userLinkedin: registerData.userLinkedin,
-        userInstagram: registerData.userInstagram,
-        userPass: registerData.userPass,
+        userInsta: registerData.userInstagram,
         coachId: registerData.coachId,
         registerDate: registerData.registerDate,
       });

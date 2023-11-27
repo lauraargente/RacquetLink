@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
-body {
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
 #title {
   display: flex;
   flex-direction: column;
@@ -231,6 +226,27 @@ body {
   transform: translateY(0);
 }
 
+.non-filled-fields-message-privacy {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1rem);
+  text-align: center;
+  color: #996B71;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 0.9rem;
+  margin: 0.8rem auto 0 auto;
+  padding: 0.4rem 1.2rem;
+  border-radius: 0.6rem;
+  background-color: #FFC0B7;
+  transition: 1s;
+}
+.non-filled-fields-message-privacy.displayed {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .register-checkbox-container {
   margin-top: 1rem;
   margin-right: 1rem;
@@ -258,7 +274,16 @@ body {
 }
 
 #additional-sport {
-  padding: 0.1rem 0;
+  padding: 0.6rem 1rem;
+  width: 12rem !important;
+}
+
+#additional-sport-container {
+  padding: 0 !important;
+}
+
+#pn-input-blur {
+  background-color: white;
 }
 
 .register-checkbox-wrapper {
@@ -365,6 +390,10 @@ body {
     margin-bottom: 2rem;
   }
 }
+#privacy-policy-box:checked {
+  accent-color: var(--color-primary);
+}
+
 input {
   outline: none;
   font-size: 1rem;

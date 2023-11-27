@@ -2,6 +2,8 @@ import { firebaseCreateClub } from "./register-club-firebase.js";
 import { firebaseSaveClubData } from "./register-club-firebase.js";
 
 var allTextInputs = document.querySelectorAll(".textinput-text");
+var specialTextInput = document.querySelector("#additional-sport");
+var specialTextInputPhone = document.querySelector("#pn-input-blur");
 
 var backButtons = document.querySelectorAll(".register-element-back");
 var nextButtons = document.querySelectorAll(".register-element-next");
@@ -32,6 +34,10 @@ var nonFilledFieldsMessageEmail = document.querySelector(
 var nonFilledFieldsMessagePass = document.querySelector(
   ".non-filled-fields-message-pass"
 );
+var nonFilledFieldsMessagePrivacy = document.querySelector(
+  ".non-filled-fields-message-privacy"
+);
+var privacyPolicyCheckbox = document.querySelector('#privacy-policy-box')
 
 var createCoachLoadingIcon = document.querySelector(
   "#create-coach-loading-icon"
@@ -40,6 +46,21 @@ var createCoachOkIcon = document.querySelector("#create-coach-ok-icon");
 
 var currentPosition = 0;
 var currentProgressValue = 12;
+
+var clubName = document.querySelector("#name-container > input");
+var clubWebPage = document.querySelector("#web-container > input");
+var clubCountry = document.querySelector("#js_selected-flag2");
+var clubCity = document.querySelector("#city-container > input");
+var clubSports = document.querySelectorAll(".data-sport-option");
+var clubField = document.querySelectorAll(".data-fields-option");
+var clubState = document.querySelectorAll(".data-state-option");
+var clubConsulting = document.querySelectorAll(".data-consulting-option");
+var clubEmail = document.querySelector("#email-container > input");
+var clubNumber = document.querySelector("#js_input-phonenumber");
+var clubPrefix = document.querySelector("#js_number-prefix");
+var clubPassword = document.querySelector("#pass-container > input");
+
+var additionalSport = document.querySelector("#additional-sport");
 
 // On unfocus make colores if right answer
 allTextInputs.forEach((textinput) => {
@@ -54,6 +75,33 @@ allTextInputs.forEach((textinput) => {
       textinput.style.color = "black";
     }
   });
+});
+
+specialTextInput.addEventListener("blur", () => {
+  if (!(specialTextInput.value === "")) {
+    specialTextInput.style.backgroundColor = "#f3f5f9";
+    specialTextInput.style.border = "1px solid #025B7B"
+    specialTextInput.style.borderRadius = "2rem";
+    specialTextInput.style.color = "#025b7b";
+  } else {
+    specialTextInput.style.backgroundColor = "rgba(0,0,0,0)";
+    specialTextInput.style.border = "1px solid rgba(0,0,0,0)"
+    specialTextInput.style.borderRadius = "2rem";
+    specialTextInput.style.color = "black";
+  }
+});
+
+clubNumber.addEventListener("blur", () => {
+  console.log('121203u01')
+  if (!(clubNumber.value === "")) {
+    specialTextInputPhone.style.backgroundColor = "#f3f5f9";
+    specialTextInputPhone.style.borderRadius = "0 0.75em 0.75em 0";
+    specialTextInputPhone.style.color = "#025b7b";
+  } else {
+    specialTextInputPhone.style.backgroundColor = "rgba(0,0,0,0)";
+    specialTextInputPhone.style.borderRadius = "2rem";
+    specialTextInputPhone.style.color = "black";
+  }
 });
 
 // #region motionLogic
@@ -183,7 +231,19 @@ nextConditionalPhone.addEventListener("click", (e) => {
 // Next Password
 nextConditionalPassword.addEventListener("click", (e) => {
   const pass = clubPassword.value;
-  if (pass === "") {
+  console.log(privacyPolicyCheckbox.checked)
+  if (!(privacyPolicyCheckbox.checked)) {
+    shakeAnimation(e.target);
+    // nonFilledFieldsMessagePass.style.visibility = "visible";
+    // nonFilledFieldsMessagePass.style.opacity = "1";
+    nonFilledFieldsMessagePrivacy.classList.add('displayed');
+    setTimeout(function () {
+      // nonFilledFieldsMessagePass.style.visibility = "hidden";
+      // nonFilledFieldsMessagePass.style.opacity = "0";
+      nonFilledFieldsMessagePrivacy.classList.remove('displayed');
+
+    }, 2000); // 1000 milisegundos = 1 segundo
+  } else if (pass === "") {
     shakeAnimation(e.target);
     // nonFilledFieldsMessagePass.style.visibility = "visible";
     // nonFilledFieldsMessagePass.style.opacity = "1";
@@ -919,6 +979,7 @@ init2(countries2);
 
 var registerData = {
   clubName: "",
+  clubWebPage: "",
   clubCountry: "",
   clubCity: "",
   clubSports: [],
@@ -933,19 +994,7 @@ var registerData = {
 
 // registerData
 
-var clubName = document.querySelector("#name-container > input");
-var clubCountry = document.querySelector("#js_selected-flag2");
-var clubCity = document.querySelector("#city-container > input");
-var clubSports = document.querySelectorAll(".data-sport-option");
-var clubField = document.querySelectorAll(".data-fields-option");
-var clubState = document.querySelectorAll(".data-state-option");
-var clubConsulting = document.querySelectorAll(".data-consulting-option");
-var clubEmail = document.querySelector("#email-container > input");
-var clubNumber = document.querySelector("#js_input-phonenumber");
-var clubPrefix = document.querySelector("#js_number-prefix");
-var clubPassword = document.querySelector("#pass-container > input");
 
-var additionalSport = document.querySelector("#additional-sport");
 
 // logic not to select various at the time
 clubField.forEach((field) => {
@@ -980,6 +1029,9 @@ var lastNextButton = document.querySelector("#next-conditional-pass");
 var writeRegisterData = function () {
   // Club Name
   registerData.clubName = clubName.value;
+
+  // Club Name
+  registerData.clubWebPage = clubWebPage.value;
 
   // Club Country
   const countryRegex = /\/([a-zA-Z]+)\.png$/;

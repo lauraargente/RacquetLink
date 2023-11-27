@@ -200,7 +200,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        Nombre del club
+                        Nombre del club o proyecto
                     </div>
                     <div id="name-container" class="textinput-container">
                         <div id="name-icon" class="textinput-icon">
@@ -208,7 +208,19 @@ Estructura general:
                                 <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
-                        <input type="text" class="register-element-textanswer textinput-text" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Club Monteverde">
+                        <input type="text" class="register-element-textanswer textinput-text" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Escribe aquí el nombre de tu club">
+                        </input>
+                    </div>
+                    <div class="register-element-question">
+                        Página web (Opcional)
+                    </div>
+                    <div id="web-container" class="textinput-container">
+                        <div id="name-icon" class="textinput-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 7.8C5 6.11984 5 5.27976 5.32698 4.63803C5.6146 4.07354 6.07354 3.6146 6.63803 3.32698C7.27976 3 8.11984 3 9.8 3H14.2C15.8802 3 16.7202 3 17.362 3.32698C17.9265 3.6146 18.3854 4.07354 18.673 4.63803C19 5.27976 19 6.11984 19 7.8V21L12 17L5 21V7.8Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                        </div>
+                        <input type="text" class="register-element-textanswer textinput-text" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Copia aquí el enlace de tu web">
                         </input>
                     </div>
                 </div>
@@ -314,7 +326,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        Oferta en deportes
+                        Deportes de raqueta que tiene el proyecto
                     </div>
                     <div class="register-checkbox-wrapper">
                         <div class="register-checkbox-container activable data-sport-option" data-sport="tenis">
@@ -341,7 +353,7 @@ Estructura general:
                               </svg>
                             <div class="register-checkbox-label">Pickleball</div>
                         </div>
-                        <div class="register-checkbox-container">
+                        <div class="register-checkbox-container" id="additional-sport-container">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <input id="additional-sport" type="text" class="register-element-textanswer" style="margin-top: 0; font-size: 1rem; width: 8rem;" placeholder="Otro...">
                             </input>
@@ -371,7 +383,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        Número de pistas
+                        Número de pistas en total
                     </div>
                     <div class="register-checkbox-wrapper">
                         <div class="register-checkbox-container activable data-fields-option" data-fields="low">
@@ -437,7 +449,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿Necesita el club entrenadores?
+                        ¿Necesita el club contratar entrenadores?
                     </div>
                     <div class="register-checkbox-wrapper entrenadores">
                         <div class="register-checkbox-container activable data-state-option" data-state="yes">
@@ -486,7 +498,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question">
-                        ¿Le interesa al club nuestro servicio de consultoría?
+                        ¿Necesita el club asesoría en algún área del negocio?
                     </div>
                     <div class="register-checkbox-wrapper entrenadores">
                         <div class="register-checkbox-container activable data-consulting-option" data-state="yes">
@@ -547,7 +559,7 @@ Estructura general:
                         </svg>
                         </button>
                         <!-- Phone number input -->
-                        <div class="pn-input">
+                        <div class="pn-input" id="pn-input-blur">
                         <div class="pn-input__container">
                             <input class="pn-input__prefix" value="+34" type="text" name="phonenumber-prefix" id="js_number-prefix" tabindex="-1" />
                             <input class="pn-input__phonenumber" id="js_input-phonenumber" type="tel" name="phonenumber" pattern="\d*" value="" placeholder=" " autocomplete="nope" required max="10" tabindex="0" />
@@ -623,6 +635,10 @@ Estructura general:
                 </div>
             </div>
             <div style="color: #AAA; text-align: center; max-width: 600px;">La contraseña debe contener al menos ocho caracteres, una minúscula, una mayúscula y un número.</div>
+            <div id="privacy-policy" style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                <input type="checkbox" id="privacy-policy-box" style="width: 20px; height: 20px; ">
+                <div style="color: #025B7B;">Acepto la política de privacidad</div>
+            </div>
             <div id="next-conditional-pass" class="register-element-next" style="width: auto; position: relative; padding: 8px 10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" style="position: absolute;" id="create-coach-ok-icon">
                     <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -636,6 +652,7 @@ Estructura general:
             <div style="position: relative; width: 400px; max-width: 100%; display: flex; justify-content: center;">
                 <div class="non-filled-fields-message-email" style="position: absolute;">Email no válido o en uso</div>
                 <div class="non-filled-fields-message-pass" style="position: absolute;">La contraseña no cumple los requisitos</div>
+                <div class="non-filled-fields-message-privacy" style="position: absolute;">Debes aceptar la política de privacidad</div>
             </div>
         </div>
         <div class="register-element" id="register-finish">
@@ -647,12 +664,12 @@ Estructura general:
                 </div>
             </div>
             <div style="color: black; text-align: center; font-size: 1.2rem; max-width: 500px;">Te hemos enviado un email de verificación para que puedas completar tu registro </div>
-            <div style="color: #025B7B; text-align: center; font-size: 1rem; max-width: 500px; margin-top: 2rem;">Haz click aquí para acceder al portal de login </div>
-            <div id="next-conditional-finish" class="register-element-next">
+            <div style="color: #025B7B; text-align: center; font-size: 1rem; max-width: 500px; margin-top: 2rem;">Haz click aquí para acceder a tu perfil </div>
+            <a id="next-conditional-finish" class="register-element-next" href="/login.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
                     <path d="M18 19L21 16M21 16L18 13M21 16H15M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-            </div>
+                </a>
         </div>
 
     </div>
@@ -840,6 +857,7 @@ Estructura general:
 
     <div class="Main-cursor"></div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script src="js/register-club-firebase.js" type="module"></script>
     <script src="js/register-club.js" type="module"></script>
     <script src="js/firebase-auth-checker.js" type="module"></script>

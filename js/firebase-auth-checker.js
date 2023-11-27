@@ -8,6 +8,7 @@ var headerLogin = document.querySelector('#login-button')
 var headerLogged = document.querySelector('#logged-user')
 var headerLoggedName = document.querySelector('#logged-user-text')
 
+
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
@@ -28,10 +29,10 @@ const auth = getAuth()
 checkIfStoredUserCookie();
 
 onAuthStateChanged(auth, (user) => {
-  console.log('test')
   if (user) {
+    console.log(user)
     setCookie('loggedUser', user.displayName, 30);
-    // ...
+    setCookieId('loggedUserId', user.uid, 30);
   } else {
     // User is signed out
     // ...
@@ -40,6 +41,14 @@ onAuthStateChanged(auth, (user) => {
     headerLogin.style.display = 'flex'
   }
 });
+
+function setCookieId(nombre, valor, diasExpiracion) {
+  console.log('settingcookie')
+  const fecha = new Date();
+  fecha.setTime(fecha.getTime() + (diasExpiracion * 24 * 60 * 60 * 1000));
+  const expiracion = "expires=" + fecha.toUTCString();
+  document.cookie = nombre + "=" + valor + ";" + expiracion + ";path=/";
+}
 
 function setCookie(nombre, valor, diasExpiracion) {
   console.log('settingcookie')
@@ -51,15 +60,15 @@ function setCookie(nombre, valor, diasExpiracion) {
 
 function checkIfStoredUserCookie() {
   const nombreCookie = "loggedUser";
+  const nombreCookieId = "loggedUserId";
   const valorCookie = getCookie(nombreCookie); // Suponiendo que ya tienes una función getCookie definida
+  const valorCookieId = getCookie(nombreCookieId); // Suponiendo que ya tienes una función getCookie definida
 
-  if (valorCookie !== null) {
-    setUserNameOnHeader(valorCookie)
-  } else {
-    setUserNameOnHeader(valorCookie)
-
+  if ((valorCookie !== null) && (valorCookieId !== null)) {
+    setUserNameOnHeader(valorCookie, valorCookieId)
+    // checkIfCookieIdMatchesURL(valorCookieId)
   }
-}
+  }
 
 function getCookie(nombre) {
   const cookies = document.cookie.split(';');
@@ -72,11 +81,32 @@ function getCookie(nombre) {
   return null;
 }
 
-function setUserNameOnHeader(displayName) {
-  console.log(displayName)
-  console.log(headerLogged)
+function setUserNameOnHeader(displayName, displayNameId) {
   headerLogged.style.display = 'flex'
+  headerLogged.href = `/profile-coach.html?id=${displayNameId}`
   headerLoggedName.innerHTML = displayName
   // headerRegister.style.display = 'none'
   headerLogin.style.display = 'none'
 } 
+
+// function checkIfCookieIdMatchesURL(valorCookieId) {
+// const url = window.location.href;
+
+//   if (url.includes('/edit-coach')) {
+//       const params = new URLSearchParams(window.location.search);
+      
+//       if (params.has('id')) {
+//           const userId = params.get('id');
+          
+//           if (userId === valorCookieId) {
+//             if (url.includes('/edit-coach')) {
+//               displayDataToEditCoach()
+//             }
+//             if (url.includes('/edit-club')) {
+//               // displayDataToEditClub()
+//             }
+//           }
+//       }
+//   }
+
+// }

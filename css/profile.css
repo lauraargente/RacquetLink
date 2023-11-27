@@ -1,0 +1,147 @@
+.Header {
+  background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+}
+.Header a {
+  color: white;
+  font-size: 1.1rem;
+}
+
+#profile-container {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../assets/profile_bakcground.png);
+  background-size: cover;
+}
+
+#profile-content-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 140px;
+  align-items: center;
+  height: 100vh;
+  width: 480px;
+  position: absolute;
+  left: 200px;
+  /* From https://css.glass */
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+#profile-content-container-2 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  align-items: center;
+  height: 60vh;
+  width: 480px;
+  position: absolute;
+  left: 720px;
+  top: 40vh;
+  overflow-x: hidden;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.image-container {
+  position: relative;
+}
+.image-container:hover #profile-image-label {
+  color: white;
+  border: 2px solid white;
+  font-weight: 400;
+}
+
+#profile-image-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #025b7b;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 100px;
+}
+
+.profile-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: rgb(255, 255, 255);
+}
+
+.profile-information-element {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 1rem;
+  color: white;
+}
+
+.profile-element-contact-data {
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+#profile-element-container-name {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.profile-label {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: rgb(255, 255, 255);
+  font-weight: 300;
+  opacity: 0.4;
+  letter-spacing: 2px;
+}
+
+.profile-data {
+  font-weight: 400;
+  text-align: right;
+  line-height: 150%;
+}
+
+#experience-container {
+  width: 80%;
+  margin-top: 0.4rem;
+}
+
+#experience-label {
+  font-size: 4.4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0rem;
+  color: rgba(255, 255, 255, 0.1);
+  font-weight: 300;
+}
+
+.profile-exp {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  margin-top: 1rem;
+  color: white;
+  opacity: 0.2;
+  font-weight: 300;
+}
+.profile-exp.marked {
+  color: white;
+  font-weight: 400;
+  opacity: 1;
+}/*# sourceMappingURL=profile.css.map */

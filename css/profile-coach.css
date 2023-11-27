@@ -20,21 +20,20 @@ body {
   color: var(--color-primary);
 }
 
-#progress-bar {
+#page-loader {
   position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
   width: 100vw;
-  height: 1rem;
-  background-color: rgb(240, 240, 240);
-  z-index: 20;
-  top: 5.6rem;
-}
-
-#current-progress {
-  position: absolute;
-  width: 10%;
-  height: 100%;
-  background-color: var(--color-primary);
-  transition: 1s;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: var(--color-primary);
+  font-size: 2rem;
+  text-align: center;
 }
 
 #register-container {
@@ -192,14 +191,14 @@ body {
   opacity: 0;
   transform: translateY(-1rem);
   text-align: center;
-  color: #996B71;
+  color: #996b71;
   width: -moz-max-content;
   width: max-content;
   font-size: 0.9rem;
   margin: 0.8rem auto 0 auto;
   padding: 0.4rem 1.2rem;
   border-radius: 0.6rem;
-  background-color: #FFC0B7;
+  background-color: #ffc0b7;
   transition: 1s;
 }
 .non-filled-fields-message.displayed {
@@ -213,14 +212,14 @@ body {
   opacity: 0;
   transform: translateY(-1rem);
   text-align: center;
-  color: #996B71;
+  color: #996b71;
   width: -moz-max-content;
   width: max-content;
   font-size: 0.9rem;
   margin: 0.8rem auto 0 auto;
   padding: 0.4rem 1.2rem;
   border-radius: 0.6rem;
-  background-color: #FFC0B7;
+  background-color: #ffc0b7;
   transition: 1s;
 }
 .non-filled-fields-message-email.displayed {
@@ -234,14 +233,14 @@ body {
   opacity: 0;
   transform: translateY(-1rem);
   text-align: center;
-  color: #996B71;
+  color: #996b71;
   width: -moz-max-content;
   width: max-content;
   font-size: 0.9rem;
   margin: 0.8rem auto 0 auto;
   padding: 0.4rem 1.2rem;
   border-radius: 0.6rem;
-  background-color: #FFC0B7;
+  background-color: #ffc0b7;
   transition: 1s;
 }
 .non-filled-fields-message-pass.displayed {
@@ -326,7 +325,6 @@ body {
 
 .calendar {
   padding: 1rem;
-  color: var(--border-color);
 }
 
 .flag-label {
@@ -693,4 +691,4 @@ input {
   100% {
     transform: translateX(0);
   }
-}/*# sourceMappingURL=register-coach.css.map */
+}/*# sourceMappingURL=profile-coach.css.map */

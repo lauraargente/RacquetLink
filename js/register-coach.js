@@ -219,10 +219,14 @@ var registerData = {
 
 optionsGenders.forEach((option) => {
   option.addEventListener("click", () => {
-    optionsGenders.forEach((option) => {
-      option.classList.remove("active");
-    });
-    option.classList.add("active");
+    if (option.classList.contains("active")) {
+      option.classList.remove("active")
+    } else {
+      optionsGenders.forEach((option) => {
+        option.classList.remove("active");
+      });
+      option.classList.add("active");
+    }
   });
 });
 
@@ -239,14 +243,14 @@ nextConditionalInfo.addEventListener("click", (e) => {
     ? (moveForwardVariable = false)
     : (registerData.userBirthday = userBirthday.value);
 
-  var stopper = true;
+  // var stopper = true;
   optionsGenders.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userGender = field.getAttribute("data-gender");
-      stopper = false;
+      // stopper = false;
     }
   });
-  stopper ? (moveForwardVariable = false) : "";
+  // stopper ? (moveForwardVariable = false) : "";
 
   console.log(registerData);
   console.log(moveForwardVariable);
@@ -274,6 +278,8 @@ nextConditionalNation.addEventListener("click", (e) => {
     ? (moveForwardVariable = false)
     : (registerData.userResidence = userResidence.value);
 
+
+  registerData.userLanguages = []
   optionsLanguages.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userLanguages.push(field.getAttribute("data-language"));
@@ -305,6 +311,8 @@ nextConditionalSport.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
   var stopper = true;
+
+  registerData.userSports = []
   optionsSports.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userSports.push(field.getAttribute("data-sport"));
@@ -535,6 +543,7 @@ nextConditionalPrefOne.addEventListener("click", (e) => {
   stopper1 ? (moveForwardVariable = false) : "";
 
   var stopper2 = true;
+  registerData.userPreferredLevel = []
   optionsLevel.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userPreferredLevel.push(field.getAttribute("data-level"));
@@ -615,6 +624,7 @@ nextConditionalPrefThree.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
   var stopper1 = true;
+  registerData.userOportunityType = []
   optionsOportunity.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userOportunityType.push(
