@@ -29,7 +29,6 @@
       return new Promise(function (resolve, reject) {
         let outputData = {}
 
-        var Id = '8tuq0Ufl1ibYwoaWnklX9jkrIq63'
         console.log('test')
         console.log(Id)
 

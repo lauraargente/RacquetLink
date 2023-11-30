@@ -13,15 +13,13 @@ var allDateInputs = document.querySelectorAll(".dateinput-date");
 var specialTextInput = document.querySelector("#additional-sport");
 var specialTextInputPhone = document.querySelector("#pn-input-blur");
 
+//#region (v) custom dropdown
 
-
-//#region (v) custom dropdown 
-
-var dropdown = document.querySelector('.dropdown')
-var dropdownSelection = document.querySelector('.dropdown-selection')
-var dropdownArrow = document.querySelector('.dropdown-arrow')
-var dropdownOptionsContainer = document.querySelector('.dropdown-options')
-var dropdownOptions = document.querySelectorAll('.dropdown-option')
+var dropdown = document.querySelector(".dropdown");
+var dropdownSelection = document.querySelector(".dropdown-selection");
+var dropdownArrow = document.querySelector(".dropdown-arrow");
+var dropdownOptionsContainer = document.querySelector(".dropdown-options");
+var dropdownOptions = document.querySelectorAll(".dropdown-option");
 
 //#endregion
 
@@ -30,7 +28,9 @@ var userName = document.querySelector("#name-container > input");
 var userSurname = document.querySelector("#surname-container > input");
 var userBirthday = document.querySelector("#birthday-container > input");
 var userNationality = document.querySelector("#js_selected-flag2");
-var userOtherNationality = document.querySelector("#othernations-container > input");
+var userOtherNationality = document.querySelector(
+  "#othernations-container > input"
+);
 var userResidence = document.querySelector("#js_selected-flag3");
 var userAdditionalSport = document.querySelector("#additional-sport");
 var userPhoneNumberPrefix = document.querySelector("#js_number-prefix");
@@ -102,7 +102,7 @@ var nonFilledFieldsMessagePass = document.querySelector(
 var nonFilledFieldsMessagePrivacy = document.querySelector(
   ".non-filled-fields-message-privacy"
 );
-var privacyPolicyCheckbox = document.querySelector('#privacy-policy-box')
+var privacyPolicyCheckbox = document.querySelector("#privacy-policy-box");
 
 var createCoachLoadingIcon = document.querySelector(
   "#create-coach-loading-icon"
@@ -135,12 +135,12 @@ allTextInputs.forEach((textinput) => {
 specialTextInput.addEventListener("blur", () => {
   if (!(specialTextInput.value === "")) {
     specialTextInput.style.backgroundColor = "#f3f5f9";
-    specialTextInput.style.border = "1px solid #025B7B"
+    specialTextInput.style.border = "1px solid #025B7B";
     specialTextInput.style.borderRadius = "2rem";
     specialTextInput.style.color = "#025b7b";
   } else {
     specialTextInput.style.backgroundColor = "rgba(0,0,0,0)";
-    specialTextInput.style.border = "1px solid rgba(0,0,0,0)"
+    specialTextInput.style.border = "1px solid rgba(0,0,0,0)";
     specialTextInput.style.borderRadius = "2rem";
     specialTextInput.style.color = "black";
   }
@@ -210,13 +210,12 @@ var shakeAnimation = function (element) {
   nonFilledFieldsMessage.forEach((message) => {
     // message.style.visibility = "visible";
     // message.style.opacity = "1";
-    message.classList.add('displayed')
+    message.classList.add("displayed");
 
     setTimeout(function () {
       // message.style.visibility = "hidden";
       // message.style.opacity = "0";
-      message.classList.remove('displayed')
-
+      message.classList.remove("displayed");
     }, 2000); // 1000 milisegundos = 1 segundo
   });
 };
@@ -225,25 +224,24 @@ var shakeAnimation = function (element) {
 
 //#region (f) dropdownDisplay
 
-window.addEventListener('click', (event) => {
+window.addEventListener("click", (event) => {
   if (!dropdown.contains(event.target)) {
     // Si el clic no ocurrió dentro del dropdown
-    dropdownOptionsContainer.classList.remove('displayed');
-    dropdownArrow.classList.remove('rotated');
+    dropdownOptionsContainer.classList.remove("displayed");
+    dropdownArrow.classList.remove("rotated");
   }
 });
-dropdown.addEventListener('click', () => {
-  dropdownArrow.classList.toggle('rotated')
-  dropdownOptionsContainer.classList.toggle('displayed')
-})
+dropdown.addEventListener("click", () => {
+  dropdownArrow.classList.toggle("rotated");
+  dropdownOptionsContainer.classList.toggle("displayed");
+});
 
-
-dropdownOptions.forEach(option => {
-  option.addEventListener('click', () => {
-    dropdownSelection.innerHTML = option.innerHTML
-    registerData.userRecommendation = option.innerHTML
-  })
-})
+dropdownOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    dropdownSelection.innerHTML = option.innerHTML;
+    registerData.userRecommendation = option.innerHTML;
+  });
+});
 
 //#endregion
 
@@ -290,7 +288,7 @@ var registerData = {
 optionsGenders.forEach((option) => {
   option.addEventListener("click", () => {
     if (option.classList.contains("active")) {
-      option.classList.remove("active")
+      option.classList.remove("active");
     } else {
       optionsGenders.forEach((option) => {
         option.classList.remove("active");
@@ -342,19 +340,22 @@ nextConditionalNation.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
   const countryRegex = /\/([a-zA-Z]+)\.png$/;
-  
+
   const coincidenciaNationality = userNationality.src.match(countryRegex);
-  coincidenciaNationality ? registerData.userNationality = coincidenciaNationality[1] : ""
+  coincidenciaNationality
+    ? (registerData.userNationality = coincidenciaNationality[1])
+    : "";
 
   registerData.userOtherNationality = userOtherNationality.value;
 
   const coincidenciaResidence = userResidence.src.match(countryRegex);
-  coincidenciaResidence ? registerData.userResidence = coincidenciaResidence[1] : ""
+  coincidenciaResidence
+    ? (registerData.userResidence = coincidenciaResidence[1])
+    : "";
 
-  console.log(registerData)
+  console.log(registerData);
 
-
-  registerData.userLanguages = []
+  registerData.userLanguages = [];
   optionsLanguages.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userLanguages.push(field.getAttribute("data-language"));
@@ -387,7 +388,7 @@ nextConditionalSport.addEventListener("click", (e) => {
 
   var stopper = true;
 
-  registerData.userSports = []
+  registerData.userSports = [];
   optionsSports.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userSports.push(field.getAttribute("data-sport"));
@@ -544,8 +545,6 @@ optionsCompNow.forEach((option) => {
   });
 });
 
-
-
 nextConditionalExpThree.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
@@ -602,7 +601,7 @@ nextConditionalPrefOne.addEventListener("click", (e) => {
   stopper1 ? (moveForwardVariable = false) : "";
 
   var stopper2 = true;
-  registerData.userPreferredLevel = []
+  registerData.userPreferredLevel = [];
   optionsLevel.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userPreferredLevel.push(field.getAttribute("data-level"));
@@ -629,7 +628,7 @@ optionsStartingTime.forEach((option) => {
 
 optionsMobility.forEach((option) => {
   option.addEventListener("click", () => {
-      option.classList.toggle("active");
+    option.classList.toggle("active");
   });
 });
 
@@ -646,7 +645,7 @@ nextConditionalPrefTwo.addEventListener("click", (e) => {
   stopper1 ? (moveForwardVariable = false) : "";
 
   var stopper2 = true;
-  registerData.userMobilityContinents = []
+  registerData.userMobilityContinents = [];
 
   optionsMobility.forEach((field) => {
     if (field.classList.contains("active")) {
@@ -672,10 +671,14 @@ optionsOportunity.forEach((option) => {
 
 optionsSalary.forEach((option) => {
   option.addEventListener("click", () => {
-    optionsSalary.forEach((option) => {
+    if (option.classList.contains("active")) {
       option.classList.remove("active");
-    });
-    option.classList.add("active");
+    } else {
+      optionsSalary.forEach((option) => {
+        option.classList.remove("active");
+      });
+      option.classList.add("active");
+    }
   });
 });
 
@@ -683,7 +686,7 @@ nextConditionalPrefThree.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
   var stopper1 = true;
-  registerData.userOportunityType = []
+  registerData.userOportunityType = [];
   optionsOportunity.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userOportunityType.push(
@@ -694,14 +697,11 @@ nextConditionalPrefThree.addEventListener("click", (e) => {
   });
   stopper1 ? (moveForwardVariable = false) : "";
 
-  var stopper2 = true;
   optionsSalary.forEach((field) => {
     if (field.classList.contains("active")) {
       registerData.userExpectedSalary = field.getAttribute("data-salary");
-      stopper2 = false;
     }
   });
-  stopper2 ? (moveForwardVariable = false) : "";
 
   moveForwardVariable ? moveForward() : shakeAnimation(e.target);
 });
@@ -735,25 +735,22 @@ nextConditionalPass.addEventListener("click", (e) => {
   userEmail.value === ""
     ? (moveForwardVariableEmail = false)
     : (registerData.userEmail = userEmail.value);
-    
+
   isPassSafe(userPass.value)
     ? (registerData.userPass = userPass.value)
     : (moveForwardVariablePass = false);
 
-  (privacyPolicyCheckbox.checked)
-  ? ""
-  : (moveForwardVariablePrivacy = false);
+  privacyPolicyCheckbox.checked ? "" : (moveForwardVariablePrivacy = false);
 
   // Logic for register
 
-  if (!(moveForwardVariablePrivacy)) {
+  if (!moveForwardVariablePrivacy) {
     shakeAnimation(e.target);
-    nonFilledFieldsMessagePrivacy.classList.add('displayed');
+    nonFilledFieldsMessagePrivacy.classList.add("displayed");
     setTimeout(function () {
-      nonFilledFieldsMessagePrivacy.classList.remove('displayed');
+      nonFilledFieldsMessagePrivacy.classList.remove("displayed");
     }, 2000); // 1000 milisegundos = 1 segundo
   } else if (moveForwardVariablePass) {
-
     // Set loading state
     createCoachLoadingIcon.style.visibility = "visible";
     createCoachOkIcon.style.visibility = "hidden";
@@ -763,13 +760,16 @@ nextConditionalPass.addEventListener("click", (e) => {
       // After the additional second, call create coach
       firebaseCreateCoach(registerData)
         .then((user) => {
-        // If coach succesfully created, set userId and register Date to send to Firebase Database
+          // If coach succesfully created, set userId and register Date to send to Firebase Database
           registerData.coachId = user;
           registerData.registerDate = Date();
           // Send all the data in Firebase Database
           firebaseSaveCoachData(registerData).then(() => {
             moveForward();
-            setUserNameOnHeader(`Coach ${registerData.userName}`, registerData.coachId)
+            setUserNameOnHeader(
+              `Coach ${registerData.userName}`,
+              registerData.coachId
+            );
           });
         })
         .catch((error) => {
@@ -777,21 +777,19 @@ nextConditionalPass.addEventListener("click", (e) => {
           createCoachLoadingIcon.style.visibility = "hidden";
           createCoachOkIcon.style.visibility = "visible";
           shakeAnimation(e.target);
-          nonFilledFieldsMessageEmail.classList.add('displayed')
+          nonFilledFieldsMessageEmail.classList.add("displayed");
 
           setTimeout(function () {
-            nonFilledFieldsMessageEmail.classList.remove('displayed')
-
+            nonFilledFieldsMessageEmail.classList.remove("displayed");
           }, 2000); // 1000 milisegundos = 1 segundo
         });
     }, 1000); // 1000 milisegundos = 1 segundo
-
   } else {
     // If non valid password, display error
     shakeAnimation(e.target);
-    nonFilledFieldsMessagePass.classList.add('displayed')
+    nonFilledFieldsMessagePass.classList.add("displayed");
     setTimeout(function () {
-      nonFilledFieldsMessagePass.classList.remove('displayed')
+      nonFilledFieldsMessagePass.classList.remove("displayed");
     }, 2000); // 1000 milisegundos = 1 segundo
   }
 });

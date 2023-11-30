@@ -19,6 +19,7 @@ var isUserAllowed = () => {
             console.log('display')
             firebaseFetchUserDataById(valorCookieId).then(userData => {
               console.log(userData)
+              console.log('test')
               // fillDataInPage()
               pageLoader.style.display = 'none'
               body.style.overflowY = 'visible'

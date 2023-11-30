@@ -121,6 +121,7 @@ var firebaseSaveCoachData = (registerData) => {
         userInsta: registerData.userInsta,
         coachId: registerData.coachId,
         registerDate: registerData.registerDate,
+        userEmail: registerData.userEmail,
       });
       // Aquí faltaría redirigir a la página de artículo
       resolve();

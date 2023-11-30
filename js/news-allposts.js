@@ -87,25 +87,6 @@ var injectArticleFromData = (articleToPrevArray) => {
       <div class="prev-image _${articleIteration}" class="prev-item"><img src=""></div>
     </div>
   `;
-//   } else {
-//     newDiv.innerHTML = `
-//     <div class="previsualizerimagecontainer _${articleIteration}">
-//     <div class="prev-image _${articleIteration}" class="prev-item"><img src=""></div>
-//     </div>
-//     <div class="previsualizertextcontainer _${articleIteration}">
-//     <div class="prev-dateandauthor _${articleIteration}" class="prev-item">Oct 21 | Diego Colino</div>
-//     <div class="prev-title _${articleIteration}" class="prev-item">Aquí va el título</div>
-//     <div class="prev-content _${articleIteration}" class="prev-item">Aquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incAquí va el contenido, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inc</div>
-//     <div class="prev-tags _${articleIteration}" class="prev-item">
-//         <div class="prev-tag _${articleIteration}"></div>
-//         <div class="prev-tag _${articleIteration}"></div>
-//         <div class="prev-tag _${articleIteration}"></div>
-//         <div class="prev-tag _${articleIteration}"></div>
-//         <div class="prev-tag _${articleIteration}"></div>
-//     </div>
-//     </div>
-// `;
-//   }
 
   var articleIterationString = articleIteration.toString()
 
@@ -142,19 +123,10 @@ var injectArticleFromData = (articleToPrevArray) => {
     var textContent = pElements[i].textContent;
     if (!(textContent === '')) {
       previewContent.innerHTML = textContent
+      console.log(textContent)
       break;
     }
   }
-  // Image
-  for (var i = 0; i < pElements.length; i++) {
-    if (pElements[i].querySelector('img')) {
-      var imgContent = pElements[i].querySelector('img');
-      var src = imgContent.getAttribute('src')
-      previewImage.setAttribute('src', src)
-      break
-    }
-  }
-
   // Tags
   previewTags.forEach((tag, id) => {
     if ((articleToPrevArray.tags[id])) {

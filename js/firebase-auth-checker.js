@@ -78,7 +78,7 @@ function setUserNameOnHeader(displayName, displayNameId) {
 
   var typeOfUser = displayName.trim().split(' ')[0]
   console.log(typeOfUser)
-  typeOfUser === 'Coach' ? headerLogged.href = `/profile-coach.html?id=${displayNameId}` : headerLogged.href = `/profile-club.html?id=${displayNameId}`
+  typeOfUser === 'Coach' ? headerLogged.href = `/profile.html?id=${displayNameId}` : headerLogged.href = `/profile-club.html?id=${displayNameId}`
   headerLogged.style.display = 'flex'
   headerLoggedName.innerHTML = displayName
   headerLoggedName.innerHTML = displayName.replace(/^\w+\s*/, '')
@@ -88,24 +88,3 @@ function setUserNameOnHeader(displayName, displayNameId) {
 }
 
 export {setUserNameOnHeader}
-// function checkIfCookieIdMatchesURL(valorCookieId) {
-// const url = window.location.href;
-
-//   if (url.includes('/edit-coach')) {
-//       const params = new URLSearchParams(window.location.search);
-      
-//       if (params.has('id')) {
-//           const userId = params.get('id');
-          
-//           if (userId === valorCookieId) {
-//             if (url.includes('/edit-coach')) {
-//               displayDataToEditCoach()
-//             }
-//             if (url.includes('/edit-club')) {
-//               // displayDataToEditClub()
-//             }
-//           }
-//       }
-//   }
-
-// }
