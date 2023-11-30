@@ -1,5 +1,8 @@
 import { firebaseFetchUserDataById } from "./profile-coach-firebase.js";
 
+const dataElement = document.querySelectorAll('.profile-data')
+const dataElementExp = document.querySelectorAll('.profile-exp')
+
 const nombreCookie = "loggedUser";
 const nombreCookieId = "loggedUserId";
 const valorCookie = getCookie(nombreCookie);
@@ -10,8 +13,8 @@ const body = document.querySelector("body");
 
 //#region (v) edit section
 
+const actionsWrapper = document.querySelector("#actions-wrapper");
 const disclaimerContent = document.querySelector("#disclaimer-content");
-const disclaimerContent2 = document.querySelector("#disclaimer-content-2");
 const editButton = document.querySelector("#edit-button");
 const saveButton = document.querySelector("#save-button");
 const editStyledElements = document.querySelectorAll(".edit-mode-style");
@@ -85,29 +88,51 @@ isUserAllowed();
 
 //#region edit logic
 
+
 editButton.addEventListener("click", () => {
-  disclaimerContent.style.transform = "translateY(0)";
-  disclaimerContent.style.opacity = 0;
-  disclaimerContent2.style.transform = "translateY(0)";
-  disclaimerContent2.style.opacity = 1;
+  editButton.style.opacity = '0'
+  editButton.style.pointerEvents = 'none'
+  saveButton.style.opacity = '1'
+  saveButton.style.pointerEvents = 'auto'
+
+  actionsWrapper.style.right = '100%'
+  actionsWrapper.style.transform = 'translateX(100%)'
+
   editStyledElements.forEach((element) => {
     element.classList.toggle("styled");
   });
+  makeAllFieldsEditable()
 });
 
 saveButton.addEventListener("click", () => {
-  disclaimerContent2.style.transform = "translateY(6rem)";
-  disclaimerContent2.style.opacity = 0;
-  disclaimerContent.style.transform = "translateY(6rem)";
-  disclaimerContent.style.opacity = 1;
+  editButton.style.opacity = '1'
+  editButton.style.pointerEvents = 'auto'
+  saveButton.style.opacity = '0'
+  saveButton.style.pointerEvents = 'none'
+
+  actionsWrapper.style.right = '0'
+  actionsWrapper.style.transform = 'translateX(0)'
+
+
   editStyledElements.forEach((element) => {
     element.classList.toggle("styled");
   });
+  makeAllFieldsEditable()
 });
+
+var makeAllFieldsEditable = () => {
+  dataElement.forEach(element => {
+    element.classList.toggle('editable')
+  })
+  dataElementExp.forEach(element => {
+    element.classList.toggle('editable')
+  })
+}
 
 //#endregion
 
 //#region writeData
+var dataWorkedForClub = document.querySelector("#data-workedforclub");
 var dataCoordinated = document.querySelector("#data-coordinated");
 var dataTournaments = document.querySelector("#data-tournaments");
 var dataJudge = document.querySelector("#data-judge");
@@ -159,13 +184,64 @@ var fillDataInDocument = (data) => {
     ? (dataInstagram.style.display = "none")
     : (dataInstagram.href = data.userInsta);
 
-  // dataResidence.innerHTML = mapCountry(data.userResidence)
-  // dataVisa.innerHTML = mapCountry(data.userOtherNationality)
+    function mapCountry(code) {
+      const countryCodes = {
+        'at': 'Austria',
+        'be': 'Bélgica',
+        'bg': 'Bulgaria',
+        'hr': 'Croacia',
+        'cy': 'Chipre',
+        'cz': 'República Checa',
+        'dk': 'Dinamarca',
+        'ee': 'Estonia',
+        'fi': 'Finlandia',
+        'fr': 'Francia',
+        'de': 'Alemania',
+        'gr': 'Grecia',
+        'hu': 'Hungría',
+        'is': 'Islandia',
+        'ie': 'República de Irlanda',
+        'it': 'Italia',
+        'lv': 'Letonia',
+        'li': 'Liechtenstein',
+        'lt': 'Lituania',
+        'lu': 'Luxemburgo',
+        'mt': 'Malta',
+        'nl': 'Países Bajos',
+        'no': 'Noruega',
+        'pl': 'Polonia',
+        'pt': 'Portugal',
+        'ro': 'Rumania',
+        'sk': 'Eslovaquia',
+        'si': 'Eslovenia',
+        'es': 'España',
+        'se': 'Suecia'
+      };
+      
+      // Ejemplo de acceso a los datos
+      console.log(countryCodes['es']); // Devuelve 'España'
+      console.log(countryCodes['fr']); // Devuelve 'Francia'
+      // Y así sucesivamente para cada código de país
+      
+  
+      // Verificar si el código de país existe en el mapa
+      if (countryCodes.hasOwnProperty(code)) {
+          return countryCodes[code]; // Devuelve el nombre del país correspondiente
+      } else {
+          return 'País no especificado'; // O un mensaje predeterminado para códigos no encontrados
+      }
+  }
 
+  dataResidence.innerHTML = mapCountry(data.userResidence)
+  dataVisa.innerHTML = data.userOtherNationality
+
+// ---------------------------------------------------------------------------- Languages
   dataLanguages.innerHTML = data.userLanguages.join(", ");
 
+// ---------------------------------------------------------------------------- Sports
   dataSports.innerHTML = data.userSports.join(", ");
 
+// ---------------------------------------------------------------------------- Experience
   dataExp.innerHTML = data.userExperience;
   data.userExperience === "profesional player"
     ? (dataExp.innerHTML = "Jugador Profesional")
@@ -175,6 +251,7 @@ var fillDataInDocument = (data) => {
   data.userExperience === "five-to-ten" ? (dataExp.innerHTML = "5-10") : "";
   data.userExperience === "two to five" ? (dataExp.innerHTML = "2-5") : "";
 
+// ---------------------------------------------------------------------------- Weekly hours
   data.userWeeklyHours === "0010"
     ? (dataWeeklyhours.innerHTML = "0 - 10h")
     : "";
@@ -184,33 +261,68 @@ var fillDataInDocument = (data) => {
   data.userWeeklyHours === "2030"
     ? (dataWeeklyhours.innerHTML = "20 - 30h")
     : "";
-  data.userWeeklyHours === "3040"
-    ? (dataWeeklyhours.innerHTML = "30 - 40h")
+  data.userWeeklyHours === "30mo"
+    ? (dataWeeklyhours.innerHTML = "+30h")
     : "";
 
-  dataAlumn.innerHTML = data.userPreferredLevel.join(", ");
+// ---------------------------------------------------------------------------- Alumni Profile
+  function traducirNivel(nivel) {
+      switch (nivel) {
+          case 'initiation':
+            return 'iniciación';
+          case 'intermed':
+            return 'intermedio';
+          case 'advanced':
+              return 'avanzado';
+          case 'profesional':
+              return 'profesional';
+          // Agrega más casos según tus necesidades
+          default:
+              return nivel; // Devuelve el mismo valor si no hay traducción
+      }
+  }
+  let nivelesTraducidos = data.userPreferredLevel.map(nivel => traducirNivel(nivel));
+  dataAlumn.innerHTML = nivelesTraducidos.join(', ');
 
+// ---------------------------------------------------------------------------- Availability
   data.userAvailability === "4mo"
     ? (dataAvailability.innerHTML = "4 months")
     : "";
   dataAvailability.innerHTML = "4 months";
 
-  dataMobility.innerHTML = data.userMobilityContinents.join(", ");
+// ---------------------------------------------------------------------------- Mobility
 
+  function traducirContinentes(continente) {
+    switch (continente) {
+        case 'europe':
+          return 'europa';
+        // Agrega más casos según tus necesidades
+        default:
+            return continente; // Devuelve el mismo valor si no hay traducción
+    }
+}
+let continentesTraducidos = data.userMobilityContinents.map(continente => traducirContinentes(continente));
+dataMobility.innerHTML = continentesTraducidos.join(', ');
+
+// ---------------------------------------------------------------------------- Oportunity
   dataOportunity.innerHTML = data.userOportunityType.join(", ");
 
-  console.log(data.userMobility);
+//#region writing Expected Salary 
 
   data.userExpectedSalary === "2030" ? (dataRange.innerHTML = "20 - 30k") : "";
   data.userExpectedSalary === "3040" ? (dataRange.innerHTML = "30 - 40k") : "";
   data.userExpectedSalary === "4050" ? (dataRange.innerHTML = "40 - 50k") : "";
   data.userExpectedSalary === "5099" ? (dataRange.innerHTML = "+50k") : "";
 
+//#endregion
+
   dataRecommendator.innerHTML = data.userRecommendation;
 
   //#region experience
 
-  data.userClubExp === "y" ? dataCoordinated.classList.add("marked") : "";
+  data.userClubExp === "y" ? dataWorkedForClub.classList.add("marked") : "";
+
+  data.userOtherCoachExp === "y" ? dataCoordinated.classList.add("marked") : "";
   data.userToursOrganized === "y"
     ? dataTournaments.classList.add("marked")
     : "";

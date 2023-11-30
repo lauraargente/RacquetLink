@@ -84,24 +84,24 @@
   bottom: 0;
 }
 
-#disclaimer-content, #disclaimer-content-2 {
+#disclaimer-content {
   display: flex;
   align-items: center;
   height: 4rem;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 2rem 0 2rem;
 }
-#disclaimer-content #disclaimer-label, #disclaimer-content #disclaimer-label-2, #disclaimer-content-2 #disclaimer-label, #disclaimer-content-2 #disclaimer-label-2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#disclaimer-content #disclaimer-label {
+  width: 100%;
+  height: 100%;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border-radius: 0 0 0 2rem;
-  height: 100%;
-  color: rgb(255, 255, 255);
   padding: 2rem 6rem 2rem 2rem;
 }
-#disclaimer-content #edit-button, #disclaimer-content #save-button, #disclaimer-content-2 #edit-button, #disclaimer-content-2 #save-button {
+#disclaimer-content #edit-button, #disclaimer-content #save-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,20 +111,23 @@
   height: 100%;
   color: white;
   padding: 2rem;
-  border-radius: 0 2rem 0 0;
 }
 
-.disclaimer {
-  transform: translateY(6rem);
+#actions-wrapper {
+  position: absolute;
+  right: 0;
+  width: 8rem;
+  height: 100%;
   transition: 0.4s;
-}
-
-#disclaimer-content-2 {
-  opacity: 0;
+  transform: translateX(0);
 }
 
 #edit-button {
   background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
 }
 #edit-button:hover {
   cursor: pointer;
@@ -137,6 +140,11 @@
 
 #save-button {
   background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
 }
 #save-button:hover {
   cursor: pointer;
@@ -175,7 +183,7 @@
   padding-bottom: 4rem;
   left: 200px;
   bottom: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
@@ -246,10 +254,25 @@
   letter-spacing: 2px;
 }
 
+.editable {
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.editable:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .profile-data {
   font-weight: 400;
   text-align: right;
   line-height: 150%;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 60%;
+  text-transform: lowercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.6rem;
+  transition: 0.4s;
 }
 
 #experience-container {
@@ -284,9 +307,15 @@
   color: white;
   opacity: 0.2;
   font-weight: 300;
+  padding: 0.2rem 1rem;
+  border-radius: 0.6rem;
+  transition: 0.4s;
 }
 .profile-exp.marked {
   color: white !important;
   font-weight: 400 !important;
   opacity: 1 !important;
+}
+.profile-exp.editable {
+  transform: translateX(0rem);
 }/*# sourceMappingURL=profile.css.map */
