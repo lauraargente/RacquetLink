@@ -132,8 +132,22 @@ var dataNumber = document.querySelector("#data-number");
 var dataName = document.querySelector("#profile-element-container-name");
 var dataLinkedin = document.querySelector("#data-linkedin");
 var dataInstagram = document.querySelector("#data-instagram");
+var dataFlag = document.querySelector('#data-flag')
 
 var fillDataInDocument = (data) => {
+
+  console.log(data)
+  dataName.innerHTML = `${data.userName} ${data.userSurname}`;
+
+  const actualDate = new Date();
+  const birthDate = new Date(data.userBirthday);
+  const diferenciaEnMs = actualDate.getTime() - birthDate.getTime();
+  const msEnUnAnio = 1000 * 60 * 60 * 24 * 365.25; // Considerando años bisiestos
+  const edad = Math.floor(diferenciaEnMs / msEnUnAnio);
+  dataAge.innerHTML = `${edad} años`;
+
+  dataFlag.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${data.userNationality}.png`
+
   dataEmail.innerHTML = data.userEmail;
 
   dataNumber.innerHTML = data.userPhoneNumber;
@@ -193,13 +207,6 @@ var fillDataInDocument = (data) => {
   data.userExpectedSalary === "5099" ? (dataRange.innerHTML = "+50k") : "";
 
   dataRecommendator.innerHTML = data.userRecommendation;
-
-  const actualDate = new Date();
-  const birthDate = new Date(data.userBirthday);
-  const diferenciaEnMs = actualDate.getTime() - birthDate.getTime();
-  const msEnUnAnio = 1000 * 60 * 60 * 24 * 365.25; // Considerando años bisiestos
-  const edad = Math.floor(diferenciaEnMs / msEnUnAnio);
-  dataAge.innerHTML = `${edad}`;
 
   //#region experience
 

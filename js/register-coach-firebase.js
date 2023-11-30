@@ -93,7 +93,7 @@ var firebaseSaveCoachData = (registerData) => {
     try {
       const docRef = addDoc(collection(db, "coachesData"), {
         userName: registerData.userName,
-        userSurame: registerData.userSurame,
+        userSurname: registerData.userSurame,
         userRecommendation: registerData.userRecommendation,
         userBirthday: registerData.userBirthday,
         userGender: registerData.userGender,
