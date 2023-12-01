@@ -74,13 +74,13 @@
 }
 
 .styled {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
 }
 
 #profile-content-container-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   position: absolute;
   bottom: 0;
 }
@@ -88,11 +88,13 @@
 #disclaimer-content {
   display: flex;
   align-items: center;
-  height: 4rem;
-  transition: 0.4s;
+  height: 2.4rem;
+  transition: 1s;
   position: relative;
   overflow: hidden;
-  border-radius: 0 2rem 0 2rem;
+  border-radius: 2rem 2rem 2rem 2rem;
+  width: 30%;
+  margin-left: 70%;
   #disclaimer-label {
     width: 100%;
     height: 100%;
@@ -111,17 +113,17 @@
     // width: 100%;
     height: 100%;
     color: white;
-    padding: 2rem;
+    border-radius: 2rem;
   }
 }
 
 #actions-wrapper {
   position: absolute;
-  right: 0;
-  width: 8rem;
+  right: 100%;
+  width: 6rem;
   height: 100%;
-  transition: 0.4s;
-  transform: translateX(0);
+  transition: 1s;
+  transform: translateX(100%);
 }
 
 #edit-button {
@@ -192,13 +194,15 @@
   border-radius: 0 2rem 0 0;
 }
 
-.image-container {
+#image-container {
   position: relative;
   &:hover {
     #profile-image-label {
       color: white;
       border: 2px solid white;
-      font-weight: 400;
+      font-weight: 500;
+      background-color: #000000CC;
+      visibility: visible !important;
     }
   }
 }
@@ -209,6 +213,8 @@
   justify-content: center;
   cursor: pointer;
   position: absolute;
+  transition: 0.4s;
+  border: 2px solid rgba(255, 255, 255, 0);
   //   top: 50%;
   //   left: 50%;
   width: 100%;
@@ -261,7 +267,7 @@
 
 .editable {
   // background: rgba(255, 255, 255, 0.1);
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   // backdrop-filter: blur(25px);
   // -webkit-backdrop-filter: blur(25px);
   // transform: translateX(2rem);
@@ -272,6 +278,7 @@
 }
 
 .profile-data {
+  position: relative;
   font-weight: 400;
   text-align: right;
   line-height: 150%;
@@ -282,8 +289,21 @@
   padding: 0.2rem 0.6rem;
   border-radius: 0.6rem;
   transition: 0.4s;
+  &.being-edited {
+    transform: translateX(2rem);
+    background: rgba(255, 255, 255, 0.1);
 
+  }
 }
+
+.editable-options {
+  position: absolute;
+  right: -2rem;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+
 #experience-container {
   // display: flex;
   width: 80%;

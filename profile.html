@@ -146,9 +146,9 @@ Estructura general:
     <div id="profile-container">
         <div id="profile-left">
             <div id="profile-content-container" class="edit-mode-style">
-                <div class="image-container">
-                    <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"> 
+                <div id="image-container">
                     <label id="profile-image-label" for="file"  >Añade una <br>imagen de perfil</label>
+                    <input id="profile-picture" type="file" accept="image/*" name="image" id="file" style="display: none;"> 
                     <img id="output" src="./assets/profilestandard.png" class="profile-image" width="200" />
                 </div>
                 <div id="profile-element-container-name" style="justify-content: center;" class="profile-information-element"></div>
@@ -218,7 +218,9 @@ Estructura general:
                     <!-- <div id="experience-label-2" class="experience-label">Información</div> -->
                         <div id="profile-element-container-residence" style="margin-top: 3rem;" class="profile-information-element">
                             <div class="profile-label">Residencia</div>
-                            <div class="profile-data" id="data-residence"></div>
+                            <div class="profile-data" id="data-residence">
+                                <div class="editable-options">asdas</div>
+                            </div>
                         </div>
                         <div id="profile-element-container-residence" class="profile-information-element">
                             <div class="profile-label">Visados/2a NAC</div>
@@ -452,7 +454,7 @@ Estructura general:
         </div>
     </div>
 
-    <script src="js/profile.js" type="module"></script>
+    <script src="js/profile.js" type="module"></script> 
     <script src="js/firebase-auth-checker.js" type="module"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js'></script>
 

@@ -44,7 +44,15 @@ var dataRecommendator = document.querySelector("#data-recommendator");
 
 //#endregion
 
-//#region checkIfUserIsAllowed
+//#region (v) editVariables 
+
+var profilePicture = document.querySelector('#profile-picture')
+var imageContainer = document.querySelector('#image-container')
+var profileLabel = document.getElementById("profile-image-label");
+
+//#endregion
+
+//#region (l) checkIfUserIsAllowed
 
 var isUserAllowed = () => {
   const params = new URLSearchParams(window.location.search);
@@ -86,41 +94,48 @@ isUserAllowed();
 
 //#endregion
 
-//#region edit logic
+//#region (l) edit logic
 
-
-editButton.addEventListener("click", () => {
+var setEditableStyles = () => {
   editButton.style.opacity = '0'
   editButton.style.pointerEvents = 'none'
   saveButton.style.opacity = '1'
   saveButton.style.pointerEvents = 'auto'
 
-  actionsWrapper.style.right = '100%'
-  actionsWrapper.style.transform = 'translateX(100%)'
+  actionsWrapper.style.right = '0'
+  actionsWrapper.style.transform = 'translateX(0)'
 
   editStyledElements.forEach((element) => {
     element.classList.toggle("styled");
   });
-  makeAllFieldsEditable()
-});
+}
 
-saveButton.addEventListener("click", () => {
+var unsetEditableStyles = () => {
   editButton.style.opacity = '1'
   editButton.style.pointerEvents = 'auto'
   saveButton.style.opacity = '0'
   saveButton.style.pointerEvents = 'none'
 
-  actionsWrapper.style.right = '0'
-  actionsWrapper.style.transform = 'translateX(0)'
+  actionsWrapper.style.right = '100%'
+  actionsWrapper.style.transform = 'translateX(100%)'
 
 
   editStyledElements.forEach((element) => {
     element.classList.toggle("styled");
   });
-  makeAllFieldsEditable()
+}
+
+editButton.addEventListener("click", () => {
+  setEditableStyles()
+  toggleAllFieldsEditable()
 });
 
-var makeAllFieldsEditable = () => {
+saveButton.addEventListener("click", () => {
+  unsetEditableStyles()
+  toggleAllFieldsEditable()
+});
+
+var toggleAllFieldsEditable = () => {
   dataElement.forEach(element => {
     element.classList.toggle('editable')
   })
@@ -129,9 +144,24 @@ var makeAllFieldsEditable = () => {
   })
 }
 
+dataElement.forEach((element, id) => {
+  element.addEventListener('click', (e) => {
+    element.classList.contains('editable') ? element.classList.toggle('being-edited'): ""
+
+    dataElement.forEach(element => {
+
+      (!element.contains(e.target)) ? element.classList.remove('being-edited') : ""
+      
+    })
+
+  })
+})
+
+
+
 //#endregion
 
-//#region writeData
+//#region (l) writeData
 var dataWorkedForClub = document.querySelector("#data-workedforclub");
 var dataCoordinated = document.querySelector("#data-coordinated");
 var dataTournaments = document.querySelector("#data-tournaments");
@@ -286,7 +316,7 @@ var fillDataInDocument = (data) => {
 
 // ---------------------------------------------------------------------------- Availability
   data.userAvailability === "4mo"
-    ? (dataAvailability.innerHTML = "4 months")
+    ? (dataAvailability.innerHTML = "4 meses")
     : "";
   dataAvailability.innerHTML = "4 months";
 
@@ -340,10 +370,21 @@ dataMobility.innerHTML = continentesTraducidos.join(', ');
 
 //#endregion
 
+//#region (l) profilePicture 
+
+imageContainer.addEventListener('click', (e) => {
+  profilePicture.click()
+})
+
+profilePicture.addEventListener('change', (e) => {
+  loadFile(e)
+})
+
 var loadFile = function (event) {
   var image = document.getElementById("output");
-  var profileLabel = document.getElementById("profile-image-label");
   profileLabel.style.visibility = "hidden";
   image.src = URL.createObjectURL(event.target.files[0]);
-  // image.style.border = '4px solid white'
+  image.style.border = '4px solid white'
 };
+
+//#endregion
