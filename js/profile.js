@@ -127,36 +127,37 @@ var unsetEditableStyles = () => {
 
 editButton.addEventListener("click", () => {
   setEditableStyles()
-  toggleAllFieldsEditable()
+  makeAllFieldsEditable()
 });
 
 saveButton.addEventListener("click", () => {
   unsetEditableStyles()
-  toggleAllFieldsEditable()
+  unMakeAllFieldsEditable()
+  disSelectAllFields()
 });
 
-var toggleAllFieldsEditable = () => {
+var makeAllFieldsEditable = () => {
   dataElement.forEach(element => {
-    element.classList.toggle('editable')
+    element.classList.add('editable')
   })
-  dataElementExp.forEach(element => {
-    element.classList.toggle('editable')
+}
+var unMakeAllFieldsEditable = () => {
+  dataElement.forEach(element => {
+    element.classList.remove('editable')
+  })
+}
+var disSelectAllFields = (e) => {
+  dataElement.forEach(element => {
+    element.classList.remove('being-edited')
   })
 }
 
-dataElement.forEach((element, id) => {
+dataElement.forEach((element) => {
   element.addEventListener('click', (e) => {
-    element.classList.contains('editable') ? element.classList.toggle('being-edited'): ""
-
-    dataElement.forEach(element => {
-
-      (!element.contains(e.target)) ? element.classList.remove('being-edited') : ""
-      
-    })
-
+    disSelectAllFields(e)
+    element.classList.contains('editable') ? element.classList.add('being-edited'): ""
   })
 })
-
 
 
 //#endregion
@@ -169,18 +170,20 @@ var dataJudge = document.querySelector("#data-judge");
 var dataInternational = document.querySelector("#data-international");
 var dataProfesional = document.querySelector("#data-profesional");
 var dataCompiting = document.querySelector("#data-compiting");
-var dataResidence = document.querySelector("#data-residence");
-var dataVisa = document.querySelector("#data-visa");
-var dataLanguages = document.querySelector("#data-languages");
-var dataSports = document.querySelector("#data-sports");
-var dataExp = document.querySelector("#data-exp");
-var dataWeeklyhours = document.querySelector("#data-weeklyhours");
-var dataAlumn = document.querySelector("#data-alumn");
-var dataAvailability = document.querySelector("#data-availability");
-var dataMobility = document.querySelector("#data-mobility");
-var dataOportunity = document.querySelector("#data-oportunity");
-var dataRange = document.querySelector("#data-range");
-var dataRecommendator = document.querySelector("#data-recommendator");
+
+var dataResidence = document.querySelector("#data-residence > .data-content");
+var dataVisa = document.querySelector("#data-visa .data-content");
+var dataLanguages = document.querySelector("#data-languages .data-content");
+var dataSports = document.querySelector("#data-sports .data-content");
+var dataExp = document.querySelector("#data-exp .data-content");
+var dataWeeklyhours = document.querySelector("#data-weeklyhours .data-content");
+var dataAlumn = document.querySelector("#data-alumn .data-content");
+var dataAvailability = document.querySelector("#data-availability .data-content");
+var dataMobility = document.querySelector("#data-mobility .data-content");
+var dataOportunity = document.querySelector("#data-oportunity .data-content");
+var dataRange = document.querySelector("#data-range .data-content");
+var dataRecommendator = document.querySelector("#data-recommendator .data-content");
+
 var dataAge = document.querySelector("#data-age");
 var dataEmail = document.querySelector("#data-email");
 var dataNumber = document.querySelector("#data-number");
@@ -189,30 +192,65 @@ var dataLinkedin = document.querySelector("#data-linkedin");
 var dataInstagram = document.querySelector("#data-instagram");
 var dataFlag = document.querySelector('#data-flag')
 
+
+var newEditedData
+
 var fillDataInDocument = (data) => {
 
-  console.log(data)
-  dataName.innerHTML = `${data.userName} ${data.userSurname}`;
+  var dataSelectOne = (optionsAttribute, queryVariable, documentText, mappingFunction) => {
+    
+    var selectorAllOptions = document.querySelectorAll(`[${optionsAttribute}]`);
+    selectorAllOptions.forEach(element => {
+      element.addEventListener('click', () => {
+        queryVariable = element.getAttribute(`${optionsAttribute}`)
+        documentText.innerHTML = mappingFunction(queryVariable);
+        selectorAllOptions.forEach(element => {
+          element.classList.remove('selected')
+        })
+        element.classList.add('selected')
+        documentText.parentNode.classList.remove('selectionanimation');
+        setTimeout(function() {
+          documentText.parentNode.classList.add('selectionanimation');
+        }, 1);
+      })
+    })
+  }
 
+  newEditedData = data;
+
+  console.log(data)
+
+// ---------------------------------------------------------------------------- Name
+  dataName.innerHTML = `${newEditedData.userName} ${newEditedData.userSurname}`;
+
+// ---------------------------------------------------------------------------- Age
   const actualDate = new Date();
-  const birthDate = new Date(data.userBirthday);
+  const birthDate = new Date(newEditedData.userBirthday);
   const diferenciaEnMs = actualDate.getTime() - birthDate.getTime();
   const msEnUnAnio = 1000 * 60 * 60 * 24 * 365.25; // Considerando años bisiestos
   const edad = Math.floor(diferenciaEnMs / msEnUnAnio);
   dataAge.innerHTML = `${edad} años`;
 
-  dataFlag.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${data.userNationality}.png`
+// ---------------------------------------------------------------------------- Flag
+  dataFlag.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${newEditedData.userNationality}.png`
 
-  dataEmail.innerHTML = data.userEmail;
+// ---------------------------------------------------------------------------- Email
+  dataEmail.innerHTML = newEditedData.userEmail;
 
-  dataNumber.innerHTML = data.userPhoneNumber;
+// ---------------------------------------------------------------------------- Number
+  dataNumber.innerHTML = newEditedData.userPhoneNumber;
 
-  data.userLinkedin === ""
+// ---------------------------------------------------------------------------- LinkedIn
+  newEditedData.userLinkedin === ""
     ? (dataLinkedin.style.display = "none")
-    : (dataLinkedin.href = data.userLinkedin);
-  data.userInsta === ""
+    : (dataLinkedin.href = newEditedData.userLinkedin);
+
+// ---------------------------------------------------------------------------- Instagram
+  newEditedData.userInsta === ""
     ? (dataInstagram.style.display = "none")
-    : (dataInstagram.href = data.userInsta);
+    : (dataInstagram.href = newEditedData.userInsta);
+
+// ---------------------------------------------------------------------------- Residence
 
     function mapCountry(code) {
       const countryCodes = {
@@ -261,42 +299,151 @@ var fillDataInDocument = (data) => {
           return 'País no especificado'; // O un mensaje predeterminado para códigos no encontrados
       }
   }
+  dataResidence.textContent = mapCountry(newEditedData.userResidence)
 
-  dataResidence.innerHTML = mapCountry(data.userResidence)
-  dataVisa.innerHTML = data.userOtherNationality
+// ---------------------------------------------------------------------------- Visa
+  dataVisa.innerHTML = newEditedData.userOtherNationality
+
+  var optionsVisa = document.querySelector('[data-visa]')
+
+  optionsVisa.addEventListener('input', () => {
+    newEditedData.userOtherNationality = optionsVisa.value
+    dataVisa.innerHTML = optionsVisa.value
+  })
 
 // ---------------------------------------------------------------------------- Languages
-  dataLanguages.innerHTML = data.userLanguages.join(", ");
+dataLanguages.innerHTML = newEditedData.userLanguages.join(", ");
 
+var optionsLanguages = document.querySelectorAll('[data-language]');
+
+newEditedData.userLanguages.forEach(language => {
+  optionsLanguages.forEach((element) => {
+    if (element.getAttribute('data-language') === language) {
+      element.classList.add('selected')
+    }
+  })
+})
+
+optionsLanguages.forEach(element => {
+  element.addEventListener('click', () => {
+    newEditedData.userLanguages.length = 0
+    element.classList.toggle('selected')
+    optionsLanguages.forEach(element => {
+      if (element.classList.contains('selected')) {
+        newEditedData.userLanguages.push(element.getAttribute('data-language'))
+        dataLanguages.innerHTML = newEditedData.userLanguages.join(", ");
+
+        dataLanguages.parentNode.classList.remove('selectionanimation');
+        setTimeout(function() {
+          dataLanguages.parentNode.classList.add('selectionanimation');
+        }, 1);
+      }
+    })
+  })
+})
 // ---------------------------------------------------------------------------- Sports
-  dataSports.innerHTML = data.userSports.join(", ");
+
+dataSports.innerHTML = newEditedData.userSports.join(", ");
+
+var optionsSports = document.querySelectorAll('[data-sport]');
+
+newEditedData.userSports.forEach(sport => {
+  optionsSports.forEach((element) => {
+    if (element.getAttribute('data-sport') === sport) {
+      element.classList.add('selected')
+    }
+  })
+})
+
+var otherOptionSport = document.querySelector('[data-other-sport]')
+
+otherOptionSport.addEventListener('change', () => {
+  newEditedData.userSports.length = 0
+  newEditedData.userSports.push(otherOptionSport.value)
+  dataSports.innerHTML = newEditedData.userSports.join(", ");
+  otherOptionSport.classList.add('selected')
+
+
+  optionsSports.forEach(element => {
+    if (element.classList.contains('selected')) {
+      newEditedData.userSports.push(element.getAttribute('data-sport'))
+      dataSports.innerHTML = newEditedData.userSports.join(", ");
+
+      dataSports.parentNode.classList.remove('selectionanimation');
+      setTimeout(function() {
+        dataSports.parentNode.classList.add('selectionanimation');
+      }, 1);
+    }
+  })
+})
+
+optionsSports.forEach(element => {
+  element.addEventListener('click', () => {
+    newEditedData.userSports.length = 0
+    element.classList.toggle('selected')
+    optionsSports.forEach(element => {
+      if (element.classList.contains('selected')) {
+        newEditedData.userSports.push(element.getAttribute('data-sport'))
+        dataSports.innerHTML = newEditedData.userSports.join(", ");
+
+        dataSports.parentNode.classList.remove('selectionanimation');
+        setTimeout(function() {
+          dataSports.parentNode.classList.add('selectionanimation');
+        }, 1);
+      }
+    })
+  })
+})
+
+
 
 // ---------------------------------------------------------------------------- Experience
-  dataExp.innerHTML = data.userExperience;
-  data.userExperience === "profesional player"
-    ? (dataExp.innerHTML = "Jugador Profesional")
-    : "";
-  data.userExperience === "ten-or-more" ? (dataExp.innerHTML = "+10") : "";
-  data.userExperience === "two-or-less" ? (dataExp.innerHTML = "0-2") : "";
-  data.userExperience === "five-to-ten" ? (dataExp.innerHTML = "5-10") : "";
-  data.userExperience === "two to five" ? (dataExp.innerHTML = "2-5") : "";
+ function mapExp(data) {
+    switch (data) {
+        case 'two-or-less':
+          return '&lt; 2';
+        case 'two-to-five':
+          return '2 - 5';
+        case 'five-to-ten':
+          return '5 - 10';
+        case 'ten-or-more':
+          return '> 10';
+        case 'professional player':
+          return 'jugador profesional';
+        // Agrega más casos según tus necesidades
+        default:
+            return data; // Devuelve el mismo valor si no hay traducción
+          }
+      }
+dataExp.innerHTML = mapExp(newEditedData.userExperience);
+
+dataSelectOne('data-experience', newEditedData.userExperience, dataExp, mapExp)
+
 
 // ---------------------------------------------------------------------------- Weekly hours
-  data.userWeeklyHours === "0010"
-    ? (dataWeeklyhours.innerHTML = "0 - 10h")
-    : "";
-  data.userWeeklyHours === "1020"
-    ? (dataWeeklyhours.innerHTML = "10 - 20h")
-    : "";
-  data.userWeeklyHours === "2030"
-    ? (dataWeeklyhours.innerHTML = "20 - 30h")
-    : "";
-  data.userWeeklyHours === "30mo"
-    ? (dataWeeklyhours.innerHTML = "+30h")
-    : "";
+function mapWeekly(data) {
+  switch (data) {
+      case '0010':
+        return '&lt; 10h';
+      case '1020':
+        return '10 - 20h';
+      case '2030':
+        return '20 - 30h';
+      case '30mo':
+        return '> 30h';
+      case 'professional player':
+        return 'jugador profesional';
+      // Agrega más casos según tus necesidades
+      default:
+          return data; // Devuelve el mismo valor si no hay traducción
+        }
+    }
+dataWeeklyhours.innerHTML = mapWeekly(newEditedData.userWeeklyHours);
+
+dataSelectOne('data-hours', newEditedData.userWeeklyHours, dataWeeklyhours, mapWeekly)
 
 // ---------------------------------------------------------------------------- Alumni Profile
-  function traducirNivel(nivel) {
+  function mapLevel(nivel) {
       switch (nivel) {
           case 'initiation':
             return 'iniciación';
@@ -311,17 +458,30 @@ var fillDataInDocument = (data) => {
               return nivel; // Devuelve el mismo valor si no hay traducción
       }
   }
-  let nivelesTraducidos = data.userPreferredLevel.map(nivel => traducirNivel(nivel));
+  let nivelesTraducidos = newEditedData.userPreferredLevel.map(nivel => mapLevel(nivel));
   dataAlumn.innerHTML = nivelesTraducidos.join(', ');
 
 // ---------------------------------------------------------------------------- Availability
-  data.userAvailability === "4mo"
-    ? (dataAvailability.innerHTML = "4 meses")
-    : "";
-  dataAvailability.innerHTML = "4 months";
+function mapAvailability(nivel) {
+  switch (nivel) {
+      case '4mo':
+        return 'en 4 meses o más';
+      case '2o3':
+        return 'en 2 o 3 meses';
+      case 'one':
+          return 'en 1 mes';
+      case 'now':
+          return 'inmediata';
+      // Agrega más casos según tus necesidades
+      default:
+          return nivel; // Devuelve el mismo valor si no hay traducción
+  }
+}
+dataAvailability.innerHTML = mapWeekly(newEditedData.userWeeklyHours);
+
+dataSelectOne('data-startingtime', newEditedData.userAvailability, dataAvailability, mapAvailability)
 
 // ---------------------------------------------------------------------------- Mobility
-
   function traducirContinentes(continente) {
     switch (continente) {
         case 'europe':
@@ -331,41 +491,88 @@ var fillDataInDocument = (data) => {
             return continente; // Devuelve el mismo valor si no hay traducción
     }
 }
-let continentesTraducidos = data.userMobilityContinents.map(continente => traducirContinentes(continente));
+let continentesTraducidos = newEditedData.userMobilityContinents.map(continente => traducirContinentes(continente));
 dataMobility.innerHTML = continentesTraducidos.join(', ');
 
 // ---------------------------------------------------------------------------- Oportunity
-  dataOportunity.innerHTML = data.userOportunityType.join(", ");
+  dataOportunity.innerHTML = newEditedData.userOportunityType.join(", ");
 
-//#region writing Expected Salary 
+// ---------------------------------------------------------------------------- Salary
+function mapSalary(nivel) {
+  switch (nivel) {
+      case '2030':
+        return '20k - 30k';
+      case '3040':
+        return '30k - 40k';
+      case '4050':
+          return '40k - 50k';
+      case '5099':
+          return '> 50k';
+      // Agrega más casos según tus necesidades
+      default:
+          return nivel; // Devuelve el mismo valor si no hay traducción
+  }
+}
+dataRange.innerHTML = mapSalary(newEditedData.userExpectedSalary);
 
-  data.userExpectedSalary === "2030" ? (dataRange.innerHTML = "20 - 30k") : "";
-  data.userExpectedSalary === "3040" ? (dataRange.innerHTML = "30 - 40k") : "";
-  data.userExpectedSalary === "4050" ? (dataRange.innerHTML = "40 - 50k") : "";
-  data.userExpectedSalary === "5099" ? (dataRange.innerHTML = "+50k") : "";
+dataSelectOne('data-salary', newEditedData.userExpectedSalary, dataRange, mapSalary)
 
-//#endregion
+// ---------------------------------------------------------------------------- Recommendator
+  function casesRecommendator(data) {
+    switch (data) {
+        case 'no':
+          return 'no';
+        case 'diego-ortiz':
+          return 'diego ortiz';
+        case 'javier-marti':
+            return 'javier martí';
+        case 'miguel-semmler':
+            return 'miguel semmler';
+        case 'adriana-armenadriz':
+          return 'adriana armendariz';
+        case 'diego-ortiz':
+          return 'diego ortiz';
+        case 'alejandro-crespo':
+          return 'alejandro crespo';
+        case 'sergi-perez':
+          return 'sergi perez';
+        case 'laura-marti':
+          return 'laura marti';
+        // Agrega más casos según tus necesidades
+        default:
+            return data; // Devuelve el mismo valor si no hay traducción
+    }
+}
+dataRecommendator.innerHTML = casesRecommendator(newEditedData.userRecommendation);
 
-  dataRecommendator.innerHTML = data.userRecommendation;
+dataSelectOne('data-recommendator', newEditedData.userRecommendation, dataRecommendator, casesRecommendator)
 
-  //#region experience
 
-  data.userClubExp === "y" ? dataWorkedForClub.classList.add("marked") : "";
+// ---------------------------------------------------------------------------- Club Exp
+  newEditedData.userClubExp === "y" ? dataWorkedForClub.classList.add("marked") : "";
 
-  data.userOtherCoachExp === "y" ? dataCoordinated.classList.add("marked") : "";
-  data.userToursOrganized === "y"
+// ---------------------------------------------------------------------------- Other Coach Exp
+  newEditedData.userOtherCoachExp === "y" ? dataCoordinated.classList.add("marked") : "";
+
+// ---------------------------------------------------------------------------- Tournaments Organized
+  newEditedData.userToursOrganized === "y"
     ? dataTournaments.classList.add("marked")
     : "";
-  data.userToursJuzge === "y" ? dataJudge.classList.add("marked") : "";
-  data.userProfessionalExp === "y"
+
+// ---------------------------------------------------------------------------- Tours Juzge
+  newEditedData.userToursJuzge === "y" ? dataJudge.classList.add("marked") : "";
+  newEditedData.userProfessionalExp === "y"
     ? dataProfesional.classList.add("marked")
     : "";
-  data.userInternationalExp === "y"
+
+// ---------------------------------------------------------------------------- International Exp
+  newEditedData.userInternationalExp === "y"
     ? dataInternational.classList.add("marked")
     : "";
-  data.userCompetingNow === "y" ? dataCompiting.classList.add("marked") : "";
 
-  //#endregion
+// ---------------------------------------------------------------------------- Compiting Now
+  newEditedData.userCompetingNow === "y" ? dataCompiting.classList.add("marked") : "";
+
 };
 
 //#endregion
@@ -386,5 +593,11 @@ var loadFile = function (event) {
   image.src = URL.createObjectURL(event.target.files[0]);
   image.style.border = '4px solid white'
 };
+
+//#endregion
+
+//#region (l) set edit logic 
+
+
 
 //#endregion

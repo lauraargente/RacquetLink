@@ -239,7 +239,8 @@ dropdown.addEventListener("click", () => {
 dropdownOptions.forEach((option) => {
   option.addEventListener("click", () => {
     dropdownSelection.innerHTML = option.innerHTML;
-    registerData.userRecommendation = option.innerHTML;
+    registerData.userRecommendation = option.getAttribute("data-recommendator");
+
   });
 });
 
@@ -250,7 +251,7 @@ dropdownOptions.forEach((option) => {
 var registerData = {
   userName: "",
   userSurame: "",
-  userRecommendation: "No",
+  userRecommendation: "no",
   userBirthday: "",
   userGender: "",
   userNationality: "",

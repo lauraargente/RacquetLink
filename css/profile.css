@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-left: 14rem;
+  margin-left: 8vw;
 }
 
 #profile-right {
@@ -103,7 +103,8 @@
   -webkit-backdrop-filter: blur(25px);
   padding: 2rem 6rem 2rem 2rem;
 }
-#disclaimer-content #edit-button, #disclaimer-content #save-button {
+#disclaimer-content #edit-button,
+#disclaimer-content #save-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +121,7 @@
   right: 100%;
   width: 6rem;
   height: 100%;
-  transition: 1s;
+  transition: 0.4s;
   transform: translateX(100%);
 }
 
@@ -167,7 +168,6 @@
   width: 480px;
   padding-bottom: 4rem;
   bottom: 0;
-  overflow-x: hidden;
   background: rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
@@ -258,6 +258,7 @@
   font-weight: 300;
   opacity: 0.4;
   letter-spacing: 2px;
+  margin-top: 0.6rem;
 }
 
 .editable {
@@ -285,13 +286,79 @@
   transform: translateX(2rem);
   background: rgba(255, 255, 255, 0.1);
 }
+.profile-data.being-edited .editable-options {
+  opacity: 1;
+  visibility: visible;
+}
 
 .editable-options {
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  flex-wrap: wrap;
   position: absolute;
   right: -2rem;
-  width: 100%;
+  transform: translateX(100%);
+  top: 0;
+  max-width: 12rem;
+  width: -moz-max-content;
+  width: max-content;
+  transition: 0.4s;
+  height: -moz-max-content;
+  height: max-content;
+  gap: 0.4rem;
+}
+
+.editable-option {
+  width: -moz-max-content;
+  width: max-content;
   height: 100%;
-  background-color: red;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 2rem;
+  padding: 0.2rem 0.8rem;
+}
+.editable-option:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.editable-option:active {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.inputtext {
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  color: white;
+  font-weight: 400;
+  font-family: Montserrat;
+}
+.inputtext:focus {
+  outline: none;
+}
+.inputtext:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+.inputtext:active {
+  background: rgba(0, 0, 0, 0.6);
+}
+.inputtext::-moz-placeholder {
+  color: #000000;
+  font-family: Montserrat;
+}
+.inputtext::placeholder {
+  color: #000000;
+  font-family: Montserrat;
+}
+
+.selected {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.selectionanimation {
+  animation-name: selection;
+  animation-duration: 0.4s;
 }
 
 #experience-container {
@@ -337,4 +404,16 @@
 }
 .profile-exp.editable {
   transform: translateX(0rem);
+}
+
+@keyframes selection {
+  0% {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  30% {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.1);
+  }
 }/*# sourceMappingURL=profile.css.map */
