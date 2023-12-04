@@ -1,749 +1,679 @@
 import { firebaseFetchUserDataById } from "./profile-coach-firebase.js";
 
+const dataElement = document.querySelectorAll('.profile-data')
+const dataElementExp = document.querySelectorAll('.profile-exp')
+
 const nombreCookie = "loggedUser";
 const nombreCookieId = "loggedUserId";
-const valorCookie = getCookie(nombreCookie); // Suponiendo que ya tienes una función getCookie definida
-const valorCookieId = getCookie(nombreCookieId); // Suponiendo que ya tienes una función getCookie definida
+const valorCookie = getCookie(nombreCookie);
+const valorCookieId = getCookie(nombreCookieId);
 
-const pageLoader = document.querySelector('#page-loader')
-const body = document.querySelector('body')
+const pageLoader = document.querySelector("#page-loader");
+const body = document.querySelector("body");
 
+//#region (v) edit section
 
-//#region checkIfUserIsAllowed 
- 
+const actionsWrapper = document.querySelector("#actions-wrapper");
+const disclaimerContent = document.querySelector("#disclaimer-content");
+const editButton = document.querySelector("#edit-button");
+const saveButton = document.querySelector("#save-button");
+const editStyledElements = document.querySelectorAll(".edit-mode-style");
+
+//#endregion
+
+//#region (v) editVariables 
+
+var profilePicture = document.querySelector('#profile-picture')
+var imageContainer = document.querySelector('#image-container')
+var profileLabel = document.getElementById("profile-image-label");
+
+//#endregion
+
+//#region (l) checkIfUserIsAllowed
+
 var isUserAllowed = () => {
-    const params = new URLSearchParams(window.location.search);
-    
-    if (params.has('id')) {
-          if (params.get('id') === valorCookieId) {
-            console.log('display')
-            firebaseFetchUserDataById(valorCookieId).then(userData => {
-              console.log(userData)
-              console.log('test')
-              // fillDataInPage()
-              pageLoader.style.display = 'none'
-              body.style.overflowY = 'visible'
-            })
-          } else {
-            console.log('dontdisplay')
-            setTimeout(() => {
-            pageLoader.innerHTML = 'No dispone de permisos para ver esta página'
-            }, 1000);
-          }
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.has("id")) {
+    if (params.get("id") === valorCookieId) {
+      firebaseFetchUserDataById(valorCookieId).then((userData) => {
+        // fillDataInPage()
+        pageLoader.style.display = "none";
+        body.style.overflowY = "visible";
+        fillDataInDocument(userData);
+      });
     } else {
-      console.log('dontdisplay')
       setTimeout(() => {
-      pageLoader.innerHTML = 'No dispone de permisos para ver esta página'
+        pageLoader.innerHTML = "No dispone de permisos para ver esta página";
       }, 1000);
     }
-}
+  } else {
+    setTimeout(() => {
+      pageLoader.innerHTML = "No dispone de permisos para ver esta página";
+    }, 1000);
+  }
+};
 
 function getCookie(nombre) {
-  const cookies = document.cookie.split(';');
+  const cookies = document.cookie.split(";");
   for (let i = 0; i < cookies.length; i++) {
     const cookie = cookies[i].trim();
-    if (cookie.startsWith(nombre + '=')) {
+    if (cookie.startsWith(nombre + "=")) {
       return cookie.substring(nombre.length + 1);
     }
   }
   return null;
 }
 
-isUserAllowed()
+isUserAllowed();
 
 //#endregion
 
+//#region (l) edit logic
+
+var setEditableStyles = () => {
+  editButton.style.opacity = '0'
+  editButton.style.pointerEvents = 'none'
+  saveButton.style.opacity = '1'
+  saveButton.style.pointerEvents = 'auto'
+
+  actionsWrapper.style.right = '0'
+  actionsWrapper.style.transform = 'translateX(0)'
+
+  editStyledElements.forEach((element) => {
+    element.classList.toggle("styled");
+  });
+}
+
+var unsetEditableStyles = () => {
+  editButton.style.opacity = '1'
+  editButton.style.pointerEvents = 'auto'
+  saveButton.style.opacity = '0'
+  saveButton.style.pointerEvents = 'none'
+
+  actionsWrapper.style.right = '100%'
+  actionsWrapper.style.transform = 'translateX(100%)'
 
 
+  editStyledElements.forEach((element) => {
+    element.classList.toggle("styled");
+  });
+}
+
+editButton.addEventListener("click", () => {
+  setEditableStyles()
+  makeAllFieldsEditable()
+});
+
+saveButton.addEventListener("click", () => {
+  unsetEditableStyles()
+  unMakeAllFieldsEditable()
+  disSelectAllFields()
+  console.log(newEditedData)
+});
+
+var makeAllFieldsEditable = () => {
+  dataElement.forEach(element => {
+    element.classList.add('editable')
+  })
+  dataElementExp.forEach(element => {
+    element.classList.add('editable')
+  })
+}
+var unMakeAllFieldsEditable = () => {
+  dataElement.forEach(element => {
+    element.classList.remove('editable')
+  })
+  dataElementExp.forEach(element => {
+    element.classList.remove('editable')
+  })
+}
+var disSelectAllFields = (e) => {
+  dataElement.forEach(element => {
+    element.classList.remove('being-edited')
+  })
+  dataElementExp.forEach(element => {
+    element.classList.remove('editable')
+  })
+}
+
+dataElement.forEach((element) => {
+  element.addEventListener('click', (e) => {
+    disSelectAllFields(e)
+    element.classList.contains('editable') ? element.classList.add('being-edited'): ""
+  })
+})
 
 
+//#endregion
+
+//#region (l) writeData
+var dataWorkedForClub = document.querySelector("#data-workedforclub");
+var dataCoordinated = document.querySelector("#data-coordinated");
+var dataTournaments = document.querySelector("#data-tournaments");
+var dataJudge = document.querySelector("#data-judge");
+var dataInternational = document.querySelector("#data-international");
+var dataProfesional = document.querySelector("#data-profesional");
+var dataCompiting = document.querySelector("#data-compiting");
+
+var dataVisa = document.querySelector("#data-visa .data-content");
+var dataLanguages = document.querySelector("#data-languages .data-content");
+var dataSports = document.querySelector("#data-sports .data-content");
+var dataExp = document.querySelector("#data-exp .data-content");
+var dataWeeklyhours = document.querySelector("#data-weeklyhours .data-content");
+var dataAlumn = document.querySelector("#data-alumn .data-content");
+var dataAvailability = document.querySelector("#data-availability .data-content");
+var dataMobility = document.querySelector("#data-mobility .data-content");
+var dataOportunity = document.querySelector("#data-oportunity .data-content");
+var dataRange = document.querySelector("#data-range .data-content");
+var dataRecommendator = document.querySelector("#data-recommendator .data-content");
+
+var dataResidence = document.querySelector("#data-residence");
+var dataAge = document.querySelector("#data-age");
+var dataEmail = document.querySelector("#data-email");
+var dataNumber = document.querySelector("#data-number");
+var dataName = document.querySelector("#profile-element-container-name");
+var dataLinkedin = document.querySelector("#data-linkedin");
+var dataInstagram = document.querySelector("#data-instagram");
+var dataFlag = document.querySelector('#data-flag')
 
 
-const countries = [
-  {
-    name: "Austria",
-    prefix: 43,
-    flag: "at",
-  },
-  {
-    name: "Bélgica",
-    prefix: 32,
-    flag: "be",
-  },
-  {
-    name: "Bulgaria",
-    prefix: 359,
-    flag: "bg",
-  },
-  {
-    name: "Croacia",
-    prefix: 385,
-    flag: "hr",
-  },
-  {
-    name: "Chipre",
-    prefix: 357,
-    flag: "cy",
-  },
-  {
-    name: "República Checa",
-    prefix: 420,
-    flag: "cz",
-  },
-  {
-    name: "Dinamarca",
-    prefix: 45,
-    flag: "dk",
-  },
-  {
-    name: "Estonia",
-    prefix: 372,
-    flag: "ee",
-  },
-  {
-    name: "Finlandia",
-    prefix: 358,
-    flag: "fi",
-  },
-  {
-    name: "Francia",
-    prefix: 33,
-    flag: "fr",
-  },
-  {
-    name: "Alemania",
-    prefix: 49,
-    flag: "de",
-  },
-  {
-    name: "Grecia",
-    prefix: 30,
-    flag: "gr",
-  },
-  {
-    name: "Hungría",
-    prefix: 36,
-    flag: "hu",
-  },
-  {
-    name: "Islandia",
-    prefix: 354,
-    flag: "is",
-  },
-  {
-    name: "República de Irlanda",
-    prefix: 353,
-    flag: "ie",
-  },
-  {
-    name: "Italia",
-    prefix: 39,
-    flag: "it",
-  },
-  {
-    name: "Letonia",
-    prefix: 371,
-    flag: "lv",
-  },
-  {
-    name: "Liechtenstein",
-    prefix: 423,
-    flag: "li",
-  },
-  {
-    name: "Lituania",
-    prefix: 370,
-    flag: "lt",
-  },
-  {
-    name: "Luxemburgo",
-    prefix: 352,
-    flag: "lu",
-  },
-  {
-    name: "Malta",
-    prefix: 356,
-    flag: "mt",
-  },
-  {
-    name: "Países Bajos",
-    prefix: 31,
-    flag: "nl",
-  },
-  {
-    name: "Noruega",
-    prefix: 47,
-    flag: "no",
-  },
-  {
-    name: "Polonia",
-    prefix: 48,
-    flag: "pl",
-  },
-  {
-    name: "Portugal",
-    prefix: 351,
-    flag: "pt",
-  },
-  {
-    name: "Rumania",
-    prefix: 40,
-    flag: "ro",
-  },
-  {
-    name: "Eslovaquia",
-    prefix: 421,
-    flag: "sk",
-  },
-  {
-    name: "Eslovenia",
-    prefix: 386,
-    flag: "si",
-  },
-  {
-    name: "España",
-    prefix: 34,
-    flag: "es",
-  },
-  {
-    name: "Suecia",
-    prefix: 46,
-    flag: "se",
-  },
-];
+var newEditedData
 
-// #region inputCountry2
+var fillDataInDocument = (data) => {
 
-const selectContainer2 = document.getElementById("js_pn-select2");
-const countrySearchInput2 = document.getElementById("js_search-input2");
-const noResultListItem2 = document.getElementById("js_no-results-found2");
-const dropdownTrigger2 = document.getElementById("js_trigger-dropdown2");
-const phoneNumberInput2 = document.getElementById("js_input-phonenumber2");
-const dropdownContainer2 = document.getElementById("js_dropdown2");
-const selectedPrefix2 = document.getElementById("js_number-prefix2");
-const selectedFlag2 = document.getElementById("js_selected-flag2");
-const listContainer2 = document.getElementById("js_list2");
+  newEditedData = data;
 
-let countryList2;
-
-const init2 = async (countries) => {
-  const selectCountry = (e) => {
-    const { name, flag, prefix } = e.target.closest("li").dataset;
-    setNewSelected(prefix, flag, name);
-    closeDropdown();
-    addSelectedModifier(flag);
-  };
-
-  // -------------- Update the 'Selected country flag' to reflect changes
-
-  const setNewSelected = (prefix, flag, name) => {
-    selectedFlag2.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${flag}.png`;
-    selectedPrefix2.value = `${name}`;
-    selectContainer2.style.setProperty("--prefix-length", prefix.length);
-  };
-
-  // -------------- Removes and adds modifier to selected country
-
-  const addSelectedModifier = (flag) => {
-    const previousSelected = document.getElementsByClassName(
-      "pn-list-item--selected"
-    )[0];
-    const newSelected = document.querySelectorAll(
-      `.pn-list-item[data-flag=${flag}]`
-    )[0];
-    previousSelected.classList.remove("pn-list-item--selected");
-    newSelected.classList.add("pn-list-item--selected");
-  };
-
-  // -------------- Close dropdown
-
-  const closeDropdown = () => {
-    selectContainer2.classList.remove("pn-select--open");
-    listContainer2.scrollTop = 0;
-    countrySearchInput2.value = "";
-    countryList2.search();
-    phoneNumberInput2.focus();
-    removeDropdownEvents();
-  };
-
-  // -------------- Open dropdown
-
-  const openDropdown = () => {
-    selectContainer2.classList.add("pn-select--open");
-    attatchDropdownEvents();
-  };
-
-  // -------------- Dropdown event listeners
-
-  let countdown;
-
-  const closeOnMouseLeave = () => {
-    countdown = setTimeout(() => closeDropdown(), 2000);
-  };
-
-  const clearTimeOut = () => clearTimeout(countdown);
-
-  const attatchDropdownEvents = () => {
-    dropdownContainer2.addEventListener("mouseleave", closeOnMouseLeave);
-    dropdownContainer2.addEventListener("mouseenter", clearTimeOut);
-  };
-
-  const removeDropdownEvents = () => {
-    clearTimeout(countdown);
-    dropdownContainer2.removeEventListener("mouseleave", closeOnMouseLeave);
-    dropdownContainer2.removeEventListener("mouseenter", clearTimeOut);
-  };
-
-  // -------------- Close when clicked outside the dropdown
-
-  document.addEventListener("click", (e) => {
-    if (
-      e.target !== selectContainer2 &&
-      !selectContainer2.contains(e.target) &&
-      selectContainer2.classList.contains("pn-select--open")
-    ) {
-      closeDropdown();
+  var dataSelectOne = (optionsAttribute, queryVariable, documentElement, mappingFunction, updateQueryVariable) => {
+  // Set selected from query to document
+  var selectorAllOptions = document.querySelectorAll(`[${optionsAttribute}]`);
+  selectorAllOptions.forEach((element) => {
+    if (element.getAttribute(`${optionsAttribute}`) === queryVariable) {
+      element.classList.add('selected');
     }
   });
 
-  // -------------- Append generated listItems to list element
+  // Set the data from query to document
+  documentElement.innerHTML = mappingFunction(queryVariable);
 
-  const createList = () =>
-    new Promise((resolve, _) => {
-      countries.forEach((country, index, countries) => {
-        const { name, prefix, flag } = country;
+  // Manage edition
+  selectorAllOptions.forEach(element => {
+    element.addEventListener('click', () => {
+      const newQueryVariable = element.getAttribute(`${optionsAttribute}`);
+      updateQueryVariable(newQueryVariable); // Llamada a la función de actualización externa
 
-        const element = `<li class="pn-list-item ${
-          flag === "nl" ? "pn-list-item--selected" : ""
-        } js_pn-list-item-2" data-name="${name}" data-flag="${flag}" data-prefix="${prefix}" tabindex="0" role="button" aria-pressed="false">
-          <img class="pn-list-item__flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/${flag}.png" />
-          <span class="pn-list-item__country js_country-name">${name}</span>
-        </li>`;
+      documentElement.innerHTML = mappingFunction(newQueryVariable);
 
-        listContainer2.innerHTML += element;
-
-        if (index === countries.length - 1) {
-          resolve();
-        }
+      selectorAllOptions.forEach(elem => {
+        elem.classList.remove('selected');
       });
+      element.classList.add('selected');
+
+      documentElement.parentNode.classList.remove('selectionanimation');
+      setTimeout(function() {
+        documentElement.parentNode.classList.add('selectionanimation');
+      }, 1);
     });
-
-  // -------------- After all the listItems are created we loop over the items to attach the eventListeners
-
-  const attatchListItemEventListeners = () =>
-    new Promise((resolve, _) => {
-      const listItems = [
-        ...document.getElementsByClassName("js_pn-list-item-2"),
-      ];
-
-      listItems.forEach((item, index, listItems) => {
-        item.addEventListener("click", (event) => {
-          selectCountry(event);
-        });
-        // Keydown event listener - https://dev.to/tylerjdev/when-role-button-is-not-enough-dac
-        item.addEventListener("keydown", function (e) {
-          const keyD = e.key !== undefined ? e.key : e.keyCode;
-          if (
-            keyD === "Enter" ||
-            keyD === 13 ||
-            ["Spacebar", " "].indexOf(keyD) >= 0 ||
-            keyD === 32
-          ) {
-            e.preventDefault();
-            this.click();
-          }
-        });
-
-        if (index === listItems.length - 1) {
-          resolve();
-        }
-      });
-    });
-
-  // -------------- After all the listItems are created we init2ate list and it's listeners
-
-  const init2iateList = () => {
-    countryList2 = new List("js_pn-select2", {
-      valueNames: ["js_country-name", "js_country-prefix"],
-    });
-
-    // Add 'updated' listener for search results
-    countryList2.on("updated", (list) => {
-      if (list.matchingItems.length < 5)
-        listContainer2.classList.toggle("pn-list--no-scroll");
-
-      noResultListItem2.style.display =
-        list.matchingItems.length > 0 ? "none" : "block";
-    });
-  };
-
-  await createList();
-  await attatchListItemEventListeners();
-  init2iateList();
-
-  dropdownTrigger2.addEventListener("click", () => {
-    const isOpen = selectContainer2.classList.contains("pn-select--open");
-    isOpen ? closeDropdown() : openDropdown();
   });
-};
+  }
 
-init2(countries);
+  var dataSelectMultiple = (optionsAttribute, queryVariable, documentElement, mappingFunction) => {
+    
+    // Set selected from query to document
+    var selectorAllOptions = document.querySelectorAll(`[${optionsAttribute}]`);
 
-//#endregion Country2
+    queryVariable.forEach(upperelement => {
+      selectorAllOptions.forEach((element) => {
+        if (element.getAttribute(`${optionsAttribute}`) === upperelement) {
+          element.classList.add('selected')
+        }
+      })
+    })
 
-// #region inputCountry3
+    // Set the data from query to document
+    let translatedElements = queryVariable.map(element => mappingFunction(element));
+    documentElement.innerHTML = translatedElements.join(', ');
 
-const selectContainer3 = document.getElementById("js_pn-select3");
-const countrySearchInput3 = document.getElementById("js_search-input3");
-const noResultListItem3 = document.getElementById("js_no-results-found3");
-const dropdownTrigger3 = document.getElementById("js_trigger-dropdown3");
-const phoneNumberInput3 = document.getElementById("js_input-phonenumber3");
-const dropdownContainer3 = document.getElementById("js_dropdown3");
-const selectedPrefix3 = document.getElementById("js_number-prefix3");
-const selectedFlag3 = document.getElementById("js_selected-flag3");
-const listContainer3 = document.getElementById("js_list3");
+    // Manage edition
+    selectorAllOptions.forEach(element => {
+      element.addEventListener('click', () => {
+        queryVariable.length = 0
 
-let countryList3;
+        element.classList.toggle('selected')
 
-const init3 = async (countries) => {
-  const selectCountry = (e) => {
-    const { name, flag, prefix } = e.target.closest("li").dataset;
-    setNewSelected(prefix, flag, name);
-    closeDropdown();
-    addSelectedModifier(flag);
-  };
+        // revert toggle if it's last toggled
+        var countSelected = 0
+        selectorAllOptions.forEach(element => {
+          if (element.classList.contains('selected')) {
+            countSelected++
+          }
+        })
 
-  // -------------- Update the 'Selected country flag' to reflect changes
+        countSelected === 0 ? element.classList.toggle('selected') : ""
 
-  const setNewSelected = (prefix, flag, name) => {
-    selectedFlag3.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${flag}.png`;
-    selectedPrefix3.value = `${name}`;
-    selectContainer3.style.setProperty("--prefix-length", prefix.length);
-  };
+        selectorAllOptions.forEach(element => {
+          if (element.classList.contains('selected')) {
+            queryVariable.push(element.getAttribute(`${optionsAttribute}`));
 
-  // -------------- Removes and adds modifier to selected country
+            let translatedElements = queryVariable.map(element => mappingFunction(element));
+            documentElement.innerHTML = translatedElements.join(', ');
 
-  const addSelectedModifier = (flag) => {
-    const previousSelected = document.getElementsByClassName(
-      "pn-list-item--selected"
-    )[0];
-    const newSelected = document.querySelectorAll(
-      `.pn-list-item[data-flag=${flag}]`
-    )[0];
-    previousSelected.classList.remove("pn-list-item--selected");
-    newSelected.classList.add("pn-list-item--selected");
-  };
+            documentElement.parentNode.classList.remove('selectionanimation');
+            setTimeout(function() {
+              documentElement.parentNode.classList.add('selectionanimation');
+            }, 1);
+          }
+        })
+      })
+    })
+  }
 
-  // -------------- Close dropdown
+  function updateProperty(newValue, propertyKey) {
+    if (newEditedData.hasOwnProperty(propertyKey)) {
+      newEditedData[propertyKey] = newValue;
+      // Aquí podrías realizar otras acciones relacionadas con newEditedData si es necesario
+    } else {
+      console.error(`Property ${propertyKey} does not exist in newEditedData.`);
+    }
+  }
 
-  const closeDropdown = () => {
-    selectContainer3.classList.remove("pn-select--open");
-    listContainer3.scrollTop = 0;
-    countrySearchInput3.value = "";
-    countryList3.search();
-    phoneNumberInput3.focus();
-    removeDropdownEvents();
-  };
 
-  // -------------- Open dropdown
+// // // // // // // // // // // // // // // // // // // // // // // // // // - NON EDITABLE YET
 
-  const openDropdown = () => {
-    selectContainer3.classList.add("pn-select--open");
-    attatchDropdownEvents();
-  };
+// ---------------------------------------------------------------------------- Name
+  dataName.innerHTML = `${newEditedData.userName} ${newEditedData.userSurname}`;
 
-  // -------------- Dropdown event listeners
+// ---------------------------------------------------------------------------- Age
+  const actualDate = new Date();
+  const birthDate = new Date(newEditedData.userBirthday);
+  const diferenciaEnMs = actualDate.getTime() - birthDate.getTime();
+  const msEnUnAnio = 1000 * 60 * 60 * 24 * 365.25; // Considerando años bisiestos
+  const edad = Math.floor(diferenciaEnMs / msEnUnAnio);
+  dataAge.innerHTML = `${edad} años`;
 
-  let countdown;
+// ---------------------------------------------------------------------------- Flag
+  dataFlag.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${newEditedData.userNationality}.png`
 
-  const closeOnMouseLeave = () => {
-    countdown = setTimeout(() => closeDropdown(), 2000);
-  };
+// ---------------------------------------------------------------------------- Email
+  dataEmail.innerHTML = newEditedData.userEmail;
 
-  const clearTimeOut = () => clearTimeout(countdown);
+// ---------------------------------------------------------------------------- Number
+  dataNumber.innerHTML = newEditedData.userPhoneNumber;
 
-  const attatchDropdownEvents = () => {
-    dropdownContainer3.addEventListener("mouseleave", closeOnMouseLeave);
-    dropdownContainer3.addEventListener("mouseenter", clearTimeOut);
-  };
+// ---------------------------------------------------------------------------- Residence
+  dataResidence.innerHTML = newEditedData.userResidence;
 
-  const removeDropdownEvents = () => {
-    clearTimeout(countdown);
-    dropdownContainer3.removeEventListener("mouseleave", closeOnMouseLeave);
-    dropdownContainer3.removeEventListener("mouseenter", clearTimeOut);
-  };
+// ---------------------------------------------------------------------------- LinkedIn
+  newEditedData.userLinkedin === ""
+    ? (dataLinkedin.style.display = "none")
+    : (dataLinkedin.href = newEditedData.userLinkedin);
 
-  // -------------- Close when clicked outside the dropdown
+// ---------------------------------------------------------------------------- Instagram
+  newEditedData.userInsta === ""
+    ? (dataInstagram.style.display = "none")
+    : (dataInstagram.href = newEditedData.userInsta);
 
-  document.addEventListener("click", (e) => {
-    if (
-      e.target !== selectContainer3 &&
-      !selectContainer3.contains(e.target) &&
-      selectContainer3.classList.contains("pn-select--open")
-    ) {
-      closeDropdown();
+// ---------------------------------------------------------------------------- Residence
+
+    function mapCountry(code) {
+      const countryCodes = {
+        'at': 'Austria',
+        'be': 'Bélgica',
+        'bg': 'Bulgaria',
+        'hr': 'Croacia',
+        'cy': 'Chipre',
+        'cz': 'República Checa',
+        'dk': 'Dinamarca',
+        'ee': 'Estonia',
+        'fi': 'Finlandia',
+        'fr': 'Francia',
+        'de': 'Alemania',
+        'gr': 'Grecia',
+        'hu': 'Hungría',
+        'is': 'Islandia',
+        'ie': 'República de Irlanda',
+        'it': 'Italia',
+        'lv': 'Letonia',
+        'li': 'Liechtenstein',
+        'lt': 'Lituania',
+        'lu': 'Luxemburgo',
+        'mt': 'Malta',
+        'nl': 'Países Bajos',
+        'no': 'Noruega',
+        'pl': 'Polonia',
+        'pt': 'Portugal',
+        'ro': 'Rumania',
+        'sk': 'Eslovaquia',
+        'si': 'Eslovenia',
+        'es': 'España',
+        'se': 'Suecia'
+      };
+      
+      // Verificar si el código de país existe en el mapa
+      if (countryCodes.hasOwnProperty(code)) {
+          return countryCodes[code]; // Devuelve el nombre del país correspondiente
+      } else {
+          return 'País no especificado'; // O un mensaje predeterminado para códigos no encontrados
+      }
+  }
+  dataResidence.textContent = mapCountry(newEditedData.userResidence)
+
+
+// // // // // // // // // // // // // // // // // // // // // // // // // // - EDITABLE DATA
+
+// ---------------------------------------------------------------------------- Visa
+  dataVisa.innerHTML = newEditedData.userOtherNationality
+
+  var optionsVisa = document.querySelector('[data-visa]')
+
+  optionsVisa.addEventListener('input', () => {
+    newEditedData.userOtherNationality = optionsVisa.value
+    dataVisa.innerHTML = optionsVisa.value
+    if (optionsVisa.value === '') {
+      newEditedData.userOtherNationality = 'no'
+      dataVisa.innerHTML = 'no'
+    }
+  })
+
+// ---------------------------------------------------------------------------- Languages
+
+function mapLanguages(data) {
+  switch (data) {
+      case 'es':
+        return 'español';
+      case 'two-to-five':
+        return '2 - 5';
+      case 'five-to-ten':
+        return '5 - 10';
+      case 'ten-or-more':
+        return '> 10';
+      case 'professional player':
+        return 'jugador profesional';
+      // Agrega más casos según tus necesidades
+      default:
+          return data; // Devuelve el mismo valor si no hay traducción
+        }
+    }
+dataSelectMultiple('data-language', newEditedData.userLanguages, dataLanguages, mapLanguages)
+
+// ---------------------------------------------------------------------------- Sports
+
+// var otherOptionSport = document.querySelector('[data-other-sport]')
+
+// otherOptionSport.addEventListener('change', () => {
+//   newEditedData.userSports.length = 0
+//   newEditedData.userSports.push(otherOptionSport.value)
+//   dataSports.innerHTML = newEditedData.userSports.join(", ");
+//   otherOptionSport.classList.add('selected')
+
+//   optionsSports.forEach(element => {
+//     if (element.classList.contains('selected')) {
+//       newEditedData.userSports.push(element.getAttribute('data-sport'))
+//       dataSports.innerHTML = newEditedData.userSports.join(", ");
+
+//       dataSports.parentNode.classList.remove('selectionanimation');
+//       setTimeout(function() {
+//         dataSports.parentNode.classList.add('selectionanimation');
+//       }, 1);
+//     }
+//   })
+// })
+
+function mapSport(data) {
+  switch (data) {
+      // Agrega más casos según tus necesidades
+      default:
+          return data; // Devuelve el mismo valor si no hay traducción
+        }
+    }
+dataSelectMultiple('data-sport', newEditedData.userSports, dataSports, mapSport)
+
+// ---------------------------------------------------------------------------- Experience
+ function mapExp(data) {
+    switch (data) {
+        case 'two-or-less':
+          return '&lt; 2';
+        case 'two-to-five':
+          return '2 - 5';
+        case 'five-to-ten':
+          return '5 - 10';
+        case 'ten-or-more':
+          return '> 10';
+        case 'professional player':
+          return 'jugador profesional';
+        // Agrega más casos según tus necesidades
+        default:
+            return data; // Devuelve el mismo valor si no hay traducción
+          }
+      }
+dataSelectOne('data-experience', newEditedData.userExperience, dataExp, mapExp, (newValue) => updateProperty(newValue, 'userExperience'));
+
+
+// ---------------------------------------------------------------------------- Weekly hours
+function mapWeekly(data) {
+  switch (data) {
+      case '0010':
+        return '&lt; 10h';
+      case '1020':
+        return '10 - 20h';
+      case '2030':
+        return '20 - 30h';
+      case '30mo':
+        return '> 30h';
+      case 'professional player':
+        return 'jugador profesional';
+      // Agrega más casos según tus necesidades
+      default:
+          return data; // Devuelve el mismo valor si no hay traducción
+        }
+    }
+dataWeeklyhours.innerHTML = mapWeekly(newEditedData.userWeeklyHours);
+
+dataSelectOne('data-hours', newEditedData.userWeeklyHours, dataWeeklyhours, mapWeekly, (newValue) => updateProperty(newValue, 'userWeeklyHours'));
+
+
+// ---------------------------------------------------------------------------- Alumni Profile
+  function mapLevel(element) {
+    switch (element) {
+      case 'initiation':
+        return 'iniciación';
+      case 'intermed':
+        return 'intermedio';
+      case 'advanced':
+          return 'avanzado';
+      case 'profesional':
+          return 'profesional';
+        // Agrega más casos según tus necesidades
+        default:
+            return element; // Devuelve el mismo valor si no hay traducción
+    }
+  }
+dataSelectMultiple('data-level', newEditedData.userPreferredLevel, dataAlumn, mapLevel)
+
+// ---------------------------------------------------------------------------- Availability
+function mapAvailability(element) {
+  switch (element) {
+      case '4mo':
+        return 'en 4 meses o más';
+      case '2o3':
+        return 'en 2 o 3 meses';
+      case 'one':
+          return 'en 1 mes';
+      case 'now':
+          return 'inmediata';
+      // Agrega más casos según tus necesidades
+      default:
+          return element; // Devuelve el mismo valor si no hay traducción
+  }
+}
+dataSelectOne('data-startingtime', newEditedData.userAvailability, dataAvailability, mapAvailability, (newValue) => updateProperty(newValue, 'userAvailability'));
+
+
+// ---------------------------------------------------------------------------- Mobility
+  function mapContinents(element) {
+    switch (element) {
+      case 'europe':
+        return 'europa';
+      case 'america':
+        return 'américa';
+      case 'asia':
+          return 'asia';
+      case 'africa':
+          return 'áfrica';
+      case 'oceania':
+        return 'oceanía';
+        default:
+            return continente;
+    }
+}
+dataSelectMultiple('data-mobility', newEditedData.userMobilityContinents, dataMobility, mapContinents)
+
+
+// ---------------------------------------------------------------------------- Oportunity
+function mapOportunity(element) {
+  switch (element) {
+      case 'full':
+        return 'full time';
+      case 'part':
+        return 'part time';
+      case 'temp':
+          return 'temporal';
+      case 'esp':
+          return 'esporádico';
+      // Agrega más casos según tus necesidades
+      default:
+          return element; // Devuelve el mismo valor si no hay traducción
+  }
+}
+dataSelectMultiple('data-oportunity', newEditedData.userOportunityType, dataOportunity, mapOportunity)
+
+
+// ---------------------------------------------------------------------------- Salary
+function mapSalary(nivel) {
+  switch (nivel) {
+      case '2030':
+        return '20k - 30k';
+      case '3040':
+        return '30k - 40k';
+      case '4050':
+          return '40k - 50k';
+      case '5099':
+          return '> 50k';
+      // Agrega más casos según tus necesidades
+      default:
+          return nivel; // Devuelve el mismo valor si no hay traducción
+  }
+}
+dataSelectOne('data-salary', newEditedData.userExpectedSalary, dataRange, mapSalary, (newValue) => updateProperty(newValue, 'userExpectedSalary'));
+
+// ---------------------------------------------------------------------------- Recommendator
+  function casesRecommendator(data) {
+    switch (data) {
+        case 'no':
+          return 'no';
+        case 'diego-ortiz':
+          return 'diego ortiz';
+        case 'javier-marti':
+            return 'javier martí';
+        case 'miguel-semmler':
+            return 'miguel semmler';
+        case 'adriana-armenadriz':
+          return 'adriana armendariz';
+        case 'diego-ortiz':
+          return 'diego ortiz';
+        case 'alejandro-crespo':
+          return 'alejandro crespo';
+        case 'sergi-perez':
+          return 'sergi perez';
+        case 'laura-marti':
+          return 'laura marti';
+        // Agrega más casos según tus necesidades
+        default:
+            return data; // Devuelve el mismo valor si no hay traducción
+    }
+}
+dataSelectOne('data-recommendator', newEditedData.userRecommendation, dataRecommendator, casesRecommendator, (newValue) => updateProperty(newValue, 'userRecommendation'));
+
+// // // // // // // // // // // // // // // // // // // // // // // // // // - EDITABLE EXP
+
+// Función que devuelve el valor actualizado de queryVariable
+var expToggleSelection = (queryVariable, documentElement, newDataCallback) => {
+  queryVariable === "y" ? documentElement.classList.add("marked") : "";
+
+  documentElement.addEventListener('click', () => {
+    if (documentElement.classList.contains('editable')) {
+      documentElement.classList.toggle("marked");
+      queryVariable = documentElement.classList.contains('marked') ? 'y' : 'n';
+      // Llamada a la función de devolución de llamada para actualizar newEditedData
+      newDataCallback(queryVariable);
     }
   });
-
-  // -------------- Append generated listItems to list element
-
-  const createList = () =>
-    new Promise((resolve, _) => {
-      countries.forEach((country, index, countries) => {
-        const { name, prefix, flag } = country;
-
-        const element = `<li class="pn-list-item ${
-          flag === "nl" ? "pn-list-item--selected" : ""
-        } js_pn-list-item-3" data-name="${name}" data-flag="${flag}" data-prefix="${prefix}" tabindex="0" role="button" aria-pressed="false">
-          <img class="pn-list-item__flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/${flag}.png" />
-          <span class="pn-list-item__country js_country-name">${name}</span>
-        </li>`;
-
-        listContainer3.innerHTML += element;
-
-        if (index === countries.length - 1) {
-          resolve();
-        }
-      });
-    });
-
-  // -------------- After all the listItems are created we loop over the items to attach the eventListeners
-
-  const attatchListItemEventListeners = () =>
-    new Promise((resolve, _) => {
-      const listItems = [
-        ...document.getElementsByClassName("js_pn-list-item-3"),
-      ];
-
-      listItems.forEach((item, index, listItems) => {
-        item.addEventListener("click", (event) => {
-          selectCountry(event);
-        });
-        // Keydown event listener - https://dev.to/tylerjdev/when-role-button-is-not-enough-dac
-        item.addEventListener("keydown", function (e) {
-          const keyD = e.key !== undefined ? e.key : e.keyCode;
-          if (
-            keyD === "Enter" ||
-            keyD === 13 ||
-            ["Spacebar", " "].indexOf(keyD) >= 0 ||
-            keyD === 32
-          ) {
-            e.preventDefault();
-            this.click();
-          }
-        });
-
-        if (index === listItems.length - 1) {
-          resolve();
-        }
-      });
-    });
-
-  // -------------- After all the listItems are created we init2ate list and it's listeners
-
-  const init3iateList = () => {
-    countryList3 = new List("js_pn-select3", {
-      valueNames: ["js_country-name", "js_country-prefix"],
-    });
-
-    // Add 'updated' listener for search results
-    countryList3.on("updated", (list) => {
-      if (list.matchingItems.length < 5)
-        listContainer3.classList.toggle("pn-list--no-scroll");
-
-      noResultListItem3.style.display =
-        list.matchingItems.length > 0 ? "none" : "block";
-    });
-  };
-
-  await createList();
-  await attatchListItemEventListeners();
-  init3iateList();
-
-  dropdownTrigger3.addEventListener("click", () => {
-    const isOpen = selectContainer3.classList.contains("pn-select--open");
-    isOpen ? closeDropdown() : openDropdown();
-  });
 };
 
-init3(countries);
+// Función para actualizar newEditedData.userClubExp
+function updateNewEditedData(newValue, propertyKey) {
+  // Verifica si la propiedad existe en newEditedData
+  if (newEditedData.hasOwnProperty(propertyKey)) {
+    newEditedData[propertyKey] = newValue;
+    // Aquí podrías realizar otras acciones relacionadas con newEditedData si es necesario
+  } else {
+    console.error(`Property ${propertyKey} does not exist in newEditedData.`);
+  }
+}
 
-//#endregion Country3
+// Llamada a la función expToggleSelection con la función de devolución de llamada para actualizar newEditedData
+  expToggleSelection(newEditedData.userClubExp, dataWorkedForClub, (newValue) => updateNewEditedData(newValue, 'userClubExp'));
 
-// #region inputPhoneNumber
 
-const selectContainer = document.getElementById("js_pn-select");
-const countrySearchInput = document.getElementById("js_search-input");
-const noResultListItem = document.getElementById("js_no-results-found");
-const dropdownTrigger = document.getElementById("js_trigger-dropdown");
-const phoneNumberInput = document.getElementById("js_input-phonenumber");
-const dropdownContainer = document.getElementById("js_dropdown");
-const selectedPrefix = document.getElementById("js_number-prefix");
-const selectedFlag = document.getElementById("js_selected-flag");
-const listContainer = document.getElementById("js_list");
+// ---------------------------------------------------------------------------- Other Coach Exp
+  expToggleSelection(newEditedData.userOtherCoachExp, dataCoordinated, (newValue) => updateNewEditedData(newValue, 'userOtherCoachExp'));
 
-let countryList;
 
-const init = async (countries) => {
-  const selectCountry = (e) => {
-    const { flag, prefix } = e.target.closest("li").dataset;
-    setNewSelected(prefix, flag);
-    closeDropdown();
-    addSelectedModifier(flag);
-  };
+// ---------------------------------------------------------------------------- Tournaments Organized
+  expToggleSelection(newEditedData.userToursOrganized, dataTournaments, (newValue) => updateNewEditedData(newValue, 'userToursOrganized'));
 
-  // -------------- Update the 'Selected country flag' to reflect changes
 
-  const setNewSelected = (prefix, flag) => {
-    selectedFlag.src = `https://flagpedia.net/data/flags/icon/36x27/${flag}.png`;
-    selectedPrefix.value = `+${prefix}`;
-    selectContainer.style.setProperty("--prefix-length", prefix.length);
-  };
+// ---------------------------------------------------------------------------- Tours Juzge
+  expToggleSelection(newEditedData.userProfessionalExp, dataProfesional, (newValue) => updateNewEditedData(newValue, 'userProfessionalExp'));
 
-  // -------------- Removes and adds modifier to selected country
+  expToggleSelection(newEditedData.userToursJuzge, dataJudge, (newValue) => updateNewEditedData(newValue, 'userToursJuzge'));
 
-  const addSelectedModifier = (flag) => {
-    const previousSelected = document.getElementsByClassName(
-      "pn-list-item--selected"
-    )[0];
-    const newSelected = document.querySelectorAll(
-      `.pn-list-item[data-flag=${flag}]`
-    )[0];
-    previousSelected.classList.remove("pn-list-item--selected");
-    newSelected.classList.add("pn-list-item--selected");
-  };
 
-  // -------------- Close dropdown
+// ---------------------------------------------------------------------------- International Exp
+  expToggleSelection(newEditedData.userInternationalExp, dataInternational, (newValue) => updateNewEditedData(newValue, 'userInternationalExp'));
 
-  const closeDropdown = () => {
-    selectContainer.classList.remove("pn-select--open");
-    listContainer.scrollTop = 0;
-    countrySearchInput.value = "";
-    countryList.search();
-    phoneNumberInput.focus();
-    removeDropdownEvents();
-  };
 
-  // -------------- Open dropdown
+// ---------------------------------------------------------------------------- Compiting Now
+  expToggleSelection(newEditedData.userCompetingNow, dataCompiting, (newValue) => updateNewEditedData(newValue, 'userCompetingNow'));
 
-  const openDropdown = () => {
-    selectContainer.classList.add("pn-select--open");
-    attatchDropdownEvents();
-  };
-
-  // -------------- Dropdown event listeners
-
-  let countdown;
-
-  const closeOnMouseLeave = () => {
-    countdown = setTimeout(() => closeDropdown(), 2000);
-  };
-
-  const clearTimeOut = () => clearTimeout(countdown);
-
-  const attatchDropdownEvents = () => {
-    dropdownContainer.addEventListener("mouseleave", closeOnMouseLeave);
-    dropdownContainer.addEventListener("mouseenter", clearTimeOut);
-  };
-
-  const removeDropdownEvents = () => {
-    clearTimeout(countdown);
-    dropdownContainer.removeEventListener("mouseleave", closeOnMouseLeave);
-    dropdownContainer.removeEventListener("mouseenter", clearTimeOut);
-  };
-
-  // -------------- Close when clicked outside the dropdown
-
-  document.addEventListener("click", (e) => {
-    if (
-      e.target !== selectContainer &&
-      !selectContainer.contains(e.target) &&
-      selectContainer.classList.contains("pn-select--open")
-    ) {
-      closeDropdown();
-    }
-  });
-
-  // -------------- Append generated listItems to list element
-
-  const createList = () =>
-    new Promise((resolve, _) => {
-      countries.forEach((country, index, countries) => {
-        const { name, prefix, flag } = country;
-
-        const element = `<li class="pn-list-item ${
-          flag === "nl" ? "pn-list-item--selected" : ""
-        } js_pn-list-item" data-flag="${flag}" data-prefix="${prefix}" tabindex="0" role="button" aria-pressed="false">
-          <img class="pn-list-item__flag" src="https://flagpedia.net/data/flags/icon/36x27/${flag}.png" />
-          <span class="pn-list-item__country js_country-name">${name}</span>
-          <span class="pn-list-item__prefix js_country-prefix">(+${prefix})</span>
-        </li>`;
-
-        listContainer.innerHTML += element;
-
-        if (index === countries.length - 1) {
-          resolve();
-        }
-      });
-    });
-
-  // -------------- After all the listItems are created we loop over the items to attach the eventListeners
-
-  const attatchListItemEventListeners = () =>
-    new Promise((resolve, _) => {
-      const listItems = [...document.getElementsByClassName("js_pn-list-item")];
-
-      listItems.forEach((item, index, listItems) => {
-        item.addEventListener("click", (event) => {
-          selectCountry(event);
-        });
-        // Keydown event listener - https://dev.to/tylerjdev/when-role-button-is-not-enough-dac
-        item.addEventListener("keydown", function (e) {
-          const keyD = e.key !== undefined ? e.key : e.keyCode;
-          if (
-            keyD === "Enter" ||
-            keyD === 13 ||
-            ["Spacebar", " "].indexOf(keyD) >= 0 ||
-            keyD === 32
-          ) {
-            e.preventDefault();
-            this.click();
-          }
-        });
-
-        if (index === listItems.length - 1) {
-          resolve();
-        }
-      });
-    });
-
-  // -------------- After all the listItems are created we initate list and it's listeners
-
-  const initiateList = () => {
-    countryList = new List("js_pn-select", {
-      valueNames: ["js_country-name", "js_country-prefix"],
-    });
-
-    // Add 'updated' listener for search results
-    countryList.on("updated", (list) => {
-      if (list.matchingItems.length < 5)
-        listContainer.classList.toggle("pn-list--no-scroll");
-
-      noResultListItem.style.display =
-        list.matchingItems.length > 0 ? "none" : "block";
-    });
-  };
-
-  await createList();
-  await attatchListItemEventListeners();
-  initiateList();
-
-  dropdownTrigger.addEventListener("click", () => {
-    const isOpen = selectContainer.classList.contains("pn-select--open");
-    isOpen ? closeDropdown() : openDropdown();
-  });
 };
 
-init(countries);
+//#endregion
 
-//#endregion PhoneNumber
+//#region (l) profilePicture 
+
+imageContainer.addEventListener('click', (e) => {
+  profilePicture.click()
+})
+
+profilePicture.addEventListener('change', (e) => {
+  loadFile(e)
+})
+
+var loadFile = function (event) {
+  var image = document.getElementById("output");
+  var imageContainer = document.getElementById("image-container");
+  var label = document.querySelector('#profile-image-label')
+  image.src = URL.createObjectURL(event.target.files[0]);
+  image.style.border = '4px solid white'
+  imageContainer.classList.add('image-set')
+  label.innerHTML = 'Modifica la <br> foto de perfil'
+};
+
+//#endregion
+
+//#region (l) set edit logic 
+
+
+
+//#endregion

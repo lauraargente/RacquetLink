@@ -29,9 +29,6 @@
       return new Promise(function (resolve, reject) {
         let outputData = {}
 
-        console.log('test')
-        console.log(Id)
-
         const q = query(
           collection(db, 'coachesData'),
           where('coachId', '==', Id),

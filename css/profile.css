@@ -57,7 +57,7 @@
   flex-direction: column;
   padding-top: 100px;
   align-items: center;
-  height: 36rem;
+  height: 40rem;
   width: 480px;
   padding-bottom: 3rem;
   background: rgba(0, 0, 0, 0.2);
@@ -197,11 +197,16 @@
   position: relative;
 }
 #image-container:hover #profile-image-label {
-  color: white;
-  border: 2px solid white;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
   font-weight: 500;
   background-color: rgba(0, 0, 0, 0.8);
-  visibility: visible !important;
+}
+#image-container.image-set #profile-image-label {
+  color: rgba(255, 255, 255, 0) !important;
+}
+#image-container.image-set:hover #profile-image-label {
+  color: rgb(255, 255, 255) !important;
 }
 
 #profile-image-label {
@@ -214,7 +219,7 @@
   border: 2px solid rgba(255, 255, 255, 0);
   width: 100%;
   height: 100%;
-  color: #025b7b;
+  color: white;
   font-weight: 500;
   text-align: center;
   border-radius: 100px;
@@ -246,9 +251,8 @@
 #profile-element-container-name {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 300;
-  margin-bottom: 2rem;
 }
 
 .profile-label {
@@ -286,6 +290,11 @@
   transform: translateX(2rem);
   background: rgba(255, 255, 255, 0.1);
 }
+.profile-data.being-edited .data-content {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
 .profile-data.being-edited .editable-options {
   opacity: 1;
   visibility: visible;
@@ -300,7 +309,7 @@
   right: -2rem;
   transform: translateX(100%);
   top: 0;
-  max-width: 12rem;
+  max-width: 14rem;
   width: -moz-max-content;
   width: max-content;
   transition: 0.4s;
@@ -319,12 +328,15 @@
   -webkit-backdrop-filter: blur(25px);
   border-radius: 2rem;
   padding: 0.2rem 0.8rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .editable-option:hover {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
 }
 .editable-option:active {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .inputtext {
@@ -354,6 +366,9 @@
 
 .selected {
   background: rgba(0, 0, 0, 0.6);
+}
+.selected:hover {
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .selectionanimation {
@@ -387,19 +402,19 @@
 .profile-exp {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: -moz-max-content;
+  width: max-content;
   text-align: left;
-  margin-top: 1rem;
+  margin-top: 0.4rem;
   color: white;
   opacity: 0.2;
-  font-weight: 300;
-  padding: 0.2rem 1rem;
+  font-weight: 400;
+  padding: 0.6rem 1rem;
   border-radius: 0.6rem;
   transition: 0.4s;
 }
 .profile-exp.marked {
   color: white !important;
-  font-weight: 400 !important;
   opacity: 1 !important;
 }
 .profile-exp.editable {

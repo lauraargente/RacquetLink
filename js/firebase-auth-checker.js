@@ -43,8 +43,6 @@ onAuthStateChanged(auth, (user) => {
 });
 
 function setCookie(nombre, valor, diasExpiracion) {
-  console.log(nombre)
-  console.log(valor)
   const fecha = new Date();
   fecha.setTime(fecha.getTime() + (diasExpiracion * 24 * 60 * 60 * 1000));
   const expiracion = "expires=" + fecha.toUTCString();
@@ -77,8 +75,7 @@ function getCookie(nombre) {
 function setUserNameOnHeader(displayName, displayNameId) {
 
   var typeOfUser = displayName.trim().split(' ')[0]
-  console.log(typeOfUser)
-  typeOfUser === 'Coach' ? headerLogged.href = `/profile.html?id=${displayNameId}` : headerLogged.href = `/profile-club.html?id=${displayNameId}`
+  typeOfUser === 'Coach' ? headerLogged.href = `/profile-coach.html?id=${displayNameId}` : headerLogged.href = `/profile-club.html?id=${displayNameId}`
   headerLogged.style.display = 'flex'
   headerLoggedName.innerHTML = displayName
   headerLoggedName.innerHTML = displayName.replace(/^\w+\s*/, '')
