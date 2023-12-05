@@ -1,4 +1,7 @@
 import { firebaseFetchUserDataById } from "./profile-coach-firebase.js";
+import { firebaseUpdateProfilePicture } from "./profile-coach-firebase.js";
+import { firebaseGetProfilePicture } from "./profile-coach-firebase.js";
+import { firebaseUpdateUserData } from "./profile-coach-firebase.js";
 
 const dataElement = document.querySelectorAll('.profile-data')
 const dataElementExp = document.querySelectorAll('.profile-exp')
@@ -109,6 +112,8 @@ saveButton.addEventListener("click", () => {
   unsetEditableStyles()
   unMakeAllFieldsEditable()
   disSelectAllFields()
+  // Set loading state
+  firebaseUpdateUserData(valorCookieId, newEditedData)
   console.log(newEditedData)
 });
 
@@ -379,17 +384,6 @@ var fillDataInDocument = (data) => {
 
 function mapLanguages(data) {
   switch (data) {
-      case 'es':
-        return 'español';
-      case 'two-to-five':
-        return '2 - 5';
-      case 'five-to-ten':
-        return '5 - 10';
-      case 'ten-or-more':
-        return '> 10';
-      case 'professional player':
-        return 'jugador profesional';
-      // Agrega más casos según tus necesidades
       default:
           return data; // Devuelve el mismo valor si no hay traducción
         }
@@ -586,7 +580,7 @@ dataSelectOne('data-salary', newEditedData.userExpectedSalary, dataRange, mapSal
         case 'sergi-perez':
           return 'sergi perez';
         case 'laura-marti':
-          return 'laura marti';
+          return 'laura martí';
         // Agrega más casos según tus necesidades
         default:
             return data; // Devuelve el mismo valor si no hay traducción
@@ -652,6 +646,11 @@ function updateNewEditedData(newValue, propertyKey) {
 
 //#region (l) profilePicture 
 
+var image = document.getElementById("output");
+var imageContainer = document.getElementById("image-container");
+var label = document.querySelector('#profile-image-label')
+var profilePicLoading = document.querySelector('#profile-pic-loading')
+
 imageContainer.addEventListener('click', (e) => {
   profilePicture.click()
 })
@@ -660,20 +659,55 @@ profilePicture.addEventListener('change', (e) => {
   loadFile(e)
 })
 
-var loadFile = function (event) {
-  var image = document.getElementById("output");
-  var imageContainer = document.getElementById("image-container");
-  var label = document.querySelector('#profile-image-label')
-  image.src = URL.createObjectURL(event.target.files[0]);
+var setSettedImageStyling = (url) => {
   image.style.border = '4px solid white'
   imageContainer.classList.add('image-set')
+  imageContainer.classList.remove('loading-state')
   label.innerHTML = 'Modifica la <br> foto de perfil'
+}
+
+var convertImageToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64String = reader.result.split(',')[1]; // Extraer solo la parte base64 de la URL de datos
+      resolve(base64String);
+    };
+
+    reader.onerror = (error) => {
+      reject(error);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+var loadFile = (event) => {
+
+  const reader = new FileReader();
+
+  profilePicLoading.style.visibility = 'visible'
+  imageContainer.classList.add('loading-state')
+
+  profilePicLoading.style.visibility = 'hidden'
+
+  image.src = URL.createObjectURL(event.target.files[0]);
+  const base64String = convertImageToBase64(event.target.files[0]).then( (result) => {
+    console.log(result)
+
+    firebaseUpdateProfilePicture(result, `profilePicUserId=${valorCookieId}`).then( () => {
+      setSettedImageStyling()
+    })
+
+  });
+
 };
 
-//#endregion
-
-//#region (l) set edit logic 
-
-
-
+firebaseGetProfilePicture(valorCookieId).then( (url) => {
+  image.src = url;
+  setSettedImageStyling()
+}).catch( (e) => {
+  console.log(e)
+})
 //#endregion
