@@ -309,14 +309,26 @@ var fillDataInDocument = (data) => {
   dataResidence.innerHTML = newEditedData.userResidence;
 
 // ---------------------------------------------------------------------------- LinkedIn
-  newEditedData.userLinkedin === ""
+  
+function formatearURL(url) {
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      if (url.startsWith('www.')) {
+          url = 'http://' + url;
+      } else {
+          url = 'http://' + url;
+      }
+  }
+  return url;
+}
+
+newEditedData.userLinkedin === ""
     ? (dataLinkedin.style.display = "none")
-    : (dataLinkedin.href = newEditedData.userLinkedin);
+    : (dataLinkedin.href = formatearURL(newEditedData.userLinkedin));
 
 // ---------------------------------------------------------------------------- Instagram
   newEditedData.userInsta === ""
     ? (dataInstagram.style.display = "none")
-    : (dataInstagram.href = newEditedData.userInsta);
+    : (dataInstagram.href = formatearURL(newEditedData.userInsta));
 
 // ---------------------------------------------------------------------------- Residence
 

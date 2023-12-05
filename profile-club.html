@@ -22,7 +22,7 @@ Estructura general:
         rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/profile-coach.css">
+    <link rel="stylesheet" href="css/profile-club.css">
     <!-- Quill JS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="css/headerfooter.css
@@ -147,7 +147,7 @@ Estructura general:
         <div id="profile-left">
             <div id="profile-content-container">
                 <div id="image-container">
-                    <label id="profile-image-label" for="file"  >Añade una <br>imagen de perfil</label>
+                    <label id="profile-image-label" for="file"  >Añade un <br>logo o escudo</label>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto; visibility: hidden;" width="72px" height="72px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" id="profile-pic-loading">
                         <circle cx="50" cy="50" fill="none" stroke="white" stroke-width="8" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
                           <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
@@ -157,10 +157,6 @@ Estructura general:
                     <img id="output" src="./assets/profilestandard.png" class="profile-image" width="200" />
                 </div>
                 <div id="profile-element-container-name" style="width: 80%; justify-content: center;" class="profile-information-element"></div>
-                <div style="width: 80%; display: flex; gap: 1rem; align-items: center; justify-content: center; color: white; margin-top: 0.4rem;">
-                    <div class="profile-element-contact-data" id="data-age"></div>
-                    <img id="data-flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" alt="">
-                </div>
                 <div style="width: 72%; display: flex; gap: 2rem; align-items: center; justify-content: left; color: white; margin-top: 2rem;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -177,208 +173,84 @@ Estructura general:
                         <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg><div class="profile-element-contact-data" id="data-residence"></div>
                 </div>
-                <div style="display: flex; width: 90%; justify-content: center; gap: 1rem; margin-top: 2rem;">
-                    <a href="" id="data-linkedin">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 16 16">
-                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
-                        </svg>
-                    </a>
-                    <a id="data-instagram" href="">
-                        <svg  xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 16 16">
-                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
-                        </svg>
-                    </a>
-                </div>
-                <!-- <div id="experience-label-1" class="experience-label" style="margin-top: 2rem;"> Perfil</div> -->
-    
+                <a style="width: 72%; display: flex; gap: 2rem; align-items: center; justify-content: left; color: white; margin-top: 0.6rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path d="M1 11H21M1 11C1 16.5228 5.47715 21 11 21M1 11C1 5.47715 5.47715 1 11 1M21 11C21 16.5228 16.5228 21 11 21M21 11C21 5.47715 16.5228 1 11 1M11 1C13.5013 3.73835 14.9228 7.29203 15 11C14.9228 14.708 13.5013 18.2616 11 21M11 1C8.49872 3.73835 7.07725 7.29203 7 11C7.07725 14.708 8.49872 18.2616 11 21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg><div class="profile-element-contact-data" id="data-web" maxlength></div>
+                </a>
             </div>
-            <div id="profile-content-container-3" class="edit-mode-style">
-                <!-- <div id="experience-label-3" class="experience-label">Experiencia</div> -->
-                <div id="experience-container">
-                    <div class="profile-exp " id="data-workedforclub">Trabajado para club o academia <svg style="margin-left: 1rem; margin-bottom: 0.2rem;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="profile-exp" id="data-coordinated">Coordinado a otros entrenadores<svg style="margin-left: 1rem; margin-bottom: 0.2rem;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="profile-exp " id="data-tournaments">Organizado torneos<svg style="margin-left: 1rem; margin-bottom: 0.2rem;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="profile-exp" id="data-judge">Juez árbitro en torneos<svg style="margin-left: 1rem; margin-bottom: 0.2rem;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="profile-exp " id="data-international">Experiencia Internacional<svg style="margin-left: 1rem; margin-bottom: 0.2rem;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="profile-exp " id="data-profesional">Competido profesionalmente<svg style="margin-left: 1rem; margin-bottom: 0.2rem;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="profile-exp " id="data-compiting">Compite actualmente<svg style="margin-left: 1rem; margin-bottom: 0.2rem;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none">
-                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
+            <div id="profile-content-container-2" class="edit-mode-style">
+                <div id="profile-element-container-sports" class="profile-information-element">
+                    <div class="profile-label">Deportes</div>
+                    <div class="profile-data" id="data-sports">
+                        <div class="data-content"></div>
+                        <div class="editable-options">
+                            <div class="editable-option selectable selected" data-sport="tenis">tenis</div>
+                            <div class="editable-option selectable" data-sport="padel">padel</div>
+                            <div class="editable-option selectable" data-sport="pickleball">pickleball</div>
+                            <input class="editable-option inputtext" data-other-sport="other" placeholder="Otro deporte" style="width: 50%;"></input>
+                        </div>
+                    </div>
                 </div>
-    
-            </div>
+                <div id="profile-element-container-fields" class="profile-information-element">
+                    <div class="profile-label">Número de pistas</div>
+                    <div class="profile-data" id="data-fields">
+                        <div class="data-content"></div>
+                        <div class="editable-options">
+                            <div class="editable-option selectable" data-fields="low">&lt; 5</div>
+                            <div class="editable-option selectable" data-fields="mid">5 - 10</div>
+                            <div class="editable-option selectable" data-fields="hig">> 10</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="profile-element-container-state" class="profile-information-element">
+                    <div class="profile-label">¿Busca el club entrenadores?</div>
+                    <div class="profile-data" id="data-state">
+                        <div class="data-content"></div>
+                        <div class="editable-options">
+                            <div class="editable-option selectable" data-state="yes">sí, ahora</div>
+                            <div class="editable-option selectable" data-state="prx">en el futuro</div>
+                            <div class="editable-option selectable" data-state="not">aún no</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="profile-element-container-consulting" class="profile-information-element">
+                    <div class="profile-label">¿Necesita el club asesoría?</div>
+                    <div class="profile-data" id="data-consulting">
+                        <div class="data-content"></div>
+                        <div class="editable-options">
+                            <div class="editable-option selectable" data-consulting="yes">sí, ahora</div>
+                            <div class="editable-option selectable" data-consulting="prx">en el futuro</div>
+                            <div class="editable-option selectable" data-consulting="not">aún no</div>
+                        </div>
+                    </div>
+                </div>
+        </div>
         </div>
         <div id="profile-right">
             <div id="profile-content-container-wrapper">
-                <div id="disclaimer-content" class="disclaimer">
-                    <div id="disclaimer-label"></div>
-                    <div id="actions-wrapper">
-                        <div id="save-button">Guardar</div>
-                        <div id="edit-button">Editar</div>
+                <div id="profile-content-container-3" class="edit-mode-style">
+                    <!-- <div id="experience-label-3" class="experience-label">Experiencia</div> -->
+                    <div id="joboffer">
+                        Sube aquí tu/s oferta/s de trabajo
                     </div>
-                </div>
-                <div id="profile-content-container-2" class="edit-mode-style">
-                    <!-- <div id="experience-label-2" class="experience-label">Información</div> -->
-                    <div id="profile-element-container-recommendator" class="profile-information-element">
-                        <div class="profile-label">Recomendador</div>
-                        <div class="profile-data" id="data-recommendator">
-                            <div class="data-content"></div>
-                            <div class="editable-options">
-                                <div class="editable-option" data-recommendator="no">no</div>
-                                <div class="editable-option" data-recommendator="javier-marti">javier martí</div>
-                                <div class="editable-option" data-recommendator="miguel-semmler">miguel semmler</div>
-                                <div class="editable-option" data-recommendator="adriana-armenadriz">adriana armendariz</div>
-                                <div class="editable-option" data-recommendator="diego-ortiz">diego ortiz</div>
-                                <div class="editable-option" data-recommendator="alejandro-crespo">alejandro crespo</div>
-                                <div class="editable-option" data-recommendator="sergi-perez">sergi perez</div>
-                                <div class="editable-option" data-recommendator="laura-marti">laura martí</div>
-                            </div>
-                        </div>
+                    <div id="joboffer-container">
+                        <label id="job-offer-label" for="joboffer-input">Click para adjuntar .doc o .pdf</label>
+                        <input id="job-offer" type="file" accept="image/*,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="joboffer" id="joboffer-input" style="display: none;"> 
+                        <div id="job-offer-output"></div>
+                        <!-- Enlace de descarga, inicialmente oculto -->
+                        <a id="downloadLink" href="#" style="display: none;">
+                            <div id="erase-offer">xlink</div>
+                            Descargar Archivo
+                        </a>
                     </div>
-                        <!-- <div id="profile-element-container-residence" class="profile-information-element">
-                            <div class="profile-label">Residencia</div>
-                            <div class="profile-data" id="data-residence">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option">desplegable países</div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div id="profile-element-container-residence" class="profile-information-element">
-                            <div class="profile-label">Visados/2a NAC</div>
-                            <div class="profile-data" id="data-visa">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <input class="editable-option inputtext" data-visa=""></input>
-                                </div>
-                            </div>
+                    <div id="tellusmore-container">
+                        <div id="tellusmore">
+                            Cuéntanos más sobre tu proyecto
                         </div>
-                        <div id="profile-element-container-languages" class="profile-information-element">
-                            <div class="profile-label">Idiomas</div>
-                            <div class="profile-data" id="data-languages">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-language="es">es</div>
-                                    <div class="editable-option selectable" data-language="en">en</div>
-                                    <div class="editable-option selectable" data-language="fr">fr</div>
-                                    <div class="editable-option selectable" data-language="de">de</div>
-                                    <div class="editable-option selectable" data-language="ru">ru</div>
-                                    <div class="editable-option selectable" data-language="fr">fr</div>
-                                    <div class="editable-option selectable" data-language="pt">pt</div>
-                                    <div class="editable-option selectable" data-language="ch">ch</div>
-                                    <div class="editable-option selectable" data-language="ot">otros</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-sports" class="profile-information-element">
-                            <div class="profile-label">Deportes</div>
-                            <div class="profile-data" id="data-sports">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-sport="tenis">tenis</div>
-                                    <div class="editable-option selectable" data-sport="padel">padel</div>
-                                    <div class="editable-option selectable" data-sport="pickleball">pickleball</div>
-                                    <!-- <input class="editable-option inputtext" data-other-sport="other"></input> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-exp" class="profile-information-element">
-                            <div class="profile-label">Años exp.</div>
-                            <div class="profile-data" id="data-exp">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-experience="two-or-less">&lt; 2</div>
-                                    <div class="editable-option selectable" data-experience="two-to-five">2 - 5</div>
-                                    <div class="editable-option selectable" data-experience="five-to-ten">5 - 10</div>
-                                    <div class="editable-option selectable" data-experience="ten-or-more">> 10</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-weeklyhours" class="profile-information-element">
-                            <div class="profile-label">Dedic. Semanal</div>
-                            <div class="profile-data" id="data-weeklyhours">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-hours="0010">&lt; 10h</div>
-                                    <div class="editable-option selectable" data-hours="1020">10 - 20h</div>
-                                    <div class="editable-option selectable" data-hours="2030">20 - 30h</div>
-                                    <div class="editable-option selectable" data-hours="30mo">> 30</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-alumn" class="profile-information-element">
-                            <div class="profile-label">Tipo alumnado</div>
-                            <div class="profile-data" id="data-alumn">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-level="initiation">iniciación</div>
-                                    <div class="editable-option selectable" data-level="intermed">intermedio</div>
-                                    <div class="editable-option selectable" data-level="advanced">avanzado</div>
-                                    <div class="editable-option selectable" data-level="profesional">profesional</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-availability" class="profile-information-element">
-                            <div class="profile-label">Disponibilidad</div>
-                            <div class="profile-data" id="data-availability">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-startingtime="now">inmediata</div>
-                                    <div class="editable-option selectable" data-startingtime="one">en 1 mes</div>
-                                    <div class="editable-option selectable" data-startingtime="2o3">en 2 o 3 meses</div>
-                                    <div class="editable-option selectable" data-startingtime="4mo">en 4 meses o más</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-mobility" class="profile-information-element">
-                            <div class="profile-label">Continentes contemplados</div>
-                            <div class="profile-data" id="data-mobility">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-mobility="europe">europa</div>
-                                    <div class="editable-option selectable" data-mobility="america">américa</div>
-                                    <div class="editable-option selectable" data-mobility="asia">asia</div>
-                                    <div class="editable-option selectable" data-mobility="africa">áfrica</div>
-                                    <div class="editable-option selectable" data-mobility="oceania">oceanía</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-oportunity" class="profile-information-element">
-                            <div class="profile-label">Tipos de contrato</div>
-                            <div class="profile-data" id="data-oportunity">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-oportunity="full">full time</div>
-                                    <div class="editable-option selectable" data-oportunity="part">part time</div>
-                                    <div class="editable-option selectable" data-oportunity="temp">temporary</div>
-                                    <div class="editable-option selectable" data-oportunity="esp">esporádico</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="profile-element-container-range" class="profile-information-element">
-                            <div class="profile-label">Rango esperado</div>
-                            <div class="profile-data" id="data-range">
-                                <div class="data-content"></div>
-                                <div class="editable-options">
-                                    <div class="editable-option selectable" data-salary="2030">20k - 30k</div>
-                                    <div class="editable-option selectable" data-salary="3040">30k - 40k</div>
-                                    <div class="editable-option selectable" data-salary="4050">40k - 50k</div>
-                                    <div class="editable-option selectable" data-salary="5099">> 50k</div>
-                                </div>
-                            </div>
-                        </div>
+                        <textarea id="multilineInput" maxlength="480" rows="1" placeholder="Somos un club deportivo y..."></textarea>
+                    </div>
+    
                 </div>
             </div>
 
@@ -567,7 +439,7 @@ Estructura general:
         </div>
     </div>
 
-    <script src="js/profile-coach.js" type="module"></script> 
+    <script src="js/profile-club.js" type="module"></script> 
     <script src="js/firebase-auth-checker.js" type="module"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js'></script>
 

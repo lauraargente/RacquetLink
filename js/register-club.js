@@ -1063,7 +1063,7 @@ var writeRegisterData = function () {
   // Club Consulting
   clubConsulting.forEach((consulting) => {
     if (consulting.classList.contains("active")) {
-      registerData.clubConsulting = consulting.getAttribute("data-state");
+      registerData.clubConsulting = consulting.getAttribute("data-consulting");
     }
   });
 
