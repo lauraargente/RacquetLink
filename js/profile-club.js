@@ -1,6 +1,8 @@
 import { firebaseFetchUserDataById } from "./profile-club-firebase.js";
 import { firebaseUpdateProfilePicture } from "./profile-club-firebase.js";
 import { firebaseGetProfilePicture } from "./profile-club-firebase.js";
+import { firebaseGetJobOffer } from "./profile-club-firebase.js";
+import { firebaseUploadDocument } from "./profile-club-firebase.js";
 import { firebaseUpdateUserData } from "./profile-club-firebase.js";
 
 const dataElement = document.querySelectorAll('.profile-data')
@@ -13,6 +15,8 @@ const valorCookieId = getCookie(nombreCookieId);
 
 const pageLoader = document.querySelector("#page-loader");
 const body = document.querySelector("body");
+
+var newEditedData
 
 //#region (v) edit section
 
@@ -32,22 +36,35 @@ var profileLabel = document.getElementById("profile-image-label");
 
 //#endregion
 
-//#region autoresizing textarea 
+//#region newregion 
 
-  var textArea = document.getElementById('multilineInput');
-  textArea.addEventListener('input', autoResize, false);
 
-  function autoResize() {
-      this.style.height = 'auto';
-      this.style.height = (this.scrollHeight) + 'px';
-  }
+//#endregion
+
+//#region (f) makeChanges 
+
+var loadingState = document.querySelector('#state-disclaimer-loading')
+var loadedState = document.querySelector('#state-disclaimer-loaded')
+
+var updateChanges = () => {
+  loadedState.style.display = 'none'
+  loadingState.style.display = 'flex'
+  console.log(newEditedData)
+  firebaseUpdateUserData(valorCookieId, newEditedData).then( () => {
+    console.log('Documento actualizado correctamente')
+    setTimeout(() => {
+    loadingState.style.display = 'none'
+    loadedState.style.display = 'flex'
+    }, 400);
+  }).catch( () => {
+    alert('Ha ocurrido un error')
+    loadingState.style.display = 'none'
+  })
+}
+
 //#endregion
 
 //#region (l) writeData 
-
-// var newEditedData
-
-var newEditedData
 
 var fillDataInDocument = (data) => {
 
@@ -58,6 +75,7 @@ var fillDataInDocument = (data) => {
   var dataName = document.querySelector("#profile-element-container-name");
   var dataResidence = document.querySelector("#data-residence");
   var dataWeb = document.querySelector("#data-web");
+  var dataAdditionalInfo = document.querySelector("#multilineInput");
 
   function formatearURL(url) {
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
@@ -137,17 +155,53 @@ var fillDataInDocument = (data) => {
   var dataOtherSport = document.querySelector('[data-other-sport]');
 
   dataSports.forEach(element => {
+    console.log('asjdoasd')
     newEditedData.clubSports.forEach(dataSport => {
       if (element.getAttribute('data-sport') === dataSport) {
         element.classList.add('selected')
       }
     })
+
+    element.addEventListener('click', () => {
+      newEditedData.clubSports.length = 0
+      element.classList.toggle('selected')
+
+      dataSports.forEach(element => {
+        if (element.classList.contains('selected')) {
+          newEditedData.clubSports.push(element.getAttribute('data-sport')) 
+          
+        }
+      })
+      newEditedData.clubSports.push('')
+      newEditedData.clubSports[newEditedData.clubSports.length-1] = dataOtherSport.value
+
+      console.log(newEditedData.clubSports)
+
+      updateChanges()
+    })
   })
+  
 let additionalSport = newEditedData.clubSports[newEditedData.clubSports.length-1]
-if (!(additionalSport === '')) {
+console.log(additionalSport)
+if (additionalSport && (!(additionalSport === ''))) {
   dataOtherSport.value = additionalSport;
   dataOtherSport.classList.add('selected')
 }
+
+dataOtherSport.addEventListener('input', () => {
+  if (!(dataOtherSport.value === '')) {
+    dataOtherSport.classList.add('selected')
+    newEditedData.clubSports[newEditedData.clubSports.length-1] = dataOtherSport.value
+  } else {
+    dataOtherSport.classList.remove('selected')
+    newEditedData.clubSports[newEditedData.clubSports.length-1] = dataOtherSport.value
+  }
+})
+
+dataOtherSport.addEventListener('blur', () => {
+  updateChanges()
+})
+
 
 // ---------------------------------------------------------------------------- Fields
 var dataFields = document.querySelectorAll('[data-fields]');
@@ -155,61 +209,126 @@ dataFields.forEach(element => {
   if (element.getAttribute('data-fields') === newEditedData.clubField) {
     element.classList.add('selected')
   }
+  element.addEventListener('click', () => {
+    dataFields.forEach(element => {
+      element.classList.remove('selected')
+    })
+    element.classList.add('selected')
+    newEditedData.clubField = element.getAttribute('data-fields')
+
+    updateChanges()
+  })
 })
 
 // ---------------------------------------------------------------------------- Coaches Search
-var dataFields = document.querySelectorAll('[data-state]');
-dataFields.forEach(element => {
+var dataCoaches = document.querySelectorAll('[data-state]');
+dataCoaches.forEach(element => {
   if (element.getAttribute('data-state') === newEditedData.clubState) {
     element.classList.add('selected')
   }
+  element.addEventListener('click', () => {
+    dataCoaches.forEach(element => {
+      element.classList.remove('selected')
+    })
+    element.classList.add('selected')
+    newEditedData.clubState = element.getAttribute('data-state')
+    updateChanges()
+  })
 })
 
 // ---------------------------------------------------------------------------- Consulting
-var dataFields = document.querySelectorAll('[data-consulting]');
-dataFields.forEach(element => {
+var dataConsulting = document.querySelectorAll('[data-consulting]');
+dataConsulting.forEach(element => {
   if (element.getAttribute('data-consulting') === newEditedData.clubConsulting) {
     element.classList.add('selected')
   }
+  element.addEventListener('click', () => {
+    dataConsulting.forEach(element => {
+      element.classList.remove('selected')
+    })
+    element.classList.add('selected')
+    newEditedData.clubConsulting = element.getAttribute('data-consulting')
+    updateChanges()
+  })
 })
 
-  // clubName: data.clubName,
-  // clubWebPage: registerData.clubWebPage,
-  // clubCountry: registerData.clubCountry,
-  // clubCity: registerData.clubCity,
-  // clubSports: registerData.clubSports,
-  // clubField: registerData.clubField,
-  // clubState: registerData.clubState,
-  // clubConsulting: registerData.clubConsulting,
-  // clubEmail: registerData.clubEmail,
-  // clubNumber: registerData.clubNumber,
-  // clubId: registerData.clubId,
-  // clubRegisterDate: Date(),
+// ---------------------------------------------------------------------------- Additional Info
+
+var textArea = document.getElementById('multilineInput');
+
+textArea.value = newEditedData.clubAdditionalInfo;
+
+
+textArea.addEventListener('input', autoResize, false);
+
+function autoResize() {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+}
+
+textArea.addEventListener('blur', () => {
+  newEditedData.clubAdditionalInfo = textArea.value
+  updateChanges()
+})
 
 };
 
 //#endregion
 
-//#region (l) manage file uploading and downloading 
+//#region (l) manage file uploading and downloading
 
-document.getElementById('job-offer-label').addEventListener('click', function() {
+const eraseDocument = document.querySelector('.erase-offer')
+
+eraseDocument.addEventListener('click', () => {
+  alert()
+})
+
+const downloadLink = document.querySelector('#downloadLink');
+const downloadLinksLabel = document.querySelector('.downloadLink-wording');
+const jobOfferButton = document.querySelector('#job-offer');
+const jobOfferButtonLabel = document.querySelector('#job-offer-label');
+
+function extraerNombreArchivo(url) {
+  const regex = /o\/(.*?)\?/; // Captura todo entre 'o/' y el siguiente '?'
+  // const regex = %2..*%2F(.*?)\?alt;
+  const match = url.match(regex);
+  return match ? match[1] : null; // Devuelve el grupo capturado si existe, de lo contrario null
+}
+
+  firebaseGetJobOffer(valorCookieId).then( (url) => {
+    downloadLink.href = url;
+    downloadLink.download = extraerNombreArchivo(url)
+    downloadLink.style.display = 'flex';
+    downloadLinksLabel.innerHTML = 'Ver oferta'
+    // element.innerHTML = extraerNombreArchivo(url).substring(0, 20)
+    downloadLink.classList.add('download-styled')
+  })
+
+firebaseGetProfilePicture(valorCookieId).then( (url) => {
+  image.src = url;
+  setSettedImageStyling()
+}).catch( (e) => {
+  console.log(e)
+})
+
+jobOfferButtonLabel.addEventListener('click', function() {
   document.getElementById('job-offer').click();
 });
 
-document.getElementById('job-offer').addEventListener('change', function(event) {
+jobOfferButton.addEventListener('change', function(event) {
   const file = event.target.files[0];
   if (!file) {
       return;
   }
 
-  // Crear un URL para el archivo
   const fileUrl = URL.createObjectURL(file);
 
-  // Configurar el enlace de descarga y mostrarlo
-  const downloadLink = document.getElementById('downloadLink');
   downloadLink.href = fileUrl;
   downloadLink.download = file.name;
   downloadLink.style.display = 'flex';
+  downloadLink.classList.add('download-styled')
+
+  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.pdf`)
 });
 
 //#endregion
@@ -227,7 +346,6 @@ var isUserAllowed = () => {
         body.style.overflowY = "visible";
         fillDataInDocument(userData);
       }).catch(
-        console.log('test')
       );
     } else {
       setTimeout(() => {
@@ -306,12 +424,9 @@ var loadFile = (event) => {
 
   image.src = URL.createObjectURL(event.target.files[0]);
   const base64String = convertImageToBase64(event.target.files[0]).then( (result) => {
-    console.log(result)
-
-    firebaseUpdateProfilePicture(result, `profilePicUserId=${valorCookieId}`).then( () => {
+    firebaseUpdateProfilePicture(result, `profilePicUserId=${valorCookieId}.png`).then( () => {
       setSettedImageStyling()
     })
-
   });
 
 };

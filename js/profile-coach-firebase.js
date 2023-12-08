@@ -57,6 +57,9 @@
       )
   
       getDocs(q).then((querySnapshot) => {
+      
+        querySnapshot.docs.length === 0 ? reject('Ha ocurrido un error, recarga la página') : ''
+
         querySnapshot.forEach((doc) => {
 
           const docRef = doc.ref;

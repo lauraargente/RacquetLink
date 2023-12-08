@@ -185,10 +185,10 @@ Estructura general:
                     <div class="profile-data" id="data-sports">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable selected" data-sport="tenis">tenis</div>
+                            <div class="editable-option selectable" data-sport="tenis">tenis</div>
                             <div class="editable-option selectable" data-sport="padel">padel</div>
                             <div class="editable-option selectable" data-sport="pickleball">pickleball</div>
-                            <input class="editable-option inputtext" data-other-sport="other" placeholder="Otro deporte" style="width: 50%;"></input>
+                            <input class="editable-option inputtext" data-other-sport="other" placeholder="Otro deporte" style="width: 40%;"></input>
                         </div>
                     </div>
                 </div>
@@ -229,26 +229,45 @@ Estructura general:
         </div>
         <div id="profile-right">
             <div id="profile-content-container-wrapper">
+                <div id="state-disclaimer-loaded" style="display: none;">
+                    ¡Guardado!
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                </div>
+                <div id="state-disclaimer-loading" style="display: none;">
+                    Guardando...
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" id="disclaimer-loading">
+                        <circle cx="50" cy="50" fill="none" stroke="white" stroke-width="8" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+                        </circle>
+                    </svg>
+                </div>
                 <div id="profile-content-container-3" class="edit-mode-style">
                     <!-- <div id="experience-label-3" class="experience-label">Experiencia</div> -->
                     <div id="joboffer">
-                        Sube aquí tu/s oferta/s de trabajo
+                        Sube aquí tus ofertas de trabajo
+                    </div>
+                    <div id="joboffer-subtitle">
+                        En caso de tener varias ofertas disponibles, únelas todas en el mismo documento
                     </div>
                     <div id="joboffer-container">
-                        <label id="job-offer-label" for="joboffer-input">Click para adjuntar .doc o .pdf</label>
-                        <input id="job-offer" type="file" accept="image/*,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="joboffer" id="joboffer-input" style="display: none;"> 
+                        <label id="job-offer-label" for="joboffer-input">Subir nueva oferta (solo .pdf)</label>
+                        <input id="job-offer" type="file" accept="application/pdf" name="joboffer" id="joboffer-input" style="display: none;"> 
                         <div id="job-offer-output"></div>
-                        <!-- Enlace de descarga, inicialmente oculto -->
-                        <a id="downloadLink" href="#" style="display: none;">
-                            <div id="erase-offer">xlink</div>
-                            Descargar Archivo
+                        <a id="downloadLink" class="downloadLink" href="#" target="_blank">
+                            <div class="downloadLink-wording">Descargar oferta</div>
+                            <div class="erase-offer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg></div>
                         </a>
+
                     </div>
                     <div id="tellusmore-container">
                         <div id="tellusmore">
                             Cuéntanos más sobre tu proyecto
                         </div>
-                        <textarea id="multilineInput" maxlength="480" rows="1" placeholder="Somos un club deportivo y..."></textarea>
+                        <textarea id="multilineInput" maxlength="480" rows="1" placeholder="Nuestro club deportivo se enorgullece de ofrecer una variedad de deportes. Actualmente, tenemos una serie de perfiles abiertos y estamos en búsqueda activa de entrenadores... "></textarea>
                     </div>
     
                 </div>
