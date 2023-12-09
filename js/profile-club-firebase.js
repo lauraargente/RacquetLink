@@ -1,7 +1,7 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
-  import { getStorage, ref, uploadString, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-storage.js";
+  import { getStorage, ref, uploadString, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-storage.js";
   import { getFirestore, collection, addDoc, getDocs, getDoc, where, query, limit, doc, updateDoc} from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js'
 
   // Your web app's Firebase configuration
@@ -155,3 +155,20 @@ export { firebaseUploadDocument }
 
   // Making fuction global
   export { firebaseGetJobOffer }
+
+
+  var firebaseRemoveJobOffer = (userId) => {
+    return new Promise(function (resolve, reject) {
+      deleteObject(ref(storage, `profileDocument=${userId}.pdf`))
+        .then((result) => {
+          console.log(result)
+          resolve(result)
+        })
+        .catch((error) => {
+          console.log('Document reference not found, not a critical error')
+        })
+    })
+  }
+
+  // Making fuction global
+  export { firebaseRemoveJobOffer }

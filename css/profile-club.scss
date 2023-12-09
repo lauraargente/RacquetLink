@@ -60,7 +60,7 @@
   align-items: center;
   height: max-content;
   width: 480px;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   background: rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
@@ -216,7 +216,7 @@
     cursor: pointer;
   }
   &:active {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.6);
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
   }
@@ -225,6 +225,9 @@
     color: rgba(255, 255, 255, 1);
     &:hover {
       background: rgba(255, 255, 255, 0.5);
+    }
+    &:active {
+      background: rgba(255, 255, 255, 0.6);
     }
   }
   &.inputtext {
@@ -286,21 +289,29 @@
 }
 
 .downloadLink-wording {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.0);
+  border: 2px solid rgba(255, 255, 255, 0.6);
   width: 84%;
   height: 100%;
   border-radius: 1rem;
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.6);
+  &.download-available {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.0);
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
   }
 }
 
 .erase-offer {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -312,6 +323,21 @@
   &:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.3);
+  }
+  &:active {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  &.download-available {
+    display: flex;
+  }
+}
+
+#tellusmore-container {
+  &.download-available {
+    display: block;
+    margin-top: 6rem;
+    // transition: margin 0.4s;
   }
 }
 
@@ -356,10 +382,10 @@
     left: 0%;
     border-radius: 1rem;
     transition: 0.4s;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.2);
     &:hover {
       cursor: pointer;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.3);
     }
   }
 }
@@ -509,7 +535,7 @@
   width: 80%;
   // flex-direction: column;
   // justify-content: left;
-  margin-top: 6rem;
+  margin-top: 3rem;
   height: 90%;
 }
 

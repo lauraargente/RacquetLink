@@ -4,6 +4,7 @@ import { firebaseGetProfilePicture } from "./profile-club-firebase.js";
 import { firebaseGetJobOffer } from "./profile-club-firebase.js";
 import { firebaseUploadDocument } from "./profile-club-firebase.js";
 import { firebaseUpdateUserData } from "./profile-club-firebase.js";
+import { firebaseRemoveJobOffer } from "./profile-club-firebase.js";
 
 const dataElement = document.querySelectorAll('.profile-data')
 const dataElementExp = document.querySelectorAll('.profile-exp')
@@ -280,13 +281,19 @@ textArea.addEventListener('blur', () => {
 const eraseDocument = document.querySelector('.erase-offer')
 
 eraseDocument.addEventListener('click', () => {
-  alert()
+  firebaseRemoveJobOffer(valorCookieId).then( () => {
+    console.log('asjdoasjdos')
+    downloadLinksLabel.classList.remove('download-available')
+    eraseDocument.classList.remove('download-available')
+    tellUsMoreContainer.classList.remove('download-available')
+  })
 })
 
 const downloadLink = document.querySelector('#downloadLink');
 const downloadLinksLabel = document.querySelector('.downloadLink-wording');
 const jobOfferButton = document.querySelector('#job-offer');
 const jobOfferButtonLabel = document.querySelector('#job-offer-label');
+const tellUsMoreContainer = document.querySelector('#tellusmore-container')
 
 function extraerNombreArchivo(url) {
   const regex = /o\/(.*?)\?/; // Captura todo entre 'o/' y el siguiente '?'
@@ -296,12 +303,12 @@ function extraerNombreArchivo(url) {
 }
 
   firebaseGetJobOffer(valorCookieId).then( (url) => {
-    downloadLink.href = url;
-    downloadLink.download = extraerNombreArchivo(url)
-    downloadLink.style.display = 'flex';
-    downloadLinksLabel.innerHTML = 'Ver oferta'
-    // element.innerHTML = extraerNombreArchivo(url).substring(0, 20)
-    downloadLink.classList.add('download-styled')
+    downloadLinksLabel.href = url;
+    downloadLinksLabel.download = extraerNombreArchivo(url)
+    downloadLinksLabel.innerHTML = 'Descargar oferta actual'
+    downloadLinksLabel.classList.add('download-available')
+    eraseDocument.classList.add('download-available')
+    tellUsMoreContainer.classList.add('download-available')
   })
 
 firebaseGetProfilePicture(valorCookieId).then( (url) => {
@@ -323,10 +330,12 @@ jobOfferButton.addEventListener('change', function(event) {
 
   const fileUrl = URL.createObjectURL(file);
 
-  downloadLink.href = fileUrl;
-  downloadLink.download = file.name;
-  downloadLink.style.display = 'flex';
-  downloadLink.classList.add('download-styled')
+  downloadLinksLabel.href = fileUrl;
+  downloadLinksLabel.download = file.name;
+  downloadLinksLabel.innerHTML = 'Descargar oferta actual'
+  downloadLinksLabel.classList.add('download-available')
+  eraseDocument.classList.add('download-available')
+  tellUsMoreContainer.classList.add('download-available')
 
   firebaseUploadDocument(file, `profileDocument=${valorCookieId}.pdf`)
 });

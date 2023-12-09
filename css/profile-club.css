@@ -61,7 +61,7 @@
   height: -moz-max-content;
   height: max-content;
   width: 480px;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   background: rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
@@ -218,7 +218,7 @@
   cursor: pointer;
 }
 .editable-option:active {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.6);
   color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
 }
@@ -228,6 +228,9 @@
 }
 .editable-option.selected:hover {
   background: rgba(255, 255, 255, 0.5);
+}
+.editable-option.selected:active {
+  background: rgba(255, 255, 255, 0.6);
 }
 .editable-option.inputtext {
   font-family: Montserrat;
@@ -290,21 +293,29 @@
 }
 
 .downloadLink-wording {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid rgba(255, 255, 255, 0.6);
   width: 84%;
   height: 100%;
   border-radius: 1rem;
 }
-.downloadLink-wording:hover {
-  cursor: pointer;
+.downloadLink-wording.download-available {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+.downloadLink-wording.download-available:hover {
   background-color: rgba(255, 255, 255, 0.6);
+}
+.downloadLink-wording.download-available:active {
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .erase-offer {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -317,6 +328,18 @@
 .erase-offer:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.3);
+}
+.erase-offer:active {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.erase-offer.download-available {
+  display: flex;
+}
+
+#tellusmore-container.download-available {
+  display: block;
+  margin-top: 6rem;
 }
 
 #multilineInput {
@@ -364,11 +387,11 @@
   left: 0%;
   border-radius: 1rem;
   transition: 0.4s;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
 }
 #joboffer-container label:hover {
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 #image-container {
@@ -503,7 +526,7 @@
 
 #tellusmore-container {
   width: 80%;
-  margin-top: 6rem;
+  margin-top: 3rem;
   height: 90%;
 }
 
