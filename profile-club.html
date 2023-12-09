@@ -156,7 +156,7 @@ Estructura general:
                     <input id="profile-picture" type="file" accept="image/*" name="image" id="file" style="display: none;"> 
                     <img id="output" src="./assets/profilestandard.png" class="profile-image" width="200" />
                 </div>
-                <div id="profile-element-container-name" style="width: 80%; justify-content: center;" class="profile-information-element"></div>
+                <div id="profile-element-container-name" style="width: 80%; justify-content: center; align-items: center;" class="profile-information-element"></div>
                 <div style="width: 72%; display: flex; gap: 2rem; align-items: center; justify-content: left; color: white; margin-top: 2rem;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -179,53 +179,6 @@ Estructura general:
                       </svg><div class="profile-element-contact-data" id="data-web" maxlength></div>
                 </a>
             </div>
-            <div id="profile-content-container-2" class="edit-mode-style">
-                <div id="profile-element-container-sports" class="profile-information-element">
-                    <div class="profile-label">Deportes</div>
-                    <div class="profile-data" id="data-sports">
-                        <div class="data-content"></div>
-                        <div class="editable-options">
-                            <div class="editable-option selectable" data-sport="tenis">tenis</div>
-                            <div class="editable-option selectable" data-sport="padel">padel</div>
-                            <div class="editable-option selectable" data-sport="pickleball">pickleball</div>
-                            <input class="editable-option inputtext" data-other-sport="other" placeholder="Otro deporte" style="width: 40%;"></input>
-                        </div>
-                    </div>
-                </div>
-                <div id="profile-element-container-fields" class="profile-information-element">
-                    <div class="profile-label">Número de pistas</div>
-                    <div class="profile-data" id="data-fields">
-                        <div class="data-content"></div>
-                        <div class="editable-options">
-                            <div class="editable-option selectable" data-fields="low">&lt; 5</div>
-                            <div class="editable-option selectable" data-fields="mid">5 - 10</div>
-                            <div class="editable-option selectable" data-fields="hig">> 10</div>
-                        </div>
-                    </div>
-                </div>
-                <div id="profile-element-container-state" class="profile-information-element">
-                    <div class="profile-label">¿Busca el club entrenadores?</div>
-                    <div class="profile-data" id="data-state">
-                        <div class="data-content"></div>
-                        <div class="editable-options">
-                            <div class="editable-option selectable" data-state="yes">sí, ahora</div>
-                            <div class="editable-option selectable" data-state="prx">en el futuro</div>
-                            <div class="editable-option selectable" data-state="not">aún no</div>
-                        </div>
-                    </div>
-                </div>
-                <div id="profile-element-container-consulting" class="profile-information-element">
-                    <div class="profile-label">¿Necesita el club asesoría?</div>
-                    <div class="profile-data" id="data-consulting">
-                        <div class="data-content"></div>
-                        <div class="editable-options">
-                            <div class="editable-option selectable" data-consulting="yes">sí, ahora</div>
-                            <div class="editable-option selectable" data-consulting="prx">en el futuro</div>
-                            <div class="editable-option selectable" data-consulting="not">aún no</div>
-                        </div>
-                    </div>
-                </div>
-        </div>
         </div>
         <div id="profile-right">
             <div id="profile-content-container-wrapper">
@@ -244,15 +197,57 @@ Estructura general:
                     </svg>
                 </div>
                 <div id="profile-content-container-3" class="edit-mode-style">
+                    <div id="profile-element-container-sports" class="profile-information-element">
+                        <div class="profile-label">Deportes</div>
+                        <div class="profile-data" id="data-sports">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <div class="editable-option selectable" data-sport="tenis">tenis</div>
+                                <div class="editable-option selectable" data-sport="padel">padel</div>
+                                <div class="editable-option selectable" data-sport="pickleball">pickleball</div>
+                                <input class="editable-option inputtext" data-other-sport="other" placeholder="Otro deporte" style="width: 8.6rem;"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="profile-element-container-fields" class="profile-information-element">
+                        <div class="profile-label">Número de pistas</div>
+                        <div class="profile-data" id="data-fields">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <div class="editable-option selectable" data-fields="low">&lt; 5</div>
+                                <div class="editable-option selectable" data-fields="mid">5 - 10</div>
+                                <div class="editable-option selectable" data-fields="hig">> 10</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="profile-element-container-state" class="profile-information-element">
+                        <div class="profile-label">¿Busca el club entrenadores?</div>
+                        <div class="profile-data" id="data-state">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <div class="editable-option selectable" data-state="yes">sí, ahora</div>
+                                <div class="editable-option selectable" data-state="prx">en el futuro</div>
+                                <div class="editable-option selectable" data-state="not">aún no</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="profile-element-container-consulting" class="profile-information-element">
+                        <div class="profile-label">¿Necesita el club asesoría?</div>
+                        <div class="profile-data" id="data-consulting">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <div class="editable-option selectable" data-consulting="yes">sí, ahora</div>
+                                <div class="editable-option selectable" data-consulting="prx">en el futuro</div>
+                                <div class="editable-option selectable" data-consulting="not">aún no</div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- <div id="experience-label-3" class="experience-label">Experiencia</div> -->
                     <div id="joboffer">
                         Ofertas de trabajo
                     </div>
-                    <div id="joboffer-subtitle">
-                        En caso de tener varias ofertas disponibles, únelas todas en el mismo documento
-                    </div>
                     <div id="joboffer-container">
-                        <label id="job-offer-label" for="joboffer-input">Subir nueva oferta (solo .pdf)</label>
+                        <label id="job-offer-label" for="joboffer-input">Subir nueva/s oferta/s (solo en .pdf)</label>
                         <input id="job-offer" type="file" accept="application/pdf" name="joboffer" id="joboffer-input" style="display: none;"> 
                         <div id="job-offer-output"></div>
                         <div id="downloadLink" class="downloadLink" href="#" target="_blank">
@@ -267,7 +262,7 @@ Estructura general:
                         <div id="tellusmore">
                             Cuéntanos más sobre tu proyecto
                         </div>
-                        <textarea id="multilineInput" maxlength="480" rows="1" placeholder="Nuestro club deportivo se enorgullece de ofrecer una variedad de deportes. Actualmente, tenemos una serie de perfiles abiertos y estamos en búsqueda activa de entrenadores... "></textarea>
+                        <textarea id="multilineInput" maxlength="240" rows="1" placeholder="Nuestro club deportivo se enorgullece de ofrecer una variedad de deportes. Actualmente, tenemos una serie de perfiles abiertos y estamos en búsqueda activa de entrenadores... "></textarea>
                     </div>
     
                 </div>

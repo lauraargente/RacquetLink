@@ -305,7 +305,7 @@ function extraerNombreArchivo(url) {
   firebaseGetJobOffer(valorCookieId).then( (url) => {
     downloadLinksLabel.href = url;
     downloadLinksLabel.download = extraerNombreArchivo(url)
-    downloadLinksLabel.innerHTML = 'Descargar oferta actual'
+    downloadLinksLabel.innerHTML = 'Descargar oferta/s actual/es'
     downloadLinksLabel.classList.add('download-available')
     eraseDocument.classList.add('download-available')
     tellUsMoreContainer.classList.add('download-available')
@@ -332,7 +332,7 @@ jobOfferButton.addEventListener('change', function(event) {
 
   downloadLinksLabel.href = fileUrl;
   downloadLinksLabel.download = file.name;
-  downloadLinksLabel.innerHTML = 'Descargar oferta actual'
+  downloadLinksLabel.innerHTML = 'Descargar oferta/s actual/es'
   downloadLinksLabel.classList.add('download-available')
   eraseDocument.classList.add('download-available')
   tellUsMoreContainer.classList.add('download-available')
