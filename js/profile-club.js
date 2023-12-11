@@ -5,6 +5,7 @@ import { firebaseGetJobOffer } from "./profile-club-firebase.js";
 import { firebaseUploadDocument } from "./profile-club-firebase.js";
 import { firebaseUpdateUserData } from "./profile-club-firebase.js";
 import { firebaseRemoveJobOffer } from "./profile-club-firebase.js";
+import { firebaseLogout } from "./firebase-auth-checker.js";
 
 const dataElement = document.querySelectorAll('.profile-data')
 const dataElementExp = document.querySelectorAll('.profile-exp')
@@ -16,6 +17,9 @@ const valorCookieId = getCookie(nombreCookieId);
 
 const pageLoader = document.querySelector("#page-loader");
 const body = document.querySelector("body");
+
+var logoutButton = document.querySelector('#logout-button')
+
 
 var newEditedData
 
@@ -352,6 +356,7 @@ var isUserAllowed = () => {
       firebaseFetchUserDataById(valorCookieId).then((userData) => {
         // fillDataInPage()
         pageLoader.style.display = "none";
+        logoutButton.style.display = 'flex'
         body.style.overflowY = "visible";
         fillDataInDocument(userData);
       }).catch(
@@ -384,6 +389,7 @@ isUserAllowed();
 //#endregion
 
 //#region (l) profilePicture 
+
 
 var image = document.getElementById("output");
 var imageContainer = document.getElementById("image-container");
@@ -446,4 +452,12 @@ firebaseGetProfilePicture(valorCookieId).then( (url) => {
 }).catch( (e) => {
   console.log(e)
 })
+//#endregion
+
+//#region (l) logout 
+
+logoutButton.addEventListener('click', () => {
+  firebaseLogout()
+})
+
 //#endregion

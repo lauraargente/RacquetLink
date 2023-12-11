@@ -2,10 +2,32 @@
   background-color: rgba($color: #000000, $alpha: 0) !important;
   padding-top: 0 !important;
   a {
-    color: white;
-    font-size: 1.1rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 1rem;
   }
   box-shadow: none !important;
+}
+
+#logout-button {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10rem;
+  position: absolute;
+  top: 5rem;
+  right: 4rem;
+  padding: 0.7rem 1.4rem;
+  color: var(--color-primary);
+  font-size: 1rem;
+  transition: 0.4s;
+  z-index: 10000;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
 }
 
 #page-loader {
@@ -19,7 +41,7 @@
   justify-content: center;
   align-items: center;
   background-color: white;
-  color: white;
+  color: var(--color-primary);
   font-size: 2rem;
   text-align: center;
   background: rgba(255, 255, 255, 0.2);
@@ -34,7 +56,7 @@
   gap: 2rem;
   height: 100vh;
   width: 100vw;
-  background-image: url(../assets/profile_bakcground.png);
+  background-image: url(../assets/profile_background_2.png);
   background-size: cover;
 }
 
@@ -61,7 +83,7 @@
   height: max-content;
   width: 480px;
   padding-bottom: 2rem;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -107,13 +129,14 @@
   #save-button {
     display: flex;
     justify-content: center;
+    color: var(--color-primary);
     align-items: center;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     // width: 100%;
     height: 100%;
-    color: white;
+    font-weight: 500;
     border-radius: 2rem;
   }
 }
@@ -128,7 +151,7 @@
 }
 
 #edit-button {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
   position: absolute;
   width: 100%;
   top: 0;
@@ -139,10 +162,10 @@
   }
 }
 #disclaimer-label {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.4);
 }
 #save-button {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   opacity: 0;
   position: absolute;
   top: 0;
@@ -150,7 +173,7 @@
   width: 100%;
   &:hover {
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.4);
   }
 }
 #disclaimer-label-2 {
@@ -163,11 +186,11 @@
   padding-top: 20px;
   align-items: center;
   height: max-content;
-  width: 480px;
+  width: 540px;
   padding-bottom: 4rem;
   bottom: 0;
   // overflow-x: hidden;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -186,7 +209,7 @@
   left: 200px;
   bottom: 0;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -264,16 +287,18 @@
 }
 
 .profile-element-contact-data {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
   letter-spacing: 1px;
+  color: var(--color-primary);
 }
 
 #profile-element-container-name {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 1.4rem;
-  font-weight: 300;
+  font-weight: 500;
+  color: var(--color-primary);
   // margin-bottom: 2rem;
 }
 
@@ -281,16 +306,15 @@
   max-width: 40%;
   text-transform: uppercase;
   font-size: 0.9rem;
-  // color: var(--color-secondary);
-  color: rgba(255, 255, 255, 1);
-  font-weight: 300;
-  opacity: 0.4;
+  color: var(--color-primary);
+  font-weight: 400;
+  opacity: 1;
   letter-spacing: 2px;
   margin-top: 0.6rem;
 }
 
 .editable {
-  // background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.4);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   // backdrop-filter: blur(25px);
   // -webkit-backdrop-filter: blur(25px);
@@ -303,7 +327,7 @@
 
 .profile-data {
   position: relative;
-  font-weight: 400;
+  font-weight: 500;
   text-align: right;
   line-height: 150%;
   width: max-content;
@@ -311,8 +335,9 @@
   text-transform: lowercase;
   // letter-spacing: 1px;
   padding: 0.2rem 0.6rem;
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   transition: 0.4s;
+  color: var(--color-primary);
   &.being-edited {
     .data-content {
       user-select: none;
@@ -346,35 +371,38 @@
 .editable-option {
   width: max-content;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border-radius: 2rem;
   padding: 0.2rem 0.8rem;
   user-select: none;
+  color: white;
+  transition: 0.4s;
   &:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.15);
   }
   &:active {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.4);
   }
 }
 
 .inputtext {
   border-radius: 0.4rem;
   padding: 0.4rem 0.8rem;
-  color: white;
-  font-weight: 400;
+  font-weight: 500;
   font-family: Montserrat;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary);
   &:focus {
     outline: none;
   }
   &:hover {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.95);
   }
   &:active {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 1);
   }
   &::placeholder {
     color: #000000;
@@ -383,9 +411,10 @@
 }
 
 .selected {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 1);
+  color: #025b7b;
   &:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -425,15 +454,15 @@
   align-items: center;
   width: max-content;
   text-align: left;
-  margin-top: 0.4rem;
-  color: rgba(255, 255, 255, 1);
+  margin-top: 1rem;
+  color: var(--color-primary);
   opacity: 0.4;
-  font-weight: 400;
-  padding: 0.6rem 1rem;
-  border-radius: 0.6rem;
+  font-weight: 500;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
   transition: 0.4s;
   &.marked {
-    color: white !important;
+    color: var(--color-primary);
     opacity: 1 !important;
     svg {
       opacity: 1;

@@ -109,10 +109,11 @@
     background-color: #f3f5f9;
     padding: 0.7rem 2rem;
     border-radius: 10rem;
+    transition: 0.4s;
   }
 
   #logged-user:hover {
-    opacity: 0.7;
+    background-color: rgba(255, 255, 255, 0.4);
     cursor: pointer;
   }
 /* ――――――――― Header ――――――――― */

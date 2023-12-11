@@ -49,6 +49,10 @@ function setCookie(nombre, valor, diasExpiracion) {
   document.cookie = nombre + "=" + valor + ";" + expiracion + ";path=/";
 }
 
+function deleteCookie(nombre) {
+  document.cookie = nombre + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
 function checkIfStoredUserCookie() {
   const nombreCookie = "loggedUser";
   const nombreCookieId = "loggedUserId";
@@ -85,3 +89,21 @@ function setUserNameOnHeader(displayName, displayNameId) {
 }
 
 export {setUserNameOnHeader}
+
+var firebaseLogout = () => {
+  window.location.href = '/';
+  setCookie('loggedUser');
+  setCookie('loggedUserId');
+  return new Promise(function (resolve, reject) {
+    try {
+      auth.signOut().then( () => {
+        resolve();
+      })
+    } catch (e) {
+      console.error("Error logging out: ", e);
+      reject(e)
+    }
+  });
+}
+
+export {firebaseLogout}
