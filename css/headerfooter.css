@@ -104,16 +104,15 @@
 
 #logged-user {
     display: none;
-    font-weight: 400;
+    font-weight: 500;
     color: #025b7b;
-    background-color: #f3f5f9;
+    background-color: #ffffff;
     padding: 0.7rem 2rem;
     border-radius: 10rem;
-    transition: 0.4s;
   }
 
   #logged-user:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
   }
 /* ――――――――― Header ――――――――― */

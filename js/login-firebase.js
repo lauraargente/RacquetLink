@@ -23,17 +23,25 @@ const auth = getAuth()
 
 // --------------------------------------------------------------- LOG IN
 function firebaseLogIn(email, password) {
-	return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
         signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-            console.log('logedin')
-            resolve()
+        .then((userCredential) => {
+            // Aquí obtienes el usuario
+            const user = userCredential.user;
+            // Aquí obtienes el userId
+            const userId = user.uid;
+            const userName = user.displayName;
+            console.log(userName)
+            // Resuelves la promesa con el userId
+            resolve({ userId, userName });
         })
         .catch((error) => {
-            reject(error)
+            // Manejas errores aquí
+            reject(error);
         });
     })
 }
+
 
 // Making fuction global
 export { firebaseLogIn }

@@ -18,15 +18,17 @@ const body = document.querySelector("body");
 
 var logoutButton = document.querySelector('#logout-button')
 
+var editableOptions = document.querySelectorAll('.editable-option')
+
 
 //#region (v) edit section
-
+const openHamburguerOptions = document.querySelector('#general-options-options')
+const openHamburguer = document.querySelector('#general-options-options-clickable') 
+const closeHamburguer = document.querySelector('#close-general-options') 
 const actionsWrapper = document.querySelector("#actions-wrapper");
-const disclaimerContent = document.querySelector("#disclaimer-content");
 const editButton = document.querySelector("#edit-button");
+const loadingEditButton = document.querySelector("#loading-edit-button");
 const saveButton = document.querySelector("#save-button");
-const editStyledElements = document.querySelectorAll(".edit-mode-style");
-
 //#endregion
 
 //#region (v) editVariables 
@@ -79,30 +81,47 @@ isUserAllowed();
 //#endregion
 
 //#region (l) edit logic
+saveButton.style.display = 'none'
+loadingEditButton.style.display = 'none'
+
+openHamburguer.addEventListener('click', () => {
+  openHamburguerOptions.style.display = 'flex'
+  openHamburguer.style.display = 'none'
+});
+
+closeHamburguer.addEventListener('click', (event) => {
+  openHamburguerOptions.style.display = 'none'
+  openHamburguer.style.display = 'flex'
+});
 
 var setEditableStyles = () => {
-  editButton.style.opacity = '0'
-  editButton.style.pointerEvents = 'none'
-  saveButton.style.opacity = '1'
-  saveButton.style.pointerEvents = 'auto'
+  saveButton.style.display = 'flex'
+  loadingEditButton.style.display = 'none'
+  editButton.style.display = 'none'
 
-  actionsWrapper.style.right = '0'
-  actionsWrapper.style.transform = 'translateX(0)'
+  editableOptions.forEach(option => {
+    option.classList.add('editable')
+  })
+}
 
-  editStyledElements.forEach((element) => {
-    element.classList.toggle("styled");
-  });
+var setLoading = () => {
+  saveButton.style.display = 'none'
+  loadingEditButton.style.display = 'flex'
+  editButton.style.display = 'none'
 }
 
 var unsetEditableStyles = () => {
-  editButton.style.opacity = '1'
-  editButton.style.pointerEvents = 'auto'
-  saveButton.style.opacity = '0'
-  saveButton.style.pointerEvents = 'none'
+  saveButton.style.display = 'none'
+  loadingEditButton.style.display = 'none'
+  editButton.style.display = 'flex'
 
+
+
+  editableOptions.forEach(option => {
+    option.classList.remove('editable')
+  })
+  
   actionsWrapper.style.right = '100%'
-  actionsWrapper.style.transform = 'translateX(100%)'
-
 
   editStyledElements.forEach((element) => {
     element.classList.toggle("styled");
@@ -115,12 +134,20 @@ editButton.addEventListener("click", () => {
 });
 
 saveButton.addEventListener("click", () => {
-  unsetEditableStyles()
-  unMakeAllFieldsEditable()
-  disSelectAllFields()
+  setLoading()
+
+  // disSelectAllFields()
   // Set loading state
-  firebaseUpdateUserData(valorCookieId, newEditedData)
   console.log(newEditedData)
+
+
+
+  firebaseUpdateUserData(valorCookieId, newEditedData).then( () => {
+    setTimeout(() => {
+      unsetEditableStyles()
+      unMakeAllFieldsEditable() 
+    }, 500);
+  })
 });
 
 var makeAllFieldsEditable = () => {
@@ -139,18 +166,9 @@ var unMakeAllFieldsEditable = () => {
     element.classList.remove('editable')
   })
 }
-var disSelectAllFields = (e) => {
-  dataElement.forEach(element => {
-    element.classList.remove('being-edited')
-  })
-  dataElementExp.forEach(element => {
-    element.classList.remove('editable')
-  })
-}
 
 dataElement.forEach((element) => {
   element.addEventListener('click', (e) => {
-    disSelectAllFields(e)
     element.classList.contains('editable') ? element.classList.add('being-edited'): ""
   })
 })
@@ -167,8 +185,7 @@ var dataInternational = document.querySelector("#data-international");
 var dataProfesional = document.querySelector("#data-profesional");
 var dataCompiting = document.querySelector("#data-compiting");
 
-var dataVisa = document.querySelector("#data-visa .data-content");
-var dataLanguages = document.querySelector("#data-languages .data-content");
+var dataVisa = document.querySelector("#data-visa");
 var dataSports = document.querySelector("#data-sports .data-content");
 var dataExp = document.querySelector("#data-exp .data-content");
 var dataWeeklyhours = document.querySelector("#data-weeklyhours .data-content");
@@ -177,15 +194,17 @@ var dataAvailability = document.querySelector("#data-availability .data-content"
 var dataMobility = document.querySelector("#data-mobility .data-content");
 var dataOportunity = document.querySelector("#data-oportunity .data-content");
 var dataRange = document.querySelector("#data-range .data-content");
-var dataRecommendator = document.querySelector("#data-recommendator .data-content");
-
+var dataRecommendator = document.querySelector("#data-recommendator");
 var dataResidence = document.querySelector("#data-residence");
 var dataAge = document.querySelector("#data-age");
 var dataEmail = document.querySelector("#data-email");
+var dataLanguage = document.querySelector("#data-language");
 var dataNumber = document.querySelector("#data-number");
 var dataName = document.querySelector("#profile-element-container-name");
 var dataLinkedin = document.querySelector("#data-linkedin");
+var dataLinkedinWrapper = document.querySelector("#data-linkedin-wrapper");
 var dataInstagram = document.querySelector("#data-instagram");
+var dataInstagramWrapper = document.querySelector("#data-instagram-wrapper");
 var dataFlag = document.querySelector('#data-flag')
 
 
@@ -219,11 +238,6 @@ var fillDataInDocument = (data) => {
         elem.classList.remove('selected');
       });
       element.classList.add('selected');
-
-      documentElement.parentNode.classList.remove('selectionanimation');
-      setTimeout(function() {
-        documentElement.parentNode.classList.add('selectionanimation');
-      }, 1);
     });
   });
   }
@@ -269,10 +283,6 @@ var fillDataInDocument = (data) => {
             let translatedElements = queryVariable.map(element => mappingFunction(element));
             documentElement.innerHTML = translatedElements.join(', ');
 
-            documentElement.parentNode.classList.remove('selectionanimation');
-            setTimeout(function() {
-              documentElement.parentNode.classList.add('selectionanimation');
-            }, 1);
           }
         })
       })
@@ -327,14 +337,39 @@ function formatearURL(url) {
   return url;
 }
 
+function generateLinkedInUrl(inputString) {
+  const regex = /((?<=in\/)[\w\-áéíóúÁÉÍÓÚñÑ]+)|((?<=\/)[\w\-áéíóúÁÉÍÓÚñÑ]+(?=\/?$))|([\w\-áéíóúÁÉÍÓÚñÑ]+(?=\/$))/;
+  const match = inputString.match(regex);
+  if (match) {
+      // Selecting the first non-null group match
+      const username = match.find(group => group !== undefined);
+      return [`https://www.linkedin.com/in/${username}/`, `in/${username}`];;
+  } else {
+      return "Invalid input";
+  }
+}
+
+function generateInstagramUrl(inputString) {
+  // Expresión regular para extraer el nombre de usuario de Instagram, incluyendo el caso de '@usuario'
+  const regex = /((?<=instagram\.com\/)[\w\.-]+)|((?<=@)[\w\.-]+)|([\w\.-]+(?=\/?$))/;
+  const match = inputString.match(regex);
+  if (match) {
+      // Seleccionando el primer grupo que no sea null
+      const username = match.find(group => group !== undefined);
+      return [`https://www.instagram.com/${username}/`, `@${username}`];
+  } else {
+      return "Invalid input";
+  }
+}
+
 newEditedData.userLinkedin === ""
-    ? (dataLinkedin.style.display = "none")
-    : (dataLinkedin.href = formatearURL(newEditedData.userLinkedin));
+    ? (dataLinkedinWrapper.style.display = "none")
+    : (dataLinkedinWrapper.href = generateLinkedInUrl(newEditedData.userLinkedin)[0], dataLinkedin.innerHTML = generateLinkedInUrl(newEditedData.userLinkedin)[1]);
 
 // ---------------------------------------------------------------------------- Instagram
   newEditedData.userInsta === ""
-    ? (dataInstagram.style.display = "none")
-    : (dataInstagram.href = formatearURL(newEditedData.userInsta));
+    ? (dataInstagramWrapper.style.display = "none")
+    : (dataInstagramWrapper.href = generateInstagramUrl(newEditedData.userInsta)[0], dataInstagram.innerHTML = generateInstagramUrl(newEditedData.userInsta)[1]);
 
 // ---------------------------------------------------------------------------- Residence
 
@@ -387,17 +422,6 @@ newEditedData.userLinkedin === ""
 // ---------------------------------------------------------------------------- Visa
   dataVisa.innerHTML = newEditedData.userOtherNationality
 
-  var optionsVisa = document.querySelector('[data-visa]')
-
-  optionsVisa.addEventListener('input', () => {
-    newEditedData.userOtherNationality = optionsVisa.value
-    dataVisa.innerHTML = optionsVisa.value
-    if (optionsVisa.value === '') {
-      newEditedData.userOtherNationality = 'no'
-      dataVisa.innerHTML = 'no'
-    }
-  })
-
 // ---------------------------------------------------------------------------- Languages
 
 function mapLanguages(data) {
@@ -406,7 +430,8 @@ function mapLanguages(data) {
           return data; // Devuelve el mismo valor si no hay traducción
         }
     }
-dataSelectMultiple('data-language', newEditedData.userLanguages, dataLanguages, mapLanguages)
+dataSelectMultiple('data-language', newEditedData.userLanguages, dataLanguage, mapLanguages)
+
 
 // ---------------------------------------------------------------------------- Sports
 
@@ -506,11 +531,11 @@ dataSelectMultiple('data-level', newEditedData.userPreferredLevel, dataAlumn, ma
 function mapAvailability(element) {
   switch (element) {
       case '4mo':
-        return 'en 4 meses o más';
+        return '> 4';
       case '2o3':
-        return 'en 2 o 3 meses';
+        return '2 - 3';
       case 'one':
-          return 'en 1 mes';
+          return '1';
       case 'now':
           return 'inmediata';
       // Agrega más casos según tus necesidades
@@ -582,23 +607,23 @@ dataSelectOne('data-salary', newEditedData.userExpectedSalary, dataRange, mapSal
   function casesRecommendator(data) {
     switch (data) {
         case 'no':
-          return 'no';
+          return 'No';
         case 'diego-ortiz':
-          return 'diego ortiz';
+          return 'Diego Ortiz';
         case 'javier-marti':
-            return 'javier martí';
+            return 'Javier Martí';
         case 'miguel-semmler':
-            return 'miguel semmler';
+            return 'Miguel Semmler';
         case 'adriana-armenadriz':
-          return 'adriana armendariz';
+          return 'Adriana Armendariz';
         case 'diego-ortiz':
-          return 'diego ortiz';
+          return 'Diego Ortiz';
         case 'alejandro-crespo':
-          return 'alejandro crespo';
+          return 'Alejandro Crespo';
         case 'sergi-perez':
-          return 'sergi perez';
+          return 'Sergi Pérez';
         case 'laura-marti':
-          return 'laura martí';
+          return 'Laura Martí';
         // Agrega más casos según tus necesidades
         default:
             return data; // Devuelve el mismo valor si no hay traducción
@@ -679,7 +704,7 @@ profilePicture.addEventListener('change', (e) => {
 })
 
 var setSettedImageStyling = (url) => {
-  image.style.border = '4px solid white'
+  image.style.border = '0.5rem solid white'
   imageContainer.classList.add('image-set')
   imageContainer.classList.remove('loading-state')
   label.innerHTML = 'Modifica la <br> foto de perfil'
