@@ -191,12 +191,43 @@ Estructura general:
             </circle>
         </svg>
     </div>
-    <div id="logout-button">Log out<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="none">
-        <path d="M10 19L5.8 19C4.11984 19 3.27976 19 2.63803 18.673C2.07354 18.3854 1.6146 17.9265 1.32698 17.362C1 16.7202 1 15.8802 1 14.2L1 5.8C1 4.11984 1 3.27976 1.32698 2.63803C1.6146 2.07354 2.07354 1.6146 2.63803 1.32698C3.27976 1 4.11984 1 5.8 1L10 1M15 14L19 10M19 10L15 6M19 10L7 10" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg></div>
+    <div id="profile-general-options">
+        <div id="general-options-options-clickable">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9.397 19.3711L9.98144 20.6856C10.1552 21.0768 10.4387 21.4093 10.7977 21.6426C11.1566 21.8759 11.5755 22.0001 12.0037 22C12.4318 22.0001 12.8507 21.8759 13.2097 21.6426C13.5686 21.4093 13.8521 21.0768 14.0259 20.6856L14.6103 19.3711C14.8184 18.9047 15.1683 18.5159 15.6103 18.26C16.0551 18.0034 16.5697 17.8941 17.0803 17.9478L18.5103 18.1C18.936 18.145 19.3656 18.0656 19.747 17.8713C20.1284 17.6771 20.4453 17.3763 20.6592 17.0056C20.8734 16.635 20.9754 16.2103 20.9529 15.7829C20.9305 15.3555 20.7844 14.9438 20.5326 14.5978L19.6859 13.4344C19.3844 13.0171 19.2233 12.5148 19.2259 12C19.2258 11.4866 19.3884 10.9864 19.6903 10.5711L20.537 9.40778C20.7889 9.06175 20.9349 8.65007 20.9574 8.22267C20.9799 7.79528 20.8778 7.37054 20.6637 7C20.4498 6.62923 20.1329 6.32849 19.7515 6.13423C19.37 5.93997 18.9404 5.86053 18.5148 5.90556L17.0848 6.05778C16.5741 6.11141 16.0596 6.00212 15.6148 5.74556C15.1719 5.48825 14.8218 5.09736 14.6148 4.62889L14.0259 3.31444C13.8521 2.92317 13.5686 2.59072 13.2097 2.3574C12.8507 2.12408 12.4318 1.99993 12.0037 2C11.5755 1.99993 11.1566 2.12408 10.7977 2.3574C10.4387 2.59072 10.1552 2.92317 9.98144 3.31444L9.397 4.62889C9.18992 5.09736 8.83987 5.48825 8.397 5.74556C7.95221 6.00212 7.43766 6.11141 6.927 6.05778L5.49255 5.90556C5.06688 5.86053 4.63729 5.93997 4.25587 6.13423C3.87444 6.32849 3.55757 6.62923 3.34366 7C3.12948 7.37054 3.02744 7.79528 3.04993 8.22267C3.07241 8.65007 3.21845 9.06175 3.47033 9.40778L4.31699 10.5711C4.61894 10.9864 4.78153 11.4866 4.78144 12C4.78153 12.5134 4.61894 13.0137 4.31699 13.4289L3.47033 14.5922C3.21845 14.9382 3.07241 15.3499 3.04993 15.7773C3.02744 16.2047 3.12948 16.6295 3.34366 17C3.55778 17.3706 3.87469 17.6712 4.25606 17.8654C4.63743 18.0596 5.06691 18.1392 5.49255 18.0944L6.92255 17.9422C7.43322 17.8886 7.94777 17.9979 8.39255 18.2544C8.83708 18.511 9.18876 18.902 9.397 19.3711Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.0019 15C13.6587 15 15.0019 13.6569 15.0019 12C15.0019 10.3431 13.6587 9 12.0019 9C10.345 9 9.00187 10.3431 9.00187 12C9.00187 13.6569 10.345 15 12.0019 15Z" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+        </div>
+        <div id="general-options-options" style="display: none;">
+            <div id="close-general-options">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="#025b7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+            </div>
+            <div id="actions-wrapper">
+                <div id="edit-button">Editar<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 18.0002L19.9999 19.0943C19.4695 19.6744 18.7501 20.0002 18.0001 20.0002C17.2501 20.0002 16.5308 19.6744 16.0004 19.0943C15.4692 18.5154 14.75 18.1903 14.0002 18.1903C13.2504 18.1903 12.5311 18.5154 12 19.0943M3 20.0002H4.67454C5.16372 20.0002 5.40832 20.0002 5.63849 19.945C5.84256 19.896 6.03765 19.8152 6.2166 19.7055C6.41843 19.5818 6.59138 19.4089 6.93729 19.063L19.5 6.50023C20.3285 5.6718 20.3285 4.32865 19.5 3.50023C18.6716 2.6718 17.3285 2.6718 16.5 3.50023L3.93726 16.063C3.59136 16.4089 3.4184 16.5818 3.29472 16.7837C3.18506 16.9626 3.10425 17.1577 3.05526 17.3618C3 17.5919 3 17.8365 3 18.3257V20.0002Z" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg></div>
+                  <div id="loading-edit-button">Guardando<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto;" width="20px" height="20px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <circle cx="50" cy="50" fill="none" stroke="#025B7B" stroke-width="8" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                      <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+                    </circle>
+                </svg></div>
+                <div id="save-button">Guardar<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 3V6.4C7 6.96005 7 7.24008 7.10899 7.45399C7.20487 7.64215 7.35785 7.79513 7.54601 7.89101C7.75992 8 8.03995 8 8.6 8H15.4C15.9601 8 16.2401 8 16.454 7.89101C16.6422 7.79513 16.7951 7.64215 16.891 7.45399C17 7.24008 17 6.96005 17 6.4V4M17 21V14.6C17 14.0399 17 13.7599 16.891 13.546C16.7951 13.3578 16.6422 13.2049 16.454 13.109C16.2401 13 15.9601 13 15.4 13H8.6C8.03995 13 7.75992 13 7.54601 13.109C7.35785 13.2049 7.20487 13.3578 7.10899 13.546C7 13.7599 7 14.0399 7 14.6V21M21 9.32548V16.2C21 17.8802 21 18.7202 20.673 19.362C20.3854 19.9265 19.9265 20.3854 19.362 20.673C18.7202 21 17.8802 21 16.2 21H7.8C6.11984 21 5.27976 21 4.63803 20.673C4.07354 20.3854 3.6146 19.9265 3.32698 19.362C3 18.7202 3 17.8802 3 16.2V7.8C3 6.11984 3 5.27976 3.32698 4.63803C3.6146 4.07354 4.07354 3.6146 4.63803 3.32698C5.27976 3 6.11984 3 7.8 3H14.6745C15.1637 3 15.4083 3 15.6385 3.05526C15.8425 3.10425 16.0376 3.18506 16.2166 3.29472C16.4184 3.4184 16.5914 3.59135 16.9373 3.93726L20.0627 7.06274C20.4086 7.40865 20.5816 7.5816 20.7053 7.78343C20.8149 7.96237 20.8957 8.15746 20.9447 8.36154C21 8.59171 21 8.8363 21 9.32548Z" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg></div>
+            </div>
+            <div id="logout-button">Log out<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="none">
+                <path d="M10 19L5.8 19C4.11984 19 3.27976 19 2.63803 18.673C2.07354 18.3854 1.6146 17.9265 1.32698 17.362C1 16.7202 1 15.8802 1 14.2L1 5.8C1 4.11984 1 3.27976 1.32698 2.63803C1.6146 2.07354 2.07354 1.6146 2.63803 1.32698C3.27976 1 4.11984 1 5.8 1L10 1M15 14L19 10M19 10L15 6M19 10L7 10" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg></div>
+        </div>
+
+    </div>
     <div id="profile-container">
+        <div id="profile-wrapper">
+
         <div id="profile-left">
-            <div id="profile-content-container">
+            <div id="profile-content-container-1" class="mobile-fullwidth transparent-content-box">
                 <div id="image-container">
                     <label id="profile-image-label" for="file"  >Añade un <br>logo o escudo</label>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto; visibility: hidden;" width="72px" height="72px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" id="profile-pic-loading">
@@ -208,32 +239,57 @@ Estructura general:
                     <img id="output" src="./assets/profilestandard.png" class="profile-image" width="200" />
                 </div>
                 <div id="profile-element-container-name" style="width: 80%; justify-content: center; align-items: center; color: #025B7B;" class="profile-information-element"></div>
-                <div style="width: 64%; display: flex; gap: 1rem; align-items: center; justify-content: left; color: #025B7B; margin-top: 2rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            </div>
+        </div>
+        <div id="profile-center">
+            <div id="profile-content-container-2" class="mobile-fullwidth transparent-content-box">
+                <div id="joboffer">
+                    Ofertas de trabajo
+                </div>
+                <div id="joboffer-container">
+                    <label id="job-offer-label" for="joboffer-input">Sube aquí</label>
+                    <input id="job-offer" type="file" accept="application/pdf" name="joboffer" id="joboffer-input" style="display: none;"> 
+                    <div id="job-offer-output"></div>
+                    <div id="downloadLink" class="downloadLink" href="#" target="_blank">
+                        <a class="downloadLink-wording">No hay ofertas subidas</a>
+                        <div class="erase-offer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="profile-content-container-3" class="mobile-fullwidth transparent-content-box">
+                <div class="profile-label" style="margin-bottom: 1rem;">Info. Contacto</div>
+
+                <div class="contact-row">
+                    <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg><div class="profile-element-contact-data" id="data-email"></div>
                 </div>
-                <div style="width: 64%; display: flex; gap: 1rem; align-items: center; justify-content: left; color: #025B7B; margin-top: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <div class="contact-row">
+                    <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M8.38028 8.85335C9.07627 10.303 10.0251 11.6616 11.2266 12.8632C12.4282 14.0648 13.7869 15.0136 15.2365 15.7096C15.3612 15.7694 15.4235 15.7994 15.5024 15.8224C15.7828 15.9041 16.127 15.8454 16.3644 15.6754C16.4313 15.6275 16.4884 15.5704 16.6027 15.4561C16.9523 15.1064 17.1271 14.9316 17.3029 14.8174C17.9658 14.3864 18.8204 14.3864 19.4833 14.8174C19.6591 14.9316 19.8339 15.1064 20.1835 15.4561L20.3783 15.6509C20.9098 16.1824 21.1755 16.4481 21.3198 16.7335C21.6069 17.301 21.6069 17.9713 21.3198 18.5389C21.1755 18.8242 20.9098 19.09 20.3783 19.6214L20.2207 19.779C19.6911 20.3087 19.4263 20.5735 19.0662 20.7757C18.6667 21.0001 18.0462 21.1615 17.588 21.1601C17.1751 21.1589 16.8928 21.0788 16.3284 20.9186C13.295 20.0576 10.4326 18.4332 8.04466 16.0452C5.65668 13.6572 4.03221 10.7948 3.17124 7.76144C3.01103 7.19699 2.93092 6.91477 2.9297 6.50182C2.92833 6.0436 3.08969 5.42311 3.31411 5.0236C3.51636 4.66357 3.78117 4.39876 4.3108 3.86913L4.46843 3.7115C4.99987 3.18006 5.2656 2.91433 5.55098 2.76999C6.11854 2.48292 6.7888 2.48292 7.35636 2.76999C7.64174 2.91433 7.90747 3.18006 8.43891 3.7115L8.63378 3.90637C8.98338 4.25597 9.15819 4.43078 9.27247 4.60655C9.70347 5.26945 9.70347 6.12403 9.27247 6.78692C9.15819 6.96269 8.98338 7.1375 8.63378 7.4871C8.51947 7.60142 8.46231 7.65857 8.41447 7.72538C8.24446 7.96281 8.18576 8.30707 8.26748 8.58743C8.29048 8.66632 8.32041 8.72866 8.38028 8.85335Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg><div class="profile-element-contact-data" id="data-number"></div>
                 </div>
-                <div style="width: 64%; display: flex; gap: 1rem; align-items: center; justify-content: left; color: #025B7B; margin-top: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <div class="contact-row">
+                    <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg><div class="profile-element-contact-data" id="data-residence"></div>
                 </div>
-                <a style="width: 64%; display: flex; gap: 1rem; align-items: center; justify-content: left; color: #025B7B; margin-top: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <a class="contact-row">
+                    <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                         <path d="M1 11H21M1 11C1 16.5228 5.47715 21 11 21M1 11C1 5.47715 5.47715 1 11 1M21 11C21 16.5228 16.5228 21 11 21M21 11C21 5.47715 16.5228 1 11 1M11 1C13.5013 3.73835 14.9228 7.29203 15 11C14.9228 14.708 13.5013 18.2616 11 21M11 1C8.49872 3.73835 7.07725 7.29203 7 11C7.07725 14.708 8.49872 18.2616 11 21" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg><div class="profile-element-contact-data" id="data-web" maxlength></div>
+                      </svg><div class="profile-element-contact-data" id="data-web" target="_blank"></div>
                 </a>
+                <!-- <div id="experience-label-2" class="experience-label">Información</div> -->
+                
             </div>
         </div>
         <div id="profile-right">
             <div id="profile-content-container-wrapper">
-                <div id="state-disclaimer-loaded" style="display: none;">
+                <!-- <div id="state-disclaimer-loaded" style="display: none;">
                     ¡Guardado!
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -246,8 +302,8 @@ Estructura general:
                           <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
                         </circle>
                     </svg>
-                </div>
-                <div id="profile-content-container-3" class="edit-mode-style">
+                </div> -->
+                <div id="profile-content-container-4" class="mobile-fullwidth transparent-content-box">
                     <div id="profile-element-container-sports" class="profile-information-element">
                         <div class="profile-label">Deportes</div>
                         <div class="profile-data" id="data-sports">
@@ -286,7 +342,7 @@ Estructura general:
                         <div class="profile-label">¿Necesita el club asesoría?</div>
                         <div class="profile-data" id="data-consulting">
                             <div class="data-content"></div>
-                            <div class="editable-options">
+                            <div class="editable-options" style="margin-bottom: 0;">
                                 <div class="editable-option selectable" data-consulting="yes">sí</div>
                                 <div class="editable-option selectable" data-consulting="prx">en el futuro</div>
                                 <div class="editable-option selectable" data-consulting="not">aún no</div>
@@ -294,35 +350,20 @@ Estructura general:
                         </div>
                     </div>
                     <!-- <div id="experience-label-3" class="experience-label">Experiencia</div> -->
-                    <div id="joboffer">
-                        Ofertas de trabajo
-                    </div>
-                    <div id="joboffer-container">
-                        <label id="job-offer-label" for="joboffer-input">Subir nueva/s oferta/s (solo en .pdf)</label>
-                        <input id="job-offer" type="file" accept="application/pdf" name="joboffer" id="joboffer-input" style="display: none;"> 
-                        <div id="job-offer-output"></div>
-                        <div id="downloadLink" class="downloadLink" href="#" target="_blank">
-                            <a class="downloadLink-wording">No hay ofertas subidas</a>
-                            <div class="erase-offer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg></div>
-                        </div>
-
-                    </div>
+    
+                </div>
+                <div  class="mobile-fullwidth transparent-content-box">
                     <div id="tellusmore-container">
                         <div id="tellusmore">
                             Cuéntanos más sobre tu proyecto
                         </div>
                         <textarea id="multilineInput" maxlength="240" rows="1" placeholder="Habla brevemente sobre tu club y sus ofertas... (max 240 caracteres)"></textarea>
                     </div>
-    
                 </div>
             </div>
 
         </div>
-        <div id="profile-right-extra">
-
-        </div>
+    </div>
         
     </div>
     <!-- 

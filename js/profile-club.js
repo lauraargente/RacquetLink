@@ -7,8 +7,8 @@ import { firebaseUpdateUserData } from "./profile-club-firebase.js";
 import { firebaseRemoveJobOffer } from "./profile-club-firebase.js";
 import { firebaseLogout } from "./firebase-auth-checker.js";
 
-const dataElement = document.querySelectorAll('.profile-data')
-const dataElementExp = document.querySelectorAll('.profile-exp')
+const dataElement = document.querySelectorAll(".profile-data");
+const dataElementExp = document.querySelectorAll(".profile-exp");
 
 const nombreCookie = "loggedUser";
 const nombreCookieId = "loggedUserId";
@@ -18,61 +18,139 @@ const valorCookieId = getCookie(nombreCookieId);
 const pageLoader = document.querySelector("#page-loader");
 const body = document.querySelector("body");
 
-var logoutButton = document.querySelector('#logout-button')
+var logoutButton = document.querySelector("#logout-button");
 
+var editableOptions = document.querySelectorAll(".editable-option");
 
-var newEditedData
+var newEditedData;
 
 //#region (v) edit section
 
+//#region (v) edit section
+const openHamburguerOptions = document.querySelector(
+  "#general-options-options"
+);
+const openHamburguer = document.querySelector(
+  "#general-options-options-clickable"
+);
+const closeHamburguer = document.querySelector("#close-general-options");
 const actionsWrapper = document.querySelector("#actions-wrapper");
-const disclaimerContent = document.querySelector("#disclaimer-content");
 const editButton = document.querySelector("#edit-button");
+const loadingEditButton = document.querySelector("#loading-edit-button");
 const saveButton = document.querySelector("#save-button");
-const editStyledElements = document.querySelectorAll(".edit-mode-style");
 
 //#endregion
 
-//#region (v) editVariables 
+//#region (v) editVariables
 
-var profilePicture = document.querySelector('#profile-picture')
-var imageContainer = document.querySelector('#image-container')
+var profilePicture = document.querySelector("#profile-picture");
+var imageContainer = document.querySelector("#image-container");
 var profileLabel = document.getElementById("profile-image-label");
 
 //#endregion
 
-//#region newregion 
-
+//#region newregion
 
 //#endregion
 
-//#region (f) makeChanges 
+//#region (l) edit logic
+saveButton.style.display = "none";
+loadingEditButton.style.display = "none";
 
-var loadingState = document.querySelector('#state-disclaimer-loading')
-var loadedState = document.querySelector('#state-disclaimer-loaded')
+openHamburguer.addEventListener("click", () => {
+  openHamburguerOptions.style.display = "flex";
+  openHamburguer.style.display = "none";
+});
 
-var updateChanges = () => {
-  loadedState.style.display = 'none'
-  loadingState.style.display = 'flex'
-  console.log(newEditedData)
-  firebaseUpdateUserData(valorCookieId, newEditedData).then( () => {
-    console.log('Documento actualizado correctamente')
+closeHamburguer.addEventListener("click", (event) => {
+  openHamburguerOptions.style.display = "none";
+  openHamburguer.style.display = "flex";
+});
+
+var setEditableStyles = () => {
+  saveButton.style.display = "flex";
+  loadingEditButton.style.display = "none";
+  editButton.style.display = "none";
+
+  editableOptions.forEach((option) => {
+    option.classList.add("editable");
+  });
+};
+
+var setLoading = () => {
+  saveButton.style.display = "none";
+  loadingEditButton.style.display = "flex";
+  editButton.style.display = "none";
+};
+
+var unsetEditableStyles = () => {
+  saveButton.style.display = "none";
+  loadingEditButton.style.display = "none";
+  editButton.style.display = "flex";
+
+  editableOptions.forEach((option) => {
+    option.classList.remove("editable");
+  });
+
+  actionsWrapper.style.right = "100%";
+};
+
+editButton.addEventListener("click", () => {
+  setEditableStyles();
+  makeAllFieldsEditable();
+});
+
+saveButton.addEventListener("click", () => {
+  setLoading();
+
+  firebaseUpdateUserData(valorCookieId, newEditedData).then(() => {
     setTimeout(() => {
-    loadingState.style.display = 'none'
-    loadedState.style.display = 'flex'
-    }, 400);
-  }).catch( () => {
-    alert('Ha ocurrido un error')
-    loadingState.style.display = 'none'
-  })
-}
+      unsetEditableStyles();
+      unMakeAllFieldsEditable();
+    }, 500);
+  });
+});
+
+var makeAllFieldsEditable = () => {
+  dataElement.forEach((element) => {
+    element.classList.add("editable");
+  });
+};
+var unMakeAllFieldsEditable = () => {
+  dataElement.forEach((element) => {
+    element.classList.remove("editable");
+  });
+};
+
+dataElement.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    element.classList.contains("editable")
+      ? element.classList.add("being-edited")
+      : "";
+  });
+});
 
 //#endregion
 
-//#region (l) writeData 
+//#region (f) makeChanges
+
+// var updateChanges = () => {
+//   console.log(newEditedData)
+//   firebaseUpdateUserData(valorCookieId, newEditedData).then( () => {
+//     console.log('Documento actualizado correctamente')
+//     setTimeout(() => {
+//     }, 400);
+//   }).catch( () => {
+//     alert('Ha ocurrido un error')
+//     loadingState.style.display = 'none'
+//   })
+// }
+
+//#endregion
+
+//#region (l) writeData
 
 var fillDataInDocument = (data) => {
-
   newEditedData = data;
 
   var dataEmail = document.querySelector("#data-email");
@@ -83,221 +161,222 @@ var fillDataInDocument = (data) => {
   var dataAdditionalInfo = document.querySelector("#multilineInput");
 
   function formatearURL(url) {
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-        if (url.startsWith('www.')) {
-            url = 'http://' + url;
-        } else {
-            url = 'http://' + url;
-        }
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      if (url.startsWith("www.")) {
+        url = "http://" + url;
+      } else {
+        url = "http://" + url;
+      }
     }
     return url;
   }
 
-// ---------------------------------------------------------------------------- Name
+  // ---------------------------------------------------------------------------- Name
   dataName.innerHTML = newEditedData.clubName;
 
-// ---------------------------------------------------------------------------- Web
-  if (newEditedData.clubWebPage === '') {
-    dataWeb.parentNode.style.display = 'none'
+  // ---------------------------------------------------------------------------- Web
+  if (newEditedData.clubWebPage === "") {
+    dataWeb.parentNode.style.display = "none";
   } else if (newEditedData.clubWebPage.length <= 30) {
-    dataWeb.innerHTML = newEditedData.clubWebPage
+    dataWeb.innerHTML = newEditedData.clubWebPage;
     dataWeb.parentNode.href = formatearURL(newEditedData.clubWebPage);
   } else {
     dataWeb.innerHTML = `${newEditedData.clubWebPage.substring(0, 30)}...`;
     dataWeb.parentNode.href = formatearURL(newEditedData.clubWebPage);
   }
-// ---------------------------------------------------------------------------- Email
+  // ---------------------------------------------------------------------------- Email
   dataEmail.innerHTML = newEditedData.clubEmail;
 
-// ---------------------------------------------------------------------------- Number
+  // ---------------------------------------------------------------------------- Number
   dataNumber.innerHTML = newEditedData.clubNumber;
   function mapCountry(code) {
     const countryCodes = {
-      'at': 'Austria',
-      'be': 'Bélgica',
-      'bg': 'Bulgaria',
-      'hr': 'Croacia',
-      'cy': 'Chipre',
-      'cz': 'República Checa',
-      'dk': 'Dinamarca',
-      'ee': 'Estonia',
-      'fi': 'Finlandia',
-      'fr': 'Francia',
-      'de': 'Alemania',
-      'gr': 'Grecia',
-      'hu': 'Hungría',
-      'is': 'Islandia',
-      'ie': 'República de Irlanda',
-      'it': 'Italia',
-      'lv': 'Letonia',
-      'li': 'Liechtenstein',
-      'lt': 'Lituania',
-      'lu': 'Luxemburgo',
-      'mt': 'Malta',
-      'nl': 'Países Bajos',
-      'no': 'Noruega',
-      'pl': 'Polonia',
-      'pt': 'Portugal',
-      'ro': 'Rumania',
-      'sk': 'Eslovaquia',
-      'si': 'Eslovenia',
-      'es': 'España',
-      'se': 'Suecia'
+      at: "Austria",
+      be: "Bélgica",
+      bg: "Bulgaria",
+      hr: "Croacia",
+      cy: "Chipre",
+      cz: "República Checa",
+      dk: "Dinamarca",
+      ee: "Estonia",
+      fi: "Finlandia",
+      fr: "Francia",
+      de: "Alemania",
+      gr: "Grecia",
+      hu: "Hungría",
+      is: "Islandia",
+      ie: "República de Irlanda",
+      it: "Italia",
+      lv: "Letonia",
+      li: "Liechtenstein",
+      lt: "Lituania",
+      lu: "Luxemburgo",
+      mt: "Malta",
+      nl: "Países Bajos",
+      no: "Noruega",
+      pl: "Polonia",
+      pt: "Portugal",
+      ro: "Rumania",
+      sk: "Eslovaquia",
+      si: "Eslovenia",
+      es: "España",
+      se: "Suecia",
     };
-    
+
     // Verificar si el código de país existe en el mapa
     if (countryCodes.hasOwnProperty(code)) {
-        return countryCodes[code]; // Devuelve el nombre del país correspondiente
+      return countryCodes[code]; // Devuelve el nombre del país correspondiente
     } else {
-        return 'País no especificado'; // O un mensaje predeterminado para códigos no encontrados
+      return "País no especificado"; // O un mensaje predeterminado para códigos no encontrados
     }
   }
-  var country = mapCountry(newEditedData.clubCountry)
-  dataResidence.innerHTML = `${newEditedData.clubCity}, ${country} `
+  var country = mapCountry(newEditedData.clubCountry);
+  dataResidence.innerHTML = `${newEditedData.clubCity}, ${country} `;
 
-// ---------------------------------------------------------------------------- Sports
-  var dataSports = document.querySelectorAll('[data-sport]');
-  var dataOtherSport = document.querySelector('[data-other-sport]');
+  // ---------------------------------------------------------------------------- Sports
+  var dataSports = document.querySelectorAll("[data-sport]");
+  var dataOtherSport = document.querySelector("[data-other-sport]");
 
-  dataSports.forEach(element => {
-    console.log('asjdoasd')
-    newEditedData.clubSports.forEach(dataSport => {
-      if (element.getAttribute('data-sport') === dataSport) {
-        element.classList.add('selected')
+  dataSports.forEach((element) => {
+    newEditedData.clubSports.forEach((dataSport) => {
+      if (element.getAttribute("data-sport") === dataSport) {
+        element.classList.add("selected");
       }
-    })
+    });
 
-    element.addEventListener('click', () => {
-      newEditedData.clubSports.length = 0
-      element.classList.toggle('selected')
+    element.addEventListener("click", () => {
+      if (element.classList.contains("editable")) {
+        newEditedData.clubSports.length = 0;
+        element.classList.toggle("selected");
 
-      dataSports.forEach(element => {
-        if (element.classList.contains('selected')) {
-          newEditedData.clubSports.push(element.getAttribute('data-sport')) 
-          
-        }
-      })
-      newEditedData.clubSports.push('')
-      newEditedData.clubSports[newEditedData.clubSports.length-1] = dataOtherSport.value
+        dataSports.forEach((element) => {
+          if (element.classList.contains("selected")) {
+            newEditedData.clubSports.push(element.getAttribute("data-sport"));
+          }
+        });
+        newEditedData.clubSports.push("");
+        newEditedData.clubSports[newEditedData.clubSports.length - 1] =
+          dataOtherSport.value;
+      }
+    });
+  });
 
-      console.log(newEditedData.clubSports)
-
-      updateChanges()
-    })
-  })
-  
-let additionalSport = newEditedData.clubSports[newEditedData.clubSports.length-1]
-console.log(additionalSport)
-if (additionalSport && (!(additionalSport === ''))) {
-  dataOtherSport.value = additionalSport;
-  dataOtherSport.classList.add('selected')
-}
-
-dataOtherSport.addEventListener('input', () => {
-  if (!(dataOtherSport.value === '')) {
-    dataOtherSport.classList.add('selected')
-    newEditedData.clubSports[newEditedData.clubSports.length-1] = dataOtherSport.value
-  } else {
-    dataOtherSport.classList.remove('selected')
-    newEditedData.clubSports[newEditedData.clubSports.length-1] = dataOtherSport.value
+  let additionalSport =
+    newEditedData.clubSports[newEditedData.clubSports.length - 1];
+  console.log(additionalSport);
+  if (additionalSport && !(additionalSport === "")) {
+    dataOtherSport.value = additionalSport;
+    dataOtherSport.classList.add("selected");
   }
-})
 
-dataOtherSport.addEventListener('blur', () => {
-  updateChanges()
-})
+  dataOtherSport.addEventListener("input", () => {
+    if (!(dataOtherSport.value === "")) {
+      dataOtherSport.classList.add("selected");
+      newEditedData.clubSports[newEditedData.clubSports.length - 1] =
+        dataOtherSport.value;
+    } else {
+      dataOtherSport.classList.remove("selected");
+      newEditedData.clubSports[newEditedData.clubSports.length - 1] =
+        dataOtherSport.value;
+    }
+  });
 
+  dataOtherSport.addEventListener("blur", () => {
+    // updateChanges()
+  });
 
-// ---------------------------------------------------------------------------- Fields
-var dataFields = document.querySelectorAll('[data-fields]');
-dataFields.forEach(element => {
-  if (element.getAttribute('data-fields') === newEditedData.clubField) {
-    element.classList.add('selected')
+  // ---------------------------------------------------------------------------- Fields
+  var dataFields = document.querySelectorAll("[data-fields]");
+  dataFields.forEach((element) => {
+    if (element.getAttribute("data-fields") === newEditedData.clubField) {
+      element.classList.add("selected");
+    }
+    element.addEventListener("click", () => {
+      dataFields.forEach((element) => {
+        element.classList.remove("selected");
+      });
+      element.classList.add("selected");
+      newEditedData.clubField = element.getAttribute("data-fields");
+
+      // updateChanges()
+    });
+  });
+
+  // ---------------------------------------------------------------------------- Coaches Search
+  var dataCoaches = document.querySelectorAll("[data-state]");
+  dataCoaches.forEach((element) => {
+    if (element.getAttribute("data-state") === newEditedData.clubState) {
+      element.classList.add("selected");
+    }
+    element.addEventListener("click", () => {
+      dataCoaches.forEach((element) => {
+        element.classList.remove("selected");
+      });
+      element.classList.add("selected");
+      newEditedData.clubState = element.getAttribute("data-state");
+      // updateChanges()
+    });
+  });
+
+  // ---------------------------------------------------------------------------- Consulting
+  var dataConsulting = document.querySelectorAll("[data-consulting]");
+  dataConsulting.forEach((element) => {
+    if (
+      element.getAttribute("data-consulting") === newEditedData.clubConsulting
+    ) {
+      element.classList.add("selected");
+    }
+    element.addEventListener("click", () => {
+      dataConsulting.forEach((element) => {
+        element.classList.remove("selected");
+      });
+      element.classList.add("selected");
+      newEditedData.clubConsulting = element.getAttribute("data-consulting");
+      // updateChanges()
+    });
+  });
+
+  // ---------------------------------------------------------------------------- Additional Info
+
+  var textArea = document.getElementById("multilineInput");
+
+  textArea.value = newEditedData.clubAdditionalInfo;
+
+  textArea.addEventListener("input", autoResize, false);
+
+  function autoResize() {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
   }
-  element.addEventListener('click', () => {
-    dataFields.forEach(element => {
-      element.classList.remove('selected')
-    })
-    element.classList.add('selected')
-    newEditedData.clubField = element.getAttribute('data-fields')
 
-    updateChanges()
-  })
-})
-
-// ---------------------------------------------------------------------------- Coaches Search
-var dataCoaches = document.querySelectorAll('[data-state]');
-dataCoaches.forEach(element => {
-  if (element.getAttribute('data-state') === newEditedData.clubState) {
-    element.classList.add('selected')
-  }
-  element.addEventListener('click', () => {
-    dataCoaches.forEach(element => {
-      element.classList.remove('selected')
-    })
-    element.classList.add('selected')
-    newEditedData.clubState = element.getAttribute('data-state')
-    updateChanges()
-  })
-})
-
-// ---------------------------------------------------------------------------- Consulting
-var dataConsulting = document.querySelectorAll('[data-consulting]');
-dataConsulting.forEach(element => {
-  if (element.getAttribute('data-consulting') === newEditedData.clubConsulting) {
-    element.classList.add('selected')
-  }
-  element.addEventListener('click', () => {
-    dataConsulting.forEach(element => {
-      element.classList.remove('selected')
-    })
-    element.classList.add('selected')
-    newEditedData.clubConsulting = element.getAttribute('data-consulting')
-    updateChanges()
-  })
-})
-
-// ---------------------------------------------------------------------------- Additional Info
-
-var textArea = document.getElementById('multilineInput');
-
-textArea.value = newEditedData.clubAdditionalInfo;
-
-
-textArea.addEventListener('input', autoResize, false);
-
-function autoResize() {
-    this.style.height = 'auto';
-    this.style.height = (this.scrollHeight) + 'px';
-}
-
-textArea.addEventListener('blur', () => {
-  newEditedData.clubAdditionalInfo = textArea.value
-  updateChanges()
-})
-
+  textArea.addEventListener("blur", () => {
+    newEditedData.clubAdditionalInfo = textArea.value;
+    // updateChanges()
+  });
 };
 
 //#endregion
 
 //#region (l) manage file uploading and downloading
 
-const eraseDocument = document.querySelector('.erase-offer')
+const eraseDocument = document.querySelector(".erase-offer");
 
-eraseDocument.addEventListener('click', () => {
-  firebaseRemoveJobOffer(valorCookieId).then( () => {
-    console.log('asjdoasjdos')
-    downloadLinksLabel.classList.remove('download-available')
-    eraseDocument.classList.remove('download-available')
-    tellUsMoreContainer.classList.remove('download-available')
-  })
-})
+eraseDocument.addEventListener("click", () => {
+  firebaseRemoveJobOffer(valorCookieId).then(() => {
+    jobOfferButton.value = ''
+    console.log("asjdoasjdos");
+    downloadLinksLabel.classList.remove("download-available");
+    eraseDocument.classList.remove("download-available");
+    tellUsMoreContainer.classList.remove("download-available");
+    jobOfferButtonLabel.style.display = "flex"
+  });
+});
 
-const downloadLink = document.querySelector('#downloadLink');
-const downloadLinksLabel = document.querySelector('.downloadLink-wording');
-const jobOfferButton = document.querySelector('#job-offer');
-const jobOfferButtonLabel = document.querySelector('#job-offer-label');
-const tellUsMoreContainer = document.querySelector('#tellusmore-container')
+const downloadLink = document.querySelector("#downloadLink");
+const downloadLinksLabel = document.querySelector(".downloadLink-wording");
+const jobOfferButton = document.querySelector("#job-offer");
+const jobOfferButtonLabel = document.querySelector("#job-offer-label");
+const tellUsMoreContainer = document.querySelector("#tellusmore-container");
 
 function extraerNombreArchivo(url) {
   const regex = /o\/(.*?)\?/; // Captura todo entre 'o/' y el siguiente '?'
@@ -306,42 +385,50 @@ function extraerNombreArchivo(url) {
   return match ? match[1] : null; // Devuelve el grupo capturado si existe, de lo contrario null
 }
 
-  firebaseGetJobOffer(valorCookieId).then( (url) => {
-    downloadLinksLabel.href = url;
-    downloadLinksLabel.download = extraerNombreArchivo(url)
-    downloadLinksLabel.innerHTML = 'Descargar oferta/s actual/es'
-    downloadLinksLabel.classList.add('download-available')
-    eraseDocument.classList.add('download-available')
-    tellUsMoreContainer.classList.add('download-available')
-  })
-
-firebaseGetProfilePicture(valorCookieId).then( (url) => {
-  image.src = url;
-  setSettedImageStyling()
-}).catch( (e) => {
-  console.log(e)
-})
-
-jobOfferButtonLabel.addEventListener('click', function() {
-  document.getElementById('job-offer').click();
+firebaseGetJobOffer(valorCookieId).then((url) => {
+  downloadLinksLabel.href = url;
+  downloadLinksLabel.download = extraerNombreArchivo(url);
+  downloadLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg`;
+  jobOfferButtonLabel.style.display = "none"
+  downloadLinksLabel.classList.add("download-available");
+  eraseDocument.classList.add("download-available");
+  tellUsMoreContainer.classList.add("download-available");
 });
 
-jobOfferButton.addEventListener('change', function(event) {
+firebaseGetProfilePicture(valorCookieId)
+  .then((url) => {
+    image.src = url;
+    setSettedImageStyling();
+  })
+  .catch((e) => {
+    console.log(e);
+  });
+
+jobOfferButtonLabel.addEventListener("click", function () {
+  jobOfferButton.click();
+});
+
+jobOfferButton.addEventListener("change", function (event) {
   const file = event.target.files[0];
   if (!file) {
-      return;
+    return;
   }
 
   const fileUrl = URL.createObjectURL(file);
 
   downloadLinksLabel.href = fileUrl;
   downloadLinksLabel.download = file.name;
-  downloadLinksLabel.innerHTML = 'Descargar oferta/s actual/es'
-  downloadLinksLabel.classList.add('download-available')
-  eraseDocument.classList.add('download-available')
-  tellUsMoreContainer.classList.add('download-available')
+  downloadLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
+  <path d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg`;
+  downloadLinksLabel.classList.add("download-available");
+  eraseDocument.classList.add("download-available");
+  tellUsMoreContainer.classList.add("download-available");
+  jobOfferButtonLabel.style.display = "none"
 
-  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.pdf`)
+  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.pdf`);
 });
 
 //#endregion
@@ -353,14 +440,15 @@ var isUserAllowed = () => {
 
   if (params.has("id")) {
     if (params.get("id") === valorCookieId) {
-      firebaseFetchUserDataById(valorCookieId).then((userData) => {
-        // fillDataInPage()
-        pageLoader.style.display = "none";
-        logoutButton.style.display = 'flex'
-        body.style.overflowY = "visible";
-        fillDataInDocument(userData);
-      }).catch(
-      );
+      firebaseFetchUserDataById(valorCookieId)
+        .then((userData) => {
+          // fillDataInPage()
+          pageLoader.style.display = "none";
+          logoutButton.style.display = "flex";
+          body.style.overflowY = "visible";
+          fillDataInDocument(userData);
+        })
+        .catch();
     } else {
       setTimeout(() => {
         pageLoader.innerHTML = "No dispone de permisos para ver esta página";
@@ -388,35 +476,34 @@ isUserAllowed();
 
 //#endregion
 
-//#region (l) profilePicture 
-
+//#region (l) profilePicture
 
 var image = document.getElementById("output");
 var imageContainer = document.getElementById("image-container");
-var label = document.querySelector('#profile-image-label')
-var profilePicLoading = document.querySelector('#profile-pic-loading')
+var label = document.querySelector("#profile-image-label");
+var profilePicLoading = document.querySelector("#profile-pic-loading");
 
-imageContainer.addEventListener('click', (e) => {
-  profilePicture.click()
-})
+imageContainer.addEventListener("click", (e) => {
+  profilePicture.click();
+});
 
-profilePicture.addEventListener('change', (e) => {
-  loadFile(e)
-})
+profilePicture.addEventListener("change", (e) => {
+  loadFile(e);
+});
 
 var setSettedImageStyling = (url) => {
-  image.style.border = '4px solid white'
-  imageContainer.classList.add('image-set')
-  imageContainer.classList.remove('loading-state')
-  label.innerHTML = 'Modifica la <br> foto de perfil'
-}
+  image.style.border = "4px solid white";
+  imageContainer.classList.add("image-set");
+  imageContainer.classList.remove("loading-state");
+  label.innerHTML = "Modifica la <br> foto de perfil";
+};
 
 var convertImageToBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
     reader.onload = () => {
-      const base64String = reader.result.split(',')[1]; // Extraer solo la parte base64 de la URL de datos
+      const base64String = reader.result.split(",")[1]; // Extraer solo la parte base64 de la URL de datos
       resolve(base64String);
     };
 
@@ -426,38 +513,43 @@ var convertImageToBase64 = (file) => {
 
     reader.readAsDataURL(file);
   });
-}
-
-var loadFile = (event) => {
-
-  const reader = new FileReader();
-
-  profilePicLoading.style.visibility = 'visible'
-  imageContainer.classList.add('loading-state')
-
-  profilePicLoading.style.visibility = 'hidden'
-
-  image.src = URL.createObjectURL(event.target.files[0]);
-  const base64String = convertImageToBase64(event.target.files[0]).then( (result) => {
-    firebaseUpdateProfilePicture(result, `profilePicUserId=${valorCookieId}.png`).then( () => {
-      setSettedImageStyling()
-    })
-  });
-
 };
 
-firebaseGetProfilePicture(valorCookieId).then( (url) => {
-  image.src = url;
-  setSettedImageStyling()
-}).catch( (e) => {
-  console.log(e)
-})
+var loadFile = (event) => {
+  const reader = new FileReader();
+
+  profilePicLoading.style.visibility = "visible";
+  imageContainer.classList.add("loading-state");
+
+  profilePicLoading.style.visibility = "hidden";
+
+  image.src = URL.createObjectURL(event.target.files[0]);
+  const base64String = convertImageToBase64(event.target.files[0]).then(
+    (result) => {
+      firebaseUpdateProfilePicture(
+        result,
+        `profilePicUserId=${valorCookieId}.png`
+      ).then(() => {
+        setSettedImageStyling();
+      });
+    }
+  );
+};
+
+firebaseGetProfilePicture(valorCookieId)
+  .then((url) => {
+    image.src = url;
+    setSettedImageStyling();
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 //#endregion
 
-//#region (l) logout 
+//#region (l) logout
 
-logoutButton.addEventListener('click', () => {
-  firebaseLogout()
-})
+logoutButton.addEventListener("click", () => {
+  firebaseLogout();
+});
 
 //#endregion

@@ -1,7 +1,7 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
-  import { getStorage, ref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-storage.js";
+  import { getStorage, ref, uploadString, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-storage.js";
   import { getFirestore, collection, addDoc, getDocs, getDoc, where, query, limit, doc, updateDoc} from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js'
 
   // Your web app's Firebase configuration
@@ -133,11 +133,11 @@
     return new Promise(function (resolve, reject) {
       getDownloadURL(ref(storage, `profilePicUserId=${userId}`))
         .then((url) => {
-          resolve(url)
+          resolve(url);
         })
         .catch((error) => {
-          console.log('Image reference not found, not a critical error')
-        })
+          console.log("Image reference not found, not a critical error");
+        });
       // getDownloadURL(ref(storage, `id=${imageId}img=${index}.png;`))
       // .then((url) => {
       //     console.log(url)
@@ -146,8 +146,92 @@
       // .catch((error) => {
       //     console.log("Image reference not found, not a critical error")
       // })
+    });
+  };
+
+  // Making fuction global
+  export { firebaseGetProfilePicture }
+
+  var firebaseUploadDocument = (file, name) => {
+    return new Promise(function (resolve, reject) {
+        const reference = ref(storage, name)
+
+        uploadBytes(reference, file).then((snapshot) => {
+            console.log('Uploaded a document!')
+            resolve()
+        })
+        .catch( (error) => {
+            reject(error)
+        })
+    })
+}
+
+// Making fuction global
+export { firebaseUploadDocument }
+
+  var firebaseGetJobOffer = (userId) => {
+    return new Promise(function (resolve, reject) {
+      getDownloadURL(ref(storage, `profileDocument=${userId}.pdf`))
+        .then((url) => {
+          console.log(url)
+          resolve(url)
+        })
+        .catch((error) => {
+          console.log('Document reference not found, not a critical error')
+        })
     })
   }
 
   // Making fuction global
-  export { firebaseGetProfilePicture }
+  export { firebaseGetJobOffer };
+
+
+  var firebaseRemoveJobOffer = (userId) => {
+    return new Promise(function (resolve, reject) {
+      deleteObject(ref(storage, `profileDocument=${userId}.pdf`))
+        .then((result) => {
+          console.log(result)
+          resolve(result)
+        })
+        .catch((error) => {
+          console.log('Document reference not found, not a critical error')
+        })
+    })
+  }
+
+  // Making fuction global
+  export { firebaseRemoveJobOffer }
+
+
+  var firebaseGetVideo = (userId) => {
+    return new Promise(function (resolve, reject) {
+      getDownloadURL(ref(storage, `profileDocument=${userId}.mp4`))
+        .then((url) => {
+          console.log(url)
+          resolve(url)
+        })
+        .catch((error) => {
+          console.log('Document reference not found, not a critical error')
+        })
+    })
+  }
+
+  // Making fuction global
+  export { firebaseGetVideo };
+
+
+  var firebaseRemoveVideo = (userId) => {
+    return new Promise(function (resolve, reject) {
+      deleteObject(ref(storage, `profileDocument=${userId}.mp4`))
+        .then((result) => {
+          console.log(result)
+          resolve(result)
+        })
+        .catch((error) => {
+          console.log('Document reference not found, not a critical error')
+        })
+    })
+  }
+
+  // Making fuction global
+  export { firebaseRemoveVideo }

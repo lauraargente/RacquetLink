@@ -104,11 +104,14 @@
 
 #logged-user {
     display: none;
-    font-weight: 500;
     color: #025b7b;
     background-color: #ffffff;
     padding: 0.7rem 2rem;
     border-radius: 10rem;
+  }
+
+  #logged-user-text {
+    font-weight: 500;
   }
 
   #logged-user:hover {

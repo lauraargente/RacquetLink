@@ -3,7 +3,11 @@ import { firebaseUpdateProfilePicture } from "./profile-coach-firebase.js";
 import { firebaseGetProfilePicture } from "./profile-coach-firebase.js";
 import { firebaseUpdateUserData } from "./profile-coach-firebase.js";
 import { firebaseLogout } from "./firebase-auth-checker.js";
-
+import { firebaseUploadDocument } from "./profile-coach-firebase.js";
+import { firebaseRemoveJobOffer } from "./profile-coach-firebase.js";
+import { firebaseGetJobOffer } from "./profile-coach-firebase.js";
+import { firebaseRemoveVideo } from "./profile-coach-firebase.js";
+import { firebaseGetVideo } from "./profile-coach-firebase.js";
 
 const dataElement = document.querySelectorAll('.profile-data')
 const dataElementExp = document.querySelectorAll('.profile-exp')
@@ -123,9 +127,6 @@ var unsetEditableStyles = () => {
   
   actionsWrapper.style.right = '100%'
 
-  editStyledElements.forEach((element) => {
-    element.classList.toggle("styled");
-  });
 }
 
 editButton.addEventListener("click", () => {
@@ -262,6 +263,8 @@ var fillDataInDocument = (data) => {
     // Manage edition
     selectorAllOptions.forEach(element => {
       element.addEventListener('click', () => {
+
+        if (element.classList.contains('editable')) {
         queryVariable.length = 0
 
         element.classList.toggle('selected')
@@ -285,6 +288,8 @@ var fillDataInDocument = (data) => {
 
           }
         })
+      }
+
       })
     })
   }
@@ -754,6 +759,131 @@ firebaseGetProfilePicture(valorCookieId).then( (url) => {
 }).catch( (e) => {
   console.log(e)
 })
+//#endregion
+
+//#region (l) manage file uploading and downloading
+
+const eraseDocument = document.querySelector(".erase-offer");
+
+eraseDocument.addEventListener("click", () => {
+  firebaseRemoveJobOffer(valorCookieId).then(() => {
+    jobOfferButton.value = ''
+    console.log("asjdoasjdos");
+    downloadLinksLabel.classList.remove("download-available");
+    eraseDocument.classList.remove("download-available");
+    jobOfferButtonLabel.style.display = "flex"
+  });
+});
+
+const downloadLinksLabel = document.querySelector(".downloadLink-wording");
+const jobOfferButton = document.querySelector("#job-offer");
+const jobOfferButtonLabel = document.querySelector("#job-offer-label");
+
+function extraerNombreArchivo(url) {
+  const regex = /o\/(.*?)\?/; // Captura todo entre 'o/' y el siguiente '?'
+  // const regex = %2..*%2F(.*?)\?alt;
+  const match = url.match(regex);
+  return match ? match[1] : null; // Devuelve el grupo capturado si existe, de lo contrario null
+}
+
+firebaseGetJobOffer(valorCookieId).then((url) => {
+  downloadLinksLabel.href = url;
+  downloadLinksLabel.download = extraerNombreArchivo(url);
+  downloadLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg`;
+  jobOfferButtonLabel.style.display = "none"
+  downloadLinksLabel.classList.add("download-available");
+  eraseDocument.classList.add("download-available");
+});
+
+firebaseGetProfilePicture(valorCookieId)
+  .then((url) => {
+    image.src = url;
+    setSettedImageStyling();
+  })
+  .catch((e) => {
+    console.log(e);
+  });
+
+jobOfferButtonLabel.addEventListener("click", function () {
+  jobOfferButton.click();
+});
+
+jobOfferButton.addEventListener("change", function (event) {
+  const file = event.target.files[0];
+  if (!file) {
+    return;
+  }
+
+  const fileUrl = URL.createObjectURL(file);
+
+  downloadLinksLabel.href = fileUrl;
+  downloadLinksLabel.download = file.name;
+  downloadLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
+  <path d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg`;
+  downloadLinksLabel.classList.add("download-available");
+  eraseDocument.classList.add("download-available");
+  jobOfferButtonLabel.style.display = "none"
+
+  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.pdf`);
+});
+
+//#endregion
+
+//#region (l) manage video uploading and downloading
+
+const eraseVideo = document.querySelector(".erase-video");
+
+eraseVideo.addEventListener("click", () => {
+  firebaseRemoveVideo(valorCookieId).then(() => {
+    jobVideoButton.value = ''
+    downloadVideoLinksLabel.classList.remove("download-available");
+    eraseVideo.classList.remove("download-available");
+    jobVideoButtonLabel.style.display = "flex"
+  });
+});
+
+const downloadVideoLinksLabel = document.querySelector(".downloadVideoLink-wording");
+const jobVideoButton = document.querySelector("#job-video");
+const jobVideoButtonLabel = document.querySelector("#job-video-label");
+
+firebaseGetVideo(valorCookieId).then((url) => {
+  downloadVideoLinksLabel.href = url;
+  downloadVideoLinksLabel.download = extraerNombreArchivo(url);
+  downloadVideoLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg`;
+  jobVideoButtonLabel.style.display = "none"
+  downloadVideoLinksLabel.classList.add("download-available");
+  eraseVideo.classList.add("download-available");
+});
+
+jobVideoButtonLabel.addEventListener("click", function () {
+  jobVideoButton.click();
+});
+
+jobVideoButton.addEventListener("change", function (event) {
+  const file = event.target.files[0];
+  if (!file) {
+    return;
+  }
+
+  const fileUrl = URL.createObjectURL(file);
+
+  downloadVideoLinksLabel.href = fileUrl;
+  downloadVideoLinksLabel.download = file.name;
+  downloadVideoLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
+  <path d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg`;
+  downloadVideoLinksLabel.classList.add("download-available");
+  eraseVideo.classList.add("download-available");
+  jobVideoButtonLabel.style.display = "none"
+
+  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.mp4`);
+});
+
 //#endregion
 
 
