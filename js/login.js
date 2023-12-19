@@ -48,9 +48,9 @@ var tryLoginLogic = () => {
         console.log(userData)
         console.log(userData.userName)
         if (userData.userName.split(' ')[0] === 'Coach') {
-          window.location.href = `profile-coach.html?id=${userData.userId}`;
+          window.location.href = `/RacquetLink/profilecoach.html?id=${userData.userId}`;
         } else {
-          window.location.href = `profile-club.html?id=${userData.userId}`;
+          window.location.href = `/RacquetLink/profileclub.html?id=${userData.userId}`;
         }
         loginLoadingIcon.style.visibility = "hidden";
         loginOkIcon.style.visibility = "visible";

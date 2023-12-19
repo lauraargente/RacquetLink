@@ -79,7 +79,7 @@ function getCookie(nombre) {
 function setUserNameOnHeader(displayName, displayNameId) {
 
   var typeOfUser = displayName.trim().split(' ')[0]
-  typeOfUser === 'Coach' ? headerLogged.href = `/profilecoach.html?id=${displayNameId}` : headerLogged.href = `/profileclub.html?id=${displayNameId}`
+  typeOfUser === 'Coach' ? headerLogged.href = `/RacquetLink/profilecoach.html?id=${displayNameId}` : headerLogged.href = `/RacquetLink/profileclub.html?id=${displayNameId}`
   headerLogged.style.display = 'flex'
   headerLoggedName.innerHTML = displayName
   headerLoggedName.innerHTML = displayName.replace(/^\w+\s*/, '')
