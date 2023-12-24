@@ -185,10 +185,124 @@ Estructura general:
         </div>
     </div> -->
 
+    <div class="popup" id="filters-popup-container">
+        <div class="popup-content" id="filters-popup">
+            <div class="popup-header">Filtros</div>
+            <div class="filter-header">Edad</div>
+            <div class="range_container">
+                <div class="sliders_control">
+                    <input id="fromSlider" type="range" value="0" min="0" max="100"/>
+                    <input id="toSlider" type="range" value="100" min="0" max="100"/>
+                </div>
+                <div class="form_control">
+                    <div class="form_control_container">
+                        <input class="form_control_container__time__input" type="number" id="fromInput" value="0" min="0" max="100" readonly/>
+                    </div>
+                    <div style="display: flex;align-items: center; font-family: Montserrat; font-weight: 600; color: #025B7B;">-</div>
+                    <div class="form_control_container">
+                        <input class="form_control_container__time__input" type="number" id="toInput" value="100" min="0" max="100" readonly/>
+                    </div>
+                </div>
+            </div>          
+            <div class="filter-header">Nacionalidad</div>
+            <div class="pn-select" id="js_pn-select2" style="--prefix-length: 2">
+                <!-- Selected prefix -->
+                <button class="pn-selected-prefix" aria-label="Select phonenumber prefix" id="js_trigger-dropdown2" tabindex="1">
+                <img class="pn-selected-prefix__flag" id="js_selected-flag2" src="https://flagcdn.com/36x27/un.png" />
+                <!-- prettier-ignore -->
+                <svg class="pn-selected-prefix__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#081626" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+                </button>
+                <!-- Phone number input -->
+                <div class="pn-input">
+                <div class="pn-input__container">
+                    <input class="pn-input__prefix" value="Cualquiera" type="text" name="phonenumber-prefix" id="js_number-prefix2" tabindex="-1" readonly/>
+                    <input class="pn-input__phonenumber" id="js_input-phonenumber2" type="tel" name="phonenumber" pattern="\d*" value="" placeholder=" " autocomplete="nope" required max="10" tabindex="0" readonly/>
+                    <small class="pn-input__error">
+                    This is not a valid phone number
+                    </small>
+                </div>
+                </div>
+                <!-- Dropdown -->
+                <div class="pn-dropdown" id="js_dropdown2">
+                <div class="pn-search">
+                    <!-- prettier-ignore -->
+                    <svg class="pn-search__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#103155" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input placeholder="Busca por país" class="pn-search__input search" type="search" id="js_search-input2" autocomplete="nope" />
+                </div>
+                <!-- Country list -->
+                <ul class="pn-list list" id="js_list2"></ul>
+                <div class="pn-list-item pn-list-item--no-results" style="display: none" id="js_no-results-found2">
+                    No results found
+                </div>
+                </div>
+            </div>
+            <div class="filter-header">Idiomas</div>
+            <div class="filter-elements" id="filter-languages">
+                <div class="filter-element selected filterall" data-language="any">Todos</div>
+                <div class="filter-element" data-language="en">En</div>
+                <div class="filter-element" data-language="es">Es</div>
+                <div class="filter-element" data-language="fr">Fr</div>
+                <div class="filter-element" data-language="al">Al</div>
+                <div class="filter-element" data-language="ru">Ru</div>
+                <div class="filter-element" data-language="it">It</div>
+                <div class="filter-element" data-language="pt">Pt</div>
+                <div class="filter-element" data-language="cj">Ch</div>
+            </div>
+            <div class="filter-header">Deportes</div>
+            <div class="filter-elements">
+                <div class="filter-element selected filterall" data-sport="any">Todos</div>
+                <div class="filter-element" data-sport="tenis">Tenis</div>
+                <div class="filter-element" data-sport="padel">Padel</div>
+                <div class="filter-element" data-sport="pickleball">Pickleball</div>
+            </div>
+            <div class="filter-header">Disponibilidad</div>
+            <div class="filter-elements">
+                <div class="filter-element selected filterall" data-startingtime="any">Todos</div>
+                <div class="filter-element" data-startingtime="now">Inmediata</div>
+                <div class="filter-element" data-startingtime="one">&lt; 1 </div>
+                <div class="filter-element" data-startingtime="2o3">2 - 3</div>
+                <div class="filter-element" data-startingtime="4mo">> 4</div>
+            </div>
+            <div class="filter-header">Años de experiencia</div>
+            <div class="filter-elements">
+                <div class="filter-element selected filterall" data-experience="any">Todos</div>
+                <div class="filter-element" data-experience="two-or-less">&lt; 2</div>
+                <div class="filter-element" data-experience="two-to-five">2 - 5</div>
+                <div class="filter-element" data-experience="five-to-ten">5 - 10</div>
+                <div class="filter-element" data-experience="ten-or-more">> 10</div>
+            </div>
+            <div id="popup-actions">
+                <div id="popup-close">Cerrar</div>
+                <div id="popup-apply">Aplicar</div>
+            </div>
+        </div>
+    </div>
+
     <div id="main-container">
         <div id="table-container">
             <div id="header-label">Tabla de usuarios</div>
-            <div id="search-bar" class="transparent-content-box"></div>
+            <div id="search-bar" class="transparent-content-box">
+                <div id="search-input">
+                    <div id="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M17.5 17.5L14.5834 14.5833M16.6667 9.58333C16.6667 13.4954 13.4954 16.6667 9.58333 16.6667C5.67132 16.6667 2.5 13.4954 2.5 9.58333C2.5 5.67132 5.67132 2.5 9.58333 2.5C13.4954 2.5 16.6667 5.67132 16.6667 9.58333Z" stroke="black" stroke-opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div>
+                    <input type="text" id="search-input-text">
+                </div>
+                <div id="filters-button">Filtros<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 10H15M2.5 5H17.5M7.5 15H12.5" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg></div>
+                <div id="coaches-button">Clubs<svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
+                    <path d="M6.85714 16.7653C7.03473 16.8693 7.12352 16.9212 7.24883 16.9482C7.34608 16.9691 7.48796 16.9691 7.58521 16.9482C7.71052 16.9212 7.79931 16.8693 7.9769 16.7653C9.53948 15.8508 13.834 12.9781 13.834 9.02832V5.17996C13.834 4.5366 13.834 4.21492 13.7292 3.9384C13.6365 3.69413 13.4859 3.47617 13.2905 3.30336C13.0692 3.10775 12.769 2.9948 12.1685 2.7689L7.86765 1.15093C7.7009 1.08819 7.61752 1.05682 7.53174 1.04439C7.45566 1.03336 7.37839 1.03336 7.3023 1.04439C7.21653 1.05682 7.13315 1.08819 6.96639 1.15093L2.66554 2.7689C2.06506 2.9948 1.76482 3.10775 1.54357 3.30336C1.34811 3.47617 1.19754 3.69413 1.10489 3.9384C1 4.21492 1 4.5366 1 5.17996V9.02832C1 12.9781 5.29456 15.8508 6.85714 16.7653Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg></div>
+                <div id="clubs-button">Coaches<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                    <path d="M13.834 15.2422C13.834 14.1192 13.834 13.5577 13.6959 13.1008C13.3848 12.0721 12.5824 11.2671 11.5569 10.955C11.1015 10.8164 10.5418 10.8164 9.42234 10.8164H5.41171C4.29228 10.8164 3.73257 10.8164 3.27713 10.955C2.25168 11.2671 1.44922 12.0721 1.13816 13.1008C1 13.5577 1 14.1192 1 15.2422M11.0266 4.37888C11.0266 6.37877 9.41053 8 7.41702 8C5.42351 8 3.80745 6.37877 3.80745 4.37888C3.80745 2.37899 5.42351 0.757767 7.41702 0.757767C9.41053 0.757767 11.0266 2.37899 11.0266 4.37888Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg></div>
+            </div>
             <div id="table-content" class="transparent-content-box">
                 <div class="table">
                     <!-- Headers -->
@@ -197,9 +311,10 @@ Estructura general:
                         <div class="header cell name">Nombre</div>
                         <div class="header cell age">Edad</div>
                         <div class="header cell">Nacionalidad</div>
-                        <div class="header cell">Residencia</div>
+                        <div class="header cell">Idiomas</div>
                         <div class="header cell">Deportes</div>
-                        <div class="header cell">Estado</div>
+                        <div class="header cell">Disponibilidad</div>
+                        <div class="header cell">Experiencia</div>
 
                     </div>
                     
@@ -211,6 +326,7 @@ Estructura general:
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
+                        <div class="cell">España</div>
                     </div>
 
                     <a class="row">
@@ -220,12 +336,14 @@ Estructura general:
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
+                        <div class="cell">España</div>
                     </a>
 
                     <a class="row">
                         <div class="cell name">Marta Fernández</div>
                         <div class="cell age">32</div>
                         <div class="cell">ES</div>
+                        <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
@@ -238,6 +356,7 @@ Estructura general:
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
+                        <div class="cell">España</div>
                     </div>
 
                     <a class="row">
@@ -247,12 +366,14 @@ Estructura general:
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
+                        <div class="cell">España</div>
                     </a>
 
                     <a class="row">
                         <div class="cell name">Marta Fernández</div>
                         <div class="cell age">32</div>
                         <div class="cell">ES</div>
+                        <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
@@ -265,6 +386,7 @@ Estructura general:
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
+                        <div class="cell">España</div>
                     </div>
 
                     <a class="row">
@@ -274,12 +396,14 @@ Estructura general:
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
+                        <div class="cell">España</div>
                     </a>
 
                     <a class="row">
                         <div class="cell name">Marta Fernández</div>
                         <div class="cell age">32</div>
                         <div class="cell">ES</div>
+                        <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                         <div class="cell">España</div>
@@ -483,7 +607,9 @@ Estructura general:
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script src="js/firebase-auth-checker.js" type="module"></script>
+    <script src="js/user-table.js" type="module"></script>
 
 
 </body>
