@@ -266,7 +266,7 @@
     width: 100vw;
     max-width: 1200px;
     height: max-content;
-    min-height: 400px;
+    // min-height: 400px;
     margin-top: 8rem;
 
     display: flex;
@@ -363,15 +363,17 @@
     color: var(--color-primary);
     background-color: white;
     border-radius: 1rem;
+    opacity: 0.2;
     &:hover {
       cursor: pointer;
+      opacity: 1;
       background-color: rgba(255, 255, 255, 0.8);
     }
   }
 
   #table-content {
     width: 100%;
-    min-height: 20rem;
+    // min-height: 50vh;
     border-radius: 1rem;
     overflow: hidden;
   }
@@ -380,6 +382,8 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+    opacity: 0;
+    pointer-events: none;
     .navigator-cell {
         display: flex;
         justify-content: center;
@@ -420,9 +424,11 @@
 .cell {
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
     width: 16%;
     padding: 0.5rem;
+    height: 3rem;
     color: var(--color-primary);
     &.name {
         width: 20%;

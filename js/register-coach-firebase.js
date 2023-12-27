@@ -96,6 +96,8 @@ var firebaseSaveCoachData = (registerData) => {
         userSurname: registerData.userSurame,
         userRecommendation: registerData.userRecommendation,
         userBirthday: registerData.userBirthday,
+        userBirthdayAsDate: registerData.userBirthdayAsDate,
+        userBirthdayAsValue: registerData.userBirthdayAsValue,
         userGender: registerData.userGender,
         userNationality: registerData.userNationality,
         userOtherNationality: registerData.userOtherNationality,

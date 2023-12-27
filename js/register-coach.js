@@ -253,6 +253,8 @@ var registerData = {
   userSurame: "",
   userRecommendation: "no",
   userBirthday: "",
+  userBirthdayAsDate: "",
+  userBirthdayAsValue: "",
   userGender: "",
   userNationality: "",
   userOtherNationality: "",
@@ -310,8 +312,7 @@ nextConditionalInfo.addEventListener("click", (e) => {
     : (registerData.userSurame = userSurname.value);
   userBirthday.value === ""
     ? (moveForwardVariable = false)
-    : (registerData.userBirthday = userBirthday.value);
-
+    : (registerData.userBirthday = userBirthday.value); (registerData.userBirthdayAsDate = new Date(userBirthday.value)); registerData.userBirthdayAsValue = registerData.userBirthdayAsDate.getTime();
   // var stopper = true;
   optionsGenders.forEach((field) => {
     if (field.classList.contains("active")) {

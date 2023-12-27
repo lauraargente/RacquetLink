@@ -22,7 +22,7 @@ Estructura general:
         rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/user-table.css">
+    <link rel="stylesheet" href="css/coaches-table.css">
     <!-- Quill JS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="css/headerfooter.css
@@ -185,7 +185,7 @@ Estructura general:
         </div>
     </div> -->
 
-    <div class="popup" id="filters-popup-container">
+    <div class="popup" id="filters-popup-container" style="display: none;">
         <div class="popup-content" id="filters-popup">
             <div class="popup-header">Filtros</div>
             <div class="filter-header">Edad</div>
@@ -285,13 +285,13 @@ Estructura general:
 
     <div id="main-container">
         <div id="table-container">
-            <div id="header-label">Tabla de usuarios</div>
+            <div id="header-label">Tabla de coaches</div>
             <div id="search-bar" class="transparent-content-box">
                 <div id="search-input">
                     <div id="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M17.5 17.5L14.5834 14.5833M16.6667 9.58333C16.6667 13.4954 13.4954 16.6667 9.58333 16.6667C5.67132 16.6667 2.5 13.4954 2.5 9.58333C2.5 5.67132 5.67132 2.5 9.58333 2.5C13.4954 2.5 16.6667 5.67132 16.6667 9.58333Z" stroke="black" stroke-opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
-                    <input type="text" id="search-input-text">
+                    <input type="text" id="search-input-text" placeholder="Busca por nombre...">
                 </div>
                 <div id="filters-button">Filtros<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M5 10H15M2.5 5H17.5M7.5 15H12.5" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -319,7 +319,7 @@ Estructura general:
                     </div>
                     
             
-                    <div class="row">
+                    <div class="row" id="referenceRow" style="display: none;">
                         <div class="cell name">Marta Fernández</div>
                         <div class="cell age">32</div>
                         <div class="cell">ES</div>
@@ -328,87 +328,6 @@ Estructura general:
                         <div class="cell">España</div>
                         <div class="cell">España</div>
                     </div>
-
-                    <a class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </a>
-
-                    <a class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </a>
-
-                    <div class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </div>
-
-                    <a class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </a>
-
-                    <a class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </a>
-
-                    <div class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </div>
-
-                    <a class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </a>
-
-                    <a class="row">
-                        <div class="cell name">Marta Fernández</div>
-                        <div class="cell age">32</div>
-                        <div class="cell">ES</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                        <div class="cell">España</div>
-                    </a>
-
             
                     <!-- ... Add more rows as needed ... -->
                 </div>
@@ -429,7 +348,7 @@ Estructura general:
        Footer.
         Descripción: En este bloque encontramos el footer de la página.
     -->
-    <div class="Footer">
+    <!-- <div class="Footer">
         <div class="Footer-wrapper">
             <div class="Footer-left-group">
                 <svg version="1.1" class="Footer-logo" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -605,11 +524,12 @@ Estructura general:
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script src="js/firebase-auth-checker.js" type="module"></script>
-    <script src="js/user-table.js" type="module"></script>
+    <script src="js/coaches-table-firebase.js" type="module"></script>
+    <script src="js/coaches-table.js" type="module"></script>
 
 
 </body>
