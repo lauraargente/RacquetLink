@@ -22,15 +22,20 @@ var searchApplied = (arrayOfResults, currentString) => {
     })
 }
 
-function checkName(nameChecked, surnameChecked, searchedString) {
-    // Convertir todas las cadenas a minúsculas para una comparación no sensible a mayúsculas/minúsculas
-    var nameChecked = nameChecked.toLowerCase();
-    var surnameChecked = surnameChecked.toLowerCase();
-    var searchedString = searchedString.toLowerCase();
-
-    // Devuelve true si thirdString coincide con firstString o secondString
-    return nameChecked.includes(searchedString) || surnameChecked.includes(searchedString);
+function normalizeString(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
+
+function checkName(firstName, lastName, searchString) {
+  // Normalizar y convertir a minúsculas el nombre completo y la cadena de búsqueda
+  var fullNameNormalized = normalizeString(firstName + ' ' + lastName);
+  var searchStringNormalized = normalizeString(searchString);
+
+  // Comprueba si la cadena de búsqueda normalizada está contenida en el nombre completo normalizado
+  return fullNameNormalized.includes(searchStringNormalized);
+}
+
+
 
 
 
