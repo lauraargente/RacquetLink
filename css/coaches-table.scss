@@ -414,6 +414,10 @@
     color: black !important;
 }
 
+#headerrow {
+    background-color: rgba(255, 255, 255, 0.6)
+}
+
 .row {
     display: flex;
     width: 100%;
@@ -421,6 +425,10 @@
     padding: 0.5rem 0;
     &:nth-child(odd) {
         background-color: #0388b810
+    }
+    &:hover {
+      // background-color: #0388b830
+      background-color: rgba(255, 255, 255, 0.6)
     }
 }
 

@@ -35,10 +35,6 @@ function checkName(firstName, lastName, searchString) {
   return fullNameNormalized.includes(searchStringNormalized);
 }
 
-
-
-
-
 document.querySelector('#search-input-text').addEventListener('input', function(event) {
     var currentString = event.target.value;
     searchApplied(arrayOfResults, currentString);
@@ -471,7 +467,7 @@ var injectElement = (element) => {
             '4mo': '4',
             '6mo': '6',
             '1yr': '12',
-            'now': '0',
+            'now': 'Now',
             'one': '1',
             '2o3': '2 - 3',
             // Agrega aquí más mapeos según sea necesario
@@ -498,9 +494,10 @@ var injectElement = (element) => {
     }
     var rowExperience = mapExperience(element.userExperience);
 
-    const newRow = document.createElement('div');
+    const newRow = document.createElement('a');
     newRow.classList.add('row');
     newRow.classList.add('deletable');
+    newRow.href = `/profilecoach.html?id=${element.coachId}`
     newRow.innerHTML = `
         <div class="cell name">${rowName}</div>
         <div class="cell age">${rowAge}</div>
