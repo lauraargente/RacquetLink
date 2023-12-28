@@ -6,14 +6,18 @@ import { firebaseUploadDocument } from "./profile-club-firebase.js";
 import { firebaseUpdateUserData } from "./profile-club-firebase.js";
 import { firebaseRemoveJobOffer } from "./profile-club-firebase.js";
 import { firebaseLogout } from "./firebase-auth-checker.js";
+import { checkIfUserAdmin } from "./adminlist.js"
 
 const dataElement = document.querySelectorAll(".profile-data");
 const dataElementExp = document.querySelectorAll(".profile-exp");
 
 const nombreCookie = "loggedUser";
 const nombreCookieId = "loggedUserId";
-const valorCookie = getCookie(nombreCookie);
 const valorCookieId = getCookie(nombreCookieId);
+
+const params = new URLSearchParams(window.location.search);
+const userId = params.get("id");
+
 
 const pageLoader = document.querySelector("#page-loader");
 const body = document.querySelector("body");
@@ -103,7 +107,7 @@ editButton.addEventListener("click", () => {
 saveButton.addEventListener("click", () => {
   setLoading();
 
-  firebaseUpdateUserData(valorCookieId, newEditedData).then(() => {
+  firebaseUpdateUserData(userId, newEditedData).then(() => {
     setTimeout(() => {
       unsetEditableStyles();
       unMakeAllFieldsEditable();
@@ -136,7 +140,7 @@ dataElement.forEach((element) => {
 
 // var updateChanges = () => {
 //   console.log(newEditedData)
-//   firebaseUpdateUserData(valorCookieId, newEditedData).then( () => {
+//   firebaseUpdateUserData(userId, newEditedData).then( () => {
 //     console.log('Documento actualizado correctamente')
 //     setTimeout(() => {
 //     }, 400);
@@ -362,7 +366,7 @@ var fillDataInDocument = (data) => {
 const eraseDocument = document.querySelector(".erase-offer");
 
 eraseDocument.addEventListener("click", () => {
-  firebaseRemoveJobOffer(valorCookieId).then(() => {
+  firebaseRemoveJobOffer(userId).then(() => {
     jobOfferButton.value = ''
     console.log("asjdoasjdos");
     downloadLinksLabel.classList.remove("download-available");
@@ -385,7 +389,7 @@ function extraerNombreArchivo(url) {
   return match ? match[1] : null; // Devuelve el grupo capturado si existe, de lo contrario null
 }
 
-firebaseGetJobOffer(valorCookieId).then((url) => {
+firebaseGetJobOffer(userId).then((url) => {
   downloadLinksLabel.href = url;
   downloadLinksLabel.download = extraerNombreArchivo(url);
   downloadLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -397,7 +401,7 @@ firebaseGetJobOffer(valorCookieId).then((url) => {
   tellUsMoreContainer.classList.add("download-available");
 });
 
-firebaseGetProfilePicture(valorCookieId)
+firebaseGetProfilePicture(userId)
   .then((url) => {
     image.src = url;
     setSettedImageStyling();
@@ -428,7 +432,7 @@ jobOfferButton.addEventListener("change", function (event) {
   tellUsMoreContainer.classList.add("download-available");
   jobOfferButtonLabel.style.display = "none"
 
-  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.pdf`);
+  firebaseUploadDocument(file, `profileDocument=${userId}.pdf`);
 });
 
 //#endregion
@@ -439,8 +443,8 @@ var isUserAllowed = () => {
   const params = new URLSearchParams(window.location.search);
 
   if (params.has("id")) {
-    if (params.get("id") === valorCookieId) {
-      firebaseFetchUserDataById(valorCookieId)
+    if ((params.get("id") === valorCookieId) || checkIfUserAdmin(valorCookieId)) {
+      firebaseFetchUserDataById(userId)
         .then((userData) => {
           // fillDataInPage()
           pageLoader.style.display = "none";
@@ -528,7 +532,7 @@ var loadFile = (event) => {
     (result) => {
       firebaseUpdateProfilePicture(
         result,
-        `profilePicUserId=${valorCookieId}.png`
+        `profilePicUserId=${userId}.png`
       ).then(() => {
         setSettedImageStyling();
       });
@@ -536,7 +540,7 @@ var loadFile = (event) => {
   );
 };
 
-firebaseGetProfilePicture(valorCookieId)
+firebaseGetProfilePicture(userId)
   .then((url) => {
     image.src = url;
     setSettedImageStyling();

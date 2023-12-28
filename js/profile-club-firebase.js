@@ -28,6 +28,7 @@
       return new Promise(function (resolve, reject) {
         let outputData = {}
 
+        console.log(Id)
         const q = query(
           collection(db, 'clubsData'),
           where('clubId', '==', Id),
@@ -39,6 +40,8 @@
             console.log(doc.data())
             resolve(doc.data())
           })
+        }).catch( error => {
+          console.log('somethinggggggggg' + error)
         })
       })
 

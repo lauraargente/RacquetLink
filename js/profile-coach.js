@@ -14,9 +14,13 @@ const dataElement = document.querySelectorAll('.profile-data')
 const dataElementExp = document.querySelectorAll('.profile-exp')
 
 const nombreCookie = "loggedUser";
-const nombreCookieId = "loggedUserId";
 const valorCookie = getCookie(nombreCookie);
+
+const nombreCookieId = "loggedUserId";
 const valorCookieId = getCookie(nombreCookieId);
+
+const params = new URLSearchParams(window.location.search);
+const userId = params.get("id");
 
 const pageLoader = document.querySelector("#page-loader");
 const body = document.querySelector("body");
@@ -25,6 +29,51 @@ var logoutButton = document.querySelector('#logout-button')
 
 var editableOptions = document.querySelectorAll('.editable-option')
 
+//#region (l) checkIfUserIsAllowed
+
+var isUserAllowed = () => {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.has("id")) {
+      const userId = params.get("id");
+      // Permite el acceso si el userId es igual al userId o si el usuario es un administrador
+      if (userId === valorCookieId || checkIfUserAdmin(valorCookieId)) {
+          firebaseFetchUserDataById(userId).then((userData) => {
+              pageLoader.style.display = "none";
+              body.style.overflowY = "visible";
+              logoutButton.style.display = 'flex';
+              fillDataInDocument(userData);
+          });
+      } else {
+          // Usuario no es administrador y no coincide con el valor de la cookie
+          setTimeout(() => {
+              pageLoader.innerHTML = "No dispone de permisos para ver esta página";
+          }, 100);
+      }
+  } else {
+      // No hay ID en los parámetros de la URL
+      setTimeout(() => {
+          pageLoader.innerHTML = "No dispone de permisos para ver esta página";
+      }, 100);
+  }
+};
+
+
+
+function getCookie(nombre) {
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(nombre + "=")) {
+      return cookie.substring(nombre.length + 1);
+    }
+  }
+  return null;
+}
+
+isUserAllowed();
+
+//#endregion
 
 //#region (v) edit section
 const openHamburguerOptions = document.querySelector('#general-options-options')
@@ -41,57 +90,6 @@ const saveButton = document.querySelector("#save-button");
 var profilePicture = document.querySelector('#profile-picture')
 var imageContainer = document.querySelector('#image-container')
 var profileLabel = document.getElementById("profile-image-label");
-
-//#endregion
-
-//#region (l) checkIfUserIsAllowed
-
-var isUserAllowed = () => {
-  const params = new URLSearchParams(window.location.search);
-
-  if (params.has("id")) {
-      if (params.get("id") === valorCookieId) {
-          // Utiliza checkIfUserAdmin para verificar si el usuario es administrador
-          if (checkIfUserAdmin()) {
-              firebaseFetchUserDataById(valorCookieId).then((userData) => {
-                  pageLoader.style.display = "none";
-                  body.style.overflowY = "visible";
-                  logoutButton.style.display = 'flex'
-                  fillDataInDocument(userData);
-              });
-          } else {
-              // Usuario no es administrador
-              setTimeout(() => {
-                  pageLoader.innerHTML = "No dispone de permisos para ver esta página";
-              }, 1000);
-          }
-      } else {
-          // ID de parámetros no coincide con el valor de la cookie del usuario
-          setTimeout(() => {
-              pageLoader.innerHTML = "No dispone de permisos para ver esta página";
-          }, 1000);
-      }
-  } else {
-      // No hay ID en los parámetros de la URL
-      setTimeout(() => {
-          pageLoader.innerHTML = "No dispone de permisos para ver esta página";
-      }, 1000);
-  }
-};
-
-
-function getCookie(nombre) {
-  const cookies = document.cookie.split(";");
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim();
-    if (cookie.startsWith(nombre + "=")) {
-      return cookie.substring(nombre.length + 1);
-    }
-  }
-  return null;
-}
-
-isUserAllowed();
 
 //#endregion
 
@@ -154,7 +152,7 @@ saveButton.addEventListener("click", () => {
 
 
 
-  firebaseUpdateUserData(valorCookieId, newEditedData).then( () => {
+  firebaseUpdateUserData(userId, newEditedData).then( () => {
     setTimeout(() => {
       unsetEditableStyles()
       unMakeAllFieldsEditable() 
@@ -756,7 +754,7 @@ var loadFile = (event) => {
   const base64String = convertImageToBase64(event.target.files[0]).then( (result) => {
     console.log(result)
 
-    firebaseUpdateProfilePicture(result, `profilePicUserId=${valorCookieId}`).then( () => {
+    firebaseUpdateProfilePicture(result, `profilePicUserId=${userId}`).then( () => {
       setSettedImageStyling()
     })
 
@@ -764,7 +762,7 @@ var loadFile = (event) => {
 
 };
 
-firebaseGetProfilePicture(valorCookieId).then( (url) => {
+firebaseGetProfilePicture(userId).then( (url) => {
   image.src = url;
   setSettedImageStyling()
 }).catch( (e) => {
@@ -777,7 +775,7 @@ firebaseGetProfilePicture(valorCookieId).then( (url) => {
 const eraseDocument = document.querySelector(".erase-offer");
 
 eraseDocument.addEventListener("click", () => {
-  firebaseRemoveJobOffer(valorCookieId).then(() => {
+  firebaseRemoveJobOffer(userId).then(() => {
     jobOfferButton.value = ''
     console.log("asjdoasjdos");
     downloadLinksLabel.classList.remove("download-available");
@@ -797,7 +795,7 @@ function extraerNombreArchivo(url) {
   return match ? match[1] : null; // Devuelve el grupo capturado si existe, de lo contrario null
 }
 
-firebaseGetJobOffer(valorCookieId).then((url) => {
+firebaseGetJobOffer(userId).then((url) => {
   downloadLinksLabel.href = url;
   downloadLinksLabel.download = extraerNombreArchivo(url);
   downloadLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -808,7 +806,7 @@ firebaseGetJobOffer(valorCookieId).then((url) => {
   eraseDocument.classList.add("download-available");
 });
 
-firebaseGetProfilePicture(valorCookieId)
+firebaseGetProfilePicture(userId)
   .then((url) => {
     image.src = url;
     setSettedImageStyling();
@@ -838,7 +836,7 @@ jobOfferButton.addEventListener("change", function (event) {
   eraseDocument.classList.add("download-available");
   jobOfferButtonLabel.style.display = "none"
 
-  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.pdf`);
+  firebaseUploadDocument(file, `profileDocument=${userId}.pdf`);
 });
 
 //#endregion
@@ -848,7 +846,7 @@ jobOfferButton.addEventListener("change", function (event) {
 const eraseVideo = document.querySelector(".erase-video");
 
 eraseVideo.addEventListener("click", () => {
-  firebaseRemoveVideo(valorCookieId).then(() => {
+  firebaseRemoveVideo(userId).then(() => {
     jobVideoButton.value = ''
     downloadVideoLinksLabel.classList.remove("download-available");
     eraseVideo.classList.remove("download-available");
@@ -860,7 +858,7 @@ const downloadVideoLinksLabel = document.querySelector(".downloadVideoLink-wordi
 const jobVideoButton = document.querySelector("#job-video");
 const jobVideoButtonLabel = document.querySelector("#job-video-label");
 
-firebaseGetVideo(valorCookieId).then((url) => {
+firebaseGetVideo(userId).then((url) => {
   downloadVideoLinksLabel.href = url;
   downloadVideoLinksLabel.download = extraerNombreArchivo(url);
   downloadVideoLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -892,7 +890,7 @@ jobVideoButton.addEventListener("change", function (event) {
   eraseVideo.classList.add("download-available");
   jobVideoButtonLabel.style.display = "none"
 
-  firebaseUploadDocument(file, `profileDocument=${valorCookieId}.mp4`);
+  firebaseUploadDocument(file, `profileDocument=${userId}.mp4`);
 });
 
 //#endregion
