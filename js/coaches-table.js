@@ -210,6 +210,16 @@ observer.observe(element);
 
 //#region (l) Select filter element 
 
+var untouchedQueryData = {
+  dataLanguages: ['all'],
+  dataSports: ['all'],
+  dataAvailability: ['all'],
+  dataExperience: ['all'],
+  dataNationality: ['un'],
+  dataAge: ['0','100']
+}
+
+
 var queryData = {
     dataLanguages: ['all'],
     dataSports: ['all'],
@@ -219,16 +229,14 @@ var queryData = {
     dataAge: []
 }
 
-var filterElementsLanguage = document.querySelectorAll('[data-language]')
-
 function isLastSelected(elementos, elemento) {
   const isSelected = elemento.classList.contains('selected');
   const selectedCount = Array.from(elementos).filter(el => el.classList.contains('selected')).length;
   return isSelected && selectedCount === 1;
 }
 
+// ---------------------------------------------------------------------------------- LANGUAGE FILTER
 var filterElementsLanguage = document.querySelectorAll('[data-language]');
-
 filterElementsLanguage.forEach(element => {
   element.addEventListener('click', () => {
       if (element.classList.contains('filterall')) {
@@ -253,8 +261,8 @@ filterElementsLanguage.forEach(element => {
   });
 });
 
+// ---------------------------------------------------------------------------------- SPORT FILTER
 var filterElementsSport = document.querySelectorAll('[data-sport]');
-
 filterElementsSport.forEach(element => {
   element.addEventListener('click', () => {
       if (element.classList.contains('filterall')) {
@@ -279,8 +287,8 @@ filterElementsSport.forEach(element => {
   });
 });
 
+// ---------------------------------------------------------------------------------- STARTING TIME FILTER
 var filterElementsAvailability = document.querySelectorAll('[data-startingtime]');
-
 filterElementsAvailability.forEach(element => {
   element.addEventListener('click', () => {
       if (element.classList.contains('filterall')) {
@@ -305,8 +313,8 @@ filterElementsAvailability.forEach(element => {
   });
 });
 
+// ---------------------------------------------------------------------------------- EXPERIENCE FILTER
 var filterElementsExperience = document.querySelectorAll('[data-experience]');
-
 filterElementsExperience.forEach(element => {
   element.addEventListener('click', () => {
       if (element.classList.contains('filterall')) {
@@ -367,8 +375,6 @@ function checkFilters(coach, filterCriteria) {
     if (filterCriteria.dataLanguages.length > 0 && filterCriteria.dataLanguages[0] !== 'all') {
         if (!filterCriteria.dataLanguages.some(lang => coach.userLanguages.includes(lang))) {
             console.log('1');
-            console.log(filterCriteria.dataLanguages);
-            console.log(coach.userLanguages);
             return false;
         }
     }
@@ -417,14 +423,33 @@ function checkFilters(coach, filterCriteria) {
     return true;
 }
 
-var injectElement = (element) => {
-    console.log(element)
+function mapSportToSVG(sport) {
+  const sportsSVGs = {
+      'tenis': `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+      <rect x="2.59961" y="3" width="4" height="18" fill="#B9CBD4"/>
+      <rect x="18.5996" y="3" width="4" height="18" fill="#B9CBD4"/>
+      <path d="M6.59961 3H18.5996M6.59961 3V7.5M6.59961 3H2.59961V21H6.59961M6.59961 21H18.5996M6.59961 21V16.5M18.5996 21V16.5M18.5996 21H22.5996V3H18.5996M18.5996 3V7.5M6.59961 7.5V16.5M6.59961 7.5H12.5996M18.5996 7.5V16.5M18.5996 7.5H12.5996M6.59961 16.5H12.5996M18.5996 16.5H12.5996M12.5996 16.5V7.5" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>`, // Reemplaza '...' con el contenido SVG para el fútbol
+      'padel': `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+      <path d="M5.59961 7.5V3H19.5996V7.5M5.59961 7.5V16.5M5.59961 7.5H12.5996M19.5996 7.5V16.5M19.5996 7.5H12.5996M5.59961 16.5V21H19.5996V16.5M5.59961 16.5H12.5996M19.5996 16.5H12.5996M12.5996 16.5V7.5" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>`, // SVG para baloncesto
+      'pickleball': `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+      <rect x="5.59961" y="9.20001" width="14" height="6" fill="#B9CBD4"/>
+      <path d="M5.59961 9.20001V3.20001H19.5996V9.20001M5.59961 9.20001V15.2M5.59961 9.20001H12.5996M19.5996 9.20001V15.2M19.5996 9.20001H12.5996M5.59961 15.2V21.2H19.5996V15.2M5.59961 15.2H12.5996M19.5996 15.2H12.5996M12.5996 15.2V9.20001" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>`, // SVG para tenis
+      // ... Agrega más deportes y sus SVGs correspondientes
+  };
 
+  return sportsSVGs[sport]
+}
+
+var injectElement = (element) => {
     
     function formatName(userName, userSurname) {
         let fullName = userName + ' ' + userSurname;
         // Restringe la cadena a un máximo de 15 caracteres
-        return fullName.substring(0, 15);
+        // return fullName.substring(0, 15);
+        return fullName
     }
     var rowName = formatName(element.userName, element.userSurname);
     
@@ -494,6 +519,11 @@ var injectElement = (element) => {
     }
     var rowExperience = mapExperience(element.userExperience);
 
+    function calculateSportsSVGs(rawArray) {
+      return rawArray.map(mapSportToSVG).join(''); // Mapea cada deporte a su SVG y luego combina los SVGs con comas
+    }
+    var rowSportsSVGs = calculateSportsSVGs(element.userSports);
+
     const newRow = document.createElement('a');
     newRow.classList.add('row');
     newRow.classList.add('deletable');
@@ -501,9 +531,9 @@ var injectElement = (element) => {
     newRow.innerHTML = `
         <div class="cell name">${rowName}</div>
         <div class="cell age">${rowAge}</div>
-        <div class="cell">${rowNationality}</div>
+        <div class="cell nationality">${rowNationality}</div>
         <div class="cell">${rowLanguages}</div>
-        <div class="cell">${rowSports}</div>
+        <div class="cell">${rowSportsSVGs}</div>
         <div class="cell">${rowAvailability}</div>
         <div class="cell">${rowExperience}</div>
     `;
@@ -532,7 +562,31 @@ applyPopup.addEventListener('click', () => {
     filtersPopup.style.display = 'none'
 
     console.log(queryData)
+    console.log(untouchedQueryData)
 
+    function deepEqual(obj1, obj2) {
+      if (obj1 === obj2) return true;
+      if (typeof obj1 !== "object" || obj1 === null || typeof obj2 !== "object" || obj2 === null) {
+          return false;
+      }
+      let keys1 = Object.keys(obj1);
+      let keys2 = Object.keys(obj2);
+      if (keys1.length !== keys2.length) return false;
+      for (let key of keys1) {
+          if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) {
+              return false;
+          }
+      }
+      return true;
+    }
+  
+  // Usando la función
+  if (deepEqual(queryData, untouchedQueryData)) {
+      filtersOpen.classList.remove('filtered')
+  } else {
+    filtersOpen.classList.add('filtered')
+  }
+  
     filteringApplied(arrayOfResults)
 })
 
