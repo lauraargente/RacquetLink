@@ -86,10 +86,8 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .filter-elements .filter-element.selected {
+  border: 1px solid var(--color-primary);
   border-width: 1px;
-  border-style: solid;
-  border-color: var(--dropdown-border-color);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   background-color: var(--dropdown-trigger-background-color);
   background-color: white;
 }
