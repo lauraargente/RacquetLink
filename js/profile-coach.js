@@ -8,6 +8,7 @@ import { firebaseRemoveJobOffer } from "./profile-coach-firebase.js";
 import { firebaseGetJobOffer } from "./profile-coach-firebase.js";
 import { firebaseRemoveVideo } from "./profile-coach-firebase.js";
 import { firebaseGetVideo } from "./profile-coach-firebase.js";
+import { checkIfUserAdmin } from "./adminlist.js"
 
 const dataElement = document.querySelectorAll('.profile-data')
 const dataElementExp = document.querySelectorAll('.profile-exp')
@@ -49,25 +50,35 @@ var isUserAllowed = () => {
   const params = new URLSearchParams(window.location.search);
 
   if (params.has("id")) {
-    if (params.get("id") === valorCookieId) {
-      firebaseFetchUserDataById(valorCookieId).then((userData) => {
-        // fillDataInPage()
-        pageLoader.style.display = "none";
-        body.style.overflowY = "visible";
-        logoutButton.style.display = 'flex'
-        fillDataInDocument(userData);
-      });
-    } else {
-      setTimeout(() => {
-        pageLoader.innerHTML = "No dispone de permisos para ver esta página";
-      }, 1000);
-    }
+      if (params.get("id") === valorCookieId) {
+          // Utiliza checkIfUserAdmin para verificar si el usuario es administrador
+          if (checkIfUserAdmin()) {
+              firebaseFetchUserDataById(valorCookieId).then((userData) => {
+                  pageLoader.style.display = "none";
+                  body.style.overflowY = "visible";
+                  logoutButton.style.display = 'flex'
+                  fillDataInDocument(userData);
+              });
+          } else {
+              // Usuario no es administrador
+              setTimeout(() => {
+                  pageLoader.innerHTML = "No dispone de permisos para ver esta página";
+              }, 1000);
+          }
+      } else {
+          // ID de parámetros no coincide con el valor de la cookie del usuario
+          setTimeout(() => {
+              pageLoader.innerHTML = "No dispone de permisos para ver esta página";
+          }, 1000);
+      }
   } else {
-    setTimeout(() => {
-      pageLoader.innerHTML = "No dispone de permisos para ver esta página";
-    }, 1000);
+      // No hay ID en los parámetros de la URL
+      setTimeout(() => {
+          pageLoader.innerHTML = "No dispone de permisos para ver esta página";
+      }, 1000);
   }
 };
+
 
 function getCookie(nombre) {
   const cookies = document.cookie.split(";");
