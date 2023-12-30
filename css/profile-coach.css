@@ -144,6 +144,7 @@
 #profile-left {
   display: flex;
   flex-direction: column;
+  width: 360px;
 }
 
 #profile-center {
@@ -170,6 +171,107 @@
   -webkit-backdrop-filter: blur(25px);
   border-radius: 1rem;
   margin-bottom: 2rem;
+}
+.transparent-content-box.admin-only {
+  background-color: rgba(2, 91, 123, 0.1254901961);
+}
+
+.adminonly-options-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+}
+
+.adminonly-option {
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  color: var(--color-primary);
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.adminonly-option:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.adminonly-option:active {
+  background: rgba(255, 255, 255, 0.8);
+}
+.adminonly-option.selected {
+  display: flex;
+  color: #025b7b;
+}
+.adminonly-option.selected:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+.adminonly-option.marked {
+  background-color: white;
+}
+.adminonly-option.marked:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+.adminonly-option.editable {
+  pointer-events: all;
+  display: flex;
+}
+.adminonly-option.editable:hover {
+  cursor: pointer;
+}
+
+#tellusmore {
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#adminnote {
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#tellusmore-container {
+  width: 100%;
+}
+
+#adminnote-container {
+  width: 100%;
+}
+
+.editable-text {
+  width: 100%; /* Ancho completo */
+  margin-top: 1rem;
+  font-size: 1rem !important;
+  box-sizing: border-box;
+  font-size: 14px;
+  overflow: hidden; /* Evita la barra de desplazamiento */
+  border-radius: 1rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  font-family: Montserrat;
+  resize: none;
+  min-height: 5rem;
+  line-height: 150%;
+  pointer-events: none;
+}
+.editable-text:focus {
+  outline: none;
+  background: rgb(255, 255, 255);
+  padding: 1rem;
+}
+.editable-text::-moz-placeholder {
+  color: var(--color-primary);
+  opacity: 0.4;
+}
+.editable-text::placeholder {
+  color: var(--color-primary);
+  opacity: 0.4;
+}
+.editable-text.editable {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  pointer-events: auto;
+  cursor: auto;
 }
 
 #image-container {
@@ -239,8 +341,8 @@
 .contact-row {
   display: flex;
   width: 100%;
-  padding: 0.66rem 0;
-  gap: 2rem;
+  padding: 0.5rem 0;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -274,6 +376,7 @@
 
 .profile-label {
   max-width: 100%;
+  width: 100%;
   font-size: 1rem;
   color: var(--color-primary);
   font-weight: 500;
@@ -377,7 +480,7 @@
   font-weight: 500;
   font-size: 1rem;
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 0 0;
 }
 
 #joboffer-subtitle {
@@ -419,7 +522,7 @@
   font-weight: 500;
   font-size: 1rem;
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 1.5rem 0 0rem 0;
 }
 
 #jobvideo-subtitle {
@@ -587,10 +690,6 @@
   animation-duration: 0.2s;
 }
 
-#experience-container {
-  margin-top: 0.4rem;
-}
-
 .experience-label {
   font-size: 4.4rem;
   text-transform: uppercase;
@@ -618,7 +717,6 @@
   color: var(--color-primary);
   opacity: 0.4;
   font-weight: 400;
-  padding: 0 2rem;
   border-radius: 1rem;
 }
 .profile-exp.marked {

@@ -6,7 +6,7 @@ import { firebaseUploadDocument } from "./profile-club-firebase.js";
 import { firebaseUpdateUserData } from "./profile-club-firebase.js";
 import { firebaseRemoveJobOffer } from "./profile-club-firebase.js";
 import { firebaseLogout } from "./firebase-auth-checker.js";
-import { checkIfUserAdmin } from "./adminlist.js"
+import { checkIfUserAdmin } from "./adminlist.js";
 
 const dataElement = document.querySelectorAll(".profile-data");
 const dataElementExp = document.querySelectorAll(".profile-exp");
@@ -18,17 +18,15 @@ const valorCookieId = getCookie(nombreCookieId);
 const params = new URLSearchParams(window.location.search);
 const userId = params.get("id");
 
-
 const pageLoader = document.querySelector("#page-loader");
 const body = document.querySelector("body");
 
 var logoutButton = document.querySelector("#logout-button");
 
 var editableOptions = document.querySelectorAll(".editable-option");
+var editableTexts = document.querySelectorAll(".editable-text");
 
 var newEditedData;
-
-//#region (v) edit section
 
 //#region (v) edit section
 const openHamburguerOptions = document.querySelector(
@@ -57,6 +55,20 @@ var profileLabel = document.getElementById("profile-image-label");
 
 //#endregion
 
+//#region (l) admin-only fields
+
+var adminOnlyFields = document.querySelectorAll(".admin-only");
+
+console.log(adminOnlyFields);
+
+if (!checkIfUserAdmin(valorCookieId)) {
+  adminOnlyFields.forEach((element) => {
+    element.style.display = "none";
+  });
+}
+
+//#endregion
+
 //#region (l) edit logic
 saveButton.style.display = "none";
 loadingEditButton.style.display = "none";
@@ -79,6 +91,10 @@ var setEditableStyles = () => {
   editableOptions.forEach((option) => {
     option.classList.add("editable");
   });
+
+  editableTexts.forEach((option) => {
+    option.classList.add("editable");
+  });
 };
 
 var setLoading = () => {
@@ -93,6 +109,10 @@ var unsetEditableStyles = () => {
   editButton.style.display = "flex";
 
   editableOptions.forEach((option) => {
+    option.classList.remove("editable");
+  });
+
+  editableTexts.forEach((option) => {
     option.classList.remove("editable");
   });
 
@@ -157,12 +177,14 @@ dataElement.forEach((element) => {
 var fillDataInDocument = (data) => {
   newEditedData = data;
 
+  newEditedData.clubAdditionalInfo = newEditedData.clubAdditionalInfo || "";
+  newEditedData.clubAdminNote = newEditedData.clubAdminNote || "";
+
   var dataEmail = document.querySelector("#data-email");
   var dataNumber = document.querySelector("#data-number");
   var dataName = document.querySelector("#profile-element-container-name");
   var dataResidence = document.querySelector("#data-residence");
   var dataWeb = document.querySelector("#data-web");
-  var dataAdditionalInfo = document.querySelector("#multilineInput");
 
   function formatearURL(url) {
     if (!url.startsWith("http://") && !url.startsWith("https://")) {
@@ -355,6 +377,18 @@ var fillDataInDocument = (data) => {
 
   textArea.addEventListener("blur", () => {
     newEditedData.clubAdditionalInfo = textArea.value;
+  });
+
+  // ---------------------------------------------------------------------------- Admin Note
+
+  var adminNoteArea = document.getElementById("adminNoteMultilineInput");
+
+  adminNoteArea.value = newEditedData.clubAdminNote;
+
+  adminNoteArea.addEventListener("input", autoResize, false);
+
+  adminNoteArea.addEventListener("blur", () => {
+    newEditedData.clubAdminNote = adminNoteArea.value;
     // updateChanges()
   });
 };
@@ -367,12 +401,11 @@ const eraseDocument = document.querySelector(".erase-offer");
 
 eraseDocument.addEventListener("click", () => {
   firebaseRemoveJobOffer(userId).then(() => {
-    jobOfferButton.value = ''
+    jobOfferButton.value = "";
     console.log("asjdoasjdos");
     downloadLinksLabel.classList.remove("download-available");
     eraseDocument.classList.remove("download-available");
-    tellUsMoreContainer.classList.remove("download-available");
-    jobOfferButtonLabel.style.display = "flex"
+    jobOfferButtonLabel.style.display = "flex";
   });
 });
 
@@ -381,6 +414,7 @@ const downloadLinksLabel = document.querySelector(".downloadLink-wording");
 const jobOfferButton = document.querySelector("#job-offer");
 const jobOfferButtonLabel = document.querySelector("#job-offer-label");
 const tellUsMoreContainer = document.querySelector("#tellusmore-container");
+const adminNoteContainer = document.querySelector("#adminnote-container");
 
 function extraerNombreArchivo(url) {
   const regex = /o\/(.*?)\?/; // Captura todo entre 'o/' y el siguiente '?'
@@ -395,10 +429,9 @@ firebaseGetJobOffer(userId).then((url) => {
   downloadLinksLabel.innerHTML = `Descarga <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 1rem" width="20" height="20" viewBox="0 0 24 24" fill="none">
     <path d="M21 21H3M18 11L12 17M12 17L6 11M12 17V3" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </svg`;
-  jobOfferButtonLabel.style.display = "none"
+  jobOfferButtonLabel.style.display = "none";
   downloadLinksLabel.classList.add("download-available");
   eraseDocument.classList.add("download-available");
-  tellUsMoreContainer.classList.add("download-available");
 });
 
 firebaseGetProfilePicture(userId)
@@ -429,8 +462,7 @@ jobOfferButton.addEventListener("change", function (event) {
 </svg`;
   downloadLinksLabel.classList.add("download-available");
   eraseDocument.classList.add("download-available");
-  tellUsMoreContainer.classList.add("download-available");
-  jobOfferButtonLabel.style.display = "none"
+  jobOfferButtonLabel.style.display = "none";
 
   firebaseUploadDocument(file, `profileDocument=${userId}.pdf`);
 });
@@ -443,7 +475,7 @@ var isUserAllowed = () => {
   const params = new URLSearchParams(window.location.search);
 
   if (params.has("id")) {
-    if ((params.get("id") === valorCookieId) || checkIfUserAdmin(valorCookieId)) {
+    if (params.get("id") === valorCookieId || checkIfUserAdmin(valorCookieId)) {
       firebaseFetchUserDataById(userId)
         .then((userData) => {
           // fillDataInPage()

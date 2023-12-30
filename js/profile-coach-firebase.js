@@ -65,9 +65,6 @@
           const docRef = doc.ref;
 
           console.log(newEditedData)
-          console.log(JSON.stringify(newEditedData))
-          console.log(newEditedData.userSurname)
-          console.log(newEditedData.userGender)
 
           updateDoc(docRef, {
             userName: newEditedData.userName,
@@ -100,6 +97,10 @@
             coachId: newEditedData.coachId,
             registerDate: newEditedData.registerDate,
             userEmail: newEditedData.userEmail,
+            userAdditionalInfo: newEditedData.userAdditionalInfo,
+            userAdminNote: newEditedData.userAdminNote,
+            userAdminType: newEditedData.userAdminType,
+            userAdminState: newEditedData.userAdminState,
           })
 
           resolve(console.log('actualizado correctamente'))

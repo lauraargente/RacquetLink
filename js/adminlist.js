@@ -1,7 +1,8 @@
 // Definición de la lista de administradores
 var adminList = [
     'cnMYh3ZGtqdoPp4pFXx4QLbwh0d2',
-    'LRMqsgqizLa2rGcI054Oi18ryl83'
+    'LRMqsgqizLa2rGcI054Oi18ryl83',
+    'j1beIQscq1bW5J8naejelmLArij2'
 ];
 
 // Función para verificar si el usuario actual es un administrador

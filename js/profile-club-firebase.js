@@ -77,6 +77,7 @@
             clubNumber: newEditedData.clubNumber,
             clubId: newEditedData.clubId,
             clubAdditionalInfo: newEditedData.clubAdditionalInfo,
+            clubAdminNote: newEditedData.clubAdminNote,
           })
 
           resolve()

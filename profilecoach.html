@@ -244,6 +244,49 @@ Estructura general:
                     <img id="data-flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" alt="">
                 </div>
             </div>
+
+            <div class="mobile-fullwidth transparent-content-box admin-only">
+                <div class="profile-label" style="margin-bottom: 1rem;">Categoría (Admin)</div>
+                <div class="adminonly-options-container" id="data-adminstate">
+                    <div class="adminonly-option selected" data-adminstate="searching"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M19 19L15.5001 15.5M18 9.5C18 14.1944 14.1944 18 9.5 18C4.80558 18 1 14.1944 1 9.5C1 4.80558 4.80558 1 9.5 1C14.1944 1 18 4.80558 18 9.5Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div>
+                    <div class="adminonly-option selected" data-adminstate="commited"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 7V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H12.5M12.5 11H8M11.5 15H8M16 7H8M18 18V12.5C18 11.6716 18.6716 11 19.5 11C20.3284 11 21 11.6716 21 12.5V18C21 19.6569 19.6569 21 18 21C16.3431 21 15 19.6569 15 18V14" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div>
+                    <div class="adminonly-option selected" data-adminstate="hired"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 20" fill="none">
+                        <path d="M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M15 16L17 18L21 14M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div>
+                </div>
+
+                <div class="profile-label" style="margin: 2rem 0 1rem 0;">Tipo de coach (Admin)</div>
+                <div class="adminonly-options-container" id="data-admintype">
+                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="regular">regular</div>
+                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="head">head</div>
+                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="student">student</div>
+                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="pro">pro</div>
+                </div>
+            </div>
+
+            <div  class="mobile-fullwidth transparent-content-box">
+                <div id="tellusmore-container">
+                    <div id="tellusmore">
+                        Cuéntanos más sobre ti
+                    </div>
+                    <textarea id="multilineInput" class="editable-text" maxlength="240" rows="1" placeholder="Habla brevemente sobre tu experiencia... (max 240 caracteres)"></textarea>
+                </div>
+            </div>
+
+            <div class="mobile-fullwidth transparent-content-box admin-only">
+                <div id="adminnote-container">
+                    <div id="adminnote">
+                        Nota del administrador
+                    </div>
+                    <textarea id="adminNoteMultilineInput" class="editable-text" maxlength="240" rows="1" placeholder="Este panel solo es visible por los administradores"></textarea>
+                </div>
+            </div>
+
+
             <div id="profile-content-container-3" class="mobile-fullwidth transparent-content-box">
                 <!-- <div id="experience-label-3" class="experience-label">Experiencia</div> -->
                 <div id="experience-container">
@@ -271,43 +314,11 @@ Estructura general:
                 </div>
     
             </div>
-            <div id="profile-content-container-6" class="mobile-fullwidth transparent-content-box">
-                <div id="jobvideo">
-                    Vídeo presentación
-                </div>
-                <div id="jobvideo-container">
-                    <label id="job-video-label" for="jobvideo-input">Sube aquí</label>
-                    <input id="job-video" type="file" accept="video/*" name="jobvideo" id="jobvideo-input" style="display: none;">
-                    <div id="job-video-output"></div>
-                    <div id="downloadVideoLink" class="downloadLink" href="#" target="_blank">
-                        <a class="downloadVideoLink-wording">No hay ofertas subidas</a>
-                        <div class="erase-video"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                          </svg></div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="profile-center">
             <div id="profile-content-container-wrapper">
-                <div id="profile-content-container-5" class="mobile-fullwidth transparent-content-box">
-                    <div id="joboffer">
-                        Currículum o vídeo presentación
-                    </div>
-                    <div id="joboffer-container">
-                        <label id="job-offer-label" for="joboffer-input">Sube aquí</label>
-                        <input id="job-offer" type="file" accept="application/pdf" name="joboffer" id="joboffer-input" style="display: none;">
-                        <div id="job-offer-output"></div>
-                        <div id="downloadLink" class="downloadLink" href="#" target="_blank">
-                            <a class="downloadLink-wording">No hay ofertas subidas</a>
-                            <div class="erase-offer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg></div>
-                        </div>
-                    </div>
-                </div>
                 <div id="profile-content-container-2" class="mobile-fullwidth transparent-content-box">
-                    <div class="profile-label" style="margin: 1rem auto 1rem 2rem;">Info. Contacto</div>
+                    <div class="profile-label" style="margin: 1rem auto 1rem 0;">Info. Contacto</div>
 
                     <div class="contact-row">
                         <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -341,14 +352,14 @@ Estructura general:
                           </svg><div class="profile-element-contact-data" id="data-recommendator"></div>
                     </div>
                     <div class="contact-row">
-                        <a href="" id="data-linkedin-wrapper" style="display: flex; align-items: center; gap: 2rem;">
+                        <a href="" id="data-linkedin-wrapper" style="display: flex; align-items: center; gap: 1.5rem;">
                             <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M7.02968 21.0005H3.29766V8.98259H7.02968V21.0005ZM5.16142 7.34326C3.9682 7.34326 3 6.35452 3 5.16134C3 3.96817 3.96756 3 5.16142 3C6.35528 3 7.32284 3.96753 7.32284 5.16134C7.32284 6.35452 6.35464 7.34326 5.16142 7.34326ZM20.9973 21.0005H17.2736V15.1503C17.2736 13.7559 17.2453 11.9681 15.3333 11.9681C13.3931 11.9681 13.0954 13.4827 13.0954 15.05V21.0005H9.36726V8.98259H12.9463V10.6219H12.9983C13.4966 9.67754 14.7136 8.68108 16.5291 8.68108C20.3062 8.68108 21.0005 11.1684 21.0005 14.3988V21.0005H20.9973Z" fill="#025B7B"/>
                               </svg><div class="profile-element-contact-data" id="data-linkedin"></div>
                         </a>
                     </div>
                     <div class="contact-row">
-                        <a id="data-instagram-wrapper" style="display: flex; align-items: center; gap: 2rem;" href="">
+                        <a id="data-instagram-wrapper" style="display: flex; align-items: center; gap: 1.5rem;" href="">
                               <svg class="contact-icon"  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 23 23" fill="none">
                                 <path d="M11.5002 0.937012C8.56397 0.937012 8.19805 0.950877 7.04895 0.998416C5.89513 1.05388 5.11466 1.22885 4.42601 1.49031C3.71576 1.76234 3.11083 2.12351 2.51333 2.71114C1.91178 3.29548 1.5391 3.88708 1.26499 4.58167C0.997632 5.25514 0.818719 6.01841 0.762007 7.1468C0.710021 8.27124 0.699219 8.62844 0.699219 11.4999C0.699219 14.3714 0.713397 14.7293 0.762007 15.8531C0.818719 16.9782 0.997632 17.7447 1.26499 18.4182C1.54315 19.1128 1.91245 19.7044 2.51333 20.2887C3.11083 20.877 3.71576 21.2415 4.42601 21.5096C5.11466 21.7677 5.8985 21.946 7.04895 22.0014C8.19872 22.0523 8.56397 22.0629 11.5002 22.0629C14.4364 22.0629 14.8023 22.049 15.9514 22.0014C17.1018 21.946 17.8857 21.7671 18.5743 21.5096C19.2846 21.2375 19.8895 20.8764 20.487 20.2887C21.0886 19.7044 21.4613 19.1161 21.7354 18.4182C21.9993 17.7447 22.1816 16.9782 22.2383 15.8531C22.2903 14.7286 22.3011 14.3714 22.3011 11.4999C22.3011 8.62844 22.287 8.27058 22.2383 7.1468C22.1816 6.02171 21.9987 5.25118 21.7354 4.58167C21.4572 3.88708 21.0879 3.29548 20.487 2.71114C19.8895 2.12285 19.288 1.75838 18.5743 1.49031C17.8857 1.22885 17.1018 1.05388 15.9514 0.998416C14.8016 0.947576 14.4364 0.937012 11.5002 0.937012ZM11.5002 2.83858C14.3837 2.83858 14.728 2.85244 15.8677 2.89998C16.9189 2.94818 17.4914 3.11985 17.8715 3.26511C18.3785 3.45724 18.733 3.68437 19.1165 4.05544C19.4925 4.42321 19.7248 4.77381 19.9212 5.26967C20.0698 5.6414 20.2453 6.2013 20.2946 7.22934C20.3432 8.34386 20.3574 8.68126 20.3574 11.5006C20.3574 14.3199 20.3432 14.6573 20.2906 15.7718C20.2338 16.7999 20.0583 17.3598 19.9104 17.7315C19.7059 18.2274 19.4777 18.574 19.1009 18.949C18.7208 19.3168 18.359 19.5439 17.856 19.7361C17.4806 19.8813 16.9 20.053 15.8447 20.1012C14.699 20.1487 14.3614 20.1626 11.4705 20.1626C8.5795 20.1626 8.2426 20.1487 7.09553 20.0972C6.04434 20.0418 5.46439 19.8701 5.08428 19.7255C4.57117 19.5255 4.21942 19.3023 3.84269 18.9339C3.46258 18.5621 3.22088 18.2082 3.03454 17.7163C2.88331 17.3492 2.71047 16.7814 2.65444 15.7494C2.61595 14.6421 2.59772 14.2988 2.59772 11.4847C2.59772 8.67202 2.61595 8.32802 2.65444 7.20689C2.71047 6.17489 2.88331 5.60839 3.03454 5.23996C3.22088 4.7375 3.46326 4.39416 3.84269 4.02243C4.21875 3.65466 4.57117 3.41697 5.08428 3.23077C5.46439 3.08617 6.03016 2.91451 7.08541 2.863C8.23113 2.82273 8.5687 2.8082 11.4556 2.8082L11.5002 2.83858ZM11.5002 6.0785C8.43435 6.0785 5.95522 8.50629 5.95522 11.5013C5.95522 14.4995 8.43772 16.924 11.5002 16.924C14.566 16.924 17.0451 14.4962 17.0451 11.5013C17.0451 8.50299 14.5626 6.0785 11.5002 6.0785ZM11.5002 15.0224C9.50985 15.0224 7.89963 13.4477 7.89963 11.5013C7.89963 9.55479 9.50985 7.98006 11.5002 7.98006C13.4905 7.98006 15.1007 9.55479 15.1007 11.5013C15.1007 13.4477 13.4905 15.0224 11.5002 15.0224ZM18.5649 5.86193C18.5649 6.56379 17.9809 7.1303 17.2666 7.1303C16.5489 7.1303 15.9696 6.56313 15.9696 5.86193C15.9696 5.16403 16.553 4.5962 17.2666 4.5962C17.9802 4.5962 18.5649 5.16403 18.5649 5.86193Z" stroke-width="1.5" fill="#025B7B"/>
                               </svg><div class="profile-element-contact-data" id="data-instagram"></div>
@@ -356,6 +367,36 @@ Estructura general:
                     </div>
                     <!-- <div id="experience-label-2" class="experience-label">Información</div> -->
                     
+                </div>
+                <div id="profile-content-container-5" class="mobile-fullwidth transparent-content-box">
+                    <div id="joboffer">
+                        Currículum o carta presentación
+                    </div>
+                    <div id="joboffer-container">
+                        <label id="job-offer-label" for="joboffer-input">Sube aquí</label>
+                        <input id="job-offer" type="file" accept="application/pdf" name="joboffer" id="joboffer-input" style="display: none;">
+                        <div id="job-offer-output"></div>
+                        <div id="downloadLink" class="downloadLink" href="#" target="_blank">
+                            <a class="downloadLink-wording">No hay ofertas subidas</a>
+                            <div class="erase-offer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg></div>
+                        </div>
+                    </div>
+                    <div id="jobvideo">
+                        Vídeo presentación
+                    </div>
+                    <div id="jobvideo-container">
+                        <label id="job-video-label" for="jobvideo-input">Sube aquí</label>
+                        <input id="job-video" type="file" accept="video/*" name="jobvideo" id="jobvideo-input" style="display: none;">
+                        <div id="job-video-output"></div>
+                        <div id="downloadVideoLink" class="downloadLink" href="#" target="_blank">
+                            <a class="downloadVideoLink-wording">No hay ofertas subidas</a>
+                            <div class="erase-video"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

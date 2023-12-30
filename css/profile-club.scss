@@ -140,7 +140,7 @@
 #profile-left {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  width: 360px;
 }
 #profile-center {
   position: relative;
@@ -184,13 +184,17 @@
   -webkit-backdrop-filter: blur(25px);
   border-radius: 1rem;
   margin-bottom: 2rem;
+  &.admin-only {
+    background-color: #025b7b20;
+  }
 }
 
 #profile-content-container-1 {
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
+  // padding: 4rem 0;
+  // width: 300px;
+  // height: 300px;
 }
 
 
@@ -243,6 +247,12 @@
 }
 
 #tellusmore {
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#adminnote {
   color: var(--color-primary);
   font-size: 1rem;
   font-weight: 500;
@@ -354,38 +364,36 @@
   }
 }
 
-#tellusmore-container {
-  &.download-available {
-    display: block;
-    // transition: margin 0.4s;
-  }
-}
-
-#multilineInput {
+.editable-text {
   width: 100%; /* Ancho completo */
   margin-top: 1rem;
-  padding: 1rem;
   font-size: 1rem !important;
   box-sizing: border-box;
   font-size: 14px;
   overflow: hidden; /* Evita la barra de desplazamiento */
-  background: rgba(255, 255, 255, 0.8);
-  // border: 1px solid rgba(255,255,255, 0.6);
-  // box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.6);
+  // background: rgba(255, 255, 255, 0.8);
   border-radius: 1rem;
   font-weight: 400;
   color: var(--color-primary);
   font-family: Montserrat;
   resize: none;
-  min-height: 11rem;
+  min-height: 5rem;
   line-height: 150%;
+  pointer-events: none;
   &:focus {
     outline: none;
     background: rgba(255, 255, 255, 1);
+    padding: 1rem;
   }
   &::placeholder {
     color: var(--color-primary);
     opacity: 0.4;
+  }
+  &.editable {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    pointer-events: auto;
+    cursor: auto;
   }
 }
 
@@ -549,6 +557,11 @@
 }
 
 #tellusmore-container {
+  // display: flex;
+  width: 100%;
+}
+
+#adminnote-container {
   // display: flex;
   width: 100%;
 }

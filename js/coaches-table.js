@@ -1,8 +1,29 @@
 import { firebaseQueryTableCoach } from "./coaches-table-firebase.js";
+import { checkIfUserAdmin } from "./adminlist.js"
 
 var arrayOfResults = []
 
 var referenceRow = document.querySelector('#referenceRow')
+
+//#region checkIfAdmin 
+
+function getCookie(nombre) {
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(nombre + "=")) {
+      return cookie.substring(nombre.length + 1);
+    }
+  }
+  return null;
+}
+const nombreCookieId = "loggedUserId";
+const valorCookieId = getCookie(nombreCookieId);
+// console.log(checkIfUserAdmin(valorCookieId))
+
+checkIfUserAdmin(valorCookieId) ? 'ok' : window.location.href = '404.html'
+
+//#endregion
 
 //#region (f) queryFirebase
 
@@ -79,6 +100,48 @@ var queryFirebase = (queryData, minDocuments = 10) => {
         console.error("Error al recuperar documentos:", error);
     });
 }
+
+//#endregion
+
+//#region (l) downloadData 
+
+var downloadData = document.querySelector('#download-data')
+
+downloadData.addEventListener('click', () => {
+  // Convertir el objeto a un formato CSV
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+  // Obtener las claves del primer objeto para los encabezados
+  const headers = Object.keys(arrayOfResults[0]);
+  csvContent += headers.join(",") + "\r\n"; // Añadir encabezados
+
+  arrayOfResults.forEach(obj => {
+      let row = headers.map(header => {
+          let value = obj[header];
+          if (Array.isArray(value)) {
+              return '"' + value.join(' ') + '"'; // Entre comillas para manejar valores con comas
+          } else {
+              return value;
+          }
+      });
+      csvContent += row.join(",") + "\r\n";
+  });
+
+  // Codificar el contenido CSV para que sea un URI
+  const encodedUri = encodeURI(csvContent);
+
+  // Crear un elemento de enlace para la descarga
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "arrayOfResults.csv");
+
+  // Agregar el enlace al DOM y disparar el evento de clic
+  document.body.appendChild(link); // Necesario para Firefox
+  link.click();
+  document.body.removeChild(link); // Limpiar después de la descarga
+});
+
+
 
 //#endregion
 

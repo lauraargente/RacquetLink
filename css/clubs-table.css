@@ -360,6 +360,26 @@ input[type=range] {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+#download-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  height: 2rem;
+  color: var(--color-primary);
+  background-color: white;
+  border-radius: 1rem;
+}
+#download-data:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+#download-data svg {
+  transform: rotate(90deg);
+}
+
 #table-content {
   width: 100%;
   border-radius: 1rem;
