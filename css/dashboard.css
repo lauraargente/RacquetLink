@@ -1,0 +1,25 @@
+.Header {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px);
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.Header a {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+#main-container {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100vw;
+  background-image: url(../assets/coach_background.png);
+  background-size: cover;
+  margin: auto;
+}/*# sourceMappingURL=dashboard.css.map */

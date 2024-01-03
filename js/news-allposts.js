@@ -1,6 +1,7 @@
 import { firebaseFetchArticlesByDate } from "./news-allposts-firebase.js"
 import { firebaseFetchArticleById } from "./news-showpost-firebase.js"
 import { firebaseGetArticleNumber } from "./news-createpost-firebase.js";
+import { checkIfUserAdmin } from "./adminlist.js";
 
 var loadmoreButton = document.querySelector('#loadmore')
 
@@ -8,6 +9,33 @@ var arrayOfArticlesIds = []
 var referenceArticle
 
 var loadingContainer = document.querySelector('#articles-loading-display')
+
+//#region checkIfAdmin 
+
+function getCookie(nombre) {
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(nombre + "=")) {
+      return cookie.substring(nombre.length + 1);
+    }
+  }
+  return null;
+}
+const nombreCookieId = "loggedUserId";
+const valorCookieId = getCookie(nombreCookieId);
+// console.log(checkIfUserAdmin(valorCookieId))
+
+if (checkIfUserAdmin(valorCookieId)) {
+  'ok'
+} else {
+  var createArticle = document.querySelector('#createNew')
+  createArticle.style.display = 'none'
+}
+
+checkIfUserAdmin(valorCookieId) ? 'ok' : window.location.href = '404.html'
+
+//#endregion
 
 firebaseGetArticleNumber()
   .then((referenceArticleToLoadFrom) => {

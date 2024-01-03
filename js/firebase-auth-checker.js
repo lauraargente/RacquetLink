@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+import { checkIfUserAdmin } from "./adminlist.js";
 
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, sendEmailVerification, updateProfile, sendPasswordResetEmail} from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js'
 
@@ -78,14 +79,19 @@ function getCookie(nombre) {
 
 function setUserNameOnHeader(displayName, displayNameId) {
 
-  var typeOfUser = displayName.trim().split(' ')[0]
-  typeOfUser === 'Coach' ? headerLogged.href = `profilecoach.html?id=${displayNameId}` : headerLogged.href = `profileclub.html?id=${displayNameId}`
-  headerLogged.style.display = 'flex'
-  headerLoggedName.innerHTML = displayName
-  headerLoggedName.innerHTML = displayName.replace(/^\w+\s*/, '')
-
-  // headerRegister.style.display = 'none'
-  headerLogin.style.display = 'none'
+   if (checkIfUserAdmin(displayNameId)) {
+    headerLogged.href = `clubs-table.html?id=${displayNameId}`;
+    headerLogged.style.display = 'flex';
+    headerLoggedName.innerHTML = 'ADMIN ' + displayName.replace(/^\w+\s*/, '');
+   } else {
+    var typeOfUser = displayName.trim().split(' ')[0]
+    typeOfUser === 'Coach' ? headerLogged.href = `profilecoach.html?id=${displayNameId}` : headerLogged.href = `profileclub.html?id=${displayNameId}`
+    headerLogged.style.display = 'flex'
+    headerLoggedName.innerHTML = displayName.replace(/^\w+\s*/, '')
+  
+    // headerRegister.style.display = 'none'
+    headerLogin.style.display = 'none'
+   }
 }
 
 export {setUserNameOnHeader}
