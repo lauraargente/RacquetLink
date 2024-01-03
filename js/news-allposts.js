@@ -33,8 +33,6 @@ if (checkIfUserAdmin(valorCookieId)) {
   createArticle.style.display = 'none'
 }
 
-checkIfUserAdmin(valorCookieId) ? 'ok' : window.location.href = '404.html'
-
 //#endregion
 
 firebaseGetArticleNumber()
