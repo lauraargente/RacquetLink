@@ -80,7 +80,7 @@ function getCookie(nombre) {
 function setUserNameOnHeader(displayName, displayNameId) {
 
    if (checkIfUserAdmin(displayNameId)) {
-    headerLogged.href = `clubs-table.html?id=${displayNameId}`;
+    headerLogged.href = `dashboard.html?id=${displayNameId}`;
     headerLogged.style.display = 'flex';
     headerLoggedName.innerHTML = 'ADMIN ' + displayName.replace(/^\w+\s*/, '');
    } else {
