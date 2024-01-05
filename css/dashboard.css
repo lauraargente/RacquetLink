@@ -1,3 +1,7 @@
+:root {
+  font-size: 15px;
+}
+
 .Header {
   background-color: rgba(255, 255, 255, 0.2) !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
@@ -14,6 +18,7 @@
 
 #main-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   min-height: 100vh;
   height: -moz-max-content;
@@ -22,4 +27,132 @@
   background-image: url(../assets/coach_background.png);
   background-size: cover;
   margin: auto;
+  padding-top: 8rem;
+  gap: 2rem;
+}
+
+.transparent-content-box {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+  border-radius: 2rem;
+}
+
+.box-label {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.donut-general-container {
+  padding: 2rem;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.donut-label {
+  font-weight: 500;
+  margin-bottom: 2cqh;
+}
+
+.donut-container {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.donut-data-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.donut-data-element {
+  display: flex;
+  justify-content: space-between;
+  width: 14rem;
+}
+
+.donut-data-element-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: black;
+  border-radius: 1rem;
+}
+
+.recommendators-container {
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.6rem;
+}
+
+.recommendator-element {
+  display: flex;
+  justify-content: space-between;
+  width: 12rem;
+}
+.recommendator-element .recommendator-bar-container {
+  display: flex;
+  align-items: center;
+  width: 7rem;
+}
+.recommendator-element .recommendator-bar-container .recommendator-bar-start {
+  height: 12px;
+  width: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.recommendator-element .recommendator-bar-container .recommendator-bar {
+  height: 6px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0 1rem 1rem 0;
+}
+
+.last-registered {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: -moz-max-content;
+  height: max-content;
+  gap: 1rem;
+}
+
+.last-registered-row {
+  display: flex;
+  width: 24rem;
+  justify-content: space-between;
+}
+.last-registered-row .nameandicon {
+  display: flex;
+  gap: 1rem;
+  color: var(--color-primary);
+}
+.last-registered-row .date {
+  color: var(--color-primary);
+}
+
+.go-to-table {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  margin-top: 1rem;
+}
+.go-to-table:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.total-users {
+  height: -moz-max-content;
+  height: max-content;
+  padding: 2rem;
 }/*# sourceMappingURL=dashboard.css.map */

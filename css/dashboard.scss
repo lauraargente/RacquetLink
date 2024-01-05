@@ -1,3 +1,7 @@
+:root {
+  font-size: 15px;
+}
+
 .Header {
     // background-color: rgba($color: #000000, $alpha: 0) !important;
     background-color: rgba(255, 255, 255, 0.2) !important;
@@ -16,6 +20,7 @@
 
   #main-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     min-height: 100vh;
     height: max-content;
@@ -23,4 +28,143 @@
     background-image: url(../assets/coach_background.png);
     background-size: cover;
     margin: auto;
+    padding-top: 8rem;
+    gap: 2rem;
   }
+
+  .transparent-content-box {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(25px);
+    border-radius: 2rem;
+  }
+
+  .box-label {
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+//#region donut 
+
+  .donut-general-container {
+    padding: 2rem;
+    height: max-content;
+  }
+
+  .donut-label {
+    font-weight: 500;
+    margin-bottom: 2cqh;
+  }
+
+  .donut-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .donut-data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  .donut-data-element {
+    display: flex;
+    justify-content: space-between;
+    width: 14rem;
+  }
+
+  .donut-data-element-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    border-radius: 1rem;
+  }
+
+//#endregion
+
+//#region recommendators 
+
+.recommendators-container {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.6rem;
+}
+
+.recommendator-element {
+  display: flex;
+  justify-content: space-between;
+  width: 12rem;
+  .recommendator-bar-container {
+    display: flex;
+    align-items: center;
+    width: 7rem;
+    .recommendator-bar-start {
+      height: 12px;
+      width: 2px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .recommendator-bar {
+      height: 6px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 0 1rem 1rem 0;
+    }
+  }
+
+}
+
+//#endregion
+
+//#region last-registered 
+.last-registered {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: max-content;
+  gap: 1rem;
+}
+
+.last-registered-row {
+  display: flex;
+  width: 24rem;
+  justify-content: space-between;
+  .nameandicon {
+    display: flex;
+    gap: 1rem;
+    color: var(--color-primary);
+  }
+  .date {
+    color: var(--color-primary);
+  }
+}
+
+.go-to-table {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  margin-top: 1rem;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+// #endregion
+
+//#region total-users 
+
+.total-users {
+  height: max-content;
+  padding: 2rem;
+}
+
+//#endregion

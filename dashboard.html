@@ -9,158 +9,261 @@ Estructura general:
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla Clubs</title>
-    <link rel="icon" href="assets/RacquetLink-19.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="icon" href="assets/RacquetLink-19.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
     <!-- Quill JS -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/headerfooter.css
-    ">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css'> 
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="css/headerfooter.css
+    " />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css" />
     <!-- <script src="js/index.js" defer></script> -->
+  </head>
 
-</head>
-
-<!-- 
+  <!-- 
         Encabezado.
         Descripción: En esta bloque encontramos el menu de navegación a las diferentes páginas del sitio web.
     -->
 
-    <body>
-        <header class="Header">
-            <h1 class="Header-logo">    
-                <a href="index.html" aria-label="Website logo" style="transform: scale(1.2);">
-                    <svg class="Header-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                       viewBox="0 0 1000 508.37" style="enable-background:new 0 0 1000 508.37;" xml:space="preserve">
-                   <style type="text/css">
-                       .st0{fill:#025B7B;}
-                       .st1{fill:#FFFFFF;}
-                       .st2{fill:none;}
-                       .st3{fill:#010202;}
-                       .st4{fill:#7EC1D3;}
-                       .st5{fill:url(#);}
-                   </style>
-                   <g>
-                       <g>
-                           <path class="st0" d="M472.81,58.94c-54.82,0-99.41,44.59-99.41,99.4c0,54.82,44.59,99.41,99.41,99.41h99.4v-99.41
+  <body>
+    <header class="Header">
+      <h1 class="Header-logo">
+        <a
+          href="index.html"
+          aria-label="Website logo"
+          style="transform: scale(1.2)">
+          <svg
+            class="Header-svg"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 1000 508.37"
+            style="enable-background: new 0 0 1000 508.37"
+            xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill: #025b7b;
+              }
+              .st1 {
+                fill: #ffffff;
+              }
+              .st2 {
+                fill: none;
+              }
+              .st3 {
+                fill: #010202;
+              }
+              .st4 {
+                fill: #7ec1d3;
+              }
+              .st5 {
+                fill: url(#);
+              }
+            </style>
+            <g>
+              <g>
+                <path
+                  class="st0"
+                  d="M472.81,58.94c-54.82,0-99.41,44.59-99.41,99.4c0,54.82,44.59,99.41,99.41,99.41h99.4v-99.41
                                C572.2,103.53,527.61,58.94,472.81,58.94z M542.74,228.27h-69.93c-38.57,0-69.93-31.36-69.93-69.93
-                               c0-38.56,31.36-69.93,69.93-69.93c38.56,0,69.93,31.38,69.93,69.93V228.27z"/>
-                           <path class="st4" d="M472.8,117.29c-22.67,0-41.05,18.38-41.05,41.05c0,22.67,18.38,41.05,41.05,41.05h41.05v-41.05
-                               C513.85,135.67,495.47,117.29,472.8,117.29z"/>
-                           <g>
-                               <path class="st4" d="M622.56,322.83L622.56,322.83c0,8.14,6.6,14.73,14.73,14.73h0c8.14,0,14.73-6.6,14.73-14.73v0
-                                   c0-8.14-6.6-14.73-14.73-14.73h0C629.15,308.09,622.56,314.69,622.56,322.83z"/>
-                           </g>
-                           <path class="st4" d="M631.14,272.47c0,4.07-1.65,7.75-4.32,10.42c-2.67,2.67-6.35,4.32-10.42,4.32c-8.13,0-14.73,6.6-14.73,14.74
+                               c0-38.56,31.36-69.93,69.93-69.93c38.56,0,69.93,31.38,69.93,69.93V228.27z" />
+                <path
+                  class="st4"
+                  d="M472.8,117.29c-22.67,0-41.05,18.38-41.05,41.05c0,22.67,18.38,41.05,41.05,41.05h41.05v-41.05
+                               C513.85,135.67,495.47,117.29,472.8,117.29z" />
+                <g>
+                  <path
+                    class="st4"
+                    d="M622.56,322.83L622.56,322.83c0,8.14,6.6,14.73,14.73,14.73h0c8.14,0,14.73-6.6,14.73-14.73v0
+                                   c0-8.14-6.6-14.73-14.73-14.73h0C629.15,308.09,622.56,314.69,622.56,322.83z" />
+                </g>
+                <path
+                  class="st4"
+                  d="M631.14,272.47c0,4.07-1.65,7.75-4.32,10.42c-2.67,2.67-6.35,4.32-10.42,4.32c-8.13,0-14.73,6.6-14.73,14.74
                                c0,8.13-6.6,14.73-14.74,14.73c-4.07,0-7.75-1.65-10.42-4.32c-2.67-2.67-4.32-6.34-4.32-10.41s1.65-7.75,4.32-10.42
                                c2.67-2.67,6.35-4.32,10.42-4.32s7.75-1.65,10.42-4.32c2.67-2.67,4.32-6.35,4.32-10.42c0-8.13,6.6-14.73,14.73-14.73
-                               c4.07,0,7.75,1.65,10.42,4.32C629.49,264.73,631.14,268.4,631.14,272.47z"/>
-                           <g>
-                               <path class="st0" d="M473.05,0c-87.51-0.14-158.72,71.08-158.59,158.59c0.14,87.63,72.4,158.09,160.02,158.09H528
+                               c4.07,0,7.75,1.65,10.42,4.32C629.49,264.73,631.14,268.4,631.14,272.47z" />
+                <g>
+                  <path
+                    class="st0"
+                    d="M473.05,0c-87.51-0.14-158.72,71.08-158.59,158.59c0.14,87.63,72.4,158.09,160.02,158.09H528
                                    c8.14,0,14.73-6.6,14.73-14.73v0c0-8.14-6.6-14.73-14.73-14.73h-53.66c-71.3,0-130.82-58.33-130.41-129.63
                                    c0.41-70.46,57.65-127.7,128.11-128.11c71.29-0.41,129.63,59.11,129.63,130.41v53.66c0,8.14,6.6,14.73,14.73,14.73l0,0
-                                   c8.14,0,14.73-6.6,14.73-14.73v-53.52C631.14,72.4,560.68,0.14,473.05,0z"/>
-                           </g>
-                       </g>
-                       <g>
-                           <path class="st0" d="M72.2,492.76c-5.07,0-6.92-1.4-12.3-9.29l-6.33-12.98c12.51-3.36,19.39-12.09,19.39-24.66
+                                   c8.14,0,14.73-6.6,14.73-14.73v-53.52C631.14,72.4,560.68,0.14,473.05,0z" />
+                </g>
+              </g>
+              <g>
+                <path
+                  class="st0"
+                  d="M72.2,492.76c-5.07,0-6.92-1.4-12.3-9.29l-6.33-12.98c12.51-3.36,19.39-12.09,19.39-24.66
                                c0-15.58-10.73-25.64-27.36-25.64H0.33v86.2h13.53v-32.16c5.27-2.72,10.81-3.1,15.55-3.1h9.58l10.24,21.5
                                c6.66,13.77,16.98,13.77,26.97,13.77h0.54v-13.78l-3.28,0.14H72.2z M13.86,433.71h31.74c6.37,0,13.95,1.99,13.95,11.44
-                               c0,10.3-7.58,12.46-13.95,12.46h-16.2c-5.05,0-10.4,0.24-15.55,2.94V433.71z"/>
-                           <path class="st0" d="M132.67,418.7h-14.88l4.92,11.03L85.59,506.4h14.66l2.32-4.28c1.79-3.28,10.02-8.16,25.31-8.16h25.55
+                               c0,10.3-7.58,12.46-13.95,12.46h-16.2c-5.05,0-10.4,0.24-15.55,2.94V433.71z" />
+                <path
+                  class="st0"
+                  d="M132.67,418.7h-14.88l4.92,11.03L85.59,506.4h14.66l2.32-4.28c1.79-3.28,10.02-8.16,25.31-8.16h25.55
                                l5.59,12.44h15.14l-41.33-87.38L132.67,418.7z M147.29,480.32h-14.85c-11.41,0-17.35,2.01-20.35,3.75c0,0,17.52-37.91,17.52-37.91
-                               L147.29,480.32z"/>
-                           <path class="st0" d="M252.03,481.1l-0.44,0.58c-6.26,8.35-15.96,13.13-26.6,13.13c-18.27,0-33.12-14.04-33.12-31.29
+                               L147.29,480.32z" />
+                <path
+                  class="st0"
+                  d="M252.03,481.1l-0.44,0.58c-6.26,8.35-15.96,13.13-26.6,13.13c-18.27,0-33.12-14.04-33.12-31.29
                                c0-18.66,13.88-32.21,33.01-32.21c9.37,0,18.29,3.68,24.49,10.11l0.41,0.43l8.7-10.19l-0.36-0.36
                                c-8.78-8.79-20.55-13.63-33.12-13.63c-25.6,0-46.42,19.9-46.42,44.36c0,25.96,20.33,46.3,46.3,46.3
-                               c13.53,0,26.37-5.68,35.21-15.59l0.29-0.32L252.03,481.1z"/>
-                           <path class="st0" d="M353.72,492.03C353.72,492.03,353.72,492.02,353.72,492.03c6.98-8.26,10.67-18.14,10.67-28.62
+                               c13.53,0,26.37-5.68,35.21-15.59l0.29-0.32L252.03,481.1z" />
+                <path
+                  class="st0"
+                  d="M353.72,492.03C353.72,492.03,353.72,492.02,353.72,492.03c6.98-8.26,10.67-18.14,10.67-28.62
                                c0-25.64-20.33-45.72-46.3-45.72c-25.59,0-46.42,19.9-46.42,44.36c0,25.96,20.34,46.3,46.31,46.3c9.06,0,17.72-2.45,25.08-7.08
                                c0,0,0,0,0,0c4.77,3.35,9.64,6.38,16.27,7.07l0.36,0.04l6.89-11.9l-0.86-0.06C362.15,496.16,358.12,494.68,353.72,492.03z
                                M314.09,485.01l0.89,0.05c5.98,0.31,9.26,2.25,15.94,7.2c0,0,0,0,0,0c-4.07,1.69-8.39,2.55-12.83,2.55
                                c-18.26,0-33.11-14.04-33.11-31.29c0-18.66,13.87-32.21,33.01-32.21c18.51,0,33,13.8,33,31.41c0,7.95-2.95,15.53-8.3,21.41
-                               l-1.8-1.34c-9.26-6.9-12.38-9.23-19.55-9.66l-0.33-0.02L314.09,485.01z"/>
-                           <path class="st0" d="M447.51,472.76c0,14.22-9,22.05-25.36,22.05c-16.35,0-25.35-7.83-25.35-22.05v-52.57h-13.41v52.57
-                               c0,22.27,14.49,35.58,38.76,35.58c24.28,0,38.77-13.3,38.77-35.58v-52.57h-13.41V472.76z"/>
-                           <path class="st0" d="M497.31,472.06c5.28-2.72,10.82-3.09,15.55-3.09H532v-13.76h-19.14c-5.04,0-10.39,0.24-15.55,2.94v-24.33
-                               h47.47v-13.64H483.8v86.2h66.01v-13.53h-52.49V472.06z"/>
-                           <rect x="785.54" y="420.19" class="st0" width="13.3" height="86.2"/>
-                           <polygon class="st0" points="886.18,484.27 832.49,420.39 832.33,420.19 814.82,420.19 825.37,432.91 825.37,506.4 838.66,506.4 
-                               838.66,448.82 886.54,506.2 886.7,506.4 899.82,506.4 899.82,420.19 886.18,420.19 		"/>
-                           <path class="st0" d="M996.38,492.76h-0.8c-3.1,0-7.34-1.07-12.78-9.34l-15.08-22.63l28.33-40.6h-16.27l-42.41,62.33v-62.33h-13.53
+                               l-1.8-1.34c-9.26-6.9-12.38-9.23-19.55-9.66l-0.33-0.02L314.09,485.01z" />
+                <path
+                  class="st0"
+                  d="M447.51,472.76c0,14.22-9,22.05-25.36,22.05c-16.35,0-25.35-7.83-25.35-22.05v-52.57h-13.41v52.57
+                               c0,22.27,14.49,35.58,38.76,35.58c24.28,0,38.77-13.3,38.77-35.58v-52.57h-13.41V472.76z" />
+                <path
+                  class="st0"
+                  d="M497.31,472.06c5.28-2.72,10.82-3.09,15.55-3.09H532v-13.76h-19.14c-5.04,0-10.39,0.24-15.55,2.94v-24.33
+                               h47.47v-13.64H483.8v86.2h66.01v-13.53h-52.49V472.06z" />
+                <rect
+                  x="785.54"
+                  y="420.19"
+                  class="st0"
+                  width="13.3"
+                  height="86.2" />
+                <polygon
+                  class="st0"
+                  points="886.18,484.27 832.49,420.39 832.33,420.19 814.82,420.19 825.37,432.91 825.37,506.4 838.66,506.4 
+                               838.66,448.82 886.54,506.2 886.7,506.4 899.82,506.4 899.82,420.19 886.18,420.19 		" />
+                <path
+                  class="st0"
+                  d="M996.38,492.76h-0.8c-3.1,0-7.34-1.07-12.78-9.34l-15.08-22.63l28.33-40.6h-16.27l-42.41,62.33v-62.33h-13.53
                                v86.2h13.27l22.63-33.66l12.45,19.95c8.04,12.75,14.6,13.74,22.46,13.74c0.71,0,1.44-0.01,2.16-0.01
-                               c0.76-0.01,1.53-0.02,2.31-0.02h0.55v-13.78L996.38,492.76z"/>
-                           <g>
-                               <polygon class="st0" points="724.56,492.87 724.56,470.06 711.03,470.06 711.03,506.4 771.8,506.4 771.8,492.87 			"/>
-                               <rect x="711.03" y="420.19" class="st0" width="13.53" height="36.34"/>
-                           </g>
-                           <g>
-                               <rect x="589.91" y="470.06" class="st0" width="13.18" height="36.34"/>
-                               <polygon class="st0" points="559.56,420.19 559.56,433.83 589.91,433.83 589.91,456.53 603.09,456.53 603.09,433.83 
-                                   633.09,433.83 633.09,420.19 			"/>
-                           </g>
-                       </g>
-                       <path class="st4" d="M681.77,470.64c-2.03,2.03-4.69,3.04-7.35,3.04c-2.66,0-5.32-1.01-7.35-3.04c-4.05-4.05-10.63-4.05-14.69,0.01
+                               c0.76-0.01,1.53-0.02,2.31-0.02h0.55v-13.78L996.38,492.76z" />
+                <g>
+                  <polygon
+                    class="st0"
+                    points="724.56,492.87 724.56,470.06 711.03,470.06 711.03,506.4 771.8,506.4 771.8,492.87 			" />
+                  <rect
+                    x="711.03"
+                    y="420.19"
+                    class="st0"
+                    width="13.53"
+                    height="36.34" />
+                </g>
+                <g>
+                  <rect
+                    x="589.91"
+                    y="470.06"
+                    class="st0"
+                    width="13.18"
+                    height="36.34" />
+                  <polygon
+                    class="st0"
+                    points="559.56,420.19 559.56,433.83 589.91,433.83 589.91,456.53 603.09,456.53 603.09,433.83 
+                                   633.09,433.83 633.09,420.19 			" />
+                </g>
+              </g>
+              <path
+                class="st4"
+                d="M681.77,470.64c-2.03,2.03-4.69,3.04-7.35,3.04c-2.66,0-5.32-1.01-7.35-3.04c-4.05-4.05-10.63-4.05-14.69,0.01
                            c-4.05,4.05-10.63,4.05-14.69-0.01c-2.03-2.03-3.04-4.69-3.04-7.35c0-2.66,1.01-5.31,3.04-7.34c2.03-2.03,4.69-3.04,7.35-3.04
                            c2.66,0,5.32,1.01,7.35,3.04c2.03,2.03,4.69,3.04,7.35,3.04c2.66,0,5.32-1.01,7.35-3.04c4.05-4.05,10.63-4.05,14.68,0
-                           c2.03,2.03,3.04,4.69,3.04,7.35C684.8,465.95,683.79,468.61,681.77,470.64z"/>
-                   </g>
-                   </svg>
-                   </a>
-            </h1>
-    
-            <div class="Header-burguer">
-                <svg class="Burguer-svg" xmlns="http://www.w3.org/2000/svg"  fill="currentColor"  viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                </svg>
-            </div>
-    
-            <nav class="Header-nav">
-                <ul class="Header-ul">
-                    <li class="Header-li">
-                        <a href="about.html" class="Header-item" aria-label="Sobre Nosotros">Sobre Nosotros</a>
-                    </li>
-                    <li class="Header-li">
-                        <a href="services.html" class="Header-item" aria-label="Servicios">Servicios</a>
-                    </li>
-                    <li class="Header-li">
-                        <a href="news.html" class="Header-item" aria-label="Noticias">Noticias</a>
-                    </li>
-                    <li class="Header-li">
-                        <a href="contact.html" class="Header-item" aria-label="Contacto">Contacto</a>
-                    </li>
-                    <li class="Header-li">
-                        <a href="news.html" class="Header-item" aria-label="English">EN</a>
-                    </li>
-                    <li class="Header-li" style="display: none;" id="login-button">
-                        <a href="login.html" class="Header-button" aria-label="Login">Log in</a>
-                    </li>
-                    <li class="Header-li">
-                        <a href="login.html" id="logged-user" class="Header-item" style="display: flex; justify-content: center; align-items: center; gap: 1rem; font-weight: 400;" aria-label="Profile">
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                           c2.03,2.03,3.04,4.69,3.04,7.35C684.8,465.95,683.79,468.61,681.77,470.64z" />
+            </g>
+          </svg>
+        </a>
+      </h1>
+
+      <div class="Header-burguer">
+        <svg
+          class="Burguer-svg"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 16 16">
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+        </svg>
+      </div>
+
+      <nav class="Header-nav">
+        <ul class="Header-ul">
+          <li class="Header-li">
+            <a href="about.html" class="Header-item" aria-label="Sobre Nosotros"
+              >Sobre Nosotros</a
+            >
+          </li>
+          <li class="Header-li">
+            <a href="services.html" class="Header-item" aria-label="Servicios"
+              >Servicios</a
+            >
+          </li>
+          <li class="Header-li">
+            <a href="news.html" class="Header-item" aria-label="Noticias"
+              >Noticias</a
+            >
+          </li>
+          <li class="Header-li">
+            <a href="contact.html" class="Header-item" aria-label="Contacto"
+              >Contacto</a
+            >
+          </li>
+          <li class="Header-li">
+            <a href="news.html" class="Header-item" aria-label="English">EN</a>
+          </li>
+          <li class="Header-li" style="display: none" id="login-button">
+            <a href="login.html" class="Header-button" aria-label="Login"
+              >Log in</a
+            >
+          </li>
+          <li class="Header-li">
+            <a
+              href="login.html"
+              id="logged-user"
+              class="Header-item"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                font-weight: 400;
+              "
+              aria-label="Profile">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <circle cx="12" cy="12" r="9.24004" stroke="#025B7B" stroke-width="1"/>
                                 <path d="M6 5C5.03796 9.16002 6.20738 10.2033 7.26344 13C8.65933 16.6967 6.7197 17.6 6.02657 19.2" stroke="#025B7B" stroke-width="1"/>
                                 <path d="M13.5 21C12.5001 18 11.9999 16 15.5 13C17.3914 11.3788 20.0001 10 20.0001 7.5" stroke="#025B7B" stroke-width="1"/>
                               </svg> -->
-                            <div id="logged-user-text"></div>
-
-                        </a>
-                    </li>
-                </ul>  
-            </nav>
-        </header>
+              <div id="logged-user-text"></div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
     <!-- 
         Contenido principal.
@@ -186,7 +289,139 @@ Estructura general:
     </div> -->
 
     <div id="main-container">
-
+        <div class="transparent-content-box donut-general-container">
+            <div class="donut-label">Coaches data</div>
+            <div class="donut-container">
+                <canvas id="myDoughnutChartCoaches" width="140" height="140"></canvas>
+                <div class="donut-data-container">
+                    <div class="donut-data-element">
+                        <div class="donut-data-element-label" style="color: #000000;"><div class="dot" style="background-color: #000000;"></div>Regular Coach</div>
+                        <div class="donut-data-element-percentage" style="color: #000000;">58%</div>
+                    </div>
+                    <div class="donut-data-element">
+                        <div class="donut-data-element-label" style="color: #65a79b;"><div class="dot" style="background-color: #65a79b;"></div>Head Coach</div>
+                        <div class="donut-data-element-percentage" style="color: #65a79b;">58%</div>
+                    </div>
+                    <div class="donut-data-element">
+                        <div class="donut-data-element-label" style="color: #025b7b;"><div class="dot" style="background-color: #025b7b;"></div>Student Athlete</div>
+                        <div class="donut-data-element-percentage" style="color: #025b7b;">58%</div>
+                    </div>
+                    <div class="donut-data-element">
+                        <div class="donut-data-element-label" style="color: #6493a4;"><div class="dot" style="background-color: #6493a4;"></div>Pro Player</div>
+                        <div class="donut-data-element-percentage" style="color: #6493a4;">58%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="transparent-content-box donut-general-container">
+            <div class="donut-label">Clubs data</div>
+            <div class="donut-container">
+                <canvas id="myDoughnutChartClubs" width="140" height="140"></canvas>
+                <div class="donut-data-container">
+                    <div class="donut-data-element">
+                        <div class="donut-data-element-label" style="color: #000000;"><div class="dot" style="background-color: #000000;"></div>Buscando</div>
+                        <div class="donut-data-element-percentage" style="color: #000000;">58%</div>
+                    </div>
+                    <div class="donut-data-element">
+                        <div class="donut-data-element-label" style="color: #65a79b;"><div class="dot" style="background-color: #65a79b;"></div>En duda</div>
+                        <div class="donut-data-element-percentage" style="color: #65a79b;">58%</div>
+                    </div>
+                    <div class="donut-data-element">
+                        <div class="donut-data-element-label" style="color: #6493a4;"><div class="dot" style="background-color: #6493a4;"></div>Sin buscar</div>
+                        <div class="donut-data-element-percentage" style="color: #6493a4;">58%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="transparent-content-box recommendators-container">
+            <div class="box-label">Recommendators</div>
+            <div class="recommendator-element">
+                <div class="recommendator-name">María</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element">
+                <div class="recommendator-name">Javier</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 25%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element">
+                <div class="recommendator-name">Carla</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element">
+                <div class="recommendator-name">María</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element">
+                <div class="recommendator-name">Javier</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 25%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element">
+                <div class="recommendator-name">Carla</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element">
+                <div class="recommendator-name">María</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 80%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="transparent-content-box last-registered">
+            <div class="box-label">Últimos registros</div>
+            <div class="last-registered-row">
+                <div class="nameandicon">
+                    <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
+                        <path d="M6.93429 17.0812C7.11188 17.1851 7.20067 17.2371 7.32598 17.264C7.42323 17.2849 7.56511 17.2849 7.66236 17.264C7.78767 17.2371 7.87646 17.1851 8.05405 17.0812C9.61663 16.1666 13.9112 13.2939 13.9112 9.34413V5.49577C13.9112 4.85241 13.9112 4.53073 13.8063 4.25422C13.7136 4.00994 13.5631 3.79198 13.3676 3.61917C13.1464 3.42356 12.8461 3.31061 12.2456 3.08471L7.9448 1.46674C7.77804 1.404 7.69466 1.37264 7.60889 1.3602C7.5328 1.34917 7.45554 1.34917 7.37945 1.3602C7.29367 1.37264 7.2103 1.404 7.04354 1.46674L2.74269 3.08471C2.14221 3.31061 1.84197 3.42356 1.62072 3.61917C1.42526 3.79198 1.27469 4.00994 1.18203 4.25422C1.07715 4.53073 1.07715 4.85241 1.07715 5.49577V9.34413C1.07715 13.2939 5.37171 16.1666 6.93429 17.0812Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div>
+                    <div>Club Monteverde</div>
+                </div>
+                <div class="date">10:23</div>
+            </div>
+            <div class="last-registered-row">
+                <div class="nameandicon">
+                    <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
+                        <path d="M6.93429 17.0812C7.11188 17.1851 7.20067 17.2371 7.32598 17.264C7.42323 17.2849 7.56511 17.2849 7.66236 17.264C7.78767 17.2371 7.87646 17.1851 8.05405 17.0812C9.61663 16.1666 13.9112 13.2939 13.9112 9.34413V5.49577C13.9112 4.85241 13.9112 4.53073 13.8063 4.25422C13.7136 4.00994 13.5631 3.79198 13.3676 3.61917C13.1464 3.42356 12.8461 3.31061 12.2456 3.08471L7.9448 1.46674C7.77804 1.404 7.69466 1.37264 7.60889 1.3602C7.5328 1.34917 7.45554 1.34917 7.37945 1.3602C7.29367 1.37264 7.2103 1.404 7.04354 1.46674L2.74269 3.08471C2.14221 3.31061 1.84197 3.42356 1.62072 3.61917C1.42526 3.79198 1.27469 4.00994 1.18203 4.25422C1.07715 4.53073 1.07715 4.85241 1.07715 5.49577V9.34413C1.07715 13.2939 5.37171 16.1666 6.93429 17.0812Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div>
+                    <div>Academia Dave Duddenheim</div>
+                </div>
+                <div class="date">09:15</div>
+            </div>
+            <div class="last-registered-row">
+                <div class="nameandicon">
+                    <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
+                        <path d="M6.93429 17.0812C7.11188 17.1851 7.20067 17.2371 7.32598 17.264C7.42323 17.2849 7.56511 17.2849 7.66236 17.264C7.78767 17.2371 7.87646 17.1851 8.05405 17.0812C9.61663 16.1666 13.9112 13.2939 13.9112 9.34413V5.49577C13.9112 4.85241 13.9112 4.53073 13.8063 4.25422C13.7136 4.00994 13.5631 3.79198 13.3676 3.61917C13.1464 3.42356 12.8461 3.31061 12.2456 3.08471L7.9448 1.46674C7.77804 1.404 7.69466 1.37264 7.60889 1.3602C7.5328 1.34917 7.45554 1.34917 7.37945 1.3602C7.29367 1.37264 7.2103 1.404 7.04354 1.46674L2.74269 3.08471C2.14221 3.31061 1.84197 3.42356 1.62072 3.61917C1.42526 3.79198 1.27469 4.00994 1.18203 4.25422C1.07715 4.53073 1.07715 4.85241 1.07715 5.49577V9.34413C1.07715 13.2939 5.37171 16.1666 6.93429 17.0812Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div>
+                    <div>Club Deportivo Marbella</div>
+                </div>
+                <div class="date">12/03</div>
+            </div>
+            <div class="go-to-table">Ver tabla de usuarios<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg></div>
+        </div>
+        <div class="transparent-content-box total-users">
+            <div class="box-label">Total de usuarios</div>
+            <canvas id="myLineChart" width="600" height="200"></canvas>
+        </div>
     </div>
 
     <!-- 
@@ -371,12 +606,13 @@ Estructura general:
         </div>
     </div> -->
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script src="js/firebase-auth-checker.js" type="module"></script>
-    <!-- <script src="js/clubs-table-firebase.js" type="module"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
     <script src="js/dashboard.js" type="module"></script>
 
-
-</body>
-
+  </body>
 </html>
