@@ -16,6 +16,7 @@ import {
   limit,
   doc,
   deleteDoc,
+  updateDoc, increment, 
 } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 import {
   getAuth,

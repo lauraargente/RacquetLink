@@ -10,8 +10,6 @@ var adminList = [
 
 // Función para verificar si el usuario actual es un administrador
 var checkIfUserAdmin = (valorCookieId) => {
-    console.log(valorCookieId)
-    console.log(adminList)
     return adminList.includes(valorCookieId);
 };
 

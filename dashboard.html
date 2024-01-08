@@ -289,26 +289,34 @@ Estructura general:
     </div> -->
 
     <div id="main-container">
+        <div class="transparent-content-box total-coaches">
+            <div class="box-label">Total Coaches</div>
+            <div class="total-number-coaches">0</div>
+          </div>
+          <div class="transparent-content-box total-clubs">
+            <div class="box-label">Total Clubs</div>
+            <div class="total-number-clubs">0</div>
+          </div>
         <div class="transparent-content-box donut-general-container">
             <div class="donut-label">Coaches data</div>
             <div class="donut-container">
                 <canvas id="myDoughnutChartCoaches" width="140" height="140"></canvas>
                 <div class="donut-data-container">
                     <div class="donut-data-element">
-                        <div class="donut-data-element-label" style="color: #000000;"><div class="dot" style="background-color: #000000;"></div>Regular Coach</div>
-                        <div class="donut-data-element-percentage" style="color: #000000;">58%</div>
+                        <div class="donut-data-element-label" style="color: #025b7b;"><div class="dot" style="background-color: #025b7b;"></div>Regular Coach</div>
+                        <div class="donut-data-element-percentage" id="coaches-regular" style="color: #025b7b;">0</div>
                     </div>
                     <div class="donut-data-element">
                         <div class="donut-data-element-label" style="color: #65a79b;"><div class="dot" style="background-color: #65a79b;"></div>Head Coach</div>
-                        <div class="donut-data-element-percentage" style="color: #65a79b;">58%</div>
+                        <div class="donut-data-element-percentage" id="coaches-head" style="color: #65a79b;">0</div>
                     </div>
                     <div class="donut-data-element">
-                        <div class="donut-data-element-label" style="color: #025b7b;"><div class="dot" style="background-color: #025b7b;"></div>Student Athlete</div>
-                        <div class="donut-data-element-percentage" style="color: #025b7b;">58%</div>
+                        <div class="donut-data-element-label" style="color: #6493a4;"><div class="dot" style="background-color: #6493a4;"></div>Student Athlete</div>
+                        <div class="donut-data-element-percentage" id="coaches-student" style="color: #6493a4;">0</div>
                     </div>
                     <div class="donut-data-element">
-                        <div class="donut-data-element-label" style="color: #6493a4;"><div class="dot" style="background-color: #6493a4;"></div>Pro Player</div>
-                        <div class="donut-data-element-percentage" style="color: #6493a4;">58%</div>
+                        <div class="donut-data-element-label" style="color: #000;"><div class="dot" style="background-color: #000;"></div>Pro Player</div>
+                        <div class="donut-data-element-percentage" id="coaches-pro" style="color: #000;">0</div>
                     </div>
                 </div>
             </div>
@@ -319,108 +327,92 @@ Estructura general:
                 <canvas id="myDoughnutChartClubs" width="140" height="140"></canvas>
                 <div class="donut-data-container">
                     <div class="donut-data-element">
-                        <div class="donut-data-element-label" style="color: #000000;"><div class="dot" style="background-color: #000000;"></div>Buscando</div>
-                        <div class="donut-data-element-percentage" style="color: #000000;">58%</div>
+                        <div class="donut-data-element-label" style="color: #025B7B;"><div class="dot" style="background-color: #025B7B;"></div>Buscando</div>
+                        <div class="donut-data-element-percentage" id="clubs-yes" style="color: #025B7B;">0</div>
                     </div>
                     <div class="donut-data-element">
                         <div class="donut-data-element-label" style="color: #65a79b;"><div class="dot" style="background-color: #65a79b;"></div>En duda</div>
-                        <div class="donut-data-element-percentage" style="color: #65a79b;">58%</div>
+                        <div class="donut-data-element-percentage" id="clubs-prx" style="color: #65a79b;">0</div>
                     </div>
                     <div class="donut-data-element">
                         <div class="donut-data-element-label" style="color: #6493a4;"><div class="dot" style="background-color: #6493a4;"></div>Sin buscar</div>
-                        <div class="donut-data-element-percentage" style="color: #6493a4;">58%</div>
+                        <div class="donut-data-element-percentage" id="clubs-not" style="color: #6493a4;">0</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="transparent-content-box recommendators-container">
             <div class="box-label">Recommendators</div>
-            <div class="recommendator-element">
-                <div class="recommendator-name">María</div>
+            <div class="recommendator-element" id="adriana-armendariz">
+                <div class="recommendator-name">Adriana</div>
                 <div class="recommendator-bar-container">
                     <div class="recommendator-bar-start"></div>
-                    <div class="recommendator-bar" style="width: 80%;"></div>
+                    <div class="recommendator-bar" style="width: 00%;"></div>
                 </div>
             </div>
-            <div class="recommendator-element">
+            <div class="recommendator-element" id="alejandro-crespo">
+                <div class="recommendator-name">Alejandro</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 00%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element" id="diego-ortiz">
+                <div class="recommendator-name">Diego</div>
+                <div class="recommendator-bar-container">
+                    <div class="recommendator-bar-start"></div>
+                    <div class="recommendator-bar" style="width: 00%;"></div>
+                </div>
+            </div>
+            <div class="recommendator-element" id="javier-marti">
                 <div class="recommendator-name">Javier</div>
                 <div class="recommendator-bar-container">
                     <div class="recommendator-bar-start"></div>
-                    <div class="recommendator-bar" style="width: 25%;"></div>
+                    <div class="recommendator-bar" style="width: 00%;"></div>
                 </div>
             </div>
-            <div class="recommendator-element">
-                <div class="recommendator-name">Carla</div>
+            <div class="recommendator-element" id="laura-marti">
+                <div class="recommendator-name">Laura</div>
                 <div class="recommendator-bar-container">
                     <div class="recommendator-bar-start"></div>
-                    <div class="recommendator-bar" style="width: 60%;"></div>
+                    <div class="recommendator-bar" style="width: 00%;"></div>
                 </div>
             </div>
-            <div class="recommendator-element">
-                <div class="recommendator-name">María</div>
+            <div class="recommendator-element" id="miguel-semmler">
+                <div class="recommendator-name">Miguel</div>
                 <div class="recommendator-bar-container">
                     <div class="recommendator-bar-start"></div>
-                    <div class="recommendator-bar" style="width: 80%;"></div>
+                    <div class="recommendator-bar" style="width: 00%;"></div>
                 </div>
             </div>
-            <div class="recommendator-element">
-                <div class="recommendator-name">Javier</div>
+            <div class="recommendator-element" id="sergi-perez">
+                <div class="recommendator-name">Sergi</div>
                 <div class="recommendator-bar-container">
                     <div class="recommendator-bar-start"></div>
-                    <div class="recommendator-bar" style="width: 25%;"></div>
-                </div>
-            </div>
-            <div class="recommendator-element">
-                <div class="recommendator-name">Carla</div>
-                <div class="recommendator-bar-container">
-                    <div class="recommendator-bar-start"></div>
-                    <div class="recommendator-bar" style="width: 60%;"></div>
-                </div>
-            </div>
-            <div class="recommendator-element">
-                <div class="recommendator-name">María</div>
-                <div class="recommendator-bar-container">
-                    <div class="recommendator-bar-start"></div>
-                    <div class="recommendator-bar" style="width: 80%;"></div>
+                    <div class="recommendator-bar" style="width: 00%;"></div>
                 </div>
             </div>
         </div>
-        <div class="transparent-content-box last-registered">
-            <div class="box-label">Últimos registros</div>
-            <div class="last-registered-row">
-                <div class="nameandicon">
-                    <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
-                        <path d="M6.93429 17.0812C7.11188 17.1851 7.20067 17.2371 7.32598 17.264C7.42323 17.2849 7.56511 17.2849 7.66236 17.264C7.78767 17.2371 7.87646 17.1851 8.05405 17.0812C9.61663 16.1666 13.9112 13.2939 13.9112 9.34413V5.49577C13.9112 4.85241 13.9112 4.53073 13.8063 4.25422C13.7136 4.00994 13.5631 3.79198 13.3676 3.61917C13.1464 3.42356 12.8461 3.31061 12.2456 3.08471L7.9448 1.46674C7.77804 1.404 7.69466 1.37264 7.60889 1.3602C7.5328 1.34917 7.45554 1.34917 7.37945 1.3602C7.29367 1.37264 7.2103 1.404 7.04354 1.46674L2.74269 3.08471C2.14221 3.31061 1.84197 3.42356 1.62072 3.61917C1.42526 3.79198 1.27469 4.00994 1.18203 4.25422C1.07715 4.53073 1.07715 4.85241 1.07715 5.49577V9.34413C1.07715 13.2939 5.37171 16.1666 6.93429 17.0812Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div>Club Monteverde</div>
+        <div id="lastCoachesContainer" class="transparent-content-box last-registered">
+            <!-- Los registros de los coaches se insertarán aquí -->
+        </div>
+        <div id="lastClubsContainer" class="transparent-content-box last-registered">
+            <div class="box-label">Últimos registros de clubs</div>
+            <!-- Los registros de los clubs se insertarán aquí -->
+          </div>
+        <div class="transparent-content-box total-users">
+            <div class="flex">
+                <div class="box-label flex">Índice de registros (15 días)</div>
+                <div class="flex" style="margin-bottom: 1rem;">
+                    <div class="donut-data-element-label" style="color: #025b7b;"><div class="dot" style="background-color: #025b7b;"></div>Coaches</div>
+                    <div class="donut-data-element-label" style="color: #65a79b;"><div class="dot" style="background-color: #65a79b;"></div>Clubs</div>
                 </div>
-                <div class="date">10:23</div>
             </div>
-            <div class="last-registered-row">
-                <div class="nameandicon">
-                    <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
-                        <path d="M6.93429 17.0812C7.11188 17.1851 7.20067 17.2371 7.32598 17.264C7.42323 17.2849 7.56511 17.2849 7.66236 17.264C7.78767 17.2371 7.87646 17.1851 8.05405 17.0812C9.61663 16.1666 13.9112 13.2939 13.9112 9.34413V5.49577C13.9112 4.85241 13.9112 4.53073 13.8063 4.25422C13.7136 4.00994 13.5631 3.79198 13.3676 3.61917C13.1464 3.42356 12.8461 3.31061 12.2456 3.08471L7.9448 1.46674C7.77804 1.404 7.69466 1.37264 7.60889 1.3602C7.5328 1.34917 7.45554 1.34917 7.37945 1.3602C7.29367 1.37264 7.2103 1.404 7.04354 1.46674L2.74269 3.08471C2.14221 3.31061 1.84197 3.42356 1.62072 3.61917C1.42526 3.79198 1.27469 4.00994 1.18203 4.25422C1.07715 4.53073 1.07715 4.85241 1.07715 5.49577V9.34413C1.07715 13.2939 5.37171 16.1666 6.93429 17.0812Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div>Academia Dave Duddenheim</div>
-                </div>
-                <div class="date">09:15</div>
-            </div>
-            <div class="last-registered-row">
-                <div class="nameandicon">
-                    <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
-                        <path d="M6.93429 17.0812C7.11188 17.1851 7.20067 17.2371 7.32598 17.264C7.42323 17.2849 7.56511 17.2849 7.66236 17.264C7.78767 17.2371 7.87646 17.1851 8.05405 17.0812C9.61663 16.1666 13.9112 13.2939 13.9112 9.34413V5.49577C13.9112 4.85241 13.9112 4.53073 13.8063 4.25422C13.7136 4.00994 13.5631 3.79198 13.3676 3.61917C13.1464 3.42356 12.8461 3.31061 12.2456 3.08471L7.9448 1.46674C7.77804 1.404 7.69466 1.37264 7.60889 1.3602C7.5328 1.34917 7.45554 1.34917 7.37945 1.3602C7.29367 1.37264 7.2103 1.404 7.04354 1.46674L2.74269 3.08471C2.14221 3.31061 1.84197 3.42356 1.62072 3.61917C1.42526 3.79198 1.27469 4.00994 1.18203 4.25422C1.07715 4.53073 1.07715 4.85241 1.07715 5.49577V9.34413C1.07715 13.2939 5.37171 16.1666 6.93429 17.0812Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div>Club Deportivo Marbella</div>
-                </div>
-                <div class="date">12/03</div>
-            </div>
-            <a href="/coaches-table.html" class="go-to-table">Ver tabla de usuarios<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
-                <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg></a>
+            <canvas id="myLineChartMonth" width="600" height="200"></canvas>
         </div>
         <div class="transparent-content-box total-users">
-            <div class="box-label">Total de usuarios</div>
-            <canvas id="myLineChart" width="600" height="200"></canvas>
+            <div class="box-label">Índice de registros (anual)</div>
+            <canvas id="myLineChartYear" width="600" height="200"></canvas>
         </div>
     </div>
 

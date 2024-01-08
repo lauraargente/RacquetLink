@@ -44,6 +44,41 @@
   font-weight: 500;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.total-clubs {
+  width: 12rem;
+  padding: 2rem;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.total-number-clubs {
+  color: #025B7B;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.total-coaches {
+  width: 12rem;
+  padding: 2rem;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.total-number-coaches {
+  color: #025B7B;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
 .donut-general-container {
   padding: 2rem;
   height: -moz-max-content;
@@ -98,7 +133,8 @@
 .recommendator-element {
   display: flex;
   justify-content: space-between;
-  width: 12rem;
+  width: 14rem;
+  gap: 1rem;
 }
 .recommendator-element .recommendator-bar-container {
   display: flex;
@@ -114,6 +150,7 @@
   height: 6px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 0 1rem 1rem 0;
+  transition: 1s;
 }
 
 .last-registered {
@@ -152,6 +189,7 @@
 }
 
 .total-users {
+  width: 44rem;
   height: -moz-max-content;
   height: max-content;
   padding: 2rem;
