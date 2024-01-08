@@ -772,6 +772,7 @@ nextConditionalPass.addEventListener("click", (e) => {
               `Coach ${registerData.userName}`,
               registerData.coachId
             );
+            document.querySelector('#next-conditional-finish').href = `profilecoach.html?id=${registerData.coachId}`
           });
         })
         .catch((error) => {
