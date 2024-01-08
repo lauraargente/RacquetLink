@@ -97,7 +97,7 @@ function setUserNameOnHeader(displayName, displayNameId) {
 export {setUserNameOnHeader}
 
 var firebaseLogout = () => {
-  window.location.href = '/';
+  window.location.href = 'index.html';
   setCookie('loggedUser');
   setCookie('loggedUserId');
   return new Promise(function (resolve, reject) {
