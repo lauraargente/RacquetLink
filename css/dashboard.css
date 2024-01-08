@@ -28,6 +28,13 @@
   background-size: cover;
   margin: auto;
   padding-top: 8rem;
+  padding-bottom: 8rem;
+  gap: 2rem;
+}
+
+.dashboards-container {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
@@ -56,6 +63,10 @@
   padding: 2rem;
   height: -moz-max-content;
   height: max-content;
+  transition: 0.2s;
+}
+.total-clubs:hover {
+  background-color: white;
 }
 
 .total-number-clubs {
@@ -70,6 +81,10 @@
   padding: 2rem;
   height: -moz-max-content;
   height: max-content;
+  transition: 0.4s;
+}
+.total-coaches:hover {
+  background-color: white;
 }
 
 .total-number-coaches {

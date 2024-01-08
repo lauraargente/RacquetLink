@@ -223,7 +223,7 @@ var updateCouachesDoughnut = (inputData) => {
             inputData.student,
             inputData.pro,
           ],
-          backgroundColor: ["#025B7B", "#acd6ce", "#94bac8", "#1c1c1c"],
+          backgroundColor: ["#025B7B", "#acd6ce", "#94bac8", "#696969"],
           // borderColor: 'rgba(0,0,0,0)',
           // borderDash: [5, 10],
           // borderDashOffset: 2.5,
@@ -322,10 +322,10 @@ var updateLineChartMonth = (data, isClubsData) => {
           {
             data: isClubsData ? last15DaysTotals : Array(15).fill(0),
             fill: false,
-            borderColor: "#add6ce",
+            borderColor: "#65a79b",
             tension: 0.4,
             pointRadius: 5,
-            pointBackgroundColor: "#add6ce",
+            pointBackgroundColor: "#65a79b",
             pointBorderColor: "white",
           },
           {
@@ -432,10 +432,10 @@ var updateLineChartYear = (data, isClubsData) => {
           {
             data: isClubsData ? last12MonthsTotals : Array(12).fill(0),
             fill: false,
-            borderColor: "#94BAC8",
+            borderColor: "#65a79b",
             tension: 0.4,
             pointRadius: 5,
-            pointBackgroundColor: "#94BAC8",
+            pointBackgroundColor: "#65a79b",
             pointBorderColor: "white",
           },
           {
@@ -599,7 +599,7 @@ function updateLastCoaches(lastCoaches) {
   
     // Añadir el enlace "Ver tabla de coaches" al final del contenedor
     const linkElement = document.createElement("a");
-    linkElement.href = "/coaches-table.html";
+    linkElement.href = "coaches-table.html";
     linkElement.className = "go-to-table";
     linkElement.innerHTML = `Ver tabla de coaches<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
           <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -660,7 +660,7 @@ function updateLastClubs(lastClubs) {
   
     // Añadir el enlace "Ver tabla de clubs" al final del contenedor
     const linkElement = document.createElement('a');
-    linkElement.href = '/clubs-table.html'; // Asegúrate de que esta es la URL correcta
+    linkElement.href = 'clubs-table.html'; // Asegúrate de que esta es la URL correcta
     linkElement.className = 'go-to-table';
     linkElement.innerHTML = `Ver tabla de clubs<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
         <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
