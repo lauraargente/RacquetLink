@@ -3,6 +3,11 @@ import { firebaseCreateCoach } from "./register-coach-firebase.js";
 import { firebaseSaveCoachData } from "./register-coach-firebase.js";
 import { setUserNameOnHeader } from "./firebase-auth-checker.js";
 
+// Variables
+const headerBurguer =document.querySelector('.Header-burguer')
+const headerNav = document.querySelector('.Header-nav')
+
+
 var registerContainer = document.querySelector("#register-container");
 var currentProgress = document.querySelector("#current-progress");
 
@@ -114,6 +119,13 @@ var createCoachOkIcon = document.querySelector("#create-coach-ok-icon");
 // Progress var elements
 var currentPosition = 0;
 var currentProgressValue = 8.5;
+
+//Cuando hago CLICK en headerBurguer hace una FUNCTION
+// a headerNav le TOGGLE la clase isActive
+
+headerBurguer.addEventListener(`click`, ()=>{
+  headerNav.classList.toggle('isActive')
+})
 
 //#region focus and unfocus coloring
 

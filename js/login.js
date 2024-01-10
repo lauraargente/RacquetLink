@@ -1,6 +1,11 @@
 import { firebaseLogIn } from "./login-firebase.js";
 import { firebaseResetPassword } from "./login-firebase.js";
 
+// Variables
+const headerBurguer =document.querySelector('.Header-burguer')
+const headerNav = document.querySelector('.Header-nav')
+
+
 var loginButton = document.querySelector("#next-conditional-pass");
 
 var loginEmail = document.querySelector("#email-container > input");
@@ -13,6 +18,13 @@ var allTextInputs = document.querySelectorAll(".textinput-text");
 
 var resetPasswordLink = document.querySelector("#reset-password");
 var resetPasswordMessage = document.querySelector("#reset-password-message");
+
+//Cuando hago CLICK en headerBurguer hace una FUNCTION
+// a headerNav le TOGGLE la clase isActive
+
+headerBurguer.addEventListener(`click`, ()=>{
+  headerNav.classList.toggle('isActive')
+})
 
 //#region textInputs coloring
 
