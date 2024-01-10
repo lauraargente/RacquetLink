@@ -13,7 +13,6 @@ const element = document.getElementById('Section-presentation')
    
     headerBurguer.addEventListener(`click`, ()=>{
         headerNav.classList.toggle('isActive')
-        console.log('hola')
     })
 
 
