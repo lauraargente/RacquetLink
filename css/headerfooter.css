@@ -236,7 +236,7 @@
 /* ――――――――― Media Querys - 1200px――――――――― */
 /* Descripción: Estilos para tablet */
 
-@media  (max-width:800px) {
+@media  (max-width:1200px) {
     
     .Header{
         padding: 1.25rem 2rem;
@@ -268,7 +268,7 @@
     }
 
     .Header-nav.isActive{
-        height: 60vh;
+        height: 80vh;
         pointer-events: auto;
     }
 

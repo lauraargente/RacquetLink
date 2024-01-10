@@ -82,14 +82,36 @@
     margin: 3rem auto;
 }
 
-.Servicios-article{
+.Servicios-article-coach, .Servicios-article-club{
     display: flex;
     flex-flow: row;
     align-items: center;
     justify-content: center;
     gap: 6rem;
     background-color: #F7F7F7;
+}
+
+.Servicios-article{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+    background-color: #F7F7F7;
     padding: 5rem;
+}
+
+.Servicios-register-button{
+    white-space: nowrap;
+    background-color: var(--color-primary);
+    padding: 1rem 3rem;
+    border-radius: 10rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white); 
+    font-weight: 600;
+    width: auto;
 }
 
 .Servicios-article-img{
@@ -453,9 +475,32 @@ b{
         flex-flow: column;
         align-items: center;
         justify-content: center;
-        gap: 6rem;
+        gap: 3rem;
         background-color: #F7F7F7;
-        padding: 5rem;
+        padding: 2rem;
+    }
+
+    .Servicios-article-coach, .Servicios-article-club{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        background-color: #F7F7F7;
+        padding: 2rem;
+        width: 100%;
+    }
+
+    .Servicios-article-text{
+        align-items: center;
+    }
+
+    .Servicios-article-ul{
+        gap: 2rem;
+    }
+
+    .Servicios-register-button{
+        margin-bottom: 2rem;
     }
 
     .Servicios-article-mobile{
@@ -513,10 +558,24 @@ b{
         flex-flow: column;
         align-items: center;
         justify-content: center;
-        gap: 6rem;
+        gap: 3rem;
         background-color: #F7F7F7;
         padding: 2rem;
+    }
+
+    .Servicios-article-coach, .Servicios-article-club{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        background-color: #F7F7F7;
+        padding: 0rem;
         width: 100%;
+    }
+
+    .Servicios-register-button{
+        margin: 2rem 0;
     }
 
     .Consultoria{
