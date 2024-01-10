@@ -261,6 +261,7 @@ var registerData = {
   userResidence: "",
   userLanguages: [],
   userSports: [],
+  userAdditionalSport: "",
   userExperience: "",
   userClubExp: "",
   userOtherCoachExp: "",
@@ -410,7 +411,8 @@ nextConditionalSport.addEventListener("click", (e) => {
 
   userAdditionalSport.value === ""
     ? ""
-    : registerData.userSports.push(userAdditionalSport.value);
+    : registerData.userAdditionalSport = userAdditionalSport.value
+    
 
   console.log(registerData);
   moveForwardVariable ? moveForward() : shakeAnimation(e.target);

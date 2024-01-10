@@ -220,12 +220,16 @@
   margin-top: 0.2rem;
   background: rgba(255, 255, 255, 0.2);
   color: rgba(2, 91, 123, 0.6274509804);
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 .editable-option.selected {
   background: rgba(255, 255, 255, 0.8);
   color: var(--color-primary);
   opacity: 1;
   display: flex;
+}
+.editable-option.selected.editable {
+  border: 1px solid var(--color-primary);
 }
 .editable-option.selected:hover {
   background: rgba(255, 255, 255, 0.6);
@@ -238,7 +242,9 @@
   height: 2.2rem;
   font-weight: 400;
   color: var(--color-primary);
-  border-radius: 0.8rem;
+  pointer-events: none;
+  text-transform: lowercase;
+  border-radius: 1rem;
 }
 .editable-option.inputtext:hover {
   cursor: auto !important;
@@ -251,6 +257,9 @@
 }
 .editable-option.inputtext:focus {
   outline: none;
+}
+.editable-option.inputtext.editable {
+  pointer-events: auto;
 }
 
 #tellusmore {
@@ -371,12 +380,14 @@
 }
 
 .editable-text {
-  width: 100%; /* Ancho completo */
+  width: 100%;
+  /* Ancho completo */
   margin-top: 1rem;
   font-size: 1rem !important;
   box-sizing: border-box;
   font-size: 14px;
-  overflow: hidden; /* Evita la barra de desplazamiento */
+  overflow: hidden;
+  /* Evita la barra de desplazamiento */
   border-radius: 1rem;
   font-weight: 400;
   color: var(--color-primary);

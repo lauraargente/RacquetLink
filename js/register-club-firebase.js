@@ -101,6 +101,7 @@ var firebaseSaveClubData = (registerData) => {
         clubCountry: registerData.clubCountry,
         clubCity: registerData.clubCity,
         clubSports: registerData.clubSports,
+        clubAdditionalSport: registerData.clubAdditionalSport,
         clubField: registerData.clubField,
         clubState: registerData.clubState,
         clubConsulting: registerData.clubConsulting,

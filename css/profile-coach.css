@@ -239,12 +239,14 @@
 }
 
 .editable-text {
-  width: 100%; /* Ancho completo */
+  width: 100%;
+  /* Ancho completo */
   margin-top: 1rem;
   font-size: 1rem !important;
   box-sizing: border-box;
   font-size: 14px;
-  overflow: hidden; /* Evita la barra de desplazamiento */
+  overflow: hidden;
+  /* Evita la barra de desplazamiento */
   border-radius: 1rem;
   font-weight: 400;
   color: var(--color-primary);
@@ -348,10 +350,10 @@
 
 .contact-icon {
   background-color: white;
-  padding: 0.66rem;
-  width: 3rem;
-  min-width: 3rem;
-  height: 3rem;
+  padding: 0.3rem;
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
   border-radius: 1rem;
 }
 .contact-icon path {
@@ -363,6 +365,8 @@
   font-size: 1rem;
   letter-spacing: 1px;
   color: var(--color-primary);
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 
 #profile-element-container-name {
@@ -413,12 +417,18 @@
   gap: 0.4rem;
 }
 
+.editable .editable-option.selected {
+  display: flex;
+  background: rgb(255, 255, 255);
+  color: #025b7b;
+  border: 1px solid var(--color-primary) !important;
+}
+
 .editable-option {
   display: none;
   width: -moz-max-content;
   width: max-content;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border-radius: 2rem;
@@ -427,6 +437,7 @@
      -moz-user-select: none;
           user-select: none;
   color: var(--color-primary);
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 .editable-option:hover {
   background: rgba(255, 255, 255, 0.4);
@@ -660,12 +671,14 @@
 }
 
 .inputtext {
-  border-radius: 0.4rem;
+  border-radius: 1rem;
   padding: 0.4rem 0.8rem;
-  font-weight: 500;
+  font-weight: 400;
   font-family: Montserrat;
   background: rgba(255, 255, 255, 0.9);
   color: var(--color-primary);
+  pointer-events: none;
+  width: 8rem;
 }
 .inputtext:focus {
   outline: none;
@@ -683,6 +696,11 @@
 .inputtext::placeholder {
   color: #000000;
   font-family: Montserrat;
+}
+.inputtext.editable {
+  display: flex !important;
+  pointer-events: all;
+  cursor: auto !important;
 }
 
 .selectionanimation {
@@ -726,12 +744,28 @@
 }
 .profile-exp.marked svg {
   opacity: 1;
+  background-color: white;
 }
 .profile-exp.editable {
+  display: flex;
   transform: translateX(0rem);
 }
+.profile-exp.editable:hover {
+  cursor: pointer;
+}
+.profile-exp.editable svg {
+  border: 1px solid var(--color-primary);
+}
 .profile-exp svg {
-  opacity: 0;
+  margin-left: 1rem;
+  margin-bottom: 0.2rem;
+  min-width: 20px;
+  min-height: 20px;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 
 @media (max-width: 1400px) {

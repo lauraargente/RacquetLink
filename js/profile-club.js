@@ -259,57 +259,50 @@ var fillDataInDocument = (data) => {
   var country = mapCountry(newEditedData.clubCountry);
   dataResidence.innerHTML = `${newEditedData.clubCity}, ${country} `;
 
-  // ---------------------------------------------------------------------------- Sports
-  var dataSports = document.querySelectorAll("[data-sport]");
-  var dataOtherSport = document.querySelector("[data-other-sport]");
+// ---------------------------------------------------------------------------- Sports
+var dataSports = document.querySelectorAll("[data-sport]");
+var dataOtherSport = document.querySelector("[data-other-sport]");
 
-  dataSports.forEach((element) => {
-    newEditedData.clubSports.forEach((dataSport) => {
-      if (element.getAttribute("data-sport") === dataSport) {
-        element.classList.add("selected");
-      }
-    });
-
-    element.addEventListener("click", () => {
-      if (element.classList.contains("editable")) {
-        newEditedData.clubSports.length = 0;
-        element.classList.toggle("selected");
-
-        dataSports.forEach((element) => {
-          if (element.classList.contains("selected")) {
-            newEditedData.clubSports.push(element.getAttribute("data-sport"));
-          }
-        });
-        newEditedData.clubSports.push("");
-        newEditedData.clubSports[newEditedData.clubSports.length - 1] =
-          dataOtherSport.value;
-      }
-    });
-  });
-
-  let additionalSport =
-    newEditedData.clubSports[newEditedData.clubSports.length - 1];
-  console.log(additionalSport);
-  if (additionalSport && !(additionalSport === "")) {
-    dataOtherSport.value = additionalSport;
-    dataOtherSport.classList.add("selected");
+dataSports.forEach((element) => {
+  // Marcar como seleccionados los deportes ya guardados
+  if (newEditedData.clubSports.includes(element.getAttribute("data-sport"))) {
+    element.classList.add("selected");
   }
 
-  dataOtherSport.addEventListener("input", () => {
-    if (!(dataOtherSport.value === "")) {
-      dataOtherSport.classList.add("selected");
-      newEditedData.clubSports[newEditedData.clubSports.length - 1] =
-        dataOtherSport.value;
-    } else {
-      dataOtherSport.classList.remove("selected");
-      newEditedData.clubSports[newEditedData.clubSports.length - 1] =
-        dataOtherSport.value;
+  // Evento click para seleccionar/deseleccionar deportes
+  element.addEventListener("click", () => {
+    if (element.classList.contains("editable")) {
+      element.classList.toggle("selected");
+      updateSelectedSports();
     }
   });
+});
 
-  dataOtherSport.addEventListener("blur", () => {
-    // updateChanges()
-  });
+// Actualizar la lista de deportes seleccionados
+function updateSelectedSports() {
+  newEditedData.clubSports = Array.from(dataSports)
+    .filter(element => element.classList.contains("selected"))
+    .map(element => element.getAttribute("data-sport"));
+}
+
+// Evento input para el campo 'Otro deporte'
+dataOtherSport.addEventListener("input", () => {
+  if (dataOtherSport.value !== "") {
+    dataOtherSport.classList.add("selected");
+    newEditedData.clubAdditionalSport = dataOtherSport.value;
+  } else {
+    dataOtherSport.classList.remove("selected");
+    newEditedData.clubAdditionalSport = "";
+  }
+});
+
+// Inicializar el campo 'Otro deporte' con el valor actual
+if (newEditedData.clubAdditionalSport && newEditedData.clubAdditionalSport !== "") {
+  dataOtherSport.value = newEditedData.clubAdditionalSport;
+  dataOtherSport.classList.add("selected");
+}
+
+
 
   // ---------------------------------------------------------------------------- Fields
   var dataFields = document.querySelectorAll("[data-fields]");

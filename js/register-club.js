@@ -972,6 +972,7 @@ var registerData = {
   clubCountry: "",
   clubCity: "",
   clubSports: [],
+  clubAdditionalSport: "",
   clubField: "",
   clubState: "",
   clubConsulting: "",
@@ -1044,7 +1045,7 @@ var writeRegisterData = function () {
     }
   });
   if (!(additionalSport.value === "")) {
-    registerData.clubSports.push(additionalSport.value);
+    registerData.clubAdditionalSport = additionalSport.value;
   }
 
   // Club Fields

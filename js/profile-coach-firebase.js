@@ -77,6 +77,7 @@
             userResidence: newEditedData.userResidence,
             userLanguages: newEditedData.userLanguages,
             userSports: newEditedData.userSports,
+            userAdditionalSport: newEditedData.userAdditionalSport,
             userExperience: newEditedData.userExperience,
             userClubExp: newEditedData.userClubExp,
             userOtherCoachExp: newEditedData.userOtherCoachExp,

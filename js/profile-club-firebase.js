@@ -70,6 +70,7 @@
 
           updateDoc(docRef, {
             clubSports: newEditedData.clubSports,
+            clubAdditionalSport: newEditedData.clubAdditionalSport,
             clubField: newEditedData.clubField,
             clubState: newEditedData.clubState,
             clubConsulting: newEditedData.clubConsulting,

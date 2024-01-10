@@ -105,6 +105,7 @@ var firebaseSaveCoachData = (registerData) => {
         userResidence: registerData.userResidence,
         userLanguages: registerData.userLanguages,
         userSports: registerData.userSports,
+        userAdditionalSport: registerData.userAdditionalSport,
         userExperience: registerData.userExperience,
         userClubExp: registerData.userClubExp,
         userOtherCoachExp: registerData.userOtherCoachExp,

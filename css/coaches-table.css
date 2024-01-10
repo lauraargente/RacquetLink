@@ -429,14 +429,18 @@ input[type=range] {
   width: 100%;
   gap: 1rem;
   padding: 0.5rem 0;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: 0.2s;
   border: 2px solid rgba(0, 0, 0, 0);
+}
+.row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 .row:nth-child(odd) {
   background-color: rgba(255, 255, 255, 0.2);
 }
-.row:hover {
-  background-color: rgba(255, 255, 255, 0);
+.row:nth-child(odd):hover {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .cell {

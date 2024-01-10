@@ -177,8 +177,6 @@ editButton.addEventListener("click", () => {
 saveButton.addEventListener("click", () => {
   setLoading();
 
-  // disSelectAllFields()
-  // Set loading state
   console.log(newEditedData);
 
   firebaseUpdateUserData(userId, newEditedData).then(() => {
@@ -225,12 +223,8 @@ var dataInternational = document.querySelector("#data-international");
 var dataProfesional = document.querySelector("#data-profesional");
 var dataCompiting = document.querySelector("#data-compiting");
 
-var dataAdminState = document.querySelector(
-  "#data-adminstate"
-);
-var dataAdminType = document.querySelector(
-  "#data-admintype"
-);
+var dataAdminState = document.querySelector("#data-adminstate");
+var dataAdminType = document.querySelector("#data-admintype");
 
 var dataVisa = document.querySelector("#data-visa");
 var dataSports = document.querySelector("#data-sports .data-content");
@@ -252,8 +246,10 @@ var dataNumber = document.querySelector("#data-number");
 var dataName = document.querySelector("#profile-element-container-name");
 var dataLinkedin = document.querySelector("#data-linkedin");
 var dataLinkedinWrapper = document.querySelector("#data-linkedin-wrapper");
+var dataLinkedinRow = document.querySelector("#data-linkedin-row");
 var dataInstagram = document.querySelector("#data-instagram");
 var dataInstagramWrapper = document.querySelector("#data-instagram-wrapper");
+var dataInstagramRow = document.querySelector("#data-instagram-row");
 var dataFlag = document.querySelector("#data-flag");
 
 var newEditedData;
@@ -312,10 +308,8 @@ var fillDataInDocument = (data) => {
     // Set selected from query to document
     var selectorAllOptions = document.querySelectorAll(`[${optionsAttribute}]`);
     selectorAllOptions.forEach((element) => {
-      console.log(queryVariable)
-      console.log(`${optionsAttribute}`)
       if (element.getAttribute(`${optionsAttribute}`) === queryVariable) {
-        element.classList.add("marked")
+        element.classList.add("marked");
       }
     });
 
@@ -469,7 +463,7 @@ var fillDataInDocument = (data) => {
   }
 
   newEditedData.userLinkedin === ""
-    ? (dataLinkedinWrapper.style.display = "none")
+    ? (dataLinkedinRow.style.display = "none")
     : ((dataLinkedinWrapper.href = generateLinkedInUrl(
         newEditedData.userLinkedin
       )[0]),
@@ -479,7 +473,7 @@ var fillDataInDocument = (data) => {
 
   // ---------------------------------------------------------------------------- Instagram
   newEditedData.userInsta === ""
-    ? (dataInstagramWrapper.style.display = "none")
+    ? (dataInstagramRow.style.display = "none")
     : ((dataInstagramWrapper.href = generateInstagramUrl(
         newEditedData.userInsta
       )[0]),
@@ -537,6 +531,10 @@ var fillDataInDocument = (data) => {
   // ---------------------------------------------------------------------------- Visa
   dataVisa.innerHTML = newEditedData.userOtherNationality;
 
+  if (dataVisa.innerHTML === "") {
+    document.querySelector("#data-visa-row").style.display = "none";
+  }
+
   // ---------------------------------------------------------------------------- Languages
 
   function mapLanguages(data) {
@@ -552,9 +550,8 @@ var fillDataInDocument = (data) => {
     mapLanguages
   );
 
-
   // ---------------------------------------------------------------------------- Sports
-  
+
   function mapAdminState(element) {
     switch (element) {
       case "searching":
@@ -578,57 +575,59 @@ var fillDataInDocument = (data) => {
     (newValue) => updateProperty(newValue, "userAdminState")
   );
 
-    // ---------------------------------------------------------------------------- Sports
-  
-    function mapAdminType(element) {
-      switch (element) {
-        case "searching":
-          return "S";
-        case "2o3":
-          return "2 - 3";
-        case "one":
-          return "1";
-        case "now":
-          return "inmediata";
-        // Agrega más casos según tus necesidades
-        default:
-          return element; // Devuelve el mismo valor si no hay traducción
-      }
+  // ---------------------------------------------------------------------------- Sports
+
+  function mapAdminType(element) {
+    switch (element) {
+      case "searching":
+        return "S";
+      case "2o3":
+        return "2 - 3";
+      case "one":
+        return "1";
+      case "now":
+        return "inmediata";
+      // Agrega más casos según tus necesidades
+      default:
+        return element; // Devuelve el mismo valor si no hay traducción
     }
-    dataSelectOneAdmin(
-      "data-admintype",
-      newEditedData.userAdminType,
-      dataAdminType,
-      mapAdminType,
-      (newValue) => updateProperty(newValue, "userAdminType")
-    );
+  }
+  dataSelectOneAdmin(
+    "data-admintype",
+    newEditedData.userAdminType,
+    dataAdminType,
+    mapAdminType,
+    (newValue) => updateProperty(newValue, "userAdminType")
+  );
 
   // ---------------------------------------------------------------------------- Sports
 
-  // var otherOptionSport = document.querySelector('[data-other-sport]')
+  var otherOptionSport = document.querySelector("[data-other-sport]");
 
-  // otherOptionSport.addEventListener('change', () => {
-  //   newEditedData.userSports.length = 0
-  //   newEditedData.userSports.push(otherOptionSport.value)
-  //   dataSports.innerHTML = newEditedData.userSports.join(", ");
-  //   otherOptionSport.classList.add('selected')
+  if (!(newEditedData.userAdditionalSport === '')) {
+    otherOptionSport.value = newEditedData.userAdditionalSport
+    otherOptionSport.style.display = 'flex'
+  }
 
-  //   optionsSports.forEach(element => {
-  //     if (element.classList.contains('selected')) {
-  //       newEditedData.userSports.push(element.getAttribute('data-sport'))
-  //       dataSports.innerHTML = newEditedData.userSports.join(", ");
+  otherOptionSport.addEventListener('input', () => {
+    newEditedData.userAdditionalSport = otherOptionSport.value
 
-  //       dataSports.parentNode.classList.remove('selectionanimation');
-  //       setTimeout(function() {
-  //         dataSports.parentNode.classList.add('selectionanimation');
-  //       }, 1);
-  //     }
-  //   })
-  // })
+    if (!(newEditedData.userAdditionalSport === '')) {
+      otherOptionSport.value = newEditedData.userAdditionalSport
+      otherOptionSport.style.display = 'flex'
+    }
+
+  })
+
 
   function mapSport(data) {
     switch (data) {
-      // Agrega más casos según tus necesidades
+      case "tenis":
+        return "tenis";
+      case "padel":
+        return "padel";
+      case "pickleball":
+        return "pickleball";
       default:
         return data; // Devuelve el mismo valor si no hay traducción
     }
