@@ -1,5 +1,5 @@
 .Header {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
   backdrop-filter: blur(25px) !important;
   -webkit-backdrop-filter: blur(25px);
@@ -125,7 +125,7 @@
   height: -moz-max-content;
   height: max-content;
   width: 100vw;
-  background-image: url(../assets/coach_background.png);
+  background-image: url(../assets/coach_background_4.png);
   background-size: cover;
   margin: auto;
 }
@@ -193,7 +193,7 @@
   margin-bottom: 2rem;
 }
 .transparent-content-box.admin-only {
-  background-color: rgba(2, 91, 123, 0.1254901961);
+  background: rgba(229, 244, 255, 0.5);
 }
 
 #profile-content-container-1 {

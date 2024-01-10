@@ -1,6 +1,6 @@
 .Header {
     // background-color: rgba($color: #000000, $alpha: 0) !important;
-    background-color: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
     backdrop-filter: blur(25px) !important;
     -webkit-backdrop-filter: blur(25px);
@@ -257,7 +257,7 @@
     min-height: 100vh;
     height: max-content;
     width: 100vw;
-    background-image: url(../assets/coach_background.png);
+    background-image: url(../assets/coach_background_4.png);
     background-size: cover;
     margin: auto;
   }
@@ -283,8 +283,10 @@
     align-items: center;
     font-size: 1.4rem;
     font-weight: 500;
-    color: var(--color-primary);
+    // color: var(--color-primary);
+    color: white;
     gap: 1rem;
+    height: 2rem;
   }
 
   #search-bar {
@@ -296,7 +298,6 @@
     height: 3.4rem;
     padding: 0.5rem 1rem;
     border-radius: 1rem;
-    background-color: #F4F6FA;
   }
 
   #search-input {
@@ -430,7 +431,7 @@
   }
 
   .transparent-content-box {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.5);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(25px);
   }
@@ -447,24 +448,26 @@
 }
 
 #headerrow {
-  background-color: #E6EDF3;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .row {
-    display: flex;
-    width: 100%;
-    gap: 1rem;
-    padding: 0.5rem 0;
-    background: #F3F5F9;
-    transition: 0.2s;
-    &:nth-child(odd) {
-    background-color: white;
-    }
-    &:hover {
-      // background-color: #0388b830
-      // opacity: 0.4;
-      background-color: rgba(0, 0, 0, 0.0);
-    }
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  // transition: 0.2s;
+  border: 2px solid rgba(0, 0, 0, 0);
+  &:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.2);
+  }
+  &:hover {
+    // background-color: #0388b830
+    // opacity: 0.4;
+    // background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0);
+  }
 }
 
 .cell {
@@ -474,7 +477,7 @@
     text-align: center;
     width: 16%;
     padding: 0.5rem;
-    font-weight: 500;
+    font-weight: 400;
     height: 3rem;
     color: var(--color-primary);
     &.name {
