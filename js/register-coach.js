@@ -36,6 +36,9 @@ var userNationality = document.querySelector("#js_selected-flag2");
 var userOtherNationality = document.querySelector(
   "#othernations-container > input"
 );
+var userTitles = document.querySelector(
+  "#titles-container > input"
+);
 var userResidence = document.querySelector("#js_selected-flag3");
 var userAdditionalSport = document.querySelector("#additional-sport");
 var userPhoneNumberPrefix = document.querySelector("#js_number-prefix");
@@ -52,6 +55,7 @@ var optionsGenders = document.querySelectorAll(".data-gender-option");
 var optionsLanguages = document.querySelectorAll(".data-language-option");
 var optionsSports = document.querySelectorAll(".data-sport-option");
 var optionsExperience = document.querySelectorAll(".data-experience-option");
+var optionsAdditionalExperience = document.querySelectorAll(".data-experience-additional-option");
 var optionsExp = document.querySelectorAll(".data-clubexp-option");
 var optionsCoaches = document.querySelectorAll(".data-othercoachexp-option");
 var optionsTourOrg = document.querySelectorAll(".data-tourorg-option");
@@ -61,6 +65,7 @@ var optionsCompNow = document.querySelectorAll(".data-compnow-option");
 var optionsIntExp = document.querySelectorAll(".data-intexp-option");
 var optionsHours = document.querySelectorAll(".data-hours-option");
 var optionsLevel = document.querySelectorAll(".data-level-option");
+var optionsStudentsAge = document.querySelectorAll(".data-studentsage-option");
 var optionsStartingTime = document.querySelectorAll(
   ".data-startingtime-option"
 );
@@ -276,6 +281,8 @@ var registerData = {
   userSports: [],
   userAdditionalSport: "",
   userExperience: "",
+  userAdditionalExperience: "",
+  userTitles: "",
   userClubExp: "",
   userOtherCoachExp: "",
   userToursJuzge: "",
@@ -285,6 +292,7 @@ var registerData = {
   userInternationalExp: "",
   userWeeklyHours: "",
   userPreferredLevel: [],
+  userStudentsAge: [],
   userAvailability: "",
   userMobilityContinents: [],
   userOportunityType: [],
@@ -400,12 +408,28 @@ optionsSports.forEach((option) => {
 
 optionsExperience.forEach((option) => {
   option.addEventListener("click", () => {
-    optionsExperience.forEach((option) => {
-      option.classList.remove("active");
+    const isActive = option.classList.contains("active");
+    optionsExperience.forEach((opt) => {
+      opt.classList.remove("active");
     });
-    option.classList.add("active");
+    if (!isActive) {
+      option.classList.add("active");
+    }
   });
 });
+
+optionsAdditionalExperience.forEach((option) => {
+  option.addEventListener("click", () => {
+    const isActive = option.classList.contains("active");
+    optionsAdditionalExperience.forEach((opt) => {
+      opt.classList.remove("active");
+    });
+    if (!isActive) {
+      option.classList.add("active");
+    }
+  });
+});
+
 
 nextConditionalSport.addEventListener("click", (e) => {
   var moveForwardVariable = true;
@@ -429,6 +453,12 @@ nextConditionalSport.addEventListener("click", (e) => {
     }
   });
   stopper2 ? (moveForwardVariable = false) : "";
+
+  optionsAdditionalExperience.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userAdditionalExperience = field.getAttribute("data-experience-additional");
+    }
+  });
 
   userAdditionalSport.value === ""
     ? ""
@@ -481,6 +511,8 @@ nextConditionalExpOne.addEventListener("click", (e) => {
     }
   });
   stopper3 ? (moveForwardVariable = false) : "";
+
+  registerData.userTitles = userTitles.value;
 
   moveForwardVariable ? moveForward() : shakeAnimation(e.target);
 });
@@ -613,6 +645,12 @@ optionsLevel.forEach((option) => {
   });
 });
 
+optionsStudentsAge.forEach((option) => {
+  option.addEventListener("click", () => {
+    option.classList.toggle("active");
+  });
+});
+
 nextConditionalPrefOne.addEventListener("click", (e) => {
   var moveForwardVariable = true;
 
@@ -635,7 +673,18 @@ nextConditionalPrefOne.addEventListener("click", (e) => {
   });
   stopper2 ? (moveForwardVariable = false) : "";
 
+  var stopper3 = true;
+  registerData.userStudentsAge = [];
+  optionsStudentsAge.forEach((field) => {
+    if (field.classList.contains("active")) {
+      registerData.userStudentsAge.push(field.getAttribute("data-studentsage"));
+      stopper3 = false;
+    }
+  });
+  stopper3 ? (moveForwardVariable = false) : "";
+
   moveForwardVariable ? moveForward() : shakeAnimation(e.target);
+  console.log(registerData)
 });
 
 //#endregion

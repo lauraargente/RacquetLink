@@ -680,7 +680,7 @@
   padding: 0.4rem 0.8rem;
   font-weight: 400;
   font-family: Montserrat;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.2);
   color: var(--color-primary);
   pointer-events: none;
   width: 8rem;
@@ -689,17 +689,17 @@
   outline: none;
 }
 .inputtext:hover {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.5);
 }
 .inputtext:active {
   background: rgb(255, 255, 255);
 }
 .inputtext::-moz-placeholder {
-  color: #000000;
+  color: #b7b7b7;
   font-family: Montserrat;
 }
 .inputtext::placeholder {
-  color: #000000;
+  color: #b7b7b7;
   font-family: Montserrat;
 }
 .inputtext.editable {

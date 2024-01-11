@@ -498,53 +498,35 @@ Estructura general:
                             </input>
                         </div>
                     </div>
-                    <div class="register-element-question-smaller" style="margin-top: 2rem;">
+                    <div class="register-element-question-smaller" style="margin-top: 1rem;">
                         Años de experiencia como entrenador
                     </div>
                     <div class="register-checkbox-wrapper" style="margin-bottom: 1rem;">
                         <div class="register-checkbox-container activable data-experience-option" data-experience="two-or-less">
-                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
-                                <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg> -->
                             <div class="register-checkbox-label experience-label">&lt; 2</div>
                         </div>
                         <div class="register-checkbox-container activable data-experience-option" data-experience="two-to-five">
-                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
-                                <path d="M13 10L7 4L1 10" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 14L7 8L1 14" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg> -->
                             <div class="register-checkbox-label experience-label">2 - 5</div>
                         </div>
                         <div class="register-checkbox-container activable data-experience-option" data-experience="five-to-ten">
-                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
-                                <path d="M13 8L7 2L1 8" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 16L7 10L1 16" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg> -->
                             <div class="register-checkbox-label experience-label">5 - 10</div>
                         </div>
                         <div class="register-checkbox-container activable data-experience-option" data-experience="ten-or-more">
-                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="20" viewBox="0 0 14 20" fill="none">
-                                <path d="M13 7L7 1L1 7" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 11L7 5L1 11" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 15L7 9L1 15" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 19L7 13L1 19" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg> -->
                             <div class="register-checkbox-label experience-label">> 10</div>
                         </div>
-                        <div class="register-checkbox-container activable data-experience-option" data-experience="professional player">
-                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="20" viewBox="0 0 14 20" fill="none">
-                                <path d="M13 7L7 1L1 7" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 11L7 5L1 11" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 15L7 9L1 15" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13 19L7 13L1 19" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg> -->
+                    </div>
+                    <div class="register-element-question-smaller" style="margin-top: 1rem;">
+                        Experiencia adicional (opcional)
+                    </div>
+                    <div class="register-checkbox-wrapper" style="margin-bottom: 1rem;">
+                        <div class="register-checkbox-container activable data-experience-additional-option" data-experience-additional="profesionalnow">
                             <div class="register-checkbox-label experience-label">Soy jugador profesional</div>
+                        </div>
+                        <div class="register-checkbox-container activable data-experience-additional-option" data-experience-additional="profesionalthen">
+                            <div class="register-checkbox-label experience-label">He sido jugador profesional</div>
+                        </div>
+                        <div class="register-checkbox-container activable data-experience-additional-option" data-experience-additional="studentathlete">
+                            <div class="register-checkbox-label experience-label">Soy Student Athlete en USA</div>
                         </div>
                     </div>
                 </div>
@@ -612,6 +594,16 @@ Estructura general:
                               </svg> -->
                             <div class="register-checkbox-label">No</div>
                         </div>
+                    </div>
+                    <div class="register-element-question-smaller">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 18 22" fill="none">
+                            <path d="M4 14.0903V21L8.70289 19.1188C8.81265 19.0749 8.86753 19.053 8.92419 19.0443C8.97444 19.0366 9.02556 19.0366 9.07581 19.0443C9.13247 19.053 9.18735 19.0749 9.29711 19.1188L14 21V14.0903M16.5 8.5C16.5 12.6421 13.1421 16 9 16C4.85786 16 1.5 12.6421 1.5 8.5C1.5 4.35786 4.85786 1 9 1C13.1421 1 16.5 4.35786 16.5 8.5Z" stroke="rgb(2, 91, 123)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                          ¿Qué títulos y/o certificados tienes? (OPCIONAL)
+                    </div>
+                    <div id="titles-container" class="textinput-container" style="display: flex; margin-left: 2.6rem; margin-top: 0.4rem; ">
+                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Escribe tus títulos">
+                        </input>
                     </div>
                 </div>
             </div>
@@ -872,6 +864,39 @@ Estructura general:
                                 <path d="M13 19L7 13L1 19" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                             <div class="register-checkbox-label experience-label">Profesional</div>
+                        </div>
+                    </div>
+                    <div class="register-element-question-smaller" style="margin-top: 2rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 15C8.82993 15 6.0108 16.5306 4.216 18.906C3.82971 19.4172 3.63656 19.6728 3.64288 20.0183C3.64776 20.2852 3.81536 20.6219 4.02537 20.7867C4.29719 21 4.67387 21 5.42724 21H18.5728C19.3261 21 19.7028 21 19.9746 20.7867C20.1846 20.6219 20.3522 20.2852 20.3571 20.0183C20.3634 19.6728 20.1703 19.4172 19.784 18.906C17.9892 16.5306 15.1701 15 12 15Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        ¿Qué edad tienen tus alumnos?
+                    </div>
+                    <div class="register-checkbox-wrapper withmargin">
+                        <div class="register-checkbox-container activable data-studentsage-option" data-studentsage="youth">
+                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
+                                <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                            <div class="register-checkbox-label experience-label">Niños</div>
+                        </div>
+                        <div class="register-checkbox-container activable data-studentsage-option" data-studentsage="teens">
+                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
+                                <path d="M13 10L7 4L1 10" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13 14L7 8L1 14" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                            <div class="register-checkbox-label experience-label">Adolescentes</div>
+                        </div>
+                        <div class="register-checkbox-container activable data-studentsage-option" data-studentsage="adults">
+                            <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
+                                <path d="M13 8L7 2L1 8" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13 16L7 10L1 16" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                            <div class="register-checkbox-label experience-label">Adultos</div>
                         </div>
                     </div>
                 </div>
