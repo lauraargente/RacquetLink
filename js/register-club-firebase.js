@@ -97,6 +97,7 @@ var firebaseSaveClubData = (registerData) => {
     try {
       const docRef = addDoc(collection(db, "clubsData"), {
         clubName: registerData.clubName,
+        clubRecommendation: registerData.clubRecommendation,
         clubWebPage: registerData.clubWebPage,
         clubCountry: registerData.clubCountry,
         clubCity: registerData.clubCity,

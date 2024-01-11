@@ -66,6 +66,7 @@ var optionsSalary = document.querySelectorAll(".data-salary-option");
 //#endregion
 
 //#region (v) next buttons
+var nextConditionalDisclaimer = document.querySelector("#next-conditional-disclaimer");
 var nextConditionalInfo = document.querySelector("#next-conditional-info");
 var nextConditionalNation = document.querySelector("#next-conditional-nations");
 var nextConditionalSport = document.querySelector("#next-conditional-sport");
@@ -113,7 +114,7 @@ var createCoachOkIcon = document.querySelector("#create-coach-ok-icon");
 
 // Progress var elements
 var currentPosition = 0;
-var currentProgressValue = 8.5;
+var currentProgressValue = 7.7;
 
 //#region focus and unfocus coloring
 
@@ -180,7 +181,7 @@ backButtons.forEach((button) => {
   button.addEventListener("click", () => {
     currentPosition = currentPosition + 100;
     registerContainer.style.transform = `translateY(${currentPosition}vh)`;
-    currentProgressValue = currentProgressValue - 8.5;
+    currentProgressValue = currentProgressValue - 7.7;
     currentProgress.style.width = `${currentProgressValue}%`;
   });
 });
@@ -192,7 +193,7 @@ backButtons.forEach((button) => {
 var moveForward = function () {
   currentPosition = currentPosition - 100;
   registerContainer.style.transform = `translateY(${currentPosition}vh)`;
-  currentProgressValue = currentProgressValue + 8.5;
+  currentProgressValue = currentProgressValue + 7.7;
   currentProgress.style.width = `${currentProgressValue}%`;
 };
 
@@ -284,6 +285,14 @@ var registerData = {
   coachId: "",
   registerDate: "",
 };
+
+//#region 0 disclaimer 
+
+nextConditionalDisclaimer.addEventListener("click", (e) => {
+  moveForward();
+});
+
+//#endregion
 
 //#region 1 info tab
 
@@ -1499,5 +1508,13 @@ init(countries);
 
 //#endregion PhoneNumber
 
+//#region (l) Prevent default TAB behaviour 
 
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Tab') {
+    event.preventDefault();
+  }
+});
+
+//#endregion
 

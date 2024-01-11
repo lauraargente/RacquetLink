@@ -12,7 +12,8 @@ Estructura general:
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Registro Coach</title>
     <link rel="icon" href="assets/RacquetLink-19.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -188,10 +189,19 @@ Estructura general:
         </div>
     </div>
     <div id="register-container">
-        <div class="register-element" id="register-personalinfo">
+        <div class="register-element" id="initial-disclaimer">
             <div id="title">
-                registro coach
+                Registro Coach
             </div>
+            <img src="/assets/coach_line_huge.png" alt="" id="disclaimer-image">
+            <p>A continuación, deberás completar una serie de preguntas
+                para crear tu perfil dentro de la plataforma. Así podremos
+                buscarte una oportunidad laboral que se ajuste a tu perfil. Es
+                muy importante que la información sea veraz. ¡Gracias!</p>
+                <div id="next-conditional-disclaimer" class="register-element-next">Comenzar registro
+                </div>
+        </div>
+        <div class="register-element" id="register-personalinfo">
             <div class="register-element-content">
                 <div class="register-element-left">
                     <div class="register-element-number">
@@ -234,13 +244,16 @@ Estructura general:
                           </svg></div>
                         <div class="dropdown-options">
                             <div class="dropdown-option" data-recommendator="no">No</div>
-                            <div class="dropdown-option" data-recommendator="javier-marti">Javier Martí</div>
-                            <div class="dropdown-option" data-recommendator="miguel-semmler">Miguel Semmler</div>
-                            <div class="dropdown-option" data-recommendator="adriana-armendariz">Adriana Armendariz</div>
-                            <div class="dropdown-option" data-recommendator="diego-ortiz">Diego Ortiz</div>
-                            <div class="dropdown-option" data-recommendator="alejandro-crespo">Alejandro Crespo</div>
+                            <div class="dropdown-option" data-recommendator="laura-marti">Laura Marti</div>
                             <div class="dropdown-option" data-recommendator="sergi-perez">Sergi Perez</div>
-                            <div class="dropdown-option" data-recommendator="laura-marti">Laura Martí</div>
+                            <div class="dropdown-option" data-recommendator="javier-marti">Javier Marti</div>
+                            <div class="dropdown-option" data-recommendator="iñigo-jofre">Iñigo Jofre</div>
+                            <div class="dropdown-option" data-recommendator="miguel-semmler">Miguel Semmler</div>
+                            <div class="dropdown-option" data-recommendator="pablo-franco">Pablo Franco</div>
+                            <div class="dropdown-option" data-recommendator="sergio-cerdeña">Sergio Cerdeña</div>
+                            <div class="dropdown-option" data-recommendator="global-college">Global College</div>
+                            <div class="dropdown-option" data-recommendator="adriana-armendariz">Adriana Armendariz</div>
+                            <div class="dropdown-option" data-recommendator="pablo-aycart">Pablo Aycart</div>
                         </div>
                     </div>
                     <div class="register-element-question-smaller">

@@ -604,21 +604,19 @@ var fillDataInDocument = (data) => {
 
   var otherOptionSport = document.querySelector("[data-other-sport]");
 
-  if (!(newEditedData.userAdditionalSport === '')) {
-    otherOptionSport.value = newEditedData.userAdditionalSport
-    otherOptionSport.style.display = 'flex'
+  if (!(newEditedData.userAdditionalSport === "")) {
+    otherOptionSport.value = newEditedData.userAdditionalSport;
+    otherOptionSport.style.display = "flex";
   }
 
-  otherOptionSport.addEventListener('input', () => {
-    newEditedData.userAdditionalSport = otherOptionSport.value
+  otherOptionSport.addEventListener("input", () => {
+    newEditedData.userAdditionalSport = otherOptionSport.value;
 
-    if (!(newEditedData.userAdditionalSport === '')) {
-      otherOptionSport.value = newEditedData.userAdditionalSport
-      otherOptionSport.style.display = 'flex'
+    if (!(newEditedData.userAdditionalSport === "")) {
+      otherOptionSport.value = newEditedData.userAdditionalSport;
+      otherOptionSport.style.display = "flex";
     }
-
-  })
-
+  });
 
   function mapSport(data) {
     switch (data) {
@@ -832,6 +830,17 @@ var fillDataInDocument = (data) => {
         return "Sergi Pérez";
       case "laura-marti":
         return "Laura Martí";
+      case "global-college":
+        return "Global College";
+      case "pablo-franco":
+        return "Pablo Franco";
+      case "sergio-cerdeña":
+        return "Sergio Cerdeña";
+      case "iñigo-jofre":
+        return "Iñigo Jofre";
+      case "pablo-aycart":
+        return "Pablo Aycart";
+
       // Agrega más casos según tus necesidades
       default:
         return data; // Devuelve el mismo valor si no hay traducción

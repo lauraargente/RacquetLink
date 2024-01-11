@@ -2,6 +2,23 @@ import { checkIfUserAdmin } from "./adminlist.js";
 import { firebaseGetAllClubs } from "./dashboard-firebase.js";
 import { firebaseGetAllCoaches } from "./dashboard-firebase.js";
 
+//#region general variables
+
+let recommendatorsCounter = {
+  laura_marti: 0,
+  sergi_perez: 0,
+  javier_marti: 0,
+  iñigo_jofre: 0,
+  miguel_semmler: 0,
+  pablo_franco: 0,
+  sergio_cerdeña: 0,
+  global_college: 0,
+  adriana_armendariz: 0,
+  pablo_aycart: 0,
+};
+
+//#endregion
+
 //#region getData Clubs & Coaches
 
 var clubsCounter = {
@@ -45,6 +62,40 @@ firebaseGetAllClubs().then((outputClub) => {
       // Si hay más estados, se pueden agregar más casos aquí
     }
 
+    switch (club.clubRecommendation) {
+      case "laura-marti":
+        recommendatorsCounter.laura_marti++;
+        break;
+      case "sergi-perez":
+        recommendatorsCounter.sergi_perez++;
+        break;
+      case "javier-marti":
+        recommendatorsCounter.javier_marti++;
+        break;
+      case "iñigo-jofre":
+        recommendatorsCounter.iñigo_jofre++;
+        break;
+      case "miguel-semmler":
+        recommendatorsCounter.miguel_semmler++;
+        break;
+      case "pablo-franco":
+        recommendatorsCounter.pablo_franco++;
+        break;
+      case "sergio-cerdeña":
+        recommendatorsCounter.sergio_cerdeña++;
+        break;
+      case "global-college":
+        recommendatorsCounter.global_college++;
+        break;
+      case "adriana-armendariz":
+        recommendatorsCounter.adriana_armendariz++;
+        break;
+      case "pablo-aycart":
+        recommendatorsCounter.pablo_aycart++;
+        break;
+      // Agrega más casos si es necesario
+    }
+
     let date = new Date(club.clubRegisterDate);
     let formattedDate = `${date.getDate().toString().padStart(2, "0")}-${(
       date.getMonth() + 1
@@ -69,12 +120,11 @@ firebaseGetAllClubs().then((outputClub) => {
     .sort((a, b) => b.formattedRegisterDate - a.formattedRegisterDate)
     .slice(0, 6);
 
-  updateTotalClubs(clubsCounter.total)
+  updateTotalClubs(clubsCounter.total);
   updateLastClubs(lastClubs);
   updateLineChartMonth(dateCounts, true);
   updateLineChartYear(dateCounts, true);
   updateClubsDoughnut(clubsCounter);
-
 });
 
 firebaseGetAllCoaches().then((outputCoach) => {
@@ -86,15 +136,6 @@ firebaseGetAllCoaches().then((outputCoach) => {
     head: 0,
     student: 0,
     pro: 0,
-  };
-  let recommendatorsCounter = {
-    javier_marti: 0,
-    miguel_semmler: 0,
-    adriana_armendariz: 0,
-    diego_ortiz: 0,
-    alejandro_crespo: 0,
-    sergi_perez: 0,
-    laura_marti: 0,
   };
 
   outputCoach.forEach((coach) => {
@@ -116,28 +157,37 @@ firebaseGetAllCoaches().then((outputCoach) => {
     }
 
     switch (coach.userRecommendation) {
-      case "javier-marti":
-        recommendatorsCounter.javier_marti++;
-        break;
-      case "miguel-semmler":
-        recommendatorsCounter.miguel_semmler++;
-        break;
-      case "adriana-armendariz":
-        recommendatorsCounter.adriana_armendariz++;
-        break;
-      case "diego-ortiz":
-        recommendatorsCounter.diego_ortiz++;
-        break;
-      case "alejandro-crespo":
-        recommendatorsCounter.alejandro_crespo++;
+      case "laura-marti":
+        recommendatorsCounter.laura_marti++;
         break;
       case "sergi-perez":
         recommendatorsCounter.sergi_perez++;
         break;
-      case "laura-marti":
-        recommendatorsCounter.laura_marti++;
+      case "javier-marti":
+        recommendatorsCounter.javier_marti++;
         break;
-      // Añadir más casos según sea necesario
+      case "iñigo-jofre":
+        recommendatorsCounter.iñigo_jofre++;
+        break;
+      case "miguel-semmler":
+        recommendatorsCounter.miguel_semmler++;
+        break;
+      case "pablo-franco":
+        recommendatorsCounter.pablo_franco++;
+        break;
+      case "sergio-cerdeña":
+        recommendatorsCounter.sergio_cerdeña++;
+        break;
+      case "global-college":
+        recommendatorsCounter.global_college++;
+        break;
+      case "adriana-armendariz":
+        recommendatorsCounter.adriana_armendariz++;
+        break;
+      case "pablo-aycart":
+        recommendatorsCounter.pablo_aycart++;
+        break;
+      // Agrega más casos si es necesario
     }
 
     // Obtener la fecha de registro y formatearla a dd-mm-yyyy
@@ -166,7 +216,7 @@ firebaseGetAllCoaches().then((outputCoach) => {
     .sort((a, b) => b.formattedRegisterDate - a.formattedRegisterDate)
     .slice(0, 6);
 
-  updateTotalCoaches(coachesCounter.total)
+  updateTotalCoaches(coachesCounter.total);
   updateBarWidths(recommendatorsCounter);
   updateLastCoaches(lastCoaches);
   updateLineChartMonth(dateCounts, false); // Actualiza con datos de coaches
@@ -508,8 +558,6 @@ function updateBarWidths(recommendatorsCounter) {
       `#${recommendatorId} .recommendator-bar`
     );
     if (barElement) {
-      console.log(barElement)
-      console.log(percentage)
       barElement.style.width = `${percentage}%`;
     }
   }
@@ -550,138 +598,166 @@ function updateBarWidths(recommendatorsCounter) {
 //#region last registered
 
 function updateLastCoaches(lastCoaches) {
-    const container = document.getElementById("lastCoachesContainer");
-  
-    // Limpiar el contenedor antes de agregar nuevos elementos
-    container.innerHTML = '<div class="box-label">Últimos coaches</div>';
-  
-    const today = new Date();
-    const currentDay = today.getDate();
-    const currentMonth = today.getMonth() + 1;
-    const currentYear = today.getFullYear();
-  
-    lastCoaches.forEach((coach) => {
-      const coachElement = document.createElement("div");
-      coachElement.className = "last-registered-row";
-  
-      const nameAndIconDiv = document.createElement("div");
-      nameAndIconDiv.className = "nameandicon";
-  
-      const iconDiv = document.createElement("div");
-      iconDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17" fill="none">
+  const container = document.getElementById("lastCoachesContainer");
+
+  // Limpiar el contenedor antes de agregar nuevos elementos
+  container.innerHTML = '<div class="box-label">Últimos coaches</div>';
+
+  const today = new Date();
+  const currentDay = today.getDate();
+  const currentMonth = today.getMonth() + 1;
+  const currentYear = today.getFullYear();
+
+  lastCoaches.forEach((coach) => {
+    const coachElement = document.createElement("div");
+    coachElement.className = "last-registered-row";
+
+    const nameAndIconDiv = document.createElement("div");
+    nameAndIconDiv.className = "nameandicon";
+
+    const iconDiv = document.createElement("div");
+    iconDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17" fill="none">
         <path d="M13.9112 15.4845C13.9112 14.3615 13.9112 13.8 13.773 13.3431C13.462 12.3143 12.6595 11.5093 11.6341 11.1972C11.1786 11.0586 10.6189 11.0586 9.49949 11.0586H5.48885C4.36943 11.0586 3.80972 11.0586 3.35427 11.1972C2.32883 11.5093 1.52637 12.3143 1.21531 13.3431C1.07715 13.8 1.07715 14.3615 1.07715 15.4845M11.1037 4.62111C11.1037 6.621 9.48768 8.24223 7.49417 8.24223C5.50066 8.24223 3.8846 6.621 3.8846 4.62111C3.8846 2.62123 5.50066 1 7.49417 1C9.48768 1 11.1037 2.62123 11.1037 4.62111Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>`; 
-  
-      const nameDiv = document.createElement("div");
-      nameDiv.textContent = `${coach.userName} ${coach.userSurname}`; // Nombre y apellido del coach
-  
-      nameAndIconDiv.appendChild(iconDiv);
-      nameAndIconDiv.appendChild(nameDiv);
-  
-      const dateDiv = document.createElement("div");
-      dateDiv.className = "date";
-      const coachDate = new Date(coach.registerDate);
-  
-      // Comprobar si la fecha del coach es la misma que la fecha actual
-      if (coachDate.getDate() === currentDay && (coachDate.getMonth() + 1) === currentMonth && coachDate.getFullYear() === currentYear) {
-        // Mostrar la hora si es el día actual
-        dateDiv.textContent = `${coachDate.getHours().toString().padStart(2, '0')}:${coachDate.getMinutes().toString().padStart(2, '0')}`;
-      } else {
-        // Mostrar la fecha en formato dd/mm si no es el día actual
-        dateDiv.textContent = `${coachDate.getDate().toString().padStart(2, '0')}/${(coachDate.getMonth() + 1).toString().padStart(2, '0')}`;
-      }
-  
-      coachElement.appendChild(nameAndIconDiv);
-      coachElement.appendChild(dateDiv);
-  
-      container.appendChild(coachElement);
-    });
-  
-    // Añadir el enlace "Ver tabla de coaches" al final del contenedor
-    const linkElement = document.createElement("a");
-    linkElement.href = "coaches-table.html";
-    linkElement.className = "go-to-table";
-    linkElement.innerHTML = `Ver tabla de coaches<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+      </svg>`;
+
+    const nameDiv = document.createElement("div");
+    nameDiv.textContent = `${coach.userName} ${coach.userSurname}`; // Nombre y apellido del coach
+
+    nameAndIconDiv.appendChild(iconDiv);
+    nameAndIconDiv.appendChild(nameDiv);
+
+    const dateDiv = document.createElement("div");
+    dateDiv.className = "date";
+    const coachDate = new Date(coach.registerDate);
+
+    // Comprobar si la fecha del coach es la misma que la fecha actual
+    if (
+      coachDate.getDate() === currentDay &&
+      coachDate.getMonth() + 1 === currentMonth &&
+      coachDate.getFullYear() === currentYear
+    ) {
+      // Mostrar la hora si es el día actual
+      dateDiv.textContent = `${coachDate
+        .getHours()
+        .toString()
+        .padStart(2, "0")}:${coachDate
+        .getMinutes()
+        .toString()
+        .padStart(2, "0")}`;
+    } else {
+      // Mostrar la fecha en formato dd/mm si no es el día actual
+      dateDiv.textContent = `${coachDate
+        .getDate()
+        .toString()
+        .padStart(2, "0")}/${(coachDate.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}`;
+    }
+
+    coachElement.appendChild(nameAndIconDiv);
+    coachElement.appendChild(dateDiv);
+
+    container.appendChild(coachElement);
+  });
+
+  // Añadir el enlace "Ver tabla de coaches" al final del contenedor
+  const linkElement = document.createElement("a");
+  linkElement.href = "coaches-table.html";
+  linkElement.className = "go-to-table";
+  linkElement.innerHTML = `Ver tabla de coaches<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
           <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`;
-  
-    container.appendChild(linkElement);
-  }
-  
+
+  container.appendChild(linkElement);
+}
 
 function updateLastClubs(lastClubs) {
-    const container = document.getElementById('lastClubsContainer');
-  
-    // Limpiar el contenedor antes de agregar nuevos elementos
-    container.innerHTML = '<div class="box-label">Últimos clubs</div>';
-  
-    const today = new Date();
-    const currentDay = today.getDate();
-    const currentMonth = today.getMonth() + 1;
-    const currentYear = today.getFullYear();
-  
-    lastClubs.forEach(club => {
-      const clubElement = document.createElement('div');
-      clubElement.className = 'last-registered-row';
-  
-      const nameAndIconDiv = document.createElement('div');
-      nameAndIconDiv.className = 'nameandicon';
-  
-      // Aquí puedes insertar tu SVG o cualquier ícono que represente al club
-      const iconDiv = document.createElement('div');
-      iconDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
+  const container = document.getElementById("lastClubsContainer");
+
+  // Limpiar el contenedor antes de agregar nuevos elementos
+  container.innerHTML = '<div class="box-label">Últimos clubs</div>';
+
+  const today = new Date();
+  const currentDay = today.getDate();
+  const currentMonth = today.getMonth() + 1;
+  const currentYear = today.getFullYear();
+
+  lastClubs.forEach((club) => {
+    const clubElement = document.createElement("div");
+    clubElement.className = "last-registered-row";
+
+    const nameAndIconDiv = document.createElement("div");
+    nameAndIconDiv.className = "nameandicon";
+
+    // Aquí puedes insertar tu SVG o cualquier ícono que represente al club
+    const iconDiv = document.createElement("div");
+    iconDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
       <path d="M6.93429 16.7292C7.11188 16.8332 7.20067 16.8851 7.32598 16.9121C7.42323 16.933 7.56511 16.933 7.66236 16.9121C7.78767 16.8851 7.87646 16.8332 8.05405 16.7292C9.61663 15.8147 13.9112 12.942 13.9112 8.9922V5.14384C13.9112 4.50048 13.9112 4.1788 13.8063 3.90229C13.7136 3.65801 13.5631 3.44005 13.3676 3.26724C13.1464 3.07163 12.8461 2.95868 12.2456 2.73278L7.9448 1.11481C7.77804 1.05207 7.69466 1.02071 7.60889 1.00827C7.5328 0.997243 7.45554 0.997243 7.37945 1.00827C7.29367 1.02071 7.2103 1.05207 7.04354 1.11481L2.74269 2.73278C2.14221 2.95868 1.84197 3.07163 1.62072 3.26724C1.42526 3.44005 1.27469 3.65801 1.18203 3.90229C1.07715 4.1788 1.07715 4.50048 1.07715 5.14384V8.9922C1.07715 12.942 5.37171 15.8147 6.93429 16.7292Z" stroke="#025B7B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`; // Inserta tu SVG aquí
-  
-      const nameDiv = document.createElement('div');
-      nameDiv.textContent = club.clubName; // Nombre del club
-  
-      nameAndIconDiv.appendChild(iconDiv);
-      nameAndIconDiv.appendChild(nameDiv);
-  
-      const dateDiv = document.createElement('div');
-      dateDiv.className = 'date';
-      const clubDate = new Date(club.clubRegisterDate);
-  
-      // Comprobar si la fecha del club es la misma que la fecha actual
-      if (clubDate.getDate() === currentDay && (clubDate.getMonth() + 1) === currentMonth && clubDate.getFullYear() === currentYear) {
-        // Mostrar la hora si es el día actual
-        dateDiv.textContent = `${clubDate.getHours().toString().padStart(2, '0')}:${clubDate.getMinutes().toString().padStart(2, '0')}`;
-      } else {
-        // Mostrar la fecha en formato dd/mm si no es el día actual
-        dateDiv.textContent = `${clubDate.getDate().toString().padStart(2, '0')}/${(clubDate.getMonth() + 1).toString().padStart(2, '0')}`;
-      }
-  
-      clubElement.appendChild(nameAndIconDiv);
-      clubElement.appendChild(dateDiv);
-  
-      container.appendChild(clubElement);
-    });
-  
-    // Añadir el enlace "Ver tabla de clubs" al final del contenedor
-    const linkElement = document.createElement('a');
-    linkElement.href = 'clubs-table.html'; // Asegúrate de que esta es la URL correcta
-    linkElement.className = 'go-to-table';
-    linkElement.innerHTML = `Ver tabla de clubs<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+
+    const nameDiv = document.createElement("div");
+    nameDiv.textContent = club.clubName; // Nombre del club
+
+    nameAndIconDiv.appendChild(iconDiv);
+    nameAndIconDiv.appendChild(nameDiv);
+
+    const dateDiv = document.createElement("div");
+    dateDiv.className = "date";
+    const clubDate = new Date(club.clubRegisterDate);
+
+    // Comprobar si la fecha del club es la misma que la fecha actual
+    if (
+      clubDate.getDate() === currentDay &&
+      clubDate.getMonth() + 1 === currentMonth &&
+      clubDate.getFullYear() === currentYear
+    ) {
+      // Mostrar la hora si es el día actual
+      dateDiv.textContent = `${clubDate
+        .getHours()
+        .toString()
+        .padStart(2, "0")}:${clubDate
+        .getMinutes()
+        .toString()
+        .padStart(2, "0")}`;
+    } else {
+      // Mostrar la fecha en formato dd/mm si no es el día actual
+      dateDiv.textContent = `${clubDate
+        .getDate()
+        .toString()
+        .padStart(2, "0")}/${(clubDate.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}`;
+    }
+
+    clubElement.appendChild(nameAndIconDiv);
+    clubElement.appendChild(dateDiv);
+
+    container.appendChild(clubElement);
+  });
+
+  // Añadir el enlace "Ver tabla de clubs" al final del contenedor
+  const linkElement = document.createElement("a");
+  linkElement.href = "clubs-table.html"; // Asegúrate de que esta es la URL correcta
+  linkElement.className = "go-to-table";
+  linkElement.innerHTML = `Ver tabla de clubs<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
         <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>`;
-  
-    container.appendChild(linkElement);
-  }
-  
+
+  container.appendChild(linkElement);
+}
 
 //#endregion
 
-//#region totals 
+//#region totals
 
 var updateTotalClubs = (total) => {
-    var number = document.querySelector('.total-number-clubs')
-    number.innerHTML = total
-}
+  var number = document.querySelector(".total-number-clubs");
+  number.innerHTML = total;
+};
 
 var updateTotalCoaches = (total) => {
-    var number = document.querySelector('.total-number-coaches')
-    number.innerHTML = total
-}
+  var number = document.querySelector(".total-number-coaches");
+  number.innerHTML = total;
+};
 
 //#endregion

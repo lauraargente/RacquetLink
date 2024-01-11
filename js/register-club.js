@@ -9,6 +9,7 @@ var specialTextInputPhone = document.querySelector("#pn-input-blur");
 var backButtons = document.querySelectorAll(".register-element-back");
 var nextButtons = document.querySelectorAll(".register-element-next");
 
+var nextConditionalDisclaimer = document.querySelector("#next-conditional-disclaimer");
 var nextConditionalClub = document.querySelector("#next-conditional-club");
 var nextConditionalCountry = document.querySelector(
   "#next-conditional-country"
@@ -46,7 +47,7 @@ var createCoachLoadingIcon = document.querySelector(
 var createCoachOkIcon = document.querySelector("#create-coach-ok-icon");
 
 var currentPosition = 0;
-var currentProgressValue = 12;
+var currentProgressValue = 10;
 
 var clubName = document.querySelector("#name-container > input");
 var clubWebPage = document.querySelector("#web-container > input");
@@ -62,6 +63,16 @@ var clubPrefix = document.querySelector("#js_number-prefix");
 var clubPassword = document.querySelector("#pass-container > input");
 
 var additionalSport = document.querySelector("#additional-sport");
+
+//#region (v) custom dropdown
+
+var dropdown = document.querySelector(".dropdown");
+var dropdownSelection = document.querySelector(".dropdown-selection");
+var dropdownArrow = document.querySelector(".dropdown-arrow");
+var dropdownOptionsContainer = document.querySelector(".dropdown-options");
+var dropdownOptions = document.querySelectorAll(".dropdown-option");
+
+//#endregion
 
 // On unfocus make colores if right answer
 allTextInputs.forEach((textinput) => {
@@ -110,7 +121,7 @@ backButtons.forEach((backButtons) => {
   backButtons.addEventListener("click", () => {
     currentPosition = currentPosition + 100;
     registerContainer.style.transform = `translateY(${currentPosition}vh)`;
-    currentProgressValue = currentProgressValue - 11;
+    currentProgressValue = currentProgressValue - 10;
     currentProgress.style.width = `${currentProgressValue}%`;
   });
 });
@@ -119,7 +130,7 @@ backButtons.forEach((backButtons) => {
 var moveForward = function () {
   currentPosition = currentPosition - 100;
   registerContainer.style.transform = `translateY(${currentPosition}vh)`;
-  currentProgressValue = currentProgressValue + 11;
+  currentProgressValue = currentProgressValue + 10;
   currentProgress.style.width = `${currentProgressValue}%`;
 };
 
@@ -140,6 +151,14 @@ var shakeAnimation = function (element) {
     }, 2000); // 1000 milisegundos = 1 segundo
   });
 };
+
+//#region 0 disclaimer 
+
+nextConditionalDisclaimer.addEventListener("click", (e) => {
+  moveForward();
+});
+
+//#endregion
 
 // Next Club
 nextConditionalClub.addEventListener("click", (e) => {
@@ -968,6 +987,7 @@ init2(countries2);
 
 var registerData = {
   clubName: "",
+  clubRecommendation: "no",
   clubWebPage: "",
   clubCountry: "",
   clubCity: "",
@@ -1086,3 +1106,36 @@ lastNextButton.addEventListener("click", () => {
 });
 
 // #endregion
+
+//#region (f) dropdownDisplay
+
+window.addEventListener("click", (event) => {
+  if (!dropdown.contains(event.target)) {
+    // Si el clic no ocurrió dentro del dropdown
+    dropdownOptionsContainer.classList.remove("displayed");
+    dropdownArrow.classList.remove("rotated");
+  }
+});
+dropdown.addEventListener("click", () => {
+  dropdownArrow.classList.toggle("rotated");
+  dropdownOptionsContainer.classList.toggle("displayed");
+});
+
+dropdownOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    dropdownSelection.innerHTML = option.innerHTML;
+    registerData.clubRecommendation = option.getAttribute("data-recommendator");
+  });
+});
+
+//#endregion
+
+//#region (l) Prevent default TAB behaviour 
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Tab') {
+    event.preventDefault();
+  }
+});
+
+//#endregion

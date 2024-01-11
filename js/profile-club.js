@@ -156,19 +156,50 @@ dataElement.forEach((element) => {
 
 //#endregion
 
-//#region (f) makeChanges
+//#region (f) writeData functions 
 
-// var updateChanges = () => {
-//   console.log(newEditedData)
-//   firebaseUpdateUserData(userId, newEditedData).then( () => {
-//     console.log('Documento actualizado correctamente')
-//     setTimeout(() => {
-//     }, 400);
-//   }).catch( () => {
-//     alert('Ha ocurrido un error')
-//     loadingState.style.display = 'none'
-//   })
-// }
+var dataSelectOne = (
+  optionsAttribute,
+  queryVariable,
+  documentElement,
+  mappingFunction,
+  updateQueryVariable
+) => {
+  // Set selected from query to document
+  var selectorAllOptions = document.querySelectorAll(`[${optionsAttribute}]`);
+  selectorAllOptions.forEach((element) => {
+    if (element.getAttribute(`${optionsAttribute}`) === queryVariable) {
+      element.classList.add("selected");
+    }
+  });
+
+  // Set the data from query to document
+  documentElement.innerHTML = mappingFunction(queryVariable);
+
+  // Manage edition
+  selectorAllOptions.forEach((element) => {
+    element.addEventListener("click", () => {
+      const newQueryVariable = element.getAttribute(`${optionsAttribute}`);
+      updateQueryVariable(newQueryVariable); // Llamada a la función de actualización externa
+
+      documentElement.innerHTML = mappingFunction(newQueryVariable);
+
+      selectorAllOptions.forEach((elem) => {
+        elem.classList.remove("selected");
+      });
+      element.classList.add("selected");
+    });
+  });
+};
+
+function updateProperty(newValue, propertyKey) {
+  if (newEditedData.hasOwnProperty(propertyKey)) {
+    newEditedData[propertyKey] = newValue;
+    // Aquí podrías realizar otras acciones relacionadas con newEditedData si es necesario
+  } else {
+    console.error(`Property ${propertyKey} does not exist in newEditedData.`);
+  }
+}
 
 //#endregion
 
@@ -183,6 +214,7 @@ var fillDataInDocument = (data) => {
   var dataEmail = document.querySelector("#data-email");
   var dataNumber = document.querySelector("#data-number");
   var dataName = document.querySelector("#profile-element-container-name");
+  var dataRecommendator = document.querySelector("#data-recommendator");
   var dataResidence = document.querySelector("#data-residence");
   var dataWeb = document.querySelector("#data-web");
 
@@ -212,6 +244,55 @@ var fillDataInDocument = (data) => {
   }
   // ---------------------------------------------------------------------------- Email
   dataEmail.innerHTML = newEditedData.clubEmail;
+
+  // ---------------------------------------------------------------------------- Recommendator
+  function casesRecommendator(data) {
+    switch (data) {
+      case "no":
+        return "No";
+      case "diego-ortiz":
+        return "Diego Ortiz";
+      case "javier-marti":
+        return "Javier Martí";
+      case "miguel-semmler":
+        return "Miguel Semmler";
+      case "adriana-armenadriz":
+        return "Adriana Armendariz";
+      case "diego-ortiz":
+        return "Diego Ortiz";
+      case "alejandro-crespo":
+        return "Alejandro Crespo";
+      case "sergi-perez":
+        return "Sergi Pérez";
+      case "laura-marti":
+        return "Laura Martí";
+      case "global-college":
+        return "Global College";
+      case "pablo-franco":
+        return "Pablo Franco";
+      case "sergio-cerdeña":
+        return "Sergio Cerdeña";
+      case "iñigo-jofre":
+        return "Iñigo Jofre";
+      case "pablo-aycart":
+        return "Pablo Aycart";
+
+      // Agrega más casos según tus necesidades
+      default:
+        return data; // Devuelve el mismo valor si no hay traducción
+    }
+  }
+  dataSelectOne(
+    "data-recommendator",
+    newEditedData.clubRecommendation,
+    dataRecommendator,
+    casesRecommendator,
+    (newValue) => updateProperty(newValue, "userRecommendation")
+  );
+
+  if (newEditedData.clubRecommendation === 'no') {
+    document.querySelector('#recommendator-row').style.display = 'none'
+  }
 
   // ---------------------------------------------------------------------------- Number
   dataNumber.innerHTML = newEditedData.clubNumber;
