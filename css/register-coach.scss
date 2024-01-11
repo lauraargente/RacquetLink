@@ -15,7 +15,8 @@ body {
   line-height: 150%;
   p {
     width: 40rem;
-    max-width: 80vw;
+    max-width: 90vw;
+    text-align: center;
   }
 }
 
@@ -23,11 +24,13 @@ body {
   color: white;
   width: max-content;
   padding: 0.4rem 1.4rem;
+  margin-top: 2rem !important;
 }
 
 #disclaimer-image {
   width: 100vw;
   min-width: 800px;
+  max-height: 30vh;
 }
 
 //#endregion
@@ -221,7 +224,6 @@ body {
 
 .non-filled-fields-message {
   visibility: hidden;
-  // height: 0;
   opacity: 0;
   transform: translateY(-1rem);
   text-align: center;

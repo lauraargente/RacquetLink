@@ -14,7 +14,8 @@ body {
 }
 #initial-disclaimer p {
   width: 40rem;
-  max-width: 80vw;
+  max-width: 90vw;
+  text-align: center;
 }
 
 #next-conditional-disclaimer {
@@ -22,11 +23,13 @@ body {
   width: -moz-max-content;
   width: max-content;
   padding: 0.4rem 1.4rem;
+  margin-top: 2rem !important;
 }
 
 #disclaimer-image {
   width: 100vw;
   min-width: 800px;
+  max-height: 30vh;
 }
 
 #title {
