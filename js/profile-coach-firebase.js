@@ -135,9 +135,11 @@
     return new Promise(function (resolve, reject) {
       getDownloadURL(ref(storage, `profilePicUserId=${userId}`))
         .then((url) => {
+          console.log('aquí')
           resolve(url);
         })
         .catch((error) => {
+          console.log('aquiiií')
           console.log("Image reference not found, not a critical error");
         });
       // getDownloadURL(ref(storage, `id=${imageId}img=${index}.png;`))

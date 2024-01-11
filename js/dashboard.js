@@ -15,6 +15,7 @@ let recommendatorsCounter = {
   global_college: 0,
   adriana_armendariz: 0,
   pablo_aycart: 0,
+  radu_sanchez: 0,
 };
 
 //#endregion
@@ -92,6 +93,9 @@ firebaseGetAllClubs().then((outputClub) => {
         break;
       case "pablo-aycart":
         recommendatorsCounter.pablo_aycart++;
+        break;
+      case "radu-sanchez":
+        recommendatorsCounter.radu_sanchez++;
         break;
       // Agrega más casos si es necesario
     }
@@ -186,6 +190,9 @@ firebaseGetAllCoaches().then((outputCoach) => {
         break;
       case "pablo-aycart":
         recommendatorsCounter.pablo_aycart++;
+        break;
+      case "radu-sanchez":
+        recommendatorsCounter.radu_sanchez++;
         break;
       // Agrega más casos si es necesario
     }

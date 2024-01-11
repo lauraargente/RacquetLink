@@ -276,7 +276,8 @@ var fillDataInDocument = (data) => {
         return "Iñigo Jofre";
       case "pablo-aycart":
         return "Pablo Aycart";
-
+      case "radu-sanchez":
+        return "Radu Sanchez";
       // Agrega más casos según tus necesidades
       default:
         return data; // Devuelve el mismo valor si no hay traducción

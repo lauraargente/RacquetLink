@@ -289,177 +289,260 @@ Estructura general:
     </div> -->
 
     <div id="main-container">
-        <div class="dashboards-container">
-            <a href="coaches-table.html" class="transparent-content-box total-coaches">
-                <div class="box-label">Total Coaches</div>
-                <div class="total-number-coaches">0</div>
-            </a>
-              <a href="clubs-table.html" class="transparent-content-box total-clubs">
-                <div class="box-label">Total Clubs</div>
-                <div class="total-number-clubs">0</div>
-              </a>
-        </div>
-        <div class="dashboards-container">
-            <div class="transparent-content-box donut-general-container">
-                <div class="donut-label">Coaches data</div>
-                <div class="donut-container">
-                    <canvas id="myDoughnutChartCoaches" width="140" height="140"></canvas>
-                    <div class="donut-data-container">
-                        <div class="donut-data-element">
-                            <div class="donut-data-element-label" style="color: #025b7b;"><div class="dot" style="background-color: #025b7b;"></div>Regular Coach</div>
-                            <div class="donut-data-element-percentage" id="coaches-regular" style="color: #025b7b;">0</div>
-                        </div>
-                        <div class="donut-data-element">
-                            <div class="donut-data-element-label" style="color: #51877D;"><div class="dot" style="background-color: #51877D;"></div>Head Coach</div>
-                            <div class="donut-data-element-percentage" id="coaches-head" style="color: #51877D;">0</div>
-                        </div>
-                        <div class="donut-data-element">
-                            <div class="donut-data-element-label" style="color: #5A8493;"><div class="dot" style="background-color: #5A8493;"></div>Student Athlete</div>
-                            <div class="donut-data-element-percentage" id="coaches-student" style="color: #5A8493;">0</div>
-                        </div>
-                        <div class="donut-data-element">
-                            <div class="donut-data-element-label" style="color: #696969;"><div class="dot" style="background-color: #696969;"></div>Pro Player</div>
-                            <div class="donut-data-element-percentage" id="coaches-pro" style="color: #696969;">0</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="lastCoachesContainer" class="transparent-content-box last-registered">
-                <!-- Los registros de los coaches se insertarán aquí -->
-            </div>
-        </div>
-        <div class="dashboards-container">
-            <div class="transparent-content-box donut-general-container">
-                <div class="donut-label">Clubs data</div>
-                <div class="donut-container">
-                    <canvas id="myDoughnutChartClubs" width="140" height="140"></canvas>
-                    <div class="donut-data-container">
-                        <div class="donut-data-element">
-                            <div class="donut-data-element-label" style="color: #025B7B;"><div class="dot" style="background-color: #025B7B;"></div>Buscando</div>
-                            <div class="donut-data-element-percentage" id="clubs-yes" style="color: #025B7B;">0</div>
-                        </div>
-                        <div class="donut-data-element">
-                            <div class="donut-data-element-label" style="color: #65a79b;"><div class="dot" style="background-color: #65a79b;"></div>En duda</div>
-                            <div class="donut-data-element-percentage" id="clubs-prx" style="color: #65a79b;">0</div>
-                        </div>
-                        <div class="donut-data-element">
-                            <div class="donut-data-element-label" style="color: #6493a4;"><div class="dot" style="background-color: #6493a4;"></div>Sin buscar</div>
-                            <div class="donut-data-element-percentage" id="clubs-not" style="color: #6493a4;">0</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="lastClubsContainer" class="transparent-content-box last-registered">
-                <!-- Los registros de los clubs se insertarán aquí -->
-              </div>
-        </div>
-
-        <div class="transparent-content-box recommendators-container">
-          <div class="box-label">Recommendators</div>
-      
-          <div class="recommendator-element" id="laura-marti">
-              <div class="recommendator-name">Laura</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="sergi-perez">
-              <div class="recommendator-name">Sergi</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="javier-marti">
-              <div class="recommendator-name">Javier</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="iñigo-jofre">
-              <div class="recommendator-name">Iñigo</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="miguel-semmler">
-              <div class="recommendator-name">Miguel</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="pablo-franco">
-              <div class="recommendator-name">Pablo</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="sergio-cerdeña">
-              <div class="recommendator-name">Sergio</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="global-college">
-              <div class="recommendator-name">Global</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-      
-          <div class="recommendator-element" id="adriana-armendariz">
-              <div class="recommendator-name">Adriana</div>
-              <div class="recommendator-bar-container">
-                  <div class="recommendator-bar-start"></div>
-                  <div class="recommendator-bar" style="width: 00%;"></div>
-              </div>
-          </div>
-
-          <div class="recommendator-element" id="pablo-aycart">
-            <div class="recommendator-name">Pablo</div>
-            <div class="recommendator-bar-container">
-                <div class="recommendator-bar-start"></div>
-                <div class="recommendator-bar" style="width: 00%;"></div>
-            </div>
-        </div>
-      
+      <div class="dashboards-container">
+        <a
+          href="coaches-table.html"
+          class="transparent-content-box total-coaches">
+          <div class="box-label">Total Coaches</div>
+          <div class="total-number-coaches">0</div>
+        </a>
+        <a href="clubs-table.html" class="transparent-content-box total-clubs">
+          <div class="box-label">Total Clubs</div>
+          <div class="total-number-clubs">0</div>
+        </a>
       </div>
-      
+      <div class="dashboards-container">
+        <div class="transparent-content-box donut-general-container">
+          <div class="donut-label">Coaches data</div>
+          <div class="donut-container">
+            <canvas
+              id="myDoughnutChartCoaches"
+              width="140"
+              height="140"></canvas>
+            <div class="donut-data-container">
+              <div class="donut-data-element">
+                <div class="donut-data-element-label" style="color: #025b7b">
+                  <div class="dot" style="background-color: #025b7b"></div>
+                  Regular Coach
+                </div>
+                <div
+                  class="donut-data-element-percentage"
+                  id="coaches-regular"
+                  style="color: #025b7b">
+                  0
+                </div>
+              </div>
+              <div class="donut-data-element">
+                <div class="donut-data-element-label" style="color: #51877d">
+                  <div class="dot" style="background-color: #51877d"></div>
+                  Head Coach
+                </div>
+                <div
+                  class="donut-data-element-percentage"
+                  id="coaches-head"
+                  style="color: #51877d">
+                  0
+                </div>
+              </div>
+              <div class="donut-data-element">
+                <div class="donut-data-element-label" style="color: #5a8493">
+                  <div class="dot" style="background-color: #5a8493"></div>
+                  Student Athlete
+                </div>
+                <div
+                  class="donut-data-element-percentage"
+                  id="coaches-student"
+                  style="color: #5a8493">
+                  0
+                </div>
+              </div>
+              <div class="donut-data-element">
+                <div class="donut-data-element-label" style="color: #696969">
+                  <div class="dot" style="background-color: #696969"></div>
+                  Pro Player
+                </div>
+                <div
+                  class="donut-data-element-percentage"
+                  id="coaches-pro"
+                  style="color: #696969">
+                  0
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="lastCoachesContainer"
+          class="transparent-content-box last-registered">
+          <!-- Los registros de los coaches se insertarán aquí -->
+        </div>
+      </div>
+      <div class="dashboards-container">
+        <div class="transparent-content-box donut-general-container">
+          <div class="donut-label">Clubs data</div>
+          <div class="donut-container">
+            <canvas id="myDoughnutChartClubs" width="140" height="140"></canvas>
+            <div class="donut-data-container">
+              <div class="donut-data-element">
+                <div class="donut-data-element-label" style="color: #025b7b">
+                  <div class="dot" style="background-color: #025b7b"></div>
+                  Buscando
+                </div>
+                <div
+                  class="donut-data-element-percentage"
+                  id="clubs-yes"
+                  style="color: #025b7b">
+                  0
+                </div>
+              </div>
+              <div class="donut-data-element">
+                <div class="donut-data-element-label" style="color: #65a79b">
+                  <div class="dot" style="background-color: #65a79b"></div>
+                  En duda
+                </div>
+                <div
+                  class="donut-data-element-percentage"
+                  id="clubs-prx"
+                  style="color: #65a79b">
+                  0
+                </div>
+              </div>
+              <div class="donut-data-element">
+                <div class="donut-data-element-label" style="color: #6493a4">
+                  <div class="dot" style="background-color: #6493a4"></div>
+                  Sin buscar
+                </div>
+                <div
+                  class="donut-data-element-percentage"
+                  id="clubs-not"
+                  style="color: #6493a4">
+                  0
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="lastClubsContainer"
+          class="transparent-content-box last-registered">
+          <!-- Los registros de los clubs se insertarán aquí -->
+        </div>
+      </div>
 
-        <div class="transparent-content-box total-users">
-            <div class="flex">
-                <div class="box-label flex">Índice de registros (15 días)</div>
-                <div class="flex" style="margin-bottom: 1rem;">
-                    <div class="donut-data-element-label" style="color: #025b7b;"><div class="dot" style="background-color: #025b7b;"></div>Coaches</div>
-                    <div class="donut-data-element-label" style="color: #51877D;"><div class="dot" style="background-color: #65a79b;"></div>Clubs</div>
-                </div>
-            </div>
-            <canvas id="myLineChartMonth" width="600" height="200"></canvas>
+      <div class="transparent-content-box recommendators-container">
+        <div class="box-label">Recommendators</div>
+
+        <div class="recommendator-element" id="laura-marti">
+          <div class="recommendator-name">Laura</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
         </div>
-        <div class="transparent-content-box total-users">
-            <div class="flex">
-                <div class="box-label flex">Índice de registros (anual)</div>
-                <div class="flex" style="margin-bottom: 1rem;">
-                    <div class="donut-data-element-label" style="color: #025b7b;"><div class="dot" style="background-color: #025b7b;"></div>Coaches</div>
-                    <div class="donut-data-element-label" style="color: #51877D;"><div class="dot" style="background-color: #65a79b;"></div>Clubs</div>
-                </div>
-            </div>
-            <canvas id="myLineChartYear" width="600" height="200"></canvas>
+
+        <div class="recommendator-element" id="sergi-perez">
+          <div class="recommendator-name">Sergi</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
         </div>
+
+        <div class="recommendator-element" id="javier-marti">
+          <div class="recommendator-name">Javier</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="iñigo-jofre">
+          <div class="recommendator-name">Iñigo</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="miguel-semmler">
+          <div class="recommendator-name">Miguel</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="pablo-franco">
+          <div class="recommendator-name">Pablo</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="sergio-cerdeña">
+          <div class="recommendator-name">Sergio</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="global-college">
+          <div class="recommendator-name">Global</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="adriana-armendariz">
+          <div class="recommendator-name">Adriana</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="pablo-aycart">
+          <div class="recommendator-name">Pablo</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+
+        <div class="recommendator-element" id="radu-sanchez">
+          <div class="recommendator-name">Radu</div>
+          <div class="recommendator-bar-container">
+            <div class="recommendator-bar-start"></div>
+            <div class="recommendator-bar" style="width: 00%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transparent-content-box total-users">
+        <div class="flex">
+          <div class="box-label flex">Índice de registros (15 días)</div>
+          <div class="flex" style="margin-bottom: 1rem">
+            <div class="donut-data-element-label" style="color: #025b7b">
+              <div class="dot" style="background-color: #025b7b"></div>
+              Coaches
+            </div>
+            <div class="donut-data-element-label" style="color: #51877d">
+              <div class="dot" style="background-color: #65a79b"></div>
+              Clubs
+            </div>
+          </div>
+        </div>
+        <canvas id="myLineChartMonth" width="600" height="200"></canvas>
+      </div>
+      <div class="transparent-content-box total-users">
+        <div class="flex">
+          <div class="box-label flex">Índice de registros (anual)</div>
+          <div class="flex" style="margin-bottom: 1rem">
+            <div class="donut-data-element-label" style="color: #025b7b">
+              <div class="dot" style="background-color: #025b7b"></div>
+              Coaches
+            </div>
+            <div class="donut-data-element-label" style="color: #51877d">
+              <div class="dot" style="background-color: #65a79b"></div>
+              Clubs
+            </div>
+          </div>
+        </div>
+        <canvas id="myLineChartYear" width="600" height="200"></canvas>
+      </div>
     </div>
 
     <!-- 
@@ -651,6 +734,5 @@ Estructura general:
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
     <script src="js/dashboard.js" type="module"></script>
-
   </body>
 </html>
