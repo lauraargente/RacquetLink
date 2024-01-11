@@ -248,23 +248,19 @@ Estructura general:
             <div class="mobile-fullwidth transparent-content-box admin-only">
                 <div class="profile-label" style="margin-bottom: 1rem;">Categoría (Admin)</div>
                 <div class="adminonly-options-container" id="data-adminstate">
-                    <div class="adminonly-option selected" data-adminstate="searching"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M19 19L15.5001 15.5M18 9.5C18 14.1944 14.1944 18 9.5 18C4.80558 18 1 14.1944 1 9.5C1 4.80558 4.80558 1 9.5 1C14.1944 1 18 4.80558 18 9.5Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="adminonly-option selected" data-adminstate="commited"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M20 7V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H12.5M12.5 11H8M11.5 15H8M16 7H8M18 18V12.5C18 11.6716 18.6716 11 19.5 11C20.3284 11 21 11.6716 21 12.5V18C21 19.6569 19.6569 21 18 21C16.3431 21 15 19.6569 15 18V14" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
-                    <div class="adminonly-option selected" data-adminstate="hired"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 20" fill="none">
-                        <path d="M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M15 16L17 18L21 14M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg></div>
+                    <div class="adminonly-option selected" data-adminstate="searching">
+                        searching
+                    </div>
+                    <div class="adminonly-option selected" data-adminstate="commited">commited</div>
+                    <div class="adminonly-option selected" data-adminstate="hired">hired</div>
                 </div>
 
                 <div class="profile-label" style="margin: 2rem 0 1rem 0;">Tipo de coach (Admin)</div>
                 <div class="adminonly-options-container" id="data-admintype">
-                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="regular">regular</div>
-                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="head">head</div>
-                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="student">student</div>
-                    <div class="adminonly-option selected" style="padding: 0.4rem 0.6rem;" data-admintype="pro">pro</div>
+                    <div class="adminonly-option selected" data-admintype="regular">regular</div>
+                    <div class="adminonly-option selected" data-admintype="head">head</div>
+                    <div class="adminonly-option selected" data-admintype="student">student</div>
+                    <div class="adminonly-option selected" data-admintype="pro">pro</div>
                 </div>
             </div>
 
@@ -470,7 +466,7 @@ Estructura general:
                             <div class="editable-option selectable" data-startingtime="one">&lt; 1 </div>
                             <div class="editable-option selectable" data-startingtime="2o3">2 - 3</div>
                             <div class="editable-option selectable" data-startingtime="4mo">> 4</div>
-                            <div class="editable-option selectable" data-startingtime="von">verano/navidad</div>
+                            <div class="editable-option selectable" data-startingtime="von">verano / navidad</div>
                         </div>
                     </div>
                 </div>
@@ -480,10 +476,11 @@ Estructura general:
                         <div class="data-content"></div>
                         <div class="editable-options">
                             <div class="editable-option selectable" data-mobility="europe">europa</div>
-                            <div class="editable-option selectable" data-mobility="america">américa</div>
                             <div class="editable-option selectable" data-mobility="asia">asia</div>
                             <div class="editable-option selectable" data-mobility="africa">áfrica</div>
                             <div class="editable-option selectable" data-mobility="oceania">oceanía</div>
+                            <div class="editable-option selectable" data-mobility="usa">estados unidos</div>
+                            <div class="editable-option selectable" data-mobility="america">resto de américa</div>
                         </div>
                     </div>
                 </div>
@@ -500,14 +497,16 @@ Estructura general:
                     </div>
                 </div>
                 <div id="profile-element-container-range" class="profile-information-element">
-                    <div class="profile-label">Rango esperado</div>
+                    <div class="profile-label">Rango actual (€)</div>
                     <div class="profile-data" id="data-range">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable" data-salary="2030">20k - 30k</div>
-                            <div class="editable-option selectable" data-salary="3040">30k - 40k</div>
-                            <div class="editable-option selectable" data-salary="4050">40k - 50k</div>
-                            <div class="editable-option selectable" data-salary="5099">> 50k</div>
+                            <div class="editable-option selectable" data-salary="0001">&#60; 1k</div>
+                            <div class="editable-option selectable" data-salary="0102">1k - 2k</div>
+                            <div class="editable-option selectable" data-salary="0203">2k - 3k</div>
+                            <div class="editable-option selectable" data-salary="0304">3k - 4k</div>
+                            <div class="editable-option selectable" data-salary="0499">> 4k</div>
+                            <div class="editable-option selectable" data-salary="0000">sin especificar</div>
                         </div>
                     </div>
                 </div>

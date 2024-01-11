@@ -136,7 +136,8 @@
   height: max-content;
   width: 100vw;
   background-image: url(../assets/coach_background_4.png);
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: auto;
 }
 
@@ -163,6 +164,10 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
+}
+
+#profile-right {
+  max-width: 500px;
 }
 
 .transparent-content-box {
@@ -196,7 +201,7 @@
 
 .adminonly-option {
   background-color: white;
-  padding: 0.8rem;
+  padding: 0.4rem 0.6rem;
   border-radius: 1rem;
   color: var(--color-primary);
   pointer-events: none;

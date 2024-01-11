@@ -726,7 +726,7 @@ var fillDataInDocument = (data) => {
       case "now":
         return "inmediata";
       case "von":
-        return "verano/navidad";
+        return "verano / navidad";
       // Agrega más casos según tus necesidades
       default:
         return element; // Devuelve el mismo valor si no hay traducción
@@ -746,7 +746,9 @@ var fillDataInDocument = (data) => {
       case "europe":
         return "europa";
       case "america":
-        return "américa";
+        return "resto de america";
+      case "usa":
+        return "estados unidos";
       case "asia":
         return "asia";
       case "africa":
@@ -790,14 +792,16 @@ var fillDataInDocument = (data) => {
   // ---------------------------------------------------------------------------- Salary
   function mapSalary(nivel) {
     switch (nivel) {
-      case "2030":
-        return "20k - 30k";
-      case "3040":
-        return "30k - 40k";
-      case "4050":
-        return "40k - 50k";
-      case "5099":
-        return "> 50k";
+      case "0001":
+        return "&#60; 1k";
+      case "0102":
+        return "1k - 2k";
+      case "0203":
+        return "2k - 3k";
+      case "0304":
+        return "3k - 4k";
+      case "0499":
+        return "> 4k";
       // Agrega más casos según tus necesidades
       default:
         return nivel; // Devuelve el mismo valor si no hay traducción
@@ -810,6 +814,8 @@ var fillDataInDocument = (data) => {
     mapSalary,
     (newValue) => updateProperty(newValue, "userExpectedSalary")
   );
+
+// alert(newEditedData.userExpectedSalary)
 
   // ---------------------------------------------------------------------------- Recommendator
   function casesRecommendator(data) {

@@ -288,7 +288,7 @@ var registerData = {
   userAvailability: "",
   userMobilityContinents: [],
   userOportunityType: [],
-  userExpectedSalary: "",
+  userExpectedSalary: "0000",
   userPhoneNumber: "",
   userLinkedin: "",
   userInsta: "",
