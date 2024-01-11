@@ -725,6 +725,8 @@ var fillDataInDocument = (data) => {
         return "1";
       case "now":
         return "inmediata";
+      case "von":
+        return "verano/navidad";
       // Agrega más casos según tus necesidades
       default:
         return element; // Devuelve el mismo valor si no hay traducción

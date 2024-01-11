@@ -558,6 +558,7 @@ var injectElement = (element) => {
             'now': 'Now',
             'one': '1',
             '2o3': '2 - 3',
+            'von': 'VoN',
             // Agrega aquí más mapeos según sea necesario
         };
     
