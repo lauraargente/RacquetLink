@@ -2,6 +2,11 @@ import { firebaseCreateClub } from "./register-club-firebase.js";
 import { firebaseSaveClubData } from "./register-club-firebase.js";
 import { setUserNameOnHeader } from "./firebase-auth-checker.js";
 
+// Variables
+const headerBurguer =document.querySelector('.Header-burguer')
+const headerNav = document.querySelector('.Header-nav')
+
+
 var allTextInputs = document.querySelectorAll(".textinput-text");
 var specialTextInput = document.querySelector("#additional-sport");
 var specialTextInputPhone = document.querySelector("#pn-input-blur");
@@ -73,6 +78,13 @@ var dropdownOptionsContainer = document.querySelector(".dropdown-options");
 var dropdownOptions = document.querySelectorAll(".dropdown-option");
 
 //#endregion
+
+//Cuando hago CLICK en headerBurguer hace una FUNCTION
+// a headerNav le TOGGLE la clase isActive
+
+headerBurguer.addEventListener(`click`, ()=>{
+  headerNav.classList.toggle('isActive')
+})
 
 // On unfocus make colores if right answer
 allTextInputs.forEach((textinput) => {
