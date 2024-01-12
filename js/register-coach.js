@@ -1,12 +1,11 @@
-// Import firebase scripts
+// Imports
 import { firebaseCreateCoach } from "./register-coach-firebase.js";
 import { firebaseSaveCoachData } from "./register-coach-firebase.js";
 import { setUserNameOnHeader } from "./firebase-auth-checker.js";
 
-// Variables
+// General Variables
 const headerBurguer =document.querySelector('.Header-burguer')
 const headerNav = document.querySelector('.Header-nav')
-
 
 var registerContainer = document.querySelector("#register-container");
 var currentProgress = document.querySelector("#current-progress");
@@ -14,6 +13,7 @@ var currentProgress = document.querySelector("#current-progress");
 var backButtons = document.querySelectorAll(".register-element-back");
 
 var allTextInputs = document.querySelectorAll(".textinput-text");
+var allIconInputs = document.querySelectorAll(".textinput-icon");
 var allDateInputs = document.querySelectorAll(".dateinput-date");
 var specialTextInput = document.querySelector("#additional-sport");
 var specialTextInputPhone = document.querySelector("#pn-input-blur");
@@ -47,6 +47,7 @@ var userLinkedin = document.querySelector("#linkedin-container > input");
 var userInsta = document.querySelector("#insta-container > input");
 var userEmail = document.querySelector("#email-container > input");
 var userPass = document.querySelector("#pass-container > input");
+var userConfirmPass = document.querySelector("#confirm-pass-container > input");
 
 //#endregion
 
@@ -110,6 +111,9 @@ var nonFilledFieldsMessageEmail = document.querySelector(
 var nonFilledFieldsMessagePass = document.querySelector(
   ".non-filled-fields-message-pass"
 );
+var nonFilledFieldsMessagePassCoincidence = document.querySelector(
+  ".non-filled-fields-message-pass-coincidence"
+);
 var nonFilledFieldsMessagePrivacy = document.querySelector(
   ".non-filled-fields-message-privacy"
 );
@@ -136,16 +140,18 @@ headerBurguer.addEventListener(`click`, ()=>{
 //#region focus and unfocus coloring
 
 // On unfocus make colores if right answer
-allTextInputs.forEach((textinput) => {
+allTextInputs.forEach((textinput, id) => {
   textinput.addEventListener("blur", () => {
     if (!(textinput.value === "")) {
       textinput.style.backgroundColor = "#f3f5f9";
       textinput.style.borderRadius = "0 0.75em 0.75em 0";
       textinput.style.color = "#025b7b";
+      allIconInputs[id].style.backgroundColor = '#f3f5f9'
     } else {
       textinput.style.backgroundColor = "rgba(0,0,0,0)";
       textinput.style.borderRadius = "0";
       textinput.style.color = "black";
+      allIconInputs[id].style.backgroundColor = 'rgba(0,0,0,0)'
     }
   });
 });
@@ -810,9 +816,21 @@ nextConditionalPass.addEventListener("click", (e) => {
     ? (moveForwardVariableEmail = false)
     : (registerData.userEmail = userEmail.value);
 
-  isPassSafe(userPass.value)
-    ? (registerData.userPass = userPass.value)
-    : (moveForwardVariablePass = false);
+  if (isPassSafe(userPass.value)) {
+    if (userPass.value === userConfirmPass.value) {
+      registerData.userPass = userPass.value;
+    } else {
+      moveForwardVariablePass = false;
+      // Mostrar mensaje de no coincidencia
+      shakeAnimation(e.target);
+      nonFilledFieldsMessagePassCoincidence.classList.add("displayed");
+      setTimeout(function () {
+        nonFilledFieldsMessagePassCoincidence.classList.remove("displayed");
+      }, 2000);
+    }
+  } else {
+    moveForwardVariablePass = false;
+  }
 
   privacyPolicyCheckbox.checked ? "" : (moveForwardVariablePrivacy = false);
 
@@ -834,7 +852,7 @@ nextConditionalPass.addEventListener("click", (e) => {
       // After the additional second, call create coach
       firebaseCreateCoach(registerData)
         .then((user) => {
-          // If coach succesfully created, set userId and register Date to send to Firebase Database
+          // If coach successfully created, set userId and register Date to send to Firebase Database
           registerData.coachId = user;
           registerData.registerDate = Date();
           // Send all the data in Firebase Database
@@ -860,12 +878,20 @@ nextConditionalPass.addEventListener("click", (e) => {
         });
     }, 1000); // 1000 milisegundos = 1 segundo
   } else {
-    // If non valid password, display error
-    shakeAnimation(e.target);
-    nonFilledFieldsMessagePass.classList.add("displayed");
-    setTimeout(function () {
-      nonFilledFieldsMessagePass.classList.remove("displayed");
-    }, 2000); // 1000 milisegundos = 1 segundo
+    // Si la contraseña no es válida o no coincide, mostrar el mensaje apropiado
+    if (userPass.value !== userConfirmPass.value) {
+      shakeAnimation(e.target);
+      nonFilledFieldsMessagePassCoincidence.classList.add("displayed");
+      setTimeout(function () {
+        nonFilledFieldsMessagePassCoincidence.classList.remove("displayed");
+      }, 2000);
+    } else {
+      shakeAnimation(e.target);
+      nonFilledFieldsMessagePass.classList.add("displayed");
+      setTimeout(function () {
+        nonFilledFieldsMessagePass.classList.remove("displayed");
+      }, 2000);
+    }
   }
 });
 
@@ -878,7 +904,42 @@ function isPassSafe(pass) {
   );
 }
 
+// Logic for show / hide passwords
+
+function togglePasswordVisibility(inputId, svgPrefix) {
+  var input = document.getElementById(inputId);
+  var showIcon = document.getElementById(svgPrefix + "-show");
+  var hideIcon = document.getElementById(svgPrefix + "-hide");
+
+  if (input.type === "password") {
+      input.type = "text";
+      showIcon.style.display = "none";
+      hideIcon.style.display = "block";
+  } else {
+      input.type = "password";
+      showIcon.style.display = "block";
+      hideIcon.style.display = "none";
+  }
+}
+
+document.querySelector('#pass-show').addEventListener('click', () => {
+  togglePasswordVisibility('password', 'pass')
+})
+
+document.querySelector('#pass-hide').addEventListener('click', () => {
+  togglePasswordVisibility('password', 'pass')
+})
+
+document.querySelector('#confirm-pass-show').addEventListener('click', () => {
+  togglePasswordVisibility('confirm-password', 'confirm-pass')
+})
+
+document.querySelector('#confirm-pass-hide').addEventListener('click', () => {
+  togglePasswordVisibility('confirm-password', 'confirm-pass')
+})
+
 //#endregion
+
 
 const countries = [
   {

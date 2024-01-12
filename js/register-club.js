@@ -8,6 +8,7 @@ const headerNav = document.querySelector('.Header-nav')
 
 
 var allTextInputs = document.querySelectorAll(".textinput-text");
+var allIconInputs = document.querySelectorAll(".textinput-icon");
 var specialTextInput = document.querySelector("#additional-sport");
 var specialTextInputPhone = document.querySelector("#pn-input-blur");
 
@@ -41,6 +42,9 @@ var nonFilledFieldsMessageEmail = document.querySelector(
 var nonFilledFieldsMessagePass = document.querySelector(
   ".non-filled-fields-message-pass"
 );
+var nonFilledFieldsMessagePassCoincidence = document.querySelector(
+  ".non-filled-fields-message-pass-coincidence"
+);
 var nonFilledFieldsMessagePrivacy = document.querySelector(
   ".non-filled-fields-message-privacy"
 );
@@ -66,6 +70,7 @@ var clubEmail = document.querySelector("#email-container > input");
 var clubNumber = document.querySelector("#js_input-phonenumber");
 var clubPrefix = document.querySelector("#js_number-prefix");
 var clubPassword = document.querySelector("#pass-container > input");
+var clubConfirmPassword = document.querySelector("#confirm-pass-container > input");
 
 var additionalSport = document.querySelector("#additional-sport");
 
@@ -87,16 +92,18 @@ headerBurguer.addEventListener(`click`, ()=>{
 })
 
 // On unfocus make colores if right answer
-allTextInputs.forEach((textinput) => {
+allTextInputs.forEach((textinput, id) => {
   textinput.addEventListener("blur", () => {
     if (!(textinput.value === "")) {
       textinput.style.backgroundColor = "#f3f5f9";
       textinput.style.borderRadius = "0 0.75em 0.75em 0";
       textinput.style.color = "#025b7b";
+      allIconInputs[id].style.backgroundColor = '#f3f5f9'
     } else {
       textinput.style.backgroundColor = "rgba(0,0,0,0)";
       textinput.style.borderRadius = "0";
       textinput.style.color = "black";
+      allIconInputs[id].style.backgroundColor = 'rgba(0,0,0,0)'
     }
   });
 });
@@ -259,64 +266,7 @@ nextConditionalPhone.addEventListener("click", (e) => {
   }
 });
 
-// Next Password
-nextConditionalPassword.addEventListener("click", (e) => {
-  const pass = clubPassword.value;
-  console.log(privacyPolicyCheckbox.checked)
-  if (!(privacyPolicyCheckbox.checked)) {
-    shakeAnimation(e.target);
-    nonFilledFieldsMessagePrivacy.classList.add('displayed');
-    setTimeout(function () {
-      nonFilledFieldsMessagePrivacy.classList.remove('displayed');
-    }, 2000); // 1000 milisegundos = 1 segundo
-  } else if (pass === "") {
-    shakeAnimation(e.target);
-    nonFilledFieldsMessagePass.classList.add('displayed');
-    setTimeout(function () {
-    nonFilledFieldsMessagePass.classList.remove('displayed');
-
-    }, 2000); // 1000 milisegundos = 1 segundo
-  } else if (!isPassSafe(pass)) {
-    shakeAnimation(e.target);
-    nonFilledFieldsMessagePass.classList.add('displayed');
-
-    setTimeout(function () {
-    nonFilledFieldsMessagePass.classList.remove('displayed');
-
-    }, 2000); // 1000 milisegundos = 1 segundo
-  } else {
-    createCoachLoadingIcon.style.visibility = "visible";
-    createCoachOkIcon.style.visibility = "hidden";
-    // TimeOut to make loading appear more time
-    setTimeout(function () {
-      firebaseCreateClub(registerData)
-        .then((user) => {
-          registerData.clubId = user;
-          firebaseSaveClubData(registerData).then;
-          moveForward();
-          setUserNameOnHeader(`Club ${registerData.clubName}`, registerData.clubId)
-          document.querySelector('#next-conditional-finish').href = `profileclub.html?id=${registerData.clubId}`
-        })
-        .catch((error) => {
-          console.log(error)
-          createCoachLoadingIcon.style.visibility = "hidden";
-          createCoachOkIcon.style.visibility = "visible";
-          shakeAnimation(e.target);
-          // nonFilledFieldsMessageEmail.style.visibility = "visible";
-          // nonFilledFieldsMessageEmail.style.opacity = "1";
-          nonFilledFieldsMessageEmail.classList.add('displayed');
-
-          setTimeout(function () {
-            // nonFilledFieldsMessageEmail.style.visibility = "hidden";
-            // nonFilledFieldsMessageEmail.style.opacity = "0";
-            nonFilledFieldsMessageEmail.classList.remove('displayed');
-
-          }, 2000); // 1000 milisegundos = 1 segundo
-        });
-    }, 1000); // 1000 milisegundos = 1 segundo
-  }
-});
-
+// Función para verificar la seguridad de la contraseña
 function isPassSafe(pass) {
   return (
     pass.length >= 8 &&
@@ -325,6 +275,98 @@ function isPassSafe(pass) {
     /\d/.test(pass)
   );
 }
+
+// Función para alternar la visibilidad de la contraseña
+function togglePasswordVisibility(inputId, svgPrefix) {
+  var input = document.getElementById(inputId);
+  var showIcon = document.getElementById(svgPrefix + "-show");
+  var hideIcon = document.getElementById(svgPrefix + "-hide");
+
+  if (input.type === "password") {
+      input.type = "text";
+      showIcon.style.display = "none";
+      hideIcon.style.display = "block";
+  } else {
+      input.type = "password";
+      showIcon.style.display = "block";
+      hideIcon.style.display = "none";
+  }
+}
+
+document.querySelector('#pass-show').addEventListener('click', () => {
+  togglePasswordVisibility('password', 'pass')
+})
+
+document.querySelector('#pass-hide').addEventListener('click', () => {
+  togglePasswordVisibility('password', 'pass')
+})
+
+document.querySelector('#confirm-pass-show').addEventListener('click', () => {
+  togglePasswordVisibility('confirm-password', 'confirm-pass')
+})
+
+document.querySelector('#confirm-pass-hide').addEventListener('click', () => {
+  togglePasswordVisibility('confirm-password', 'confirm-pass')
+})
+
+
+// Evento de clic para el botón de registro
+nextConditionalPassword.addEventListener("click", (e) => {
+  const pass = clubPassword.value;
+  const confirmPass = clubConfirmPassword.value; // Asegúrate de tener este campo en tu HTML
+
+  if (!privacyPolicyCheckbox.checked) {
+    shakeAnimation(e.target);
+    nonFilledFieldsMessagePrivacy.classList.add('displayed');
+    setTimeout(() => {
+      nonFilledFieldsMessagePrivacy.classList.remove('displayed');
+    }, 2000);
+  } else if (pass === "") {
+    shakeAnimation(e.target);
+    nonFilledFieldsMessagePass.classList.add('displayed');
+    setTimeout(() => {
+      nonFilledFieldsMessagePass.classList.remove('displayed');
+    }, 2000);
+  } else if (!isPassSafe(pass)) {
+    shakeAnimation(e.target);
+    nonFilledFieldsMessagePass.classList.add('displayed');
+    setTimeout(() => {
+      nonFilledFieldsMessagePass.classList.remove('displayed');
+    }, 2000);
+  } else if (pass !== confirmPass) {
+    shakeAnimation(e.target);
+    nonFilledFieldsMessagePassCoincidence.classList.add('displayed'); // Asegúrate de tener este elemento en tu HTML
+    setTimeout(() => {
+      nonFilledFieldsMessagePassCoincidence.classList.remove('displayed');
+    }, 2000);
+  } else {
+    createCoachLoadingIcon.style.visibility = "visible";
+    createCoachOkIcon.style.visibility = "hidden";
+
+    setTimeout(() => {
+      firebaseCreateClub(registerData)
+        .then((user) => {
+          registerData.clubId = user;
+          firebaseSaveClubData(registerData).then;
+          moveForward();
+          setUserNameOnHeader(`Club ${registerData.clubName}`, registerData.clubId);
+          document.querySelector('#next-conditional-finish').href = `profileclub.html?id=${registerData.clubId}`;
+        })
+        .catch((error) => {
+          console.error(error);
+          createCoachLoadingIcon.style.visibility = "hidden";
+          createCoachOkIcon.style.visibility = "visible";
+          shakeAnimation(e.target);
+          nonFilledFieldsMessageEmail.classList.add('displayed');
+
+          setTimeout(() => {
+            nonFilledFieldsMessageEmail.classList.remove('displayed');
+          }, 2000);
+        });
+    }, 1000);
+  }
+});
+
 
 //#endregion
 
