@@ -203,7 +203,7 @@
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat;
-    height: 60vh;
+    height: auto;
     margin: 3.125rem 0;
 
     display: flex;
@@ -236,12 +236,25 @@
 }
 
 .Quotes-li-img{
-   background-color: pink;
-   border-radius: 2rem;
-   max-height: 50vh;
-   object-fit: cover;
-   object-position: top center;
-   width: 80%;
+    box-shadow: -10px 10px 12px lightgrey,
+                -6px -6px 50px white;
+    background-color: pink;
+    border-radius: 2rem;
+    max-height: 50vh;
+    object-fit: cover;
+    object-position: top center;
+    width: 80%;
+}
+
+.Quotes-li-img-2{
+    box-shadow: 10px 10px 12px lightgrey,
+                -6px -6px 50px white;
+    background-color: pink;
+    border-radius: 2rem;
+    max-height: 50vh;
+    object-fit: cover;
+    object-position: top center;
+    width: 80%;
 }
 
 .Quotes-h3{
