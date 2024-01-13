@@ -10,10 +10,10 @@ const valoresResponsive= document.querySelectorAll('.Valores-li-responsive')
 const profiles = document.querySelectorAll('.Profiles-responsive .Profiles-li')
 const profilesText = document.querySelectorAll('.Profiles-responsive .Profiles-text')
 const profilesImage = document.querySelectorAll('.Profiles-responsive .Profiles-img')
+const sliderQuotes= document.querySelector('.Slider-quotes')
 const quotesPoint= document.querySelectorAll('.Quotes-li-dots')
 const quotesItems= document.querySelectorAll('.Quotes-li-responsive')
-
-
+const sliderImages = ["assets/about/AdobeStock_191850653-1-(3).jpg", "assets/about/AdobeStock_191850653-1-(3).jpg", "assets/about/JavierMartiSlider.jpg"]
 
 
 //Cuando hago CLICK en headerBurguer hace una FUNCTION
@@ -118,6 +118,8 @@ const quotesItems= document.querySelectorAll('.Quotes-li-responsive')
             eachQuote.classList.remove('isActive');
             quotesItems[quoteActive].classList.add('isActive');
         })
+
+        sliderQuotes.style.backgroundImage = 'url("' + sliderImages[quoteActive] + '")';
         
         clearInterval(quotesInterval)
         quotesInterval = setInterval(startQuotes, 5000)
