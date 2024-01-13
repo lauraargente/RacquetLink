@@ -253,7 +253,7 @@
 
 .Quotes-p{
     font-size: var(--p-size);
-    color: black
+    color: black;
     font-weight: 300;
 }
 
@@ -609,6 +609,14 @@
         width: 90%;
         margin: auto;
         gap: 1.25rem;
+    }
+
+    .Quotes-h3{
+        color: var(--color-white);
+    }
+    
+    .Quotes-p{
+        color: var(--color-white);
     }
 
     .Quotes-ul-dots{
