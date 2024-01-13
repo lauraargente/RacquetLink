@@ -53,6 +53,7 @@
 .Header-li{
     white-space: nowrap;
     font-weight: 300;
+    min-width: 0rem;
 }
 
 .Header-li:hover{
