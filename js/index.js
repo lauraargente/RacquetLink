@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var originalHeaderBackgroundColor = []; document.querySelector('.Header').style.backgroundColor;
     var originalHeaderBoxShadow = []; document.querySelector('.Header').style.boxShadow;
     var originalHeaderBackDropFilter = []; document.querySelector('.Header').style.backdropFilter;
+    var originalHeaderLoginButtonColor = []; document.querySelector('.Header-button').style.backgroundColor;
+    var originalHeaderLoginTextColor = []; document.querySelector('.Header-button').style.color;
     // var originalHeaderPadding = []; document.querySelector('.Header').style.padding;
     var originalLoggedUserColor =  document.querySelector('#logged-user-text').style.color
 
@@ -48,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelectorAll('.logo-path').forEach(function(el) {
                     el.style.fill = 'white';
                 });
+                document.querySelector('.Header-button').style.backgroundColor = 'white';
+                document.querySelector('.Header-button').style.color = '#025B7B';
                 document.querySelector('.Header').style.backgroundColor = 'rgba(255,255,255,0)';
                 // document.querySelector('.Header').style.padding = '2rem 6rem';
                 document.querySelector('.Header').style.boxShadow = '1px 1px 20px rgba(0, 0, 0, 0)';
@@ -63,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     el.style.fill = originalLogoPathFill[index];
                 });
                 console.log(originalHeaderBackgroundColor)
+                document.querySelector('.Header-button').style.backgroundColor = originalHeaderLoginButtonColor;
+                document.querySelector('.Header-button').style.color = originalHeaderLoginTextColor;
                 document.querySelector('.Header').style.backgroundColor = originalHeaderBackgroundColor;
                 document.querySelector('.Header').style.boxShadow = originalHeaderBoxShadow;
                 document.querySelector('.Header').style.backdropFilter = originalHeaderBackDropFilter;
