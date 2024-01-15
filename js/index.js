@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var originalLogoPathFill = []; // Para almacenar fills originales de los .logo-path
     var originalHeaderBackgroundColor = []; document.querySelector('.Header').style.backgroundColor;
     var originalHeaderBoxShadow = []; document.querySelector('.Header').style.boxShadow;
+    var originalHeaderBackDropFilter = []; document.querySelector('.Header').style.backdropFilter;
     // var originalHeaderPadding = []; document.querySelector('.Header').style.padding;
     var originalLoggedUserColor =  document.querySelector('#logged-user-text').style.color
 
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('.Header').style.backgroundColor = 'rgba(255,255,255,0)';
                 // document.querySelector('.Header').style.padding = '2rem 6rem';
                 document.querySelector('.Header').style.boxShadow = '1px 1px 20px rgba(0, 0, 0, 0)';
+                document.querySelector('.Header').style.backdropFilter = 'blur(10px)';
                 document.querySelector('#logged-user-text').style.color = 'white'
             } else {
                 // Revertir los estilos cuando #header-changer no es visible
@@ -63,6 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(originalHeaderBackgroundColor)
                 document.querySelector('.Header').style.backgroundColor = originalHeaderBackgroundColor;
                 document.querySelector('.Header').style.boxShadow = originalHeaderBoxShadow;
+                document.querySelector('.Header').style.backdropFilter = originalHeaderBackDropFilter;
+
                 // document.querySelector('.Header').style.padding = originalHeaderPadding;
                 document.querySelector('#logged-user-text').style.color = originalLoggedUserColor
 
