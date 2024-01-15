@@ -1,0 +1,688 @@
+
+/* ――――――――― Contenido principal ――――――――― */
+/* Descripción: Estilos para el contenido principal de la página */ 
+
+.Main{
+    width: 100%;
+}
+
+.Main{
+    background-color: #ffffff;
+}
+
+.Video-wrapper{
+    position: relative;
+    height:100vh;
+    background-image: url(/assets/home/homebg_alternative.png);
+    background-size: cover;
+    background-position: bottom;
+    /* background-position: top; */
+}
+
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 0rem 0rem 18.1875rem 0rem;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.Banner-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2.5rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+   
+    color: white;
+}
+
+.Banner-h2{
+    font-size: var( --h2-size);
+    font-weight: 500;
+    width: 50%;
+}
+
+.Banner-p{
+    font-size: var( --p-size);
+    line-height: 1.875rem;
+}
+
+.Banner-button{
+    white-space: nowrap;
+    background-color: var(--color-white);
+    padding: 1rem 3rem;
+    border-radius: 10rem;
+    display: inline-block;
+    width: auto;
+    font-weight: 600;
+    font-size: var(--h5-size);
+                
+    color: var(--color-primary);
+    cursor: pointer;
+} 
+
+
+.Banner-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+}
+
+.Banner-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white);
+}
+
+.Banner-button-mobile{
+    display: none;
+}
+
+/* ――――――――― Contenido principal ――――――――― */
+
+
+
+/* ――――――――― Sección Presentation ――――――――― */
+/* Descripción: Estilos para la sección de prsentación */ 
+.Presentation{
+    margin-top: 6rem;
+
+    background-image: url(/assets/home/homebg_alternative_2.png);
+    background-size: cover;
+    background-position: top;
+}
+
+.Presentation-wrapper{
+    width: 100%;
+    margin: 3rem auto;
+    text-align: center;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.Presentation-h3{
+    font-size: var(--h3-size);
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.Presentation-p{
+    font-size: var(--p-size);
+    width: 70%;
+}
+
+.Presentation-ul{
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   align-items: center;
+   margin-top: 1.875rem;
+}
+
+.Presentation-li-coach{
+    background-image: url(../assets/home/registroEntrenadores.jpg);
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    height: 50vh;
+    text-align: center;
+    color: white;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3.125rem;
+}
+
+.Presentation-li-club{
+    background-image: url(../assets/home/bgClub.jpg);
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    height: 50vh;
+    text-align: center;
+    color: white;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3.125rem;
+}
+
+.Coach-p, .Club-p{
+    width: 70%;
+    font-size: var(--p-size);
+}
+
+
+.Presentation-button{
+    white-space: nowrap;
+    background-color: var(--color-white);
+    padding: 1rem 3rem;
+    border-radius: 10rem;
+                
+    color: var(--color-primary); 
+    font-weight: 600;
+    width: auto;
+}
+
+.Presentation-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+}
+
+.Presentation-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+                
+    color: var(--color-white);
+}
+
+/* ――――――――― Sección Presentation ――――――――― */
+
+
+
+/* ――――――――― Sección Intro ――――――――― */
+
+.Intro{
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.Intro-title{
+    text-align: center;
+    font-size: var(--h3-size);
+    font-weight: 500;
+    color: var(--color-primary);
+    width: 80%;
+}
+
+.Intro-h3{
+    text-align: center;
+    font-size: var(--h3-size);
+    font-weight: 500;
+}
+
+.Intro-wrapper{
+    margin: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center; 
+}
+
+.Intro-article{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.875rem;
+    width: 50%;
+    padding: 2.5rem;
+}
+
+.Intro-img{
+    width: 50%;
+}
+
+.Intro-p{
+    font-size: var(--p-size);
+    text-align: center;
+}
+
+
+.Intro-button{
+    white-space: nowrap;
+    background-color: var(--color-primary);
+    padding: 1rem 3rem;
+    border-radius: 10rem;
+                
+    color: var(--color-white); 
+    font-weight: 600;
+    width: auto;
+}
+
+.Intro-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+}
+
+.Intro-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+                
+    color: var(--color-white);
+}
+
+
+
+
+
+/* ――――――――― Sección Talento ――――――――― */
+/* Descripción: Estilos para la sección de talento y oportunidad, donde se describe el mision y vision statement */ 
+
+.Talento{
+    padding: 2.5rem;
+    width: 90%;
+    margin: auto;
+}
+
+.Main-section{
+    margin-top: 5rem;
+}
+
+.Talento-h3{
+    color: var(--color-primary);
+    font-size: var(--h3-size);
+    text-align: center;
+    font-weight: 500;
+}
+
+.Talento-p{
+    margin:2rem auto 5rem auto;
+    text-align: center;
+    width: 80%;
+    font-size: var(--p-size);
+}
+
+.Talento-articles{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8rem;
+    width: 60vw;
+    margin: 3rem auto;
+}
+
+.Talento-article{
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+    border-radius: 3.75rem;
+    background-color: #F7F7F7;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 28vw;
+    width: 50%;
+    text-align: center;
+}
+
+.Talento-article:hover{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transition: all ease 1s;
+}
+
+.Talento-article:hover .Talento-article-h4{
+    color: var(--color-secondary);
+    transition: all ease 1s;
+}
+
+
+.Talento-article:hover .Talento-svg{
+    fill: var(--color-secondary);
+    transition: all ease 1s;
+ }
+
+.Talento-article-h4{
+    text-align: center;
+    margin-top: 3rem;
+    font-size: var(--h4-size);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.Talento-article-p{
+    font-size: var(--p-size);
+}
+
+.Talento-article-svg{
+    margin: 0 auto 2rem;
+    padding: 20px;
+    object-fit: contain;
+}
+
+.Talento-svg{
+    height: 10vh;
+}
+
+
+/* ――――――――― Sección Talento ――――――――― */
+
+
+
+
+
+
+
+/* Mouse icon */
+
+.Mouse-wrapper{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+}
+
+.Mouse-icon {
+    display: block;
+    position: absolute;
+    height: 3em;
+    width: 2em;
+    border: .25em solid #ffffff;
+    border-radius: 2em;
+}
+
+@keyframes scroll_2 {
+    0%   { transform: translateY(0); opacity: 1; }
+    25%  { opacity: 1; }
+    75%  { transform: translateY(.75em); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
+}
+
+.Mouse-icon-dot {
+    display: block;
+    position: absolute;
+    left: 50%;
+    background: #ffffff;
+    height: .5em;
+    width: .5em;
+    top: .6em;
+    margin-left: -.25em;
+    border-radius: 50%;
+    transform-origin: top center;
+    backface-visibility: hidden;
+    animation: scroll_2 2s ease-out infinite;
+}
+
+.Mouse-rectangle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+/* ――――――――― Sección Contact ――――――――― */
+/* Descripción: Estilos para la sección de contacto de la página */ 
+
+.Contact{
+    background-color: #F7F7F7;
+    padding: 3.125rem;
+    margin-top: 7rem;
+}
+
+.Contact-wrapper{
+    width: 85%;
+    margin: auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Contact-text{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3.125rem;
+}
+
+.Contact-h5{
+    font-size: var(--h5-size);
+}
+
+.Contact-button{
+    white-space: nowrap;
+    background-color: var(--color-primary);
+    padding: 1rem 3rem;
+    border-radius: 10rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white); 
+    font-weight: 600;
+    width: auto;
+}
+
+.Contact-button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 1s ease;
+    font-weight: 500;
+}
+
+.Contact-button:active{
+    white-space: nowrap;
+    background-color: aqua ;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+    box-shadow: 6px 6px 12px lightgrey,
+                -6px -6px 50px white;
+                
+    color: var(--color-white);
+}
+
+.Contact-icon{
+    width: 12rem;
+    height: 12rem;
+}
+
+/* ――――――――― Sección Contact ――――――――― */
+
+
+
+
+
+
+
+/* ――――――――― Media Querys - 1200px――――――――― */
+/* Descripción: Estilos para tablet */
+
+@media  (max-width:1200px) {
+
+    .Meet-p{
+        width: 100%; 
+    }
+
+    video{
+        border-radius: 0rem 0rem 9rem 0rem;
+    }
+    
+    .Mouse-wrapper{
+        display: none;
+    }
+
+    .Talento{
+        margin: auto;
+        padding: 2.5rem;
+        width: 100%;
+    }
+
+    .Talento-articles{
+        width: 80vw;
+    }
+
+    .Contact-wrapper{
+        width: 80%;
+        margin: auto;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+    }
+}
+
+/* ――――――――― Media Querys - 1200px――――――――― */
+
+
+
+
+/* ――――――――― Media Querys - 600px――――――――― */
+/* Descripción: Estilos para mobile */
+
+@media  (max-width:600px) {
+
+    .Meet-p{
+        width: 100%; 
+    }
+
+    .Banner-h2{
+        font-size: var( --h3-size);
+        font-weight: 500;
+        width: 90%;
+    }
+
+    .Banner-wrapper{
+        top: 20%;
+    }
+
+    video{
+        border-radius: 0rem 0rem 9rem 0rem;
+    }
+    
+    .Burguer-svg{
+        display: block;
+        width: 2.6rem;
+        height: 2.6rem;
+    }
+
+    .Mouse-wrapper{
+        display: none;
+    }
+
+    .Intro-wrapper{
+        margin: auto;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center; 
+    }
+
+    .Intro-title{
+        text-align: center;
+        font-size: var(--h3-size);
+        width: 90%;
+    }
+
+    .Intro-img, .Intro-article{
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .Intro-article {
+        order: 2;
+    }
+    .Intro-img {
+        order: 1; 
+    }
+
+    .Talento{
+        margin: auto;
+        padding: 2.5rem;
+        width: 100%;
+    }
+
+    .Talento-articles{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        gap: 3rem;
+    }
+
+    .Talento-article{
+        width: auto;
+    }
+
+    .Contact-icon{
+        display: none;
+     }
+
+     .Presentation-h3{
+        width: 90%;
+     }
+
+     .Presentation-ul{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+     }
+
+     .Banner-button-mobile{
+        white-space: nowrap;
+        background-color: var(--color-white);
+        padding: 1rem 3rem;
+        border-radius: 10rem;
+        display: inline-block;
+        width: auto;
+        font-weight: 600;
+        font-size: var(--h5-size);
+                    
+        color: var(--color-primary);
+        cursor: pointer;
+    } 
+    
+    .Banner-button-mobile:active{
+        white-space: nowrap;
+        background-color: aqua ;
+        padding: 1rem 2rem;
+        border-radius: 10rem;
+        box-shadow: 6px 6px 12px lightgrey,
+                    -6px -6px 50px white;
+                    
+        color: var(--color-white);
+    }
+
+    .Banner-button{
+        display: none;
+    }
+}
+
+/* ――――――――― Media Querys - 600px――――――――― */
+

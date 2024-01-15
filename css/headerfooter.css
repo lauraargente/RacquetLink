@@ -3,11 +3,14 @@
 
 .Header{
     width: 100%; 
-    padding: 1.25rem 4rem; 
+    padding: 1rem 6rem; 
     color: var(--color-grey);
     background-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 1);
     position: fixed;
     top: 0;
+
+    transition: 0.4s;
     
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
 
@@ -20,6 +23,9 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
+
+    backdrop-filter: blur(10px);
+
 }
 
 .Header-nav{
@@ -33,7 +39,7 @@
 }
 
 .Header-svg{
-    width: 6rem;
+    width: 7rem;
 }
 
 .Header-ul{
@@ -41,7 +47,6 @@
     flex-flow: row nowrap;
     justify-content: flex-end;
     align-items: center;
-
     gap: 4rem;
 }
 
@@ -51,8 +56,9 @@
 }
 
 .Header-li{
+    color: var(--color-primary);
     white-space: nowrap;
-    font-weight: 300;
+    font-weight: 400;
     min-width: 0rem;
 }
 
@@ -80,13 +86,15 @@
 .Header-button{
     white-space: nowrap;
     background-color: var(--color-primary);
+    background-color: white;
     padding: 0.7rem 1.5rem;
     border-radius: 10rem;
     border: 2px solid rgba(0, 0, 0, 0.0);
     /* box-shadow: 6px 6px 12px lightgrey,
                 -6px -6px 50px white;
                  */
-    color: var(--color-white); 
+    color: var(--color-white);
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -109,10 +117,24 @@
     background-color: #ffffff;
     padding: 0.7rem 2rem;
     border-radius: 10rem;
+
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(25px);
+    /* color: black; */
+
+    background: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(25px);
+    color: var(--color-primary);
   }
 
   #logged-user-text {
     font-weight: 500;
+    color: var(--color-primary);
+    /* color: white !important; */
+
   }
 
   #logged-user:hover {
