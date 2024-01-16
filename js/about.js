@@ -13,7 +13,7 @@ const profilesImage = document.querySelectorAll('.Profiles-responsive .Profiles-
 const sliderQuotes= document.querySelector('.Slider-quotes')
 const quotesPoint= document.querySelectorAll('.Quotes-li-dots')
 const quotesItems= document.querySelectorAll('.Quotes-li-responsive')
-const sliderImages = ["assets/about/AdobeStock_191850653-1-(3).jpg", "assets/about/AdobeStock_191850653-1-(3).jpg", "assets/about/JavierMartiSlider.jpg"]
+const sliderImages = ["../assets/about/AdobeStock_191850653-1-(3).jpg", "../assets/about/AdobeStock_191850653-1-(3).jpg", "../assets/about/JavierMartiSlider.jpg"]
 
 
 //Cuando hago CLICK en headerBurguer hace una FUNCTION
@@ -124,5 +124,11 @@ const sliderImages = ["assets/about/AdobeStock_191850653-1-(3).jpg", "assets/abo
         clearInterval(quotesInterval)
         quotesInterval = setInterval(startQuotes, 5000)
     }
+
+//Store variable to navigate to FAQS
+const faqsLink = document.querySelector('.Faqs-link')
+faqsLink.addEventListener('click', ()=>{
+    localStorage.setItem('seeFaqs', 'yes');
+})
 
 

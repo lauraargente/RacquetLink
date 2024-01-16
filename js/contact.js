@@ -48,3 +48,9 @@ const formFields = document.querySelectorAll('.Field')
 // a Lightbox le remove la clase is Active --> Es decir llamamos a la función closeLightBox
 
 lightBoxClose.addEventListener('click', closeLightBox)
+
+//Store variable to navigate to FAQS
+const faqsLink = document.querySelector('.Faqs-link')
+faqsLink.addEventListener('click', ()=>{
+    localStorage.setItem('seeFaqs', 'yes');
+})

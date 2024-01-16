@@ -137,3 +137,9 @@ function isEmailValid(email) {
   // Verificar si el email coincide con la expresión regular
   return regex.test(email);
 }
+
+//Store variable to navigate to FAQS
+const faqsLink = document.querySelector('.Faqs-link')
+faqsLink.addEventListener('click', ()=>{
+    localStorage.setItem('seeFaqs', 'yes');
+})

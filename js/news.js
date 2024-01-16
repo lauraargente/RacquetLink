@@ -10,5 +10,9 @@ headerBurguer.addEventListener(`click`, ()=>{
     headerNav.classList.toggle('isActive')
 })
 
-
+//Store variable to navigate to FAQS
+const faqsLink = document.querySelector('.Faqs-link')
+faqsLink.addEventListener('click', ()=>{
+    localStorage.setItem('seeFaqs', 'yes');
+})
 

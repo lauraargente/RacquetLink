@@ -1,6 +1,7 @@
 const faqsDown = document.querySelectorAll('.Faqs-svg-down')
 const faqsUp = document.querySelectorAll('.Faqs-svg-up')
 const faqsAnswers = document.querySelectorAll('.Faqs-answer')
+const headerLi = document.querySelectorAll('.Header-li')
 
 faqsDown.forEach((eachArrowDown, index) => {
     eachArrowDown.addEventListener(`click`, () => {
@@ -26,3 +27,12 @@ faqsUp.forEach((eachUp, index) => (
         faqsAnswers[index].classList.remove('isActive');
     })
 ))
+
+let seeFaqs = localStorage.getItem('seeFaqs');
+if (seeFaqs == 'yes') {
+    const element = document.getElementById("Contact-button");
+    setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth'})
+    }, 1000);
+}
+localStorage.setItem('seeFaqs', 'no');
