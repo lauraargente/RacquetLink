@@ -215,7 +215,7 @@ b{
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    gap: 8rem;
+    gap: 4rem;
     width: 100%;
     margin: 3rem auto;
 }
@@ -231,7 +231,7 @@ b{
     justify-content: flex-start;
     gap: 20px;
     width: 33%;
-    min-height: auto;
+    min-height: 45vh;
     background-color: #F7F7F7;
 }
 
@@ -594,7 +594,7 @@ b{
 
     .Consultoria-article{
         width: 100%;
-        height: 55vh;
+        min-height: 55vh;
         
     }
 

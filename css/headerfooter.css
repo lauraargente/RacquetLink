@@ -390,7 +390,7 @@
     }
 
     .Header-nav.isActive{
-        height: 60vh;
+        height: 70vh;
         pointer-events: auto;
     }
 
