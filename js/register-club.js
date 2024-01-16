@@ -1193,3 +1193,9 @@ document.addEventListener('keydown', function(event) {
 });
 
 //#endregion
+
+//Store variable to navigate to FAQS
+const faqsLink = document.querySelector('.Faqs-link')
+faqsLink.addEventListener('click', ()=>{
+    localStorage.setItem('seeFaqs', 'yes');
+})

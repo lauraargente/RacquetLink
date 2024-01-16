@@ -125,4 +125,10 @@ const sliderImages = ["../assets/about/AdobeStock_191850653-1-(3).jpg", "../asse
         quotesInterval = setInterval(startQuotes, 5000)
     }
 
+//Store variable to navigate to FAQS
+const faqsLink = document.querySelector('.Faqs-link')
+faqsLink.addEventListener('click', ()=>{
+    localStorage.setItem('seeFaqs', 'yes');
+})
+
 
