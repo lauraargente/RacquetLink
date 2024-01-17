@@ -288,7 +288,7 @@ var registerData = {
   userSports: [],
   userAdditionalSport: "",
   userExperience: "",
-  userAdditionalExperience: "",
+  userAdditionalExperience: "no",
   userTitles: "",
   userClubExp: "",
   userOtherCoachExp: "",

@@ -56,6 +56,17 @@
   font-weight: 500;
   margin: 1rem;
 }
+#profile-general-options #general-options-options #close-general-options {
+  position: absolute;
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: white;
+  border-radius: 1rem;
+  top: 0;
+  right: 0;
+  transform: translateX(40%) translateY(-40%);
+}
 #profile-general-options #general-options-options:hover {
   cursor: pointer;
 }
@@ -420,6 +431,9 @@
 #image-container {
   position: relative;
 }
+#image-container #profile-image-label {
+  border: 4px solid rgb(255, 255, 255);
+}
 #image-container:hover #profile-image-label {
   color: rgb(255, 255, 255);
   border: 2px solid rgb(255, 255, 255);
@@ -513,7 +527,6 @@
 }
 
 #profile-element-container-name {
-  letter-spacing: 2px;
   font-size: 1.2rem;
   text-align: center;
   font-weight: 500;

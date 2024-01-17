@@ -231,6 +231,7 @@ var dataSports = document.querySelector("#data-sports .data-content");
 var dataExp = document.querySelector("#data-exp .data-content");
 var dataWeeklyhours = document.querySelector("#data-weeklyhours .data-content");
 var dataAlumn = document.querySelector("#data-alumn .data-content");
+var dataAlumnAge = document.querySelector("#data-studentsage-id .data-content");
 var dataAvailability = document.querySelector(
   "#data-availability .data-content"
 );
@@ -238,19 +239,10 @@ var dataMobility = document.querySelector("#data-mobility .data-content");
 var dataOportunity = document.querySelector("#data-oportunity .data-content");
 var dataRange = document.querySelector("#data-range .data-content");
 var dataRecommendator = document.querySelector("#data-recommendator");
-var dataResidence = document.querySelector("#data-residence");
-var dataAge = document.querySelector("#data-age");
-var dataEmail = document.querySelector("#data-email");
-var dataLanguage = document.querySelector("#data-language");
-var dataNumber = document.querySelector("#data-number");
+// var dataAge = document.querySelector("#data-age");
+var dataLanguage = document.querySelector("#data-languages");
 var dataName = document.querySelector("#profile-element-container-name");
-var dataLinkedin = document.querySelector("#data-linkedin");
-var dataLinkedinWrapper = document.querySelector("#data-linkedin-wrapper");
-var dataLinkedinRow = document.querySelector("#data-linkedin-row");
-var dataInstagram = document.querySelector("#data-instagram");
-var dataInstagramWrapper = document.querySelector("#data-instagram-wrapper");
-var dataInstagramRow = document.querySelector("#data-instagram-row");
-var dataFlag = document.querySelector("#data-flag");
+// var dataFlag = document.querySelector("#data-flag-user");
 
 var newEditedData;
 
@@ -263,6 +255,8 @@ var fillDataInDocument = (data) => {
   newEditedData.userAdminNote = newEditedData.userAdminNote || "";
   newEditedData.userAdminType = newEditedData.userAdminType || "";
   newEditedData.userAdminState = newEditedData.userAdminState || "";
+  newEditedData.userAdditionalExperience = newEditedData.userAdditionalExperience || "";
+  newEditedData.userStudentsAge = newEditedData.userStudentsAge || [];
 
   var dataSelectOne = (
     optionsAttribute,
@@ -280,7 +274,7 @@ var fillDataInDocument = (data) => {
     });
 
     // Set the data from query to document
-    documentElement.innerHTML = mappingFunction(queryVariable);
+    // documentElement.innerHTML = mappingFunction(queryVariable);
 
     // Manage edition
     selectorAllOptions.forEach((element) => {
@@ -288,7 +282,7 @@ var fillDataInDocument = (data) => {
         const newQueryVariable = element.getAttribute(`${optionsAttribute}`);
         updateQueryVariable(newQueryVariable); // Llamada a la función de actualización externa
 
-        documentElement.innerHTML = mappingFunction(newQueryVariable);
+        // documentElement.innerHTML = mappingFunction(newQueryVariable);
 
         selectorAllOptions.forEach((elem) => {
           elem.classList.remove("selected");
@@ -341,6 +335,7 @@ var fillDataInDocument = (data) => {
     // Set selected from query to document
     var selectorAllOptions = document.querySelectorAll(`[${optionsAttribute}]`);
 
+    console.log(queryVariable)
     queryVariable.forEach((upperelement) => {
       selectorAllOptions.forEach((element) => {
         if (element.getAttribute(`${optionsAttribute}`) === upperelement) {
@@ -349,11 +344,11 @@ var fillDataInDocument = (data) => {
       });
     });
 
-    // Set the data from query to document
-    let translatedElements = queryVariable.map((element) =>
-      mappingFunction(element)
-    );
-    documentElement.innerHTML = translatedElements.join(", ");
+    // // Set the data from query to document
+    // let translatedElements = queryVariable.map((element) =>
+    //   mappingFunction(element)
+    // );
+    // documentElement.innerHTML = translatedElements.join(", ");
 
     // Manage edition
     selectorAllOptions.forEach((element) => {
@@ -377,16 +372,38 @@ var fillDataInDocument = (data) => {
             if (element.classList.contains("selected")) {
               queryVariable.push(element.getAttribute(`${optionsAttribute}`));
 
-              let translatedElements = queryVariable.map((element) =>
-                mappingFunction(element)
-              );
-              documentElement.innerHTML = translatedElements.join(", ");
+              // let translatedElements = queryVariable.map((element) =>
+              //   mappingFunction(element)
+              // );
+              // documentElement.innerHTML = translatedElements.join(", ");
             }
           });
         }
       });
     });
   };
+
+  var setupInputField = (selector, dataProperty) => {
+    var inputField = document.querySelector(selector);
+    if (!inputField) return; // Si el elemento no existe, salir de la función.
+  
+    inputField.style.display = 'flex';
+  
+    if (newEditedData[dataProperty] === "" || newEditedData[dataProperty] === undefined) {
+      inputField.classList.add('undefined');
+    } else {
+      inputField.value = newEditedData[dataProperty];
+    }
+  
+    inputField.addEventListener("input", () => {
+      if (inputField.value === "") {
+        inputField.classList.add('undefined');
+      } else {
+        newEditedData[dataProperty] = inputField.value;
+        inputField.classList.remove('undefined');
+      }
+    });
+  }
 
   function updateProperty(newValue, propertyKey) {
     if (newEditedData.hasOwnProperty(propertyKey)) {
@@ -402,84 +419,39 @@ var fillDataInDocument = (data) => {
   // ---------------------------------------------------------------------------- Name
   dataName.innerHTML = `${newEditedData.userName} ${newEditedData.userSurname}`;
 
-  // ---------------------------------------------------------------------------- Age
-  const actualDate = new Date();
-  const birthDate = new Date(newEditedData.userBirthday);
-  const diferenciaEnMs = actualDate.getTime() - birthDate.getTime();
-  const msEnUnAnio = 1000 * 60 * 60 * 24 * 365.25; // Considerando años bisiestos
-  const edad = Math.floor(diferenciaEnMs / msEnUnAnio);
-  dataAge.innerHTML = `${edad} años`;
+  // // ---------------------------------------------------------------------------- Age
+  // const actualDate = new Date();
+  // const birthDate = new Date(newEditedData.userBirthday);
+  // const diferenciaEnMs = actualDate.getTime() - birthDate.getTime();
+  // const msEnUnAnio = 1000 * 60 * 60 * 24 * 365.25; // Considerando años bisiestos
+  // const edad = Math.floor(diferenciaEnMs / msEnUnAnio);
+  // dataAge.innerHTML = `${edad} años`;
 
-  // ---------------------------------------------------------------------------- Flag
-  dataFlag.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${newEditedData.userNationality}.png`;
-
-  // ---------------------------------------------------------------------------- Email
-  dataEmail.innerHTML = newEditedData.userEmail;
+  // // ---------------------------------------------------------------------------- Flag
+  // dataFlag.src = `https://flagpedia.net/data/flags/emoji/twitter/256x256/${newEditedData.userNationality}.png`;
 
   // ---------------------------------------------------------------------------- Number
-  dataNumber.innerHTML = newEditedData.userPhoneNumber;
+  setupInputField("[data-email]","userEmail")
+
+  // ---------------------------------------------------------------------------- Number
+  setupInputField("[data-number]","userPhoneNumber")
+
+  // ---------------------------------------------------------------------------- Visa
+  setupInputField("[data-visa]","userOtherNationality")
+
+  // ---------------------------------------------------------------------------- Visa
+  setupInputField("[data-titles]","userTitles")
 
   // ---------------------------------------------------------------------------- Residence
-  dataResidence.innerHTML = newEditedData.userResidence;
+  // setupInputField("[data-residence]","userResidence")
 
   // ---------------------------------------------------------------------------- LinkedIn
 
-  function formatearURL(url) {
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      if (url.startsWith("www.")) {
-        url = "http://" + url;
-      } else {
-        url = "http://" + url;
-      }
-    }
-    return url;
-  }
-
-  function generateLinkedInUrl(inputString) {
-    const regex =
-      /((?<=in\/)[\w\-áéíóúÁÉÍÓÚñÑ]+)|((?<=\/)[\w\-áéíóúÁÉÍÓÚñÑ]+(?=\/?$))|([\w\-áéíóúÁÉÍÓÚñÑ]+(?=\/$))/;
-    const match = inputString.match(regex);
-    if (match) {
-      // Selecting the first non-null group match
-      const username = match.find((group) => group !== undefined);
-      return [`https://www.linkedin.com/in/${username}/`, `in/${username}`];
-    } else {
-      return "Invalid input";
-    }
-  }
-
-  function generateInstagramUrl(inputString) {
-    // Expresión regular para extraer el nombre de usuario de Instagram, incluyendo el caso de '@usuario'
-    const regex =
-      /((?<=instagram\.com\/)[\w\.-]+)|((?<=@)[\w\.-]+)|([\w\.-]+(?=\/?$))/;
-    const match = inputString.match(regex);
-    if (match) {
-      // Seleccionando el primer grupo que no sea null
-      const username = match.find((group) => group !== undefined);
-      return [`https://www.instagram.com/${username}/`, `@${username}`];
-    } else {
-      return "Invalid input";
-    }
-  }
-
-  newEditedData.userLinkedin === ""
-    ? (dataLinkedinRow.style.display = "none")
-    : ((dataLinkedinWrapper.href = generateLinkedInUrl(
-        newEditedData.userLinkedin
-      )[0]),
-      (dataLinkedin.innerHTML = generateLinkedInUrl(
-        newEditedData.userLinkedin
-      )[1]));
+  setupInputField("[data-instagram]","userInsta")
 
   // ---------------------------------------------------------------------------- Instagram
-  newEditedData.userInsta === ""
-    ? (dataInstagramRow.style.display = "none")
-    : ((dataInstagramWrapper.href = generateInstagramUrl(
-        newEditedData.userInsta
-      )[0]),
-      (dataInstagram.innerHTML = generateInstagramUrl(
-        newEditedData.userInsta
-      )[1]));
+  setupInputField("[data-linkedin]","userLinkedin")
+
 
   // ---------------------------------------------------------------------------- Residence
 
@@ -524,33 +496,30 @@ var fillDataInDocument = (data) => {
       return "País no especificado"; // O un mensaje predeterminado para códigos no encontrados
     }
   }
-  dataResidence.textContent = mapCountry(newEditedData.userResidence);
+  var dataResidence = document.querySelector("[data-residence]");
+
+  dataResidence.value = mapCountry(newEditedData.userResidence);
+  dataResidence.style.display = 'flex'
 
   // // // // // // // // // // // // // // // // // // // // // // // // // // - EDITABLE DATA
 
-  // ---------------------------------------------------------------------------- Visa
-  dataVisa.innerHTML = newEditedData.userOtherNationality;
-
-  if (dataVisa.innerHTML === "") {
-    document.querySelector("#data-visa-row").style.display = "none";
-  }
-
   // ---------------------------------------------------------------------------- Languages
 
-  function mapLanguages(data) {
-    switch (data) {
+  function mapLanguages(element) {
+    switch (element) {
       default:
-        return data; // Devuelve el mismo valor si no hay traducción
+        return element; // Devuelve el mismo valor si no hay traducción
     }
   }
   dataSelectMultiple(
     "data-language",
     newEditedData.userLanguages,
     dataLanguage,
-    mapLanguages
+    mapLanguages,
+    (newValue) => updateProperty(newValue, "userLanguages")
   );
 
-  // ---------------------------------------------------------------------------- Sports
+  // ---------------------------------------------------------------------------- AdminState
 
   function mapAdminState(element) {
     switch (element) {
@@ -575,7 +544,7 @@ var fillDataInDocument = (data) => {
     (newValue) => updateProperty(newValue, "userAdminState")
   );
 
-  // ---------------------------------------------------------------------------- Sports
+  // ---------------------------------------------------------------------------- AdminType
 
   function mapAdminType(element) {
     switch (element) {
@@ -663,6 +632,15 @@ var fillDataInDocument = (data) => {
     (newValue) => updateProperty(newValue, "userExperience")
   );
 
+    // ---------------------------------------------------------------------------- Additional experience
+    dataSelectOne(
+      "data-experience-additional-option",
+      newEditedData.userAdditionalExperience,
+      dataExp,
+      mapExp,
+      (newValue) => updateProperty(newValue, "userAdditionalExperience")
+    );
+
   // ---------------------------------------------------------------------------- Weekly hours
   function mapWeekly(data) {
     switch (data) {
@@ -711,6 +689,14 @@ var fillDataInDocument = (data) => {
     "data-level",
     newEditedData.userPreferredLevel,
     dataAlumn,
+    mapLevel
+  );
+
+  // ---------------------------------------------------------------------------- Alumni Profile
+  dataSelectMultiple(
+    "data-studentsage",
+    newEditedData.userStudentsAge,
+    dataAlumnAge,
     mapLevel
   );
 
@@ -995,7 +981,6 @@ profilePicture.addEventListener("change", (e) => {
 });
 
 var setSettedImageStyling = (url) => {
-  image.style.border = "0.5rem solid white";
   imageContainer.classList.add("image-set");
   imageContainer.classList.remove("loading-state");
   label.innerHTML = "Modifica la <br> foto de perfil";

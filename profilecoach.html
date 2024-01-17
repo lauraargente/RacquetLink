@@ -242,10 +242,10 @@ Estructura general:
                 </div>
                 <div id="profile-element-container-name" style="width: 90%; justify-content: center;" class="profile-information-element"></div>
                 <!-- <div id="experience-label-1" class="experience-label" style="margin-top: 2rem;"> Perfil</div> -->
-                <div style="display: flex; justify-content: center; gap: 1rem;">
+                <!-- <div style="display: flex; justify-content: center; align-items: center;">
                     <div class="profile-element-contact-data" id="data-age"></div>
-                    <img id="data-flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" title="Racquet-Link | Bandera País de Nacimiento" alt="Bandera del país de nacimiento del entrenador.">
-                </div>
+                    <img id="data-flag-user" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" title="Racquet-Link | Bandera País de Nacimiento" alt="Bandera del país de nacimiento del entrenador.">
+                </div> -->
             </div>
 
             <div class="mobile-fullwidth transparent-content-box admin-only">
@@ -318,40 +318,147 @@ Estructura general:
         <div id="profile-center">
             <div id="profile-content-container-wrapper">
                 <div id="profile-content-container-2" class="mobile-fullwidth transparent-content-box">
-                    <div class="profile-label" style="margin: 1rem auto 1rem 0;">Info. Contacto</div>
+                    <div id="profile-element-container-email" class="profile-information-element">
+                        <div class="profile-label">Email</div>
+                        <div class="profile-data" id="data-email">
+                            <div class="data-content"></div>
+                            <div class="editable-options input-field">
+                                <input class="editable-option inputtext" data-email="visa" style="text-transform: lowercase; pointer-events: none;" placeholder="sin definir" readonly></input>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="contact-row">
+                    <div id="profile-element-container-email" class="profile-information-element">
+                        <div class="profile-label">País de residencia</div>
+                        <div class="profile-data" id="data-residence">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <input class="editable-option inputtext" data-residence="residence" style="text-transform: lowercase; pointer-events: none;" placeholder="sin definir" readonly></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-languages" class="profile-information-element">
+                        <div class="profile-label">Idiomas</div>
+                        <div class="profile-data" id="data-languages">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <div class="editable-option selectable" data-language="en">en</div>
+                                <div class="editable-option selectable" data-language="es">es</div>
+                                <div class="editable-option selectable" data-language="fr">fr</div>
+                                <div class="editable-option selectable" data-language="de">de</div>
+                                <div class="editable-option selectable" data-language="ru">ru</div>
+                                <div class="editable-option selectable" data-language="it">it</div>
+                                <div class="editable-option selectable" data-language="pt">pt</div>
+                                <div class="editable-option selectable" data-language="ch">ch</div>
+                                <div class="editable-option selectable" data-language="ot">otros</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-recommendator" class="profile-information-element">
+                        <div class="profile-label">Recomendador</div>
+                        <div class="profile-data" id="data-recommendator">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <div class="editable-option selectable" data-recommendator="no">No</div>
+                                <div class="editable-option selectable" data-recommendator="laura-marti">Laura Marti</div>
+                                <div class="editable-option selectable" data-recommendator="sergi-perez">Sergi Perez</div>
+                                <div class="editable-option selectable" data-recommendator="javier-marti">Javier Marti</div>
+                                <div class="editable-option selectable" data-recommendator="iñigo-jofre">Iñigo Jofre</div>
+                                <div class="editable-option selectable" data-recommendator="miguel-semmler">Miguel Semmler</div>
+                                <div class="editable-option selectable" data-recommendator="pablo-franco">Pablo Franco</div>
+                                <div class="editable-option selectable" data-recommendator="sergio-cerdeña">Sergio Cerdeña</div>
+                                <div class="editable-option selectable" data-recommendator="global-college">Global College</div>
+                                <div class="editable-option selectable" data-recommendator="adriana-armendariz">Adriana Armendariz</div>
+                                <div class="editable-option selectable" data-recommendator="pablo-aycart">Pablo Aycart</div>
+                                <div class="editable-option selectable" data-recommendator="radu-sanchez">Radu Sanchez</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-number" class="profile-information-element">
+                        <div class="profile-label">Teléfono</div>
+                        <div class="profile-data" id="data-number">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <input class="editable-option inputtext" data-number="+34" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-visa" class="profile-information-element">
+                        <div class="profile-label">Visado</div>
+                        <div class="profile-data" id="data-visa">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <input class="editable-option inputtext" data-visa="visa" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-visa" class="profile-information-element">
+                        <div class="profile-label">Títulos o certificados</div>
+                        <div class="profile-data" id="data-titles">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <input class="editable-option inputtext" data-titles="titles" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-instagram" class="profile-information-element">
+                        <div class="profile-label">Instagram</div>
+                        <a class="profile-data" id="data-instagram-wrapper">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <input class="editable-option inputtext" data-instagram="instagram" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div id="profile-element-container-linkedin" class="profile-information-element">
+                        <div class="profile-label">Linkedin</div>
+                        <a class="profile-data" id="data-linkedin-wrapper">
+                            <div class="data-content"></div>
+                            <div class="editable-options">
+                                <input class="editable-option inputtext" data-linkedin="linkedin" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- <div class="contact-row">
                         <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg><div class="profile-element-contact-data" id="data-email"></div>
-                    </div>
-                    <div class="contact-row">
+                    </div> -->
+                    <!-- <div class="contact-row">
                         <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M8.38028 8.85335C9.07627 10.303 10.0251 11.6616 11.2266 12.8632C12.4282 14.0648 13.7869 15.0136 15.2365 15.7096C15.3612 15.7694 15.4235 15.7994 15.5024 15.8224C15.7828 15.9041 16.127 15.8454 16.3644 15.6754C16.4313 15.6275 16.4884 15.5704 16.6027 15.4561C16.9523 15.1064 17.1271 14.9316 17.3029 14.8174C17.9658 14.3864 18.8204 14.3864 19.4833 14.8174C19.6591 14.9316 19.8339 15.1064 20.1835 15.4561L20.3783 15.6509C20.9098 16.1824 21.1755 16.4481 21.3198 16.7335C21.6069 17.301 21.6069 17.9713 21.3198 18.5389C21.1755 18.8242 20.9098 19.09 20.3783 19.6214L20.2207 19.779C19.6911 20.3087 19.4263 20.5735 19.0662 20.7757C18.6667 21.0001 18.0462 21.1615 17.588 21.1601C17.1751 21.1589 16.8928 21.0788 16.3284 20.9186C13.295 20.0576 10.4326 18.4332 8.04466 16.0452C5.65668 13.6572 4.03221 10.7948 3.17124 7.76144C3.01103 7.19699 2.93092 6.91477 2.9297 6.50182C2.92833 6.0436 3.08969 5.42311 3.31411 5.0236C3.51636 4.66357 3.78117 4.39876 4.3108 3.86913L4.46843 3.7115C4.99987 3.18006 5.2656 2.91433 5.55098 2.76999C6.11854 2.48292 6.7888 2.48292 7.35636 2.76999C7.64174 2.91433 7.90747 3.18006 8.43891 3.7115L8.63378 3.90637C8.98338 4.25597 9.15819 4.43078 9.27247 4.60655C9.70347 5.26945 9.70347 6.12403 9.27247 6.78692C9.15819 6.96269 8.98338 7.1375 8.63378 7.4871C8.51947 7.60142 8.46231 7.65857 8.41447 7.72538C8.24446 7.96281 8.18576 8.30707 8.26748 8.58743C8.29048 8.66632 8.32041 8.72866 8.38028 8.85335Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg><div class="profile-element-contact-data" id="data-number"></div>
-                    </div>
-                    <div class="contact-row">
+                    </div> -->
+                    <!-- <div class="contact-row">
                         <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg><div class="profile-element-contact-data" id="data-residence"></div>
-                    </div>
-                    <div class="contact-row">
+                    </div> -->
+                    <!-- <div class="contact-row">
                         <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                             <path d="M12.5 2.5C15.0013 5.23835 16.4228 8.79203 16.5 12.5C16.4228 16.208 15.0013 19.7616 12.5 22.5M12.5 2.5C9.99872 5.23835 8.57725 8.79203 8.5 12.5C8.57725 16.208 9.99872 19.7616 12.5 22.5M12.5 2.5C6.97715 2.5 2.5 6.97715 2.5 12.5C2.5 18.0228 6.97715 22.5 12.5 22.5M12.5 2.5C18.0228 2.5 22.5 6.97715 22.5 12.5C22.5 18.0228 18.0228 22.5 12.5 22.5M3.00002 9.5H22M3 15.5H22" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg><div class="profile-element-contact-data" id="data-language"></div>
-                    </div>
-                    <div class="contact-row" id="data-visa-row">
+                    </div> -->
+                    <!-- <div class="contact-row" id="data-visa-row">
                         <svg  class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M10 16H14M8.8 22H15.2C16.8802 22 17.7202 22 18.362 21.673C18.9265 21.3854 19.3854 20.9265 19.673 20.362C20 19.7202 20 18.8802 20 17.2V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg><div class="profile-element-contact-data" id="data-visa"></div>
-                    </div>
-                    <div class="contact-row">
+                    </div> -->
+                    <!-- <div class="contact-row">
                         <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path d="M17.4163 19.25L14.6663 16.5M14.6663 16.5L17.4163 13.75M14.6663 16.5H20.1663M10.9997 14.2083H6.87468C5.59541 14.2083 4.95577 14.2083 4.43529 14.3662C3.26342 14.7217 2.34638 15.6388 1.99089 16.8106C1.83301 17.3311 1.83301 17.9707 1.83301 19.25M13.2913 6.875C13.2913 9.15317 11.4445 11 9.16634 11C6.88817 11 5.04134 9.15317 5.04134 6.875C5.04134 4.59683 6.88817 2.75 9.16634 2.75C11.4445 2.75 13.2913 4.59683 13.2913 6.875Z" stroke="#025B7B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg><div class="profile-element-contact-data" id="data-recommendator"></div>
-                    </div>
-                    <div class="contact-row" id="data-linkedin-row">
+                    </div> -->
+                    <!-- <div class="contact-row" id="data-linkedin-row">
                         <a href="" id="data-linkedin-wrapper" style="display: flex; align-items: center; gap: 1.5rem;">
                             <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M7.02968 21.0005H3.29766V8.98259H7.02968V21.0005ZM5.16142 7.34326C3.9682 7.34326 3 6.35452 3 5.16134C3 3.96817 3.96756 3 5.16142 3C6.35528 3 7.32284 3.96753 7.32284 5.16134C7.32284 6.35452 6.35464 7.34326 5.16142 7.34326ZM20.9973 21.0005H17.2736V15.1503C17.2736 13.7559 17.2453 11.9681 15.3333 11.9681C13.3931 11.9681 13.0954 13.4827 13.0954 15.05V21.0005H9.36726V8.98259H12.9463V10.6219H12.9983C13.4966 9.67754 14.7136 8.68108 16.5291 8.68108C20.3062 8.68108 21.0005 11.1684 21.0005 14.3988V21.0005H20.9973Z" fill="#025B7B"/>
@@ -364,7 +471,7 @@ Estructura general:
                                 <path d="M11.5002 0.937012C8.56397 0.937012 8.19805 0.950877 7.04895 0.998416C5.89513 1.05388 5.11466 1.22885 4.42601 1.49031C3.71576 1.76234 3.11083 2.12351 2.51333 2.71114C1.91178 3.29548 1.5391 3.88708 1.26499 4.58167C0.997632 5.25514 0.818719 6.01841 0.762007 7.1468C0.710021 8.27124 0.699219 8.62844 0.699219 11.4999C0.699219 14.3714 0.713397 14.7293 0.762007 15.8531C0.818719 16.9782 0.997632 17.7447 1.26499 18.4182C1.54315 19.1128 1.91245 19.7044 2.51333 20.2887C3.11083 20.877 3.71576 21.2415 4.42601 21.5096C5.11466 21.7677 5.8985 21.946 7.04895 22.0014C8.19872 22.0523 8.56397 22.0629 11.5002 22.0629C14.4364 22.0629 14.8023 22.049 15.9514 22.0014C17.1018 21.946 17.8857 21.7671 18.5743 21.5096C19.2846 21.2375 19.8895 20.8764 20.487 20.2887C21.0886 19.7044 21.4613 19.1161 21.7354 18.4182C21.9993 17.7447 22.1816 16.9782 22.2383 15.8531C22.2903 14.7286 22.3011 14.3714 22.3011 11.4999C22.3011 8.62844 22.287 8.27058 22.2383 7.1468C22.1816 6.02171 21.9987 5.25118 21.7354 4.58167C21.4572 3.88708 21.0879 3.29548 20.487 2.71114C19.8895 2.12285 19.288 1.75838 18.5743 1.49031C17.8857 1.22885 17.1018 1.05388 15.9514 0.998416C14.8016 0.947576 14.4364 0.937012 11.5002 0.937012ZM11.5002 2.83858C14.3837 2.83858 14.728 2.85244 15.8677 2.89998C16.9189 2.94818 17.4914 3.11985 17.8715 3.26511C18.3785 3.45724 18.733 3.68437 19.1165 4.05544C19.4925 4.42321 19.7248 4.77381 19.9212 5.26967C20.0698 5.6414 20.2453 6.2013 20.2946 7.22934C20.3432 8.34386 20.3574 8.68126 20.3574 11.5006C20.3574 14.3199 20.3432 14.6573 20.2906 15.7718C20.2338 16.7999 20.0583 17.3598 19.9104 17.7315C19.7059 18.2274 19.4777 18.574 19.1009 18.949C18.7208 19.3168 18.359 19.5439 17.856 19.7361C17.4806 19.8813 16.9 20.053 15.8447 20.1012C14.699 20.1487 14.3614 20.1626 11.4705 20.1626C8.5795 20.1626 8.2426 20.1487 7.09553 20.0972C6.04434 20.0418 5.46439 19.8701 5.08428 19.7255C4.57117 19.5255 4.21942 19.3023 3.84269 18.9339C3.46258 18.5621 3.22088 18.2082 3.03454 17.7163C2.88331 17.3492 2.71047 16.7814 2.65444 15.7494C2.61595 14.6421 2.59772 14.2988 2.59772 11.4847C2.59772 8.67202 2.61595 8.32802 2.65444 7.20689C2.71047 6.17489 2.88331 5.60839 3.03454 5.23996C3.22088 4.7375 3.46326 4.39416 3.84269 4.02243C4.21875 3.65466 4.57117 3.41697 5.08428 3.23077C5.46439 3.08617 6.03016 2.91451 7.08541 2.863C8.23113 2.82273 8.5687 2.8082 11.4556 2.8082L11.5002 2.83858ZM11.5002 6.0785C8.43435 6.0785 5.95522 8.50629 5.95522 11.5013C5.95522 14.4995 8.43772 16.924 11.5002 16.924C14.566 16.924 17.0451 14.4962 17.0451 11.5013C17.0451 8.50299 14.5626 6.0785 11.5002 6.0785ZM11.5002 15.0224C9.50985 15.0224 7.89963 13.4477 7.89963 11.5013C7.89963 9.55479 9.50985 7.98006 11.5002 7.98006C13.4905 7.98006 15.1007 9.55479 15.1007 11.5013C15.1007 13.4477 13.4905 15.0224 11.5002 15.0224ZM18.5649 5.86193C18.5649 6.56379 17.9809 7.1303 17.2666 7.1303C16.5489 7.1303 15.9696 6.56313 15.9696 5.86193C15.9696 5.16403 16.553 4.5962 17.2666 4.5962C17.9802 4.5962 18.5649 5.16403 18.5649 5.86193Z" stroke-width="1.5" fill="#025B7B"/>
                               </svg><div class="profile-element-contact-data" id="data-instagram"></div>
                         </a>
-                    </div>
+                    </div> -->
                     <!-- <div id="experience-label-2" class="experience-label">Información</div> -->
                     
                 </div>
@@ -436,6 +543,18 @@ Estructura general:
                         </div>
                     </div>
                 </div>
+                <div id="profile-element-container-additionalexperience" class="profile-information-element">
+                    <div class="profile-label">Experiencia adicional</div>
+                    <div class="profile-data" id="data-additionalexperience">
+                        <div class="data-content"></div>
+                        <div class="editable-options">
+                            <div class="editable-option selectable" data-experience-additional-option="no">No</div>
+                            <div class="editable-option selectable" data-experience-additional-option="profesionalnow">Soy jugador profesional</div>
+                            <div class="editable-option selectable" data-experience-additional-option="profesionalthen">He sido jugador profesional</div>
+                            <div class="editable-option selectable" data-experience-additional-option="studentathlete">Soy Student Athlete en USA</div>
+                        </div>
+                    </div>
+                </div>
                 <div id="profile-element-container-weeklyhours" class="profile-information-element">
                     <div class="profile-label">Dedic. Semanal</div>
                     <div class="profile-data" id="data-weeklyhours">
@@ -457,6 +576,17 @@ Estructura general:
                             <div class="editable-option selectable" data-level="intermed">intermedio</div>
                             <div class="editable-option selectable" data-level="advanced">avanzado</div>
                             <div class="editable-option selectable" data-level="profesional">profesional</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="profile-element-container-studentsage" class="profile-information-element">
+                    <div class="profile-label">Edad alumnado</div>
+                    <div class="profile-data" id="data-studentsage-id">
+                        <div class="data-content"></div>
+                        <div class="editable-options">
+                            <div class="editable-option selectable" data-studentsage="youth">niños</div>
+                            <div class="editable-option selectable" data-studentsage="teens">adolescentes</div>
+                            <div class="editable-option selectable" data-studentsage="adults">adultos</div>
                         </div>
                     </div>
                 </div>
