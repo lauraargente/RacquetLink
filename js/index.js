@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('.Header').style.backgroundColor = 'rgba(255,255,255,0)';
                 // document.querySelector('.Header').style.padding = '2rem 6rem';
                 document.querySelector('.Header').style.boxShadow = '1px 1px 20px rgba(0, 0, 0, 0)';
+                document.querySelector('.Header').style.webkitBackdropFilter = 'blur(10px)';
                 document.querySelector('.Header').style.backdropFilter = 'blur(10px)';
                 document.querySelector('#logged-user-text').style.color = 'white'
             } else {
