@@ -37,7 +37,7 @@
 }
 
 .Banner-p{
-    font-size: 400;
+    font-size: 1rem;
     line-height: 1.875rem;
     width: 95%;
     color: black;
@@ -50,6 +50,30 @@
 
 b{
     font-weight: 600;
+}
+
+.p-title{
+    font-size: 1.2em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    border: 1px solid #d8d8d8;
+    padding: 0.6rem;
+    text-align: center;
+    background-color: #025B7B;
+    font-weight: 600;
+}
+
+td {
+    border: 1px solid #d8d8d8;
+    padding: 0.8rem;
+    text-align: left;
+    color: black;
 }
 
 /* ――――――――― Sección Contact ――――――――― */
