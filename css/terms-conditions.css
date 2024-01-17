@@ -56,6 +56,21 @@ b{
     font-size: 1.2em;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #d8d8d8;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
 /* ――――――――― Sección Contact ――――――――― */
 
 
