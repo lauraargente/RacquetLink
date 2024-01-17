@@ -430,7 +430,7 @@
         flex-flow: column wrap;
         justify-content: center;
         align-items: flex-start;
-        
+        max-width: 10vh;
     }
 
     .Footer-bottom-items{
