@@ -12,17 +12,16 @@ Estructura general:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Racquet-Link | Contacta Us</title>
-    <meta name="description" content="Racquet-Link | If you have any questions about the registration process or would like to talk to the Racquet-Link team, you can reach out to us through the following form.">
+    <title>Racquet-Link | Privacy Policy</title>
+    <meta name="description" content="Racquet-Link | Privacy policy webpage for Racquet-Link.">
     <link rel="icon" href="../assets/RacquetLink-19.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/headerfooter.css">
-    <link rel="stylesheet" href="../css/contact.css">
-    <script src="../js/index.js" defer></script>
-    <script src="../js/contact.js" defer></script>
+    <link rel="stylesheet" href="../css/tc-and-privacy.css">
+    <script src="../js/tc-and-privacy.js" defer></script>
 </head>
 
 <!-- 
@@ -117,7 +116,7 @@ Estructura general:
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </div>
-
+        
         <nav class="Header-nav">
             <ul class="Header-ul">
                 <li class="Header-li">
@@ -130,11 +129,11 @@ Estructura general:
                     <a href="newsEN.html" class="Header-item" aria-label="Noticias">News</a>
                 </li>
                 <li class="Header-li">
-                    <a href="contactEN.html" class="Header-selected" aria-label="Contacto">Contact</a>
+                    <a href="contactEN.html" class="Header-item" aria-label="Contacto">Contact</a>
                 </li>
                 <li class="Header-li">
-                    <a href="../contact.html" class="Header-item" aria-label="English">
-                        <img id="data-flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" title="Racquet-Link | Change Language" alt="Change language to English.">
+                    <a href="../privacy.html" class="Header-item" aria-label="Español">
+                        <img id="data-flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" title="Racquet-Link | Cambiar Idioma" alt="Cambiar idioma a español.">
                     </a>
                 </li>
                 <li class="Header-li" style="display: none;" id="login-button">
@@ -157,71 +156,248 @@ Estructura general:
 
     <!-- 
         Contenido principal.
-        Descripción: En este bloque encontramos el contenido principal de la página de contacto
-        compuesto de 2 secciones: 
-        - Presentación
-        -Formulario
+        Descripción: En este bloque encontramos el contenido principal de la página
+        compuesto de 4 secciones/bloques(Banner, Profiles, Valores, Contáctanos).
     -->
     <div class="Main">
-        <div class="Main-presentation">
-            <h3 class="Main-h3">Contact our team</h3>
-            <p class="Main-p">If you have any questions about the registration process or would like to talk to the Racquet-Link team, you can reach out to us through the following form:</p>
-        </div>
+        <div class="Main-section Banner">
+            <div class="Banner-wrapper">
+                    <h2 class="Banner-h2">Privacy Policy</h2>
+                    <p class="Banner-p">
+                        <i>Last modified: January 20, 2024</i>
+                        <br><br>
+                        
+                        <!-- Punto 1 -->
+                        <b class="p-title">1. Política de Privacidad del sitio web de RACQUET-LINK S.L.</b>
+                        <br><br>
 
-        <!-- 
-            Formulario de la web.
-            El atributo "required" asegura que este campo debe ser llenado antes de enviar el formulario.
-         -->
-        <form class="Main-form" action="#" method="get">
-            <div class="Form-top">
-                <div class="Form-field">
-                    <label class="Form-label" for="name"></label>
-                    <input class="Form-input Field" id="name" type="text" placeholder="Name *" required >
-                </div>
-                <div class="Form-field">
-                    <label class="Form-label" for="name"></label>
-                    <input class="Form-input Field" id="lastname" type="text" placeholder="Last Names *" required >
-                </div>
-                <div class="Form-field">
-                    <label class="Form-label" for="email"></label>
-                    <input class="Form-input Field" id="email" type="email" placeholder="Email *" required >
-                </div>
-                <div class="Form-field">
-                    <label class="Form-label" for="email"></label>
-                    <input class="Form-input Field" id="phone" type="text" placeholder="Phone Number *" required >
-                </div>
-                <div class="Form-field">
-                    <label class="Form-label" for="email"></label>
-                    <input class="Form-input Field" id="company" type="text" placeholder="Company/Club (Optional)">
-                </div>
-                <div class="Form-field">
-                    <label class="Form-label" for="email"></label>
-                    <input class="Form-input Field" id="city" type="text" placeholder="City (Optional)">
-                </div>
-                
-            </div>
+                        La presente Política de Privacidad tiene por objeto informarle sobre la forma en que Racquet-Link S.L. (en adelante “Racquet-Link” o “Nosotros”) recopila, utiliza y comparte información personal, así como explicarle sus derechos y opciones con respecto a los datos personales que poseemos sobre usted cuando visita nuestro sitio web. Si usted se encuentra dentro del Espacio Económico Europeo (<b>EEE</b>), Reino Unido (<b>RU</b>) o Suiza, <b>Racquet-Link S.L.</b> con domicilio en <b>Calle Alcalá 128 – Oficina 3 – Escalera Interna</b> y <b>CIF B56667231</b> es el responsable del tratamiento de sus datos personales. Esta entidad es responsable de determinar cómo y por qué se procesan sus datos personales en el marco de su relación contractual y profesional con nosotros.
+                        <br><br>
 
-            <div class="Form-wrapper">
-                <label class="Form-label" for="textarea"></label>
-                <textarea class="Form-textarea Field" name="message" id="textarea" cols="30" rows="10" required  placeholder="How can we help you?"></textarea>
-            </div>
+                        Esta Política Aviso de Privacidad se aplica a la información personal que recopilamos y procesamos en el sitio web de <b>Racquet-Link</b> (“<b>Sitio Web”</b>), y en relación con los servicios que proporcionamos (“<b>Servicios</b>”). A los efectos de la presente Política de Privacidad, sus datos personales significan cualquier información que <b>Racquet-Link</b> tenga u obtenga sobre usted a partir de la cual se le pueda identificar personalmente de forma directa o indirecta.
+                        <br><br><br>
 
-            <button class="Form-button" type="button">Send</button>
-        </form>
-        <div class="Lightbox">
-            <div class="Lightbox-bg"></div>
-            <button class="Lightbox-close" aria-label="Close lightbox">
-                <svg class="Lightbox-svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                  </svg>
-            </button>
-            <div class="Lightbox-wrapper">
-                <h2 class="Lightbox-h2">Thank you for contacting us!</h2>
-                <p class="Lightbox-p">We will getin touch with you soon.</p>
-                <svg class="Lightbox-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
-                </svg>
-            </div>
+                        <!-- Punto 2 -->
+                        <b class="p-title">2. ¿Qué datos personales recopilamos?</b>
+                        <br><br>
+
+                        <b>2.1.</b> &emsp;Recabamos datos personales de los entrenadores o candidatos interesados en encontrar una oportunidad laboral en el sector del deporte de raqueta, así como de representantes o personas de contacto de clubes o instituciones deportivas interesados en contratar entrenadores. Los datos personales los recopilamos directamente de los propios interesados e indirectamente de terceros a los que pedimos referencias en determinados procesos para corroborar la información recogida. El tipo de información personal que recopilamos depende de la naturaleza de nuestra relación con usted (candidato o entrenador) y en todo caso más abajo se detallan las categorías. Debe tener en cuenta que, si no nos facilita determinada información personal, es posible que no podamos prestarle los Servicios.
+                        <br><br>
+
+                        <b>2.2. &emsp;Racquet-Link</b> recaba información personal relativa a las siguientes categorías de personas:
+                        <br><br>
+
+                        (a) personas interesadas en oportunidades de empleo (<b>Candidatos - Coaches</b>)
+                        <br>
+                        (b) representantes legales o empresariales de clubes deportivos que estén interesados en contratar entrenadores de tenis (<b>Representantes de Clubes Deportivos</b>)
+                        <br><br>
+
+                        <b>2.3. &emsp;CANDIDATOS</b>
+                        <br><br>
+
+                        Las categorías de datos personales que recopilamos de o sobre los candidatos incluyen:
+                        <br><br>
+                        (a) <b>Datos de contacto:</b> como título, nombre, dirección, número de teléfono, dirección de correo electrónico, cargo.
+                        <br>
+                        (b) <b>Información básica:</b> como su fecha de nacimiento, edad, estado civil, intereses, preferencias y favoritos.
+                        <br>
+                        (c) <b> Datos profesionales:</b> como credenciales profesionales, historial educativo y profesional, y afiliaciones institucionales.
+                        <br>
+                        (d) <b> Datos de comunicaciones:</b> como la información que usted proporciona en correos electrónicos, en llamadas telefónicas, en encuestas de investigación de mercado o en otra correspondencia con <b>Racquet-Link</b> o sus proveedores de servicios o socios comerciales.
+                        <br>
+                        (e) CV deportivo, CV profesional, videos de presentación, imágenes de perfil, videos para mostrar nivel de juego en pista.
+                        <br><br>
+
+                        <b>2.4. &emsp;REPRESENTANTES DE CLUBES DEPORTIVOS</b>
+                        <br><br>
+
+                        Las categorías de datos que recopilamos de o sobre los representantes de clubes deportivos incluyen:
+                        <br><br>
+                        (a) <b>Datos de contacto:</b> como título, nombre, dirección, número de teléfono, dirección de correo electrónico, cargo y nombre de la organización.
+                        <br>
+                        (b) <b>Información básica:</b>  como su fecha de creación, edad, estado civil, intereses, preferencias, favoritos, ubicación, localización, deportes e información sobre las instalaciones.
+                        <br>
+                        (c) <b> Datos profesionales:</b> como los detalles que puedan estar relacionados con un servicio o evento al que se inscriba o al que asista, incluidas conferencias y eventos.
+                        <br>
+                        (d) <b> Datos de comunicaciones:</b> como la información que usted proporciona en correos electrónicos, en llamadas telefónicas, en encuestas de investigación de mercado o en otra correspondencia con <b>Racquet-Link</b> o sus proveedores de servicios o socios comerciales.
+                        <br><br><br>
+
+                        <!-- Punto 3 -->
+                        <b class="p-title">3. Cómo utilizamos su información personal</b>
+                        <br><br>
+
+                        Dependiendo de cómo interactúe con <b>Racquet-Link</b>, podremos procesar su información personal para los siguientes fines: 
+                    </p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Finalidad</th>
+                                <th>Descripción del uso que hacemos de sus datos</th>
+                                <th>Nuestra base jurídica para utilizar sus datos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oferta y gestión de los de los Servicios que prestamos</td>
+                                <td>Mantener y mejorar los Servicios.<br><br>
+                                    Comprender mejor sus necesidades e intereses en relación con los Servicios.<br><br>
+                                    Personalización de su experiencia en los Servicios.<br><br>
+                                    Proporcionar soporte y mantenimiento para los Servicios.<br><br>
+                                    Proporcionar acceso a determinadas áreas y funciones de los Servicios.<br><br>
+                                    Para medir el interés en nuestros Servicios y programas.<br><br>
+                                    Para enviarle comunicaciones relativas a los Servicios, su cuenta o cualquier cambio en cualquier política o condiciones de servicio de <b>Racquet-Link S.L.</b><br><br>
+                                </td>
+                                <td>Nuestro interés legítimo en operar y mejorar los Servicios</td>
+                            </tr>
+                            <tr>
+                                <td>Gestión de los contratos con Candidatos y Clubes</td>
+                                <td>Recabamos datos de Candidatos y Representantes de Clubes.<br><br>
+                                    Conservamos datos de Candidatos y Representantes de los Clubes.<br><br>
+                                    Verificamos las capacidades e idoneidad de los Candidatos.<br><br>
+                                    Comunicamos a los datos de los Candidatos y les enviamos los CVs y videos de presentación a los Clubes.<br><br>
+                                    Organizamos llamadas y reuniones de encuentro entre Candidatos y Clubes.<br><br>
+                                </td>
+                                <td>Cumplimiento de las obligaciones adquiridas con los Candidatos y los Clubes respectivamente</td>
+                            </tr>
+                            <tr>
+                                <td>Administración y gestión interna de nuestra empresa</td>
+                                <td>Cumplimiento de obligaciones legales y fiscales.<br><br>
+                                    Conservación de datos fiscales durante el plazo legalmente previsto.<br><br>
+                                    Realización de auditorías internas de control de calidad y conformidad.<br><br>
+                                </td>
+                                <td>Nuestro interés legítimo en administrar nuestro negocio y cumplimiento de obligaciones legales</td>
+                            </tr>
+                            <tr>
+                                <td>Seguridad y protección</td>
+                                <td>Proteger nuestros derechos, su privacidad, seguridad o propiedad, o los de otros.<br><br>
+                                    Hacer cumplir nuestras Condiciones de uso y otros acuerdos aplicables al uso de los Servicios.<br><br>
+                                    Presentar y defender reclamaciones judiciales.<br><br>
+                                    Intentar prevenir, identificar, investigar y disuadir actividades fraudulentas, dañinas, no autorizadas, poco éticas o ilegales, incluidos los ciberataques y la usurpación de identidad.<br><br>
+                                </td>
+                                <td>El tratamiento es necesario para tomar medidas a petición del interesado antes de celebrar un contrato</td>
+                            </tr>
+                            <tr>
+                                <td>Interacciones con usted</td>
+                                <td>Proporcionarle información u otros materiales que pueda solicitar, por ejemplo, información sobre un producto o programa que estemos ofreciendo, o muestras de un producto de <b>Racquet-Link S.L.</b> incluido cualquier material de marketing si ha optado por recibir dichas comunicaciones. <br><br>
+                                    Interactuar con usted a través de nuestros formularios de “Contacto” y “Registro”.<br><br>
+                                    En general, gestionar su información y sus cuentas.<br><br>
+                                    Responder a preguntas, comentarios y peticiones.<br><br>
+                                    Facilitar su inscripción y asistencia a conferencias, seminarios web y otros actos.<br><br>
+                                </td>
+                                <td>El tratamiento es necesario para tomar medidas a petición del interesado antes de celebrar un contrat</td>
+                            </tr>
+                            <tr>
+                                <td>Publicidad basada en intereses</td>
+                                <td>Utilizar herramientas ofrecidas por terceros, como Facebook, que permitan a dichos terceros recopilar o recibir información sobre las acciones que los usuarios realizan a lo largo del tiempo en nuestros Servicios.<br><br>
+                                    La publicidad basada en intereses trata de hacer que los anuncios que ve sean más interesantes y relevantes para usted, basándose en la información recopilada por socios publicitarios a lo largo del tiempo y a través de sitios web y otros servicios en línea.<br><br>
+                                </td>
+                                <td>Su consentimiento (cuando se solicite)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="Banner-p">
+                        Asimismo, <b>Racquet-Link S.L.</b> podrá utilizar su información personal y otra información sobre usted para crear información agregada excluyendo información que haga que los datos le identifiquen personalmente. <b>Racquet-Link S.L.</b> podrá utilizar y compartir dicha información de carácter estadístico y anonimizada para mejorar nuestros productos y servicios, desarrollar nuevos productos y servicios, y para fines de salud pública, investigación, análisis y cualquier otro fin lícito.
+                        <br><br><br>
+
+                        <!-- Punto 4 -->
+                        <b class="p-title">4. ¿Con quién compartimos su información personal?</b>
+                        <br><br>
+
+                        Compartimos su información personal con las siguientes categorías de destinatarios:
+                        <br><br>
+
+                        <b>4.1. &emsp;PROVEEDORES DE SERVICIOS</b>
+                        <br><br>
+
+                        (a) <b>Racquet-Link</b> comparte información personal con nuestros proveedores de servicios, entre los que se incluyen:
+                        <br><br>
+                        &emsp; (i) Proveedores de almacenamiento y análisis de datos;
+                        <br>
+                        &emsp; (ii) Servicios y soporte tecnológicos (incluidos proveedores de alojamiento de correo electrónico y web, proveedores de tecnología de marketing y publicidad y proveedores de comunicaciones por correo electrónico); y
+                        <br>
+                        &emsp; (iii) Organizaciones de planificación de eventos que ayudan a facilitar los programas de empresa.
+                        <br><br>
+                        (b) La base legal para compartir dicha información es nuestro interés legítimo en el funcionamiento eficaz y la mejora de nuestro negocio. <b>Racquet-Link</b> ha suscrito los oportunos contratos con los proveedores de servicios que les prohíben utilizar o compartir su información personal salvo en los casos autorizados.
+                        <br><br>
+
+                        <b>4.2. &emsp;REPRESENTANTES DE CLUBES DEPORTIVOS</b>
+                        <br><br>
+
+                        Compartimos información personal con clubes una vez el proceso de selección esté avanzado, se haya firmado un acuerdo de colaboración entre <b>Racquet-Link</b> y el club deportivo. Por lo tanto, se haya iniciado una relación profesional. Esta información personal es necesaria para que los clubes puedan tomar una decisión y analizar el perfil de cada usuario propuesto. Cada usuario registrado es consciente que comparte sus datos con el objetivo de encontrar oportunidades laborales en diferentes clubs o centros deportivos. Para optar a esa oportunidad, el club debe ver con anterioridad información personal sobre el perfil para concretar una entrevista.
+                        <br><br>
+
+                        <b>4.3. &emsp;REPRESENTANTES DE CLUBES DEPORTIVOS</b>
+                        <br><br>
+
+                        Podemos revelar información sobre usted a otros terceros, como organismos gubernamentales y reguladores (por ejemplo, autoridades fiscales), compañías de seguros sociales, tribunales, organismos encargados de hacer cumplir la ley, autoridades gubernamentales y a asesores externos que actúen como controladores (por ejemplo, abogados, contables, auditores, etc.). Dichas transferencias se realizan con el fin de cumplir con nuestras obligaciones legales y para los fines legítimos perseguidos por <b>Racquet-Link S.L.</b> o un tercero para garantizar la protección de los derechos y la propiedad de <b>Racquet-Link S.L.</b> y otros, incluyendo:
+                        <br><br>
+
+                        (a) si así nos lo exige la ley, una orden judicial o un proceso legal;
+                        <br>
+                        (b) en respuesta a solicitudes legales de las autoridades públicas, incluso para cumplir requisitos de seguridad nacional o de aplicación de la ley;
+                        <br>
+                        (c) para hacer cumplir las políticas o contratos de <b>Racquet-Link S.L.</b>;
+                        <br>
+                        (d) para cobrar cantidades adeudadas a <b>Racquet-Link S.L.</b>, o
+                        <br>
+                        (e) cuando creamos que la divulgación es necesaria o apropiada para evitar daños físicos o pérdidas financieras o en relación con una investigación o persecución de una actividad ilegal presunta o real.
+                        <br><br><br>
+
+                        <!-- Punto 5 -->
+                        <b class="p-title">5. Conservación de datos</b>
+                        <br><br>
+
+                        <b>Racquet-Link</b> sólo conserva la información personal que recibe tal y como se describe en el presente Aviso de Privacidad durante el tiempo que usted utilice nuestros Servicios o según sea necesario para cumplir con el/los propósito(s) para el/los cual(es) fue recopilada, incluidos los fines de proporcionar nuestros productos y servicios, resolver disputas, establecer defensas legales, realizar auditorías, perseguir fines comerciales legítimos, hacer cumplir nuestros acuerdos y cumplir con las leyes aplicables.
+                        <br><br>
+
+                        Nos comprometemos a borrar y eliminar sus datos personales cuando ya no sean necesarios para alcanzar la finalidad para la cual fueron recabados y haya transcurrido el plazo de prescripción de las acciones legales pertinentes.
+                        <br><br><br>
+
+                        <!-- Punto 6 -->
+                        <b class="p-title">6. Sus opciones</b>
+                        <br><br>
+
+                        <b>6.1. &emsp;COMUNICACIONES DE MARKETING</b>
+                        <br><br>
+
+                        Es posible que reciba periódicamente correos electrónicos, boletines informativos, correos postales o llamadas telefónicas de nuestra parte con información sobre los productos y servicios de <b>Racquet-Link S.L.</b> o de nuestros socios comerciales o sobre próximas ofertas/eventos especiales que consideremos puedan ser de su interés, si ha optado por recibir estas comunicaciones. Sólo le enviaremos estas comunicaciones con su consentimiento previo y expreso o en caso de que nos haya contratado previamente un servicio similar (cuando la ley exija dicho consentimiento). Puede darse de baja de estas comunicaciones sin coste alguno en cualquier momento.
+                        <br><br>
+
+                        En cada comunicación comercial por correo electrónico enviada por <b>Racquet-Link S.L.</b> se incluirá un botón para darse de baja.
+                        <br><br>
+
+                        <b>6.2. &emsp;DERECHOS DEL INTERESADO EN EUROPA</b>
+                        <br><br>
+
+                        Esta sección se aplica únicamente a los interesados que residen en el EEE, el Reino Unido o Suiza, que tienen determinados derechos en virtud de las leyes y reglamentos europeos de protección de datos, tal como se resume a continuación:
+                        <br><br>
+
+                        (a) para solicitar acceso a su información personal;
+                        <br>
+                        (b) solicitar la rectificación de datos personales inexactos o incompletos;
+                        <br>
+                        (c) solicitar la supresión de sus datos personales;
+                        <br>
+                        (d) restringir el tratamiento de sus datos personales;
+                        <br>
+                        (e) oponerse a que utilicemos sus datos personales;
+                        <br>
+                        (f) en su caso, solicitar la portabilidad de sus datos personales;
+                        <br>
+                        (g) en caso de que haya dado su consentimiento para el tratamiento de sus datos personales, retirar su consentimiento; y
+                        <br>
+                        (h) presentar una reclamación ante la autoridad de control competente.
+                        <br><br>
+
+                        <b>6.3.</b> &emsp;Puede solicitar el ejercicio de los derechos mencionados poniéndose en contacto con nosotros a través de los datos que figuran a continuación. Sus derechos estarán sujetos en cada caso a las restricciones establecidas en las leyes de protección de datos aplicables. Puede obtener más información sobre estos derechos, y las circunstancias en las que pueden surgir en relación con nuestro tratamiento de sus Datos Personales, poniéndose en contacto con nosotros en <a href="mailto:info@racquet-link.com" class="link">info@racquet-link.com</a>.
+                        <br><br>
+
+                        <b>6.4.</b> &emsp;Si tiene alguna queja o problema con respecto a nuestra gestión o tratamiento de su información personal, tiene derecho a presentar una reclamación ante la autoridad supervisora de protección de datos. En España es la Agencia Española de Protección de Datos (<b>AEPD</b>), con la que puede ponerse en contacto en <a href="https://www.aepd.es/" class="link">www.aepd.es</a>.
+                        <br><br>
+                    </p>
+            </div>  
         </div>
     </div>
 
@@ -339,7 +515,7 @@ Estructura general:
                 <ul class="Footer-ul">
                     <h3 class="Footer-h3">Language</h3>
                     <li class="Footer-li">
-                        <a href="../contact.html" aria-label="Español">ESP</a>
+                        <a href="../privacy.html" aria-label="Español">ESP</a>
                     </li>
                     <h3 class="Footer-h3">Questions</h3>
                     <li class="Footer-li">
@@ -375,8 +551,9 @@ Estructura general:
             </div>
         </div>
     </div>
-
+   
     <script src="../js/firebase-auth-checker.js" type="module"></script>
+
 
 </body>
 </html>
