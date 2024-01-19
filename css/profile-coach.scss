@@ -811,6 +811,53 @@ body {
   width: 100%;
 }
 
+.inputdate {
+  border-radius: 1rem;
+  padding: 0.4rem 0.8rem;
+  font-weight: 400;
+  font-family: Montserrat;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--color-primary);
+  pointer-events: none;
+
+  width: 400px;
+  max-width: 100%;
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  &:focus {
+    outline: 1px solid var(--color-primary);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  &::placeholder {
+    color: #b7b7b7;
+    font-family: Montserrat;
+  }
+
+  &.editable {
+    display: flex !important;
+    pointer-events: all;
+    cursor: auto !important;
+    &::-webkit-calendar-picker-indicator {
+      display: flex;
+    }
+  }
+
+  &.undefined {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
 .inputtext {
   border-radius: 1rem;
   padding: 0.4rem 0.8rem;

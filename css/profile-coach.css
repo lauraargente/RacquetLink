@@ -728,6 +728,49 @@ body {
   width: 100%;
 }
 
+.inputdate {
+  border-radius: 1rem;
+  padding: 0.4rem 0.8rem;
+  font-weight: 400;
+  font-family: Montserrat;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--color-primary);
+  pointer-events: none;
+  width: 400px;
+  max-width: 100%;
+}
+.inputdate::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.inputdate:focus {
+  outline: 1px solid var(--color-primary);
+}
+.inputdate:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.inputdate:active {
+  background: rgb(255, 255, 255);
+}
+.inputdate::-moz-placeholder {
+  color: #b7b7b7;
+  font-family: Montserrat;
+}
+.inputdate::placeholder {
+  color: #b7b7b7;
+  font-family: Montserrat;
+}
+.inputdate.editable {
+  display: flex !important;
+  pointer-events: all;
+  cursor: auto !important;
+}
+.inputdate.editable::-webkit-calendar-picker-indicator {
+  display: flex;
+}
+.inputdate.undefined {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .inputtext {
   border-radius: 1rem;
   padding: 0.4rem 0.8rem;
