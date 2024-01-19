@@ -1,11 +1,11 @@
 import { firebaseQueryTableCoach } from "./coaches-table-firebase.js";
-import { checkIfUserAdmin } from "./adminlist.js"
+import { checkIfUserAdmin } from "./adminlist.js";
 
-var arrayOfResults = []
+var arrayOfResults = [];
 
-var referenceRow = document.querySelector('#referenceRow')
+var referenceRow = document.querySelector("#referenceRow");
 
-//#region checkIfAdmin 
+//#region checkIfAdmin
 
 function getCookie(nombre) {
   const cookies = document.cookie.split(";");
@@ -21,93 +21,115 @@ const nombreCookieId = "loggedUserId";
 const valorCookieId = getCookie(nombreCookieId);
 // console.log(checkIfUserAdmin(valorCookieId))
 
-checkIfUserAdmin(valorCookieId) ? 'ok' : window.location.href = '404.html'
+checkIfUserAdmin(valorCookieId) ? "ok" : (window.location.href = "404.html");
 
 //#endregion
 
 //#region (f) queryFirebase
 
 var searchApplied = (arrayOfResults, currentString) => {
-    console.log(arrayOfResults)
-    var previousElementsToDelete = document.querySelectorAll('.deletable')
+  console.log(arrayOfResults);
+  var previousElementsToDelete = document.querySelectorAll(".deletable");
 
-    previousElementsToDelete.forEach(element => {
-        element.parentNode.removeChild(element)
-    })
+  previousElementsToDelete.forEach((element) => {
+    element.parentNode.removeChild(element);
+  });
 
-    arrayOfResults.forEach(element => {
-        console.log(element)
-        if (checkName(element.userName, element.userSurname, currentString)) {
-            injectElement(element)
-        }
-    })
-}
+  arrayOfResults.forEach((element) => {
+    console.log(element);
+    if (checkName(element.userName, element.userSurname, currentString)) {
+      injectElement(element);
+    }
+  });
+};
 
 function normalizeString(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 }
 
 function checkName(firstName, lastName, searchString) {
   // Normalizar y convertir a minúsculas el nombre completo y la cadena de búsqueda
-  var fullNameNormalized = normalizeString(firstName + ' ' + lastName);
+  var fullNameNormalized = normalizeString(firstName + " " + lastName);
   var searchStringNormalized = normalizeString(searchString);
 
   // Comprueba si la cadena de búsqueda normalizada está contenida en el nombre completo normalizado
   return fullNameNormalized.includes(searchStringNormalized);
 }
 
-document.querySelector('#search-input-text').addEventListener('input', function(event) {
+function compareDates(doc1, doc2) {
+  let date1 = new Date(doc1.registerDate);
+  let date2 = new Date(doc2.registerDate);
+
+  console.log(date1 - date2);
+  return date1 - date2;
+}
+
+document
+  .querySelector("#search-input-text")
+  .addEventListener("input", function (event) {
     var currentString = event.target.value;
     searchApplied(arrayOfResults, currentString);
-});
+  });
 
 var filteringApplied = (arrayOfResults) => {
-    var previousElementsToDelete = document.querySelectorAll('.deletable')
+  var previousElementsToDelete = document.querySelectorAll(".deletable");
 
-    previousElementsToDelete.forEach(element => {
-        element.parentNode.removeChild(element)
-    })
+  previousElementsToDelete.forEach((element) => {
+    element.parentNode.removeChild(element);
+  });
 
-    arrayOfResults.forEach(element => {
-        if (checkFilters(element, queryData)) {
+  arrayOfResults.forEach((element) => {
+    if (checkFilters(element, queryData)) {
+      injectElement(element);
+    }
+  });
+};
+
+var queryFirebase = (queryData, minDocuments = 100) => {
+  firebaseQueryTableCoach(queryData)
+    .then((result) => {
+      let countValidDocuments = 0;
+
+      if (result.documents.length > 0) {
+        result.documents.forEach((element) => {
+          arrayOfResults.push(element);
+          if (checkFilters(element, queryData)) {
             injectElement(element);
-        }
+            countValidDocuments++;
+          }
+        });
+        console.log(arrayOfResults);
+      }
+
+      arrayOfResults.sort(compareDates);
+      filteringApplied(arrayOfResults);
+
+      if (!result.endOfCollection && countValidDocuments < minDocuments) {
+        console.log(
+          `Número de documentos válidos (${countValidDocuments}) es menor que el mínimo requerido (${minDocuments}). Relanzando la consulta...`
+        );
+        queryFirebase(queryData, minDocuments);
+      } else if (result.endOfCollection) {
+        console.log(
+          "Se ha alcanzado el final de la colección. No hay más documentos para recuperar."
+        );
+      }
     })
-}
-
-var queryFirebase = (queryData, minDocuments = 10) => {
-    firebaseQueryTableCoach(queryData).then(result => {
-        let countValidDocuments = 0;
-
-        if (result.documents.length > 0) {
-            result.documents.forEach(element => {
-                arrayOfResults.push(element);
-                if (checkFilters(element, queryData)) {
-                    injectElement(element);
-                    countValidDocuments++;
-                }
-            });
-            console.log(arrayOfResults);
-        }
-
-        if (!result.endOfCollection && countValidDocuments < minDocuments) {
-            console.log(`Número de documentos válidos (${countValidDocuments}) es menor que el mínimo requerido (${minDocuments}). Relanzando la consulta...`);
-            queryFirebase(queryData, minDocuments);
-        } else if (result.endOfCollection) {
-            console.log("Se ha alcanzado el final de la colección. No hay más documentos para recuperar.");
-        }
-    }).catch(error => {
-        console.error("Error al recuperar documentos:", error);
+    .catch((error) => {
+      console.error("Error al recuperar documentos:", error);
     });
-}
+};
 
 //#endregion
 
-//#region (l) downloadData 
+//#region (l) downloadData
 
-var downloadData = document.querySelector('#download-data')
+var downloadData = document.querySelector("#download-data");
 
-downloadData.addEventListener('click', () => {
+downloadData.addEventListener("click", () => {
   // Convertir el objeto a un formato CSV
   let csvContent = "data:text/csv;charset=utf-8,";
 
@@ -115,16 +137,16 @@ downloadData.addEventListener('click', () => {
   const headers = Object.keys(arrayOfResults[0]);
   csvContent += headers.join(",") + "\r\n"; // Añadir encabezados
 
-  arrayOfResults.forEach(obj => {
-      let row = headers.map(header => {
-          let value = obj[header];
-          if (Array.isArray(value)) {
-              return '"' + value.join(' ') + '"'; // Entre comillas para manejar valores con comas
-          } else {
-              return value;
-          }
-      });
-      csvContent += row.join(",") + "\r\n";
+  arrayOfResults.forEach((obj) => {
+    let row = headers.map((header) => {
+      let value = obj[header];
+      if (Array.isArray(value)) {
+        return '"' + value.join(" ") + '"'; // Entre comillas para manejar valores con comas
+      } else {
+        return value;
+      }
+    });
+    csvContent += row.join(",") + "\r\n";
   });
 
   // Codificar el contenido CSV para que sea un URI
@@ -141,38 +163,36 @@ downloadData.addEventListener('click', () => {
   document.body.removeChild(link); // Limpiar después de la descarga
 });
 
-
-
 //#endregion
 
-//#region (l) Draggable bar 
+//#region (l) Draggable bar
 
 function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
-    const [from, to] = getParsed(fromInput, toInput);
-    fillSlider(fromInput, toInput, '#eaeaec', '#025B7B', controlSlider);
-    if (from > to) {
-        fromSlider.value = to;
-        fromInput.value = to;
-    } else {
-        fromSlider.value = from;
-    }
+  const [from, to] = getParsed(fromInput, toInput);
+  fillSlider(fromInput, toInput, "#eaeaec", "#025B7B", controlSlider);
+  if (from > to) {
+    fromSlider.value = to;
+    fromInput.value = to;
+  } else {
+    fromSlider.value = from;
+  }
 }
-    
+
 function controlToInput(toSlider, fromInput, toInput, controlSlider) {
-    const [from, to] = getParsed(fromInput, toInput);
-    fillSlider(fromInput, toInput, '#eaeaec', '#025B7B', controlSlider);
-    setToggleAccessible(toInput);
-    if (from <= to) {
-        toSlider.value = to;
-        toInput.value = to;
-    } else {
-        toInput.value = from;
-    }
+  const [from, to] = getParsed(fromInput, toInput);
+  fillSlider(fromInput, toInput, "#eaeaec", "#025B7B", controlSlider);
+  setToggleAccessible(toInput);
+  if (from <= to) {
+    toSlider.value = to;
+    toInput.value = to;
+  } else {
+    toInput.value = from;
+  }
 }
 
 function controlFromSlider(fromSlider, toSlider, fromInput) {
   const [from, to] = getParsed(fromSlider, toSlider);
-  fillSlider(fromSlider, toSlider, '#eaeaec', '#025B7B', toSlider);
+  fillSlider(fromSlider, toSlider, "#eaeaec", "#025B7B", toSlider);
   if (from > to) {
     fromSlider.value = to;
     fromInput.value = to;
@@ -183,7 +203,7 @@ function controlFromSlider(fromSlider, toSlider, fromInput) {
 
 function controlToSlider(fromSlider, toSlider, toInput) {
   const [from, to] = getParsed(fromSlider, toSlider);
-  fillSlider(fromSlider, toSlider, '#eaeaec', '#025B7B', toSlider);
+  fillSlider(fromSlider, toSlider, "#eaeaec", "#025B7B", toSlider);
   setToggleAccessible(toSlider);
   if (from <= to) {
     toSlider.value = to;
@@ -201,398 +221,474 @@ function getParsed(currentFrom, currentTo) {
 }
 
 function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
-    const rangeDistance = to.max-to.min;
-    const fromPosition = from.value - to.min;
-    const toPosition = to.value - to.min;
-    controlSlider.style.background = `linear-gradient(
+  const rangeDistance = to.max - to.min;
+  const fromPosition = from.value - to.min;
+  const toPosition = to.value - to.min;
+  controlSlider.style.background = `linear-gradient(
       to right,
       ${sliderColor} 0%,
-      ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
-      ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
-      ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
-      ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
+      ${sliderColor} ${(fromPosition / rangeDistance) * 100}%,
+      ${rangeColor} ${(fromPosition / rangeDistance) * 100}%,
+      ${rangeColor} ${(toPosition / rangeDistance) * 100}%, 
+      ${sliderColor} ${(toPosition / rangeDistance) * 100}%, 
       ${sliderColor} 100%)`;
 }
 
 function setToggleAccessible(currentTarget) {
-  const toSlider = document.querySelector('#toSlider');
-  if (Number(currentTarget.value) <= 0 ) {
+  const toSlider = document.querySelector("#toSlider");
+  if (Number(currentTarget.value) <= 0) {
     toSlider.style.zIndex = 2;
   } else {
     toSlider.style.zIndex = 0;
   }
 }
 
-const fromSlider = document.querySelector('#fromSlider');
-const toSlider = document.querySelector('#toSlider');
-const fromInput = document.querySelector('#fromInput');
-const toInput = document.querySelector('#toInput');
-fillSlider(fromSlider, toSlider, '#eaeaec', '#025B7B', toSlider);
+const fromSlider = document.querySelector("#fromSlider");
+const toSlider = document.querySelector("#toSlider");
+const fromInput = document.querySelector("#fromInput");
+const toInput = document.querySelector("#toInput");
+fillSlider(fromSlider, toSlider, "#eaeaec", "#025B7B", toSlider);
 setToggleAccessible(toSlider);
 
 fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
 toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
-fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
+fromInput.oninput = () =>
+  controlFromInput(fromSlider, fromInput, toInput, toSlider);
 toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
 
 //#endregion
 
-//#region (l) Intersection observer 
+//#region (l) Intersection observer
 
 // Función callback para el observer
 const handleIntersect = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            console.log('El elemento ha entrado en la pantalla!');
-            // Aquí puedes realizar cualquier acción que desees cuando el elemento entra en la pantalla
-            queryFirebase(queryData)
-            
-        } else {
-            console.log('El elemento ha salido de la pantalla!');
-            // Aquí puedes realizar cualquier acción que desees cuando el elemento sale de la pantalla
-        }
-    });
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      console.log("El elemento ha entrado en la pantalla!");
+      // Aquí puedes realizar cualquier acción que desees cuando el elemento entra en la pantalla
+      queryFirebase(queryData);
+    } else {
+      console.log("El elemento ha salido de la pantalla!");
+      // Aquí puedes realizar cualquier acción que desees cuando el elemento sale de la pantalla
+    }
+  });
 };
 
 // Opciones para el observer
 const options = {
-    root: null, // Usar el viewport como raíz
-    rootMargin: '0px', // Sin márgenes
-    threshold: 0.1 // El elemento es considerado visible si al menos el 10% está en la pantalla
+  root: null, // Usar el viewport como raíz
+  rootMargin: "0px", // Sin márgenes
+  threshold: 0.1, // El elemento es considerado visible si al menos el 10% está en la pantalla
 };
 
 // Crear el observer
 const observer = new IntersectionObserver(handleIntersect, options);
 
 // Observar un elemento específico
-const element = document.querySelector('#page-navigator');
+const element = document.querySelector("#page-navigator");
 observer.observe(element);
-
 
 //#endregion
 
-//#region (l) Select filter element 
+//#region (l) Select filter element
 
 var untouchedQueryData = {
-  dataLanguages: ['all'],
-  dataSports: ['all'],
-  dataAvailability: ['all'],
-  dataExperience: ['all'],
-  dataNationality: ['un'],
-  dataAge: ['0','100']
-}
-
+  dataLanguages: ["all"],
+  dataSports: ["all"],
+  dataAvailability: ["all"],
+  dataExperience: ["all"],
+  dataNationality: ["un"],
+  dataAge: ["0", "100"],
+  dataAdminType: ["all"],
+};
 
 var queryData = {
-    dataLanguages: ['all'],
-    dataSports: ['all'],
-    dataAvailability: ['all'],
-    dataExperience: ['all'],
-    dataNationality: [],
-    dataAge: []
-}
+  dataLanguages: ["all"],
+  dataSports: ["all"],
+  dataAvailability: ["all"],
+  dataExperience: ["all"],
+  dataNationality: [],
+  dataAge: [],
+  dataAdminType: ["all"],
+};
 
 function isLastSelected(elementos, elemento) {
-  const isSelected = elemento.classList.contains('selected');
-  const selectedCount = Array.from(elementos).filter(el => el.classList.contains('selected')).length;
+  const isSelected = elemento.classList.contains("selected");
+  const selectedCount = Array.from(elementos).filter((el) =>
+    el.classList.contains("selected")
+  ).length;
   return isSelected && selectedCount === 1;
 }
 
 // ---------------------------------------------------------------------------------- LANGUAGE FILTER
-var filterElementsLanguage = document.querySelectorAll('[data-language]');
-filterElementsLanguage.forEach(element => {
-  element.addEventListener('click', () => {
-      if (element.classList.contains('filterall')) {
-          filterElementsLanguage.forEach(el => el.classList.remove('selected'));
-          element.classList.add('selected');
-          queryData.dataLanguages.length = 0;
-          queryData.dataLanguages.push('all');
-      } else {
-          filterElementsLanguage[0].classList.remove('selected');
+var filterElementsLanguage = document.querySelectorAll("[data-language]");
+filterElementsLanguage.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.classList.contains("filterall")) {
+      filterElementsLanguage.forEach((el) => el.classList.remove("selected"));
+      element.classList.add("selected");
+      queryData.dataLanguages.length = 0;
+      queryData.dataLanguages.push("all");
+    } else {
+      filterElementsLanguage[0].classList.remove("selected");
 
-          if (!isLastSelected(filterElementsLanguage, element)) {
-              element.classList.toggle('selected');
-          }
-
-          queryData.dataLanguages.length = 0;
-          filterElementsLanguage.forEach(el => {
-              if (el.classList.contains('selected')) {
-                  queryData.dataLanguages.push(el.getAttribute("data-language"));
-              }
-          });
+      if (!isLastSelected(filterElementsLanguage, element)) {
+        element.classList.toggle("selected");
       }
+
+      queryData.dataLanguages.length = 0;
+      filterElementsLanguage.forEach((el) => {
+        if (el.classList.contains("selected")) {
+          queryData.dataLanguages.push(el.getAttribute("data-language"));
+        }
+      });
+    }
   });
 });
 
 // ---------------------------------------------------------------------------------- SPORT FILTER
-var filterElementsSport = document.querySelectorAll('[data-sport]');
-filterElementsSport.forEach(element => {
-  element.addEventListener('click', () => {
-      if (element.classList.contains('filterall')) {
-          filterElementsSport.forEach(el => el.classList.remove('selected'));
-          element.classList.add('selected');
-          queryData.dataSports.length = 0;
-          queryData.dataSports.push('all');
-      } else {
-          filterElementsSport[0].classList.remove('selected');
+var filterElementsSport = document.querySelectorAll("[data-sport]");
+filterElementsSport.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.classList.contains("filterall")) {
+      filterElementsSport.forEach((el) => el.classList.remove("selected"));
+      element.classList.add("selected");
+      queryData.dataSports.length = 0;
+      queryData.dataSports.push("all");
+    } else {
+      filterElementsSport[0].classList.remove("selected");
 
-          if (!isLastSelected(filterElementsSport, element)) {
-              element.classList.toggle('selected');
-          }
-
-          queryData.dataSports.length = 0;
-          filterElementsSport.forEach(el => {
-              if (el.classList.contains('selected')) {
-                  queryData.dataSports.push(el.getAttribute("data-sport"));
-              }
-          });
+      if (!isLastSelected(filterElementsSport, element)) {
+        element.classList.toggle("selected");
       }
+
+      queryData.dataSports.length = 0;
+      filterElementsSport.forEach((el) => {
+        if (el.classList.contains("selected")) {
+          queryData.dataSports.push(el.getAttribute("data-sport"));
+        }
+      });
+    }
   });
 });
 
 // ---------------------------------------------------------------------------------- STARTING TIME FILTER
-var filterElementsAvailability = document.querySelectorAll('[data-startingtime]');
-filterElementsAvailability.forEach(element => {
-  element.addEventListener('click', () => {
-      if (element.classList.contains('filterall')) {
-          filterElementsAvailability.forEach(el => el.classList.remove('selected'));
-          element.classList.add('selected');
-          queryData.dataAvailability.length = 0;
-          queryData.dataAvailability.push('all');
-      } else {
-          filterElementsAvailability[0].classList.remove('selected');
+var filterElementsAvailability = document.querySelectorAll(
+  "[data-startingtime]"
+);
+filterElementsAvailability.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.classList.contains("filterall")) {
+      filterElementsAvailability.forEach((el) =>
+        el.classList.remove("selected")
+      );
+      element.classList.add("selected");
+      queryData.dataAvailability.length = 0;
+      queryData.dataAvailability.push("all");
+    } else {
+      filterElementsAvailability[0].classList.remove("selected");
 
-          if (!isLastSelected(filterElementsAvailability, element)) {
-              element.classList.toggle('selected');
-          }
-
-          queryData.dataAvailability.length = 0;
-          filterElementsAvailability.forEach(el => {
-              if (el.classList.contains('selected')) {
-                  queryData.dataAvailability.push(el.getAttribute("data-startingtime"));
-              }
-          });
+      if (!isLastSelected(filterElementsAvailability, element)) {
+        element.classList.toggle("selected");
       }
+
+      queryData.dataAvailability.length = 0;
+      filterElementsAvailability.forEach((el) => {
+        if (el.classList.contains("selected")) {
+          queryData.dataAvailability.push(el.getAttribute("data-startingtime"));
+        }
+      });
+    }
   });
 });
 
 // ---------------------------------------------------------------------------------- EXPERIENCE FILTER
-var filterElementsExperience = document.querySelectorAll('[data-experience]');
-filterElementsExperience.forEach(element => {
-  element.addEventListener('click', () => {
-      if (element.classList.contains('filterall')) {
-          filterElementsExperience.forEach(el => el.classList.remove('selected'));
-          element.classList.add('selected');
-          queryData.dataExperience.length = 0;
-          queryData.dataExperience.push('all');
-      } else {
-          filterElementsExperience[0].classList.remove('selected');
+var filterElementsExperience = document.querySelectorAll("[data-experience]");
+filterElementsExperience.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.classList.contains("filterall")) {
+      filterElementsExperience.forEach((el) => el.classList.remove("selected"));
+      element.classList.add("selected");
+      queryData.dataExperience.length = 0;
+      queryData.dataExperience.push("all");
+    } else {
+      filterElementsExperience[0].classList.remove("selected");
 
-          if (!isLastSelected(filterElementsExperience, element)) {
-              element.classList.toggle('selected');
-          }
-
-          queryData.dataExperience.length = 0;
-          filterElementsExperience.forEach(el => {
-              if (el.classList.contains('selected')) {
-                  queryData.dataExperience.push(el.getAttribute("data-experience"));
-              }
-          });
+      if (!isLastSelected(filterElementsExperience, element)) {
+        element.classList.toggle("selected");
       }
+
+      queryData.dataExperience.length = 0;
+      filterElementsExperience.forEach((el) => {
+        if (el.classList.contains("selected")) {
+          queryData.dataExperience.push(el.getAttribute("data-experience"));
+        }
+      });
+    }
   });
 });
 
+// ---------------------------------------------------------------------------------- USER ADMIN STATE FILTER
+var filterElementsAdminType = document.querySelectorAll("[data-admintype]");
+filterElementsAdminType.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.classList.contains("filterall")) {
+      filterElementsAdminType.forEach((el) => el.classList.remove("selected"));
+      element.classList.add("selected");
+      queryData.dataAdminType.length = 0;
+      queryData.dataAdminType.push("all");
+    } else {
+      filterElementsAdminType[0].classList.remove("selected");
 
-var filtersOpen = document.querySelector('#filters-button')
-var filtersPopup = document.querySelector('#filters-popup-container')
+      if (!isLastSelected(filterElementsAdminType, element)) {
+        element.classList.toggle("selected");
+      }
 
-filtersOpen.addEventListener('click', () => {
-    filtersPopup.style.display = 'flex'
-})
+      queryData.dataAdminType.length = 0;
+      filterElementsAdminType.forEach((el) => {
+        if (el.classList.contains("selected")) {
+          queryData.dataAdminType.push(el.getAttribute("data-admintype"));
+        }
+      });
+    }
+  });
+});
 
-var applyPopup = document.querySelector('#popup-apply')
-var closePopup = document.querySelector('#popup-close')
+var filtersOpen = document.querySelector("#filters-button");
+var filtersPopup = document.querySelector("#filters-popup-container");
 
-var selectedCountry = document.querySelector('#js_number-prefix2')
+filtersOpen.addEventListener("click", () => {
+  filtersPopup.style.display = "flex";
+});
+
+var applyPopup = document.querySelector("#popup-apply");
+var closePopup = document.querySelector("#popup-close");
+
+var selectedCountry = document.querySelector("#js_number-prefix2");
 var userNationality = document.querySelector("#js_selected-flag2");
 
-closePopup.addEventListener('click', () => {
-    filtersPopup.style.display = 'none'
-})
+closePopup.addEventListener("click", () => {
+  filtersPopup.style.display = "none";
+});
 
 function calculateAge(birthDateString) {
+  let birthDate = new Date(birthDateString);
+  let today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  let monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  return age;
+}
+
+function checkFilters(coach, filterCriteria) {
+  // Filtrado por idiomas
+  if (
+    filterCriteria.dataLanguages.length > 0 &&
+    filterCriteria.dataLanguages[0] !== "all"
+  ) {
+    if (
+      !filterCriteria.dataLanguages.some((lang) =>
+        coach.userLanguages.includes(lang)
+      )
+    ) {
+      console.log("1");
+      return false;
+    }
+  }
+
+  // Filtrado por deportes
+  if (
+    filterCriteria.dataSports.length > 0 &&
+    filterCriteria.dataSports[0] !== "all"
+  ) {
+    if (
+      !filterCriteria.dataSports.some((sport) =>
+        coach.userSports.includes(sport)
+      )
+    ) {
+      console.log("2");
+      return false;
+    }
+  }
+
+  // Filtrado por disponibilidad
+  if (
+    filterCriteria.dataAvailability.length > 0 &&
+    filterCriteria.dataAvailability[0] !== "all"
+  ) {
+    if (
+      !filterCriteria.dataAvailability.some((avail) =>
+        coach.userAvailability.includes(avail)
+      )
+    ) {
+      console.log("3");
+      return false;
+    }
+  }
+
+  // Filtrado por experiencia
+  if (
+    filterCriteria.dataExperience.length > 0 &&
+    filterCriteria.dataExperience[0] !== "all"
+  ) {
+    if (
+      !filterCriteria.dataExperience.some((exp) =>
+        coach.userExperience.includes(exp)
+      )
+    ) {
+      console.log("4");
+      return false;
+    }
+  }
+
+  // Filtrado por nacionalidad
+  if (
+    filterCriteria.dataNationality.length > 0 &&
+    filterCriteria.dataNationality[0] !== "un"
+  ) {
+    if (!filterCriteria.dataNationality.includes(coach.userNationality)) {
+      console.log("5");
+      return false;
+    }
+  }
+
+  // Filtrado por edad
+  if (filterCriteria.dataAge.length === 2) {
+    const age = calculateAge(coach.userBirthday);
+    if (age < filterCriteria.dataAge[0] || age > filterCriteria.dataAge[1]) {
+      console.log("6");
+      return false;
+    }
+  }
+
+  // Filtrado por tipo
+  if (
+    filterCriteria.dataAdminType.length > 0 &&
+    filterCriteria.dataAdminType[0] !== "all"
+  ) {
+    if (!filterCriteria.dataAdminType.includes(coach.userAdminType)) {
+      console.log("Nuevo filtro por userAdminType");
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function mapSportToSVG(sport) {
+  const sportsSVGs = {
+    tenis: `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+      <rect x="2.59961" y="3" width="4" height="18" fill="#B9CBD4"/>
+      <rect x="18.5996" y="3" width="4" height="18" fill="#B9CBD4"/>
+      <path d="M6.59961 3H18.5996M6.59961 3V7.5M6.59961 3H2.59961V21H6.59961M6.59961 21H18.5996M6.59961 21V16.5M18.5996 21V16.5M18.5996 21H22.5996V3H18.5996M18.5996 3V7.5M6.59961 7.5V16.5M6.59961 7.5H12.5996M18.5996 7.5V16.5M18.5996 7.5H12.5996M6.59961 16.5H12.5996M18.5996 16.5H12.5996M12.5996 16.5V7.5" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>`, // Reemplaza '...' con el contenido SVG para el fútbol
+    padel: `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+      <path d="M5.59961 7.5V3H19.5996V7.5M5.59961 7.5V16.5M5.59961 7.5H12.5996M19.5996 7.5V16.5M19.5996 7.5H12.5996M5.59961 16.5V21H19.5996V16.5M5.59961 16.5H12.5996M19.5996 16.5H12.5996M12.5996 16.5V7.5" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>`, // SVG para baloncesto
+    pickleball: `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+      <rect x="5.59961" y="9.20001" width="14" height="6" fill="#B9CBD4"/>
+      <path d="M5.59961 9.20001V3.20001H19.5996V9.20001M5.59961 9.20001V15.2M5.59961 9.20001H12.5996M19.5996 9.20001V15.2M19.5996 9.20001H12.5996M5.59961 15.2V21.2H19.5996V15.2M5.59961 15.2H12.5996M19.5996 15.2H12.5996M12.5996 15.2V9.20001" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>`, // SVG para tenis
+    // ... Agrega más deportes y sus SVGs correspondientes
+  };
+
+  return sportsSVGs[sport];
+}
+
+var injectElement = (element) => {
+  function formatName(userName, userSurname) {
+    let fullName = userName + " " + userSurname;
+    // Restringe la cadena a un máximo de 15 caracteres
+    // return fullName.substring(0, 15);
+    return fullName;
+  }
+  var rowName = formatName(element.userName, element.userSurname);
+
+  function calculateAge(birthDateString) {
     let birthDate = new Date(birthDateString);
     let today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
     let monthDiff = today.getMonth() - birthDate.getMonth();
 
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
     }
 
     return age;
-}
+  }
+  var rowAge = calculateAge(element.userBirthday);
 
-function checkFilters(coach, filterCriteria) {
-    // Filtrado por idiomas
-    if (filterCriteria.dataLanguages.length > 0 && filterCriteria.dataLanguages[0] !== 'all') {
-        if (!filterCriteria.dataLanguages.some(lang => coach.userLanguages.includes(lang))) {
-            console.log('1');
-            return false;
-        }
-    }
+  var rowNationality = element.userNationality;
 
-    // Filtrado por deportes
-    if (filterCriteria.dataSports.length > 0 && filterCriteria.dataSports[0] !== 'all') {
-        if (!filterCriteria.dataSports.some(sport => coach.userSports.includes(sport))) {
-            console.log('2');
-            return false;
-        }
-    }
+  function calculateLanguages(rawArray) {
+    let languagesString = ""; // Inicializa una cadena vacía para almacenar los idiomas
 
-    // Filtrado por disponibilidad
-    if (filterCriteria.dataAvailability.length > 0 && filterCriteria.dataAvailability[0] !== 'all') {
-        if (!filterCriteria.dataAvailability.some(avail => coach.userAvailability.includes(avail))) {
-            console.log('3');
-            return false;
-        }
-    }
+    rawArray.forEach((language, index) => {
+      languagesString += language;
+      if (index < rawArray.length - 1) {
+        languagesString += ", ";
+      }
+    });
 
-    // Filtrado por experiencia
-    if (filterCriteria.dataExperience.length > 0 && filterCriteria.dataExperience[0] !== 'all') {
-        if (!filterCriteria.dataExperience.some(exp => coach.userExperience.includes(exp))) {
-            console.log('4');
-            return false;
-        }
-    }
+    return languagesString;
+  }
+  var rowLanguages = calculateLanguages(element.userLanguages);
 
-    // Filtrado por nacionalidad
-    if (filterCriteria.dataNationality.length > 0 && filterCriteria.dataNationality[0] !== 'un') {
-        if (!filterCriteria.dataNationality.includes(coach.userNationality)) {
-            console.log('5');
-            return false;
-        }
-    }
+  var rowSports = calculateLanguages(element.userSports);
 
-    // Filtrado por edad
-    if (filterCriteria.dataAge.length === 2) {
-        const age = calculateAge(coach.userBirthday);
-        if (age < filterCriteria.dataAge[0] || age > filterCriteria.dataAge[1]) {
-            console.log('6');
-            return false;
-        }
-    }
+  function mapAvailability(availability) {
+    const mapping = {
+      "4mo": "4",
+      "6mo": "6",
+      "1yr": "12",
+      now: "Now",
+      one: "1",
+      "2o3": "2 - 3",
+      von: "VoN",
+      // Agrega aquí más mapeos según sea necesario
+    };
 
-    return true;
-}
+    // Retorna el valor mapeado si existe, de lo contrario devuelve el valor original
+    return mapping[availability] || availability;
+  }
+  var rowAvailability = mapAvailability(element.userAvailability);
 
-function mapSportToSVG(sport) {
-  const sportsSVGs = {
-      'tenis': `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-      <rect x="2.59961" y="3" width="4" height="18" fill="#B9CBD4"/>
-      <rect x="18.5996" y="3" width="4" height="18" fill="#B9CBD4"/>
-      <path d="M6.59961 3H18.5996M6.59961 3V7.5M6.59961 3H2.59961V21H6.59961M6.59961 21H18.5996M6.59961 21V16.5M18.5996 21V16.5M18.5996 21H22.5996V3H18.5996M18.5996 3V7.5M6.59961 7.5V16.5M6.59961 7.5H12.5996M18.5996 7.5V16.5M18.5996 7.5H12.5996M6.59961 16.5H12.5996M18.5996 16.5H12.5996M12.5996 16.5V7.5" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>`, // Reemplaza '...' con el contenido SVG para el fútbol
-      'padel': `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-      <path d="M5.59961 7.5V3H19.5996V7.5M5.59961 7.5V16.5M5.59961 7.5H12.5996M19.5996 7.5V16.5M19.5996 7.5H12.5996M5.59961 16.5V21H19.5996V16.5M5.59961 16.5H12.5996M19.5996 16.5H12.5996M12.5996 16.5V7.5" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>`, // SVG para baloncesto
-      'pickleball': `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-      <rect x="5.59961" y="9.20001" width="14" height="6" fill="#B9CBD4"/>
-      <path d="M5.59961 9.20001V3.20001H19.5996V9.20001M5.59961 9.20001V15.2M5.59961 9.20001H12.5996M19.5996 9.20001V15.2M19.5996 9.20001H12.5996M5.59961 15.2V21.2H19.5996V15.2M5.59961 15.2H12.5996M19.5996 15.2H12.5996M12.5996 15.2V9.20001" stroke="#025B7B" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>`, // SVG para tenis
-      // ... Agrega más deportes y sus SVGs correspondientes
-  };
+  function mapExperience(experience) {
+    const mapping = {
+      "two-or-less": "0 - 2",
+      "two-to-five": "2 - 5",
+      "five-to-ten": "5 - 10",
+      "ten-or-more": "> 10",
+      "professional player": "Pro",
+      "profesional player": "Pro",
+      // Agrega aquí más mapeos según sea necesario
+    };
 
-  return sportsSVGs[sport]
-}
+    // Retorna el valor mapeado si existe, de lo contrario devuelve el valor original
+    return mapping[experience] || experience;
+  }
+  var rowExperience = mapExperience(element.userExperience);
 
-var injectElement = (element) => {
-    
-    function formatName(userName, userSurname) {
-        let fullName = userName + ' ' + userSurname;
-        // Restringe la cadena a un máximo de 15 caracteres
-        // return fullName.substring(0, 15);
-        return fullName
-    }
-    var rowName = formatName(element.userName, element.userSurname);
-    
-    function calculateAge(birthDateString) {
-        let birthDate = new Date(birthDateString);
-        let today = new Date();
-        let age = today.getFullYear() - birthDate.getFullYear();
-        let monthDiff = today.getMonth() - birthDate.getMonth();
-    
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-    
-        return age;
-    }
-    var rowAge = calculateAge(element.userBirthday)
+  function calculateSportsSVGs(rawArray) {
+    return rawArray.map(mapSportToSVG).join(""); // Mapea cada deporte a su SVG y luego combina los SVGs con comas
+  }
+  var rowSportsSVGs = calculateSportsSVGs(element.userSports);
 
-
-    var rowNationality = element.userNationality
-
-    function calculateLanguages(rawArray) {
-        let languagesString = ''; // Inicializa una cadena vacía para almacenar los idiomas
-
-        rawArray.forEach((language, index) => {
-            languagesString += language;
-            if (index < rawArray.length - 1) {
-                languagesString += ', ';
-            }
-        });
-
-        return languagesString;
-    }
-    var rowLanguages = calculateLanguages(element.userLanguages)
-
-
-    var rowSports = calculateLanguages(element.userSports)
-
-    function mapAvailability(availability) {
-        const mapping = {
-            '4mo': '4',
-            '6mo': '6',
-            '1yr': '12',
-            'now': 'Now',
-            'one': '1',
-            '2o3': '2 - 3',
-            'von': 'VoN',
-            // Agrega aquí más mapeos según sea necesario
-        };
-    
-        // Retorna el valor mapeado si existe, de lo contrario devuelve el valor original
-        return mapping[availability] || availability;
-    }
-    var rowAvailability = mapAvailability(element.userAvailability);
-
-    function mapExperience(experience) {
-        const mapping = {
-            'two-or-less': '0 - 2',
-            'two-to-five': '2 - 5',
-            'five-to-ten': '5 - 10',
-            'ten-or-more': '> 10',
-            'professional player': 'Pro',
-            'profesional player': 'Pro',
-            // Agrega aquí más mapeos según sea necesario
-        };
-    
-        // Retorna el valor mapeado si existe, de lo contrario devuelve el valor original
-        return mapping[experience] || experience;
-    }
-    var rowExperience = mapExperience(element.userExperience);
-
-    function calculateSportsSVGs(rawArray) {
-      return rawArray.map(mapSportToSVG).join(''); // Mapea cada deporte a su SVG y luego combina los SVGs con comas
-    }
-    var rowSportsSVGs = calculateSportsSVGs(element.userSports);
-
-    const newRow = document.createElement('a');
-    newRow.classList.add('row');
-    newRow.classList.add('deletable');
-    newRow.href = `profilecoach.html?id=${element.coachId}`
-    newRow.innerHTML = `
+  const newRow = document.createElement("a");
+  newRow.classList.add("row");
+  newRow.classList.add("deletable");
+  newRow.href = `profilecoach.html?id=${element.coachId}`;
+  newRow.innerHTML = `
         <div class="cell name">${rowName}</div>
         <div class="cell age">${rowAge}</div>
         <div class="cell nationality">${rowNationality}</div>
@@ -602,58 +698,60 @@ var injectElement = (element) => {
         <div class="cell">${rowExperience}</div>
     `;
 
-    // Inserta el nuevo elemento después de referenceRow
-    referenceRow.insertAdjacentElement('afterend', newRow);
-}
+  // Inserta el nuevo elemento después de referenceRow
+  referenceRow.insertAdjacentElement("afterend", newRow);
+};
 
-applyPopup.addEventListener('click', () => {
+applyPopup.addEventListener("click", () => {
+  // Rest of elements already updated
 
-    // Rest of elements already updated
+  // Nationality
+  const countryRegex = /\/([a-zA-Z]+)\.png$/;
+  queryData.dataNationality.length = 0;
+  const coincidenciaNationality = userNationality.src.match(countryRegex);
+  coincidenciaNationality
+    ? queryData.dataNationality.push(coincidenciaNationality[1])
+    : "";
 
-    // Nationality
-    const countryRegex = /\/([a-zA-Z]+)\.png$/;
-    queryData.dataNationality.length = 0
-    const coincidenciaNationality = userNationality.src.match(countryRegex);
-    coincidenciaNationality
-      ? (queryData.dataNationality.push(coincidenciaNationality[1]))
-      : "";
-  
-    // Age
-    queryData.dataAge.length = 0
-    queryData.dataAge.push(fromInput.value, toInput.value)
+  // Age
+  queryData.dataAge.length = 0;
+  queryData.dataAge.push(fromInput.value, toInput.value);
 
+  filtersPopup.style.display = "none";
 
-    filtersPopup.style.display = 'none'
+  console.log(queryData);
+  console.log(untouchedQueryData);
 
-    console.log(queryData)
-    console.log(untouchedQueryData)
-
-    function deepEqual(obj1, obj2) {
-      if (obj1 === obj2) return true;
-      if (typeof obj1 !== "object" || obj1 === null || typeof obj2 !== "object" || obj2 === null) {
-          return false;
-      }
-      let keys1 = Object.keys(obj1);
-      let keys2 = Object.keys(obj2);
-      if (keys1.length !== keys2.length) return false;
-      for (let key of keys1) {
-          if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) {
-              return false;
-          }
-      }
-      return true;
+  function deepEqual(obj1, obj2) {
+    if (obj1 === obj2) return true;
+    if (
+      typeof obj1 !== "object" ||
+      obj1 === null ||
+      typeof obj2 !== "object" ||
+      obj2 === null
+    ) {
+      return false;
     }
-  
+    let keys1 = Object.keys(obj1);
+    let keys2 = Object.keys(obj2);
+    if (keys1.length !== keys2.length) return false;
+    for (let key of keys1) {
+      if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   // Usando la función
   if (deepEqual(queryData, untouchedQueryData)) {
-      filtersOpen.classList.remove('filtered')
+    filtersOpen.classList.remove("filtered");
   } else {
-    filtersOpen.classList.add('filtered')
+    filtersOpen.classList.add("filtered");
   }
-  
-    filteringApplied(arrayOfResults)
-})
 
+  filteringApplied(arrayOfResults);
+});
 
 //#endregion
 
