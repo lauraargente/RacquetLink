@@ -159,6 +159,14 @@
   width: 14rem;
   gap: 1rem;
 
+  .recommendator-name {
+    width: 6rem;
+  }
+
+  .recommendator-value {
+    color: var(--color-primary);
+  }
+
   .recommendator-bar-container {
     display: flex;
     align-items: center;

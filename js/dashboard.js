@@ -549,7 +549,6 @@ var updateLineChartYear = (data, isClubsData) => {
 
 //#region recommendators
 
-// Actualiza el ancho de las barras en el HTML
 function updateBarWidths(recommendatorsCounter) {
   let maxValue = Math.max(...Object.values(recommendatorsCounter));
 
@@ -561,11 +560,12 @@ function updateBarWidths(recommendatorsCounter) {
     let recommendatorId = recommendator.replace(/_/g, "-");
 
     // Encuentra el elemento del DOM correspondiente y actualiza el ancho
-    let barElement = document.querySelector(
-      `#${recommendatorId} .recommendator-bar`
-    );
-    if (barElement) {
+    let barElement = document.querySelector(`#${recommendatorId} .recommendator-bar`);
+    let valueElement = document.querySelector(`#${recommendatorId} .recommendator-value`); // Línea agregada
+
+    if (barElement && valueElement) {
       barElement.style.width = `${percentage}%`;
+      valueElement.textContent = recommendatorsCounter[recommendator]; // Línea agregada
     }
   }
 
@@ -576,9 +576,7 @@ function updateBarWidths(recommendatorsCounter) {
     .toLowerCase();
 
   // Encuentra todos los elementos con la clase 'recommendator-element'
-  var recommendatorElements = document.querySelectorAll(
-    ".recommendator-element"
-  );
+  var recommendatorElements = document.querySelectorAll(".recommendator-element");
 
   recommendatorElements.forEach(function (elem) {
     // Obtiene el nombre del recomendador del elemento actual
@@ -591,14 +589,14 @@ function updateBarWidths(recommendatorsCounter) {
     if (loggedUserText.includes(recommendatorName)) {
       // Encuentra el elemento de la barra del recomendador y cambia su color
       var recommendatorBar = elem.querySelector(".recommendator-bar");
-      var recommendatorBarStart = elem.querySelector(
-        ".recommendator-bar-start"
-      );
+      var recommendatorBarStart = elem.querySelector(".recommendator-bar-start");
       recommendatorBar.style.backgroundColor = "#025b7b";
       recommendatorBarStart.style.backgroundColor = "#025b7b";
     }
   });
 }
+
+
 
 //#endregion
 

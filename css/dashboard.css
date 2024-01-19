@@ -151,6 +151,12 @@
   width: 14rem;
   gap: 1rem;
 }
+.recommendator-element .recommendator-name {
+  width: 6rem;
+}
+.recommendator-element .recommendator-value {
+  color: var(--color-primary);
+}
 .recommendator-element .recommendator-bar-container {
   display: flex;
   align-items: center;
