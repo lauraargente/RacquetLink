@@ -229,7 +229,7 @@ Estructura general:
     <div id="profile-container">
         <div id="profile-wrapper">
         <div id="profile-left">
-            <div id="profile-content-container-1" class="mobile-fullwidth transparent-content-box">
+            <div id="profile-content-container-1" class="mobile-fullwidth transparent-content-box" style="background: none; box-shadow: none;">
                 <div id="image-container">
                     <label id="profile-image-label" for="file"  >Añade una <br>imagen de perfil</label>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto; visibility: hidden;" width="72px" height="72px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" id="profile-pic-loading">
@@ -240,12 +240,14 @@ Estructura general:
                     <input id="profile-picture" type="file" accept="image/*" name="image" id="file" style="display: none;"> 
                     <img id="output" src="./assets/profilestandard.png" class="profile-image" title="Racquet-Link | Imagen de Perfil" alt="Imagen de perfil del entrenador." width="200" />
                 </div>
-                <div id="profile-element-container-name" style="width: 90%; justify-content: center;" class="profile-information-element"></div>
-                <!-- <div id="experience-label-1" class="experience-label" style="margin-top: 2rem;"> Perfil</div> -->
-                <!-- <div style="display: flex; justify-content: center; align-items: center;">
-                    <div class="profile-element-contact-data" id="data-age"></div>
-                    <img id="data-flag-user" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" title="Racquet-Link | Bandera País de Nacimiento" alt="Bandera del país de nacimiento del entrenador.">
-                </div> -->
+                <div id="profile-element-container-name" class="profile-information-element">
+                    <div class="profile-data" id="data-name">
+                        <div class="data-content"></div>
+                        <div class="editable-options">
+                            <input class="editable-option inputtext" data-name="name" style="text-transform: lowercase; text-align: center;" placeholder="Sin definir"></input>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="mobile-fullwidth transparent-content-box admin-only">
@@ -318,23 +320,42 @@ Estructura general:
         <div id="profile-center">
             <div id="profile-content-container-wrapper">
                 <div id="profile-content-container-2" class="mobile-fullwidth transparent-content-box">
-                    <div id="profile-element-container-email" class="profile-information-element">
-                        <div class="profile-label">Email</div>
-                        <div class="profile-data" id="data-email">
+
+                    <div id="profile-element-container-surname" class="profile-information-element">
+                        <div class="profile-label">Apellidos</div>
+                        <div class="profile-data" id="data-surname">
                             <div class="data-content"></div>
-                            <div class="editable-options input-field">
-                                <input class="editable-option inputtext" data-email="visa" style="text-transform: lowercase; pointer-events: none;" placeholder="sin definir" readonly></input>
+                            <div class="editable-options">
+                                <input class="editable-option inputtext" data-surname="+34" style="text-transform: lowercase;" placeholder="apellidos"></input>
                             </div>
                         </div>
                     </div>
 
                     <div id="profile-element-container-email" class="profile-information-element">
-                        <div class="profile-label">País de residencia</div>
-                        <div class="profile-data" id="data-residence">
+                        <div class="profile-label">Email</div>
+                        <div class="profile-data" id="data-email">
                             <div class="data-content"></div>
-                            <div class="editable-options">
-                                <input class="editable-option inputtext" data-residence="residence" style="text-transform: lowercase; pointer-events: none;" placeholder="sin definir" readonly></input>
+                            <div class="editable-options input-field">
+                                <input class="editable-option inputtext" data-email="email" style="text-transform: lowercase; pointer-events: none;" placeholder="email" readonly></input>
                             </div>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-email" class="profile-information-element">
+                        <div class="profile-label">Nacionalidad</div>
+                        <div class="dropdown">
+                            <select id="nationalityDropdown">
+                                <!-- Las opciones se llenarán mediante JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="profile-element-container-email" class="profile-information-element">
+                        <div class="profile-label">País de residencia</div>
+                        <div class="dropdown">
+                            <select id="residenceDropdown">
+                                <!-- Las opciones se llenarán mediante JavaScript -->
+                            </select>
                         </div>
                     </div>
 
@@ -356,8 +377,8 @@ Estructura general:
                         </div>
                     </div>
 
-                    <div id="profile-element-container-recommendator" class="profile-information-element">
-                        <div class="profile-label">Recomendador</div>
+                    <div id="profile-element-container-recommendator" class="profile-information-element admin-only">
+                        <div class="profile-label">Recomendador (admin only)</div>
                         <div class="profile-data" id="data-recommendator">
                             <div class="data-content"></div>
                             <div class="editable-options">
@@ -382,7 +403,7 @@ Estructura general:
                         <div class="profile-data" id="data-number">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-number="+34" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                                <input class="editable-option inputtext" data-number="+34" style="text-transform: lowercase;" placeholder="teléfono"></input>
                             </div>
                         </div>
                     </div>
@@ -392,17 +413,17 @@ Estructura general:
                         <div class="profile-data" id="data-visa">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-visa="visa" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                                <input class="editable-option inputtext" data-visa="visa" style="text-transform: lowercase;" placeholder="visado"></input>
                             </div>
                         </div>
                     </div>
 
-                    <div id="profile-element-container-visa" class="profile-information-element">
+                    <div id="profile-element-container-titles" class="profile-information-element">
                         <div class="profile-label">Títulos o certificados</div>
                         <div class="profile-data" id="data-titles">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-titles="titles" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                                <input class="editable-option inputtext" data-titles="titles" style="text-transform: lowercase;" placeholder="títulos o certificados"></input>
                             </div>
                         </div>
                     </div>
@@ -412,7 +433,7 @@ Estructura general:
                         <a class="profile-data" id="data-instagram-wrapper">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-instagram="instagram" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                                <input class="editable-option inputtext" data-instagram="instagram" style="text-transform: lowercase;" placeholder="instagram"></input>
                             </div>
                         </a>
                     </div>
@@ -422,7 +443,7 @@ Estructura general:
                         <a class="profile-data" id="data-linkedin-wrapper">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-linkedin="linkedin" style="text-transform: lowercase;" placeholder="Sin definir"></input>
+                                <input class="editable-option inputtext" data-linkedin="linkedin" style="text-transform: lowercase;" placeholder="linkedin"></input>
                             </div>
                         </a>
                     </div>

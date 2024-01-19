@@ -69,10 +69,15 @@
           const docRef = doc.ref;
 
           updateDoc(docRef, {
+            clubName: newEditedData.clubName,
             clubSports: newEditedData.clubSports,
             clubAdditionalSport: newEditedData.clubAdditionalSport,
+            clubRecommendation: newEditedData.clubRecommendation,
+            clubWebPage: newEditedData.clubWebPage,
+            clubCountry: newEditedData.clubCountry,
             clubField: newEditedData.clubField,
             clubState: newEditedData.clubState,
+            clubCity: newEditedData.clubCity,
             clubConsulting: newEditedData.clubConsulting,
             clubEmail: newEditedData.clubEmail,
             clubNumber: newEditedData.clubNumber,
