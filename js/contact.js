@@ -10,6 +10,7 @@ const errorBoxClose = document.querySelector('.Error-close')
 const errorBoxBg = document.querySelector('.Error-bg')
 const formButton = document.querySelector('.Form-button')
 const formFields = document.querySelectorAll('.Field')
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
 // Funciones
@@ -39,12 +40,14 @@ const formFields = document.querySelectorAll('.Field')
             
             if(i != 4 && i != 5 && eachField.value == ''){
                 formFields[i].classList.add('Form-error')
+            } else if(i == 2 && !emailRegex.test(eachField.value)){
+                formFields[i].classList.add('Form-error')
             } else {
                 formFields[i].classList.remove('Form-error')
             }
         });
         
-        if(!mandatoryValues.includes('')){
+        if(!mandatoryValues.includes('') && emailRegex.test(allValues[2])){
             sendEmail(allValues);
         }
     })
