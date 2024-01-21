@@ -8,13 +8,13 @@ Estructura general:
 -->
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" 
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Racquet-Link | Registro Entrenadores</title>
+    <title>Racquet-Link | Coaches Register</title>
     <meta name="description" content="Racquet-Link | Regístrate como entrenador y nosotros haremos el resto para encontrar la oportunidad laboral de tus sueños.">
     <link rel="icon" href="assets/RacquetLink-19.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,12 +22,12 @@ Estructura general:
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/register-coach.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/register-coach.css">
     <!-- Quill JS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/headerfooter.css
+    <link rel="stylesheet" href="../css/headerfooter.css
     ">
     <!-- <script src="js/index.js" defer></script> -->
 
@@ -193,15 +193,12 @@ Estructura general:
     </div>
     <div id="register-container">
         <div class="register-element" id="initial-disclaimer">
-            <img src="assets/coach_line_huge.png" alt="" id="disclaimer-image">
+            <img src="../assets/coach_line_huge.png" alt="" id="disclaimer-image">
             <div id="title">
-                Registro Entrenador
+                Coach Registration
             </div>
-            <p>A continuación, deberás completar una serie de preguntas
-                para crear tu perfil dentro de la plataforma. Así podremos
-                buscarte una oportunidad laboral que se ajuste a tu perfil. Es
-                muy importante que la información sea veraz. ¡Gracias!</p>
-                <div id="next-conditional-disclaimer" class="register-element-next">Comenzar registro
+            <p>Next, you will need to answer a series of questions to create your profile within the platform. This will allow us to link you with a job opportunity that matches your profile. It is very important that the information you provide is accurate, thank you!</p>
+                <div id="next-conditional-disclaimer" class="register-element-next">Start registration
                 </div>
         </div>
         <div class="register-element" id="register-personalinfo">
@@ -213,7 +210,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question-smaller">
-                        Nombre
+                        Name
                     </div>
                     <div id="name-container" class="textinput-container">
                         <div id="name-icon" class="textinput-icon">
@@ -225,7 +222,7 @@ Estructura general:
                         </input>
                     </div>
                     <div class="register-element-question-smaller">
-                        Apellidos
+                        Last Name
                     </div>
                     <div id="surname-container" class="textinput-container">
                         <div id="name-icon" class="textinput-icon">
@@ -236,7 +233,7 @@ Estructura general:
                         <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="García Rodríguez">
                         </input>
                     </div>
-                    <div class="register-element-question-smaller">¿Vienes recomendado de algún embajador?</div>
+                    <div class="register-element-question-smaller">¿Have you been referred by an ambassador?</div>
                     <div class="dropdown">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
                             <path d="M19 9H1M19 10.5V7.8C19 6.11984 19 5.27976 18.673 4.63803C18.3854 4.07354 17.9265 3.6146 17.362 3.32698C16.7202 3 15.8802 3 14.2 3H5.8C4.11984 3 3.27976 3 2.63803 3.32698C2.07354 3.6146 1.6146 4.07354 1.32698 4.63803C1 5.27976 1 6.11984 1 7.8V16.2C1 17.8802 1 18.7202 1.32698 19.362C1.6146 19.9265 2.07354 20.3854 2.63803 20.673C3.27976 21 4.11984 21 5.8 21H10.5M14 1V5M6 1V5M15.4976 14.7119C14.7978 13.9328 13.6309 13.7232 12.7541 14.4367C11.8774 15.1501 11.7539 16.343 12.4425 17.1868C13.131 18.0306 15.4976 20 15.4976 20C15.4976 20 17.8642 18.0306 18.5527 17.1868C19.2413 16.343 19.1329 15.1426 18.2411 14.4367C17.3492 13.7307 16.1974 13.9328 15.4976 14.7119Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -261,7 +258,7 @@ Estructura general:
                         </div>
                     </div>
                     <div class="register-element-question-smaller">
-                        Fecha de nacimiento
+                        Date of birth
                     </div>
                     <div id="birthday-container" class="textinput-container" style="height: 3.4rem;">
                         <div id="name-icon" class="textinput-icon">
@@ -272,12 +269,12 @@ Estructura general:
                         <input type="date" class="calendar dateinput-date textinput-text">
                     </div>
                     <div class="register-element-question-smaller">
-                        Género (opcional)
+                        Gender (optional)
                     </div>
                     <div class="register-checkbox-wrapper">
                         <div class="register-checkbox-container activable data-gender-option" data-gender="m">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <div class="register-checkbox-label">Hombre</div>
+                            <div class="register-checkbox-label">Male</div>
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 19 28" fill="none">
                                 <path d="M17.5999 9.79997C17.5999 14.1078 14.1078 17.5999 9.79997 17.5999C5.49217 17.5999 2 14.1078 2 9.79997C2 5.49217 5.49217 2 9.79997 2C14.1078 2 17.5999 5.49217 17.5999 9.79997Z" stroke="#265A78" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M4.39844 22.3984H15.1984" stroke="#265A78" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -286,7 +283,7 @@ Estructura general:
                         </div>
                         <div class="register-checkbox-container activable data-gender-option" data-gender="f">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <div class="register-checkbox-label">Mujer</div>
+                            <div class="register-checkbox-label">Female</div>
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 28 28" fill="none">
                                 <path d="M17.3484 10.6206C15.7211 9.001 13.4774 8 11 8C6.02944 8 2 12.0295 2 17C2 21.9705 6.02944 26 11 26C15.9705 26 20 21.9705 20 17C20 14.5069 18.9863 12.2506 17.3484 10.6206ZM17.3484 10.6206L26 2M26 2H20M26 2V8" stroke="#265A78" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
@@ -299,7 +296,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-nationinfo">
             <div class="register-element-back">
@@ -315,7 +312,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question-smaller">
-                        Nacionalidad
+                        Nationality
                     </div>
                     <div class="pn-select" id="js_pn-select2" style="--prefix-length: 2">
                         <!-- Selected prefix -->
@@ -354,7 +351,7 @@ Estructura general:
                         </div>
                     </div>
                     <div class="register-element-question-smaller">
-                        Otras nacionalidades o visados
+                        Other nationalities or visas
                     </div>
                     <div id="othernations-container" class="textinput-container">
                         <div id="name-icon" class="textinput-icon">
@@ -362,11 +359,11 @@ Estructura general:
                                 <path d="M10 16H14M8.8 22H15.2C16.8802 22 17.7202 22 18.362 21.673C18.9265 21.3854 19.3854 20.9265 19.673 20.362C20 19.7202 20 18.8802 20 17.2V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
-                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Escribe tus nacionalidades o visados">
+                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Type your nationalities or visas">
                         </input>
                     </div>
                     <div class="register-element-question-smaller">
-                        País de residencia
+                        Country of residence
                     </div>
                     <div class="pn-select" id="js_pn-select3" style="--prefix-length: 2">
                         <!-- Selected prefix -->
@@ -405,7 +402,7 @@ Estructura general:
                         </div>
                     </div>
                     <div class="register-element-question-smaller">
-                        Idiomas Nivel Avanzado
+                        Advance level languages
                     </div>
                     <div class="register-checkbox-wrapper languages-wrapper" style="margin-bottom: 2rem;">
                         <div class="register-checkbox-container activable data-language-option" data-language="en">
@@ -442,7 +439,7 @@ Estructura general:
                         </div>
                         <div class="register-checkbox-container activable data-language-option" data-language="ot">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            Otros
+                            Other
                         </div>
                     </div>
                 </div>
@@ -452,7 +449,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-sports">
             <div class="register-element-back">
@@ -468,7 +465,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question-smaller">
-                        ¿Qué deportes enseñas?
+                        What sports do you teach?
                     </div>
                     <div class="register-checkbox-wrapper">
                         <div class="register-checkbox-container activable data-sport-option" data-sport="tenis">
@@ -478,14 +475,14 @@ Estructura general:
                                 <rect x="18" y="3" width="4" height="18" fill="#B9CBD4"/>
                                 <path d="M6 3H18M6 3V7.5M6 3H2V21H6M6 21H18M6 21V16.5M18 21V16.5M18 21H22V3H18M18 3V7.5M6 7.5V16.5M6 7.5H12M18 7.5V16.5M18 7.5H12M6 16.5H12M18 16.5H12M12 16.5V7.5" stroke="#025b7b" stroke-width="1" stroke-linejoin="round"/>
                               </svg>
-                            <div class="register-checkbox-label">Tenis</div>
+                            <div class="register-checkbox-label">Tennis</div>
                         </div>
                         <div class="register-checkbox-container activable data-sport-option" data-sport="padel">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 7.5V3H19V7.5M5 7.5V16.5M5 7.5H12M19 7.5V16.5M19 7.5H12M5 16.5V21H19V16.5M5 16.5H12M19 16.5H12M12 16.5V7.5" stroke="#025b7b" stroke-width="1" stroke-linejoin="round"/>
                               </svg>
-                            <div class="register-checkbox-label">Pádel</div>
+                            <div class="register-checkbox-label">Padel</div>
                         </div>
                         <div class="register-checkbox-container activable data-sport-option" data-sport="pickleball">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -497,12 +494,12 @@ Estructura general:
                         </div>
                         <div class="register-checkbox-container" id="additional-sport-container">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
-                            <input id="additional-sport" type="text" class="register-element-textanswer" style="margin-top: 0; font-size: 1rem; width: 8rem;" placeholder="Otro...">
+                            <input id="additional-sport" type="text" class="register-element-textanswer" style="margin-top: 0; font-size: 1rem; width: 8rem;" placeholder="Other...">
                             </input>
                         </div>
                     </div>
                     <div class="register-element-question-smaller" style="margin-top: 1rem;">
-                        Años de experiencia como entrenador
+                        Years of teaching experience
                     </div>
                     <div class="register-checkbox-wrapper" style="margin-bottom: 1rem;">
                         <div class="register-checkbox-container activable data-experience-option" data-experience="two-or-less">
@@ -519,17 +516,17 @@ Estructura general:
                         </div>
                     </div>
                     <div class="register-element-question-smaller" style="margin-top: 1rem;">
-                        Experiencia adicional (opcional)
+                        Additional experience (optional)
                     </div>
                     <div class="register-checkbox-wrapper" style="margin-bottom: 1rem;">
                         <div class="register-checkbox-container activable data-experience-additional-option" data-experience-additional="profesionalnow">
-                            <div class="register-checkbox-label experience-label">Soy jugador profesional</div>
+                            <div class="register-checkbox-label experience-label">I am a professional player</div>
                         </div>
                         <div class="register-checkbox-container activable data-experience-additional-option" data-experience-additional="profesionalthen">
-                            <div class="register-checkbox-label experience-label">He sido jugador profesional</div>
+                            <div class="register-checkbox-label experience-label">I was a professional player</div>
                         </div>
                         <div class="register-checkbox-container activable data-experience-additional-option" data-experience-additional="studentathlete">
-                            <div class="register-checkbox-label experience-label">Soy Student Athlete en USA</div>
+                            <div class="register-checkbox-label experience-label">I am a Student Athlete in the US</div>
                         </div>
                     </div>
                 </div>
@@ -539,7 +536,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-experienceone">
             <div class="register-element-back">
@@ -558,7 +555,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M11.302 21.6149C11.5234 21.744 11.6341 21.8086 11.7903 21.8421C11.9116 21.8681 12.0884 21.8681 12.2097 21.8421C12.3659 21.8086 12.4766 21.744 12.698 21.6149C14.646 20.4784 20 16.9084 20 12V8.20001C20 7.12611 20 6.58916 19.8345 6.20801C19.6662 5.82061 19.4986 5.61452 19.1536 5.37091C18.8141 5.13123 18.1486 4.99283 16.8177 4.71603C15.3508 4.41094 14.2243 3.86004 13.1944 3.06333C12.7005 2.68127 12.4536 2.49025 12.2603 2.43814C12.0564 2.38317 11.9436 2.38317 11.7397 2.43814C11.5464 2.49025 11.2995 2.68127 10.8056 3.06333C9.77572 3.86004 8.6492 4.41094 7.1823 4.71603C5.85137 4.99283 5.18591 5.13123 4.84645 5.37091C4.50142 5.61452 4.33379 5.82061 4.16554 6.20801C4 6.58916 4 7.12611 4 8.2V12C4 16.9084 9.35396 20.4784 11.302 21.6149Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Has estado contratado por un club o academia?
+                        Have you been hired by a club or academy?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-clubexp-option" data-clubexp="y">
@@ -566,7 +563,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label">Sí</div>
+                            <div class="register-checkbox-label">Yes</div>
                         </div>
                         <div class="register-checkbox-container activable data-clubexp-option" data-clubexp="n">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -580,7 +577,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M10 14.5347C11.2335 13.8218 12.7663 13.8218 13.9999 14.5347M2 15L2.70149 7.98511C2.72808 7.71915 2.74138 7.58617 2.76178 7.47208C3.00222 6.12702 4.1212 5.11436 5.48352 5.00894C5.59907 5 5.73271 5 6 5M22 15L21.2985 7.98511C21.2719 7.71916 21.2586 7.58617 21.2382 7.47208C20.9978 6.12702 19.8788 5.11436 18.5165 5.00894C18.4009 5 18.2673 5 18 5M8.82843 12.1716C10.3905 13.7337 10.3905 16.2663 8.82843 17.8284C7.26634 19.3905 4.73367 19.3905 3.17157 17.8284C1.60948 16.2663 1.60948 13.7337 3.17157 12.1716C4.73366 10.6095 7.26633 10.6095 8.82843 12.1716ZM20.8284 12.1716C22.3905 13.7337 22.3905 16.2663 20.8284 17.8284C19.2663 19.3905 16.7337 19.3905 15.1716 17.8284C13.6095 16.2663 13.6095 13.7337 15.1716 12.1716C16.7337 10.6095 19.2663 10.6095 20.8284 12.1716Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Has sido responsable de escuela o coordinado a otros entrenadores?
+                        Have you been head coach or managed other coaches?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-othercoachexp-option" data-othercoachexp="y">
@@ -588,7 +585,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label">Sí</div>
+                            <div class="register-checkbox-label">Yes</div>
                         </div>
                         <div class="register-checkbox-container activable data-othercoachexp-option" data-othercoachexp="n">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -602,13 +599,13 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 18 22" fill="none">
                             <path d="M4 14.0903V21L8.70289 19.1188C8.81265 19.0749 8.86753 19.053 8.92419 19.0443C8.97444 19.0366 9.02556 19.0366 9.07581 19.0443C9.13247 19.053 9.18735 19.0749 9.29711 19.1188L14 21V14.0903M16.5 8.5C16.5 12.6421 13.1421 16 9 16C4.85786 16 1.5 12.6421 1.5 8.5C1.5 4.35786 4.85786 1 9 1C13.1421 1 16.5 4.35786 16.5 8.5Z" stroke="rgb(2, 91, 123)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                          ¿Qué títulos y/o certificados tienes? (OPCIONAL)
+                          What certificates do you have? (Optional)
                     </div>
                     <div id="titles-container" class="textinput-container" style="display: flex; margin-top: 0.4rem; ">
                         <div class="textinput-icon dummy" style="display: none;">
 
                         </div>
-                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Escribe tus títulos">
+                        <input type="text" class="register-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Type your qualifications">
                         </input>
                     </div>
                 </div>
@@ -618,7 +615,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-experiencetwo">
             <div class="register-element-back">
@@ -637,7 +634,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M12 15C8.68629 15 6 12.3137 6 9V3.44444C6 3.0306 6 2.82367 6.06031 2.65798C6.16141 2.38021 6.38021 2.16141 6.65798 2.06031C6.82367 2 7.0306 2 7.44444 2H16.5556C16.9694 2 17.1763 2 17.342 2.06031C17.6198 2.16141 17.8386 2.38021 17.9397 2.65798C18 2.82367 18 3.0306 18 3.44444V9C18 12.3137 15.3137 15 12 15ZM12 15V18M18 4H20.5C20.9659 4 21.1989 4 21.3827 4.07612C21.6277 4.17761 21.8224 4.37229 21.9239 4.61732C22 4.80109 22 5.03406 22 5.5V6C22 6.92997 22 7.39496 21.8978 7.77646C21.6204 8.81173 20.8117 9.62038 19.7765 9.89778C19.395 10 18.93 10 18 10M6 4H3.5C3.03406 4 2.80109 4 2.61732 4.07612C2.37229 4.17761 2.17761 4.37229 2.07612 4.61732C2 4.80109 2 5.03406 2 5.5V6C2 6.92997 2 7.39496 2.10222 7.77646C2.37962 8.81173 3.18827 9.62038 4.22354 9.89778C4.60504 10 5.07003 10 6 10M7.44444 22H16.5556C16.801 22 17 21.801 17 21.5556C17 19.5919 15.4081 18 13.4444 18H10.5556C8.59188 18 7 19.5919 7 21.5556C7 21.801 7.19898 22 7.44444 22Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Tienes experiencia organizando torneos?
+                        ¿Do you have experience in organizing tournaments?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-tourorg-option" data-tourorg="y">
@@ -645,7 +642,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label">Sí</div>
+                            <div class="register-checkbox-label">Yes</div>
                         </div>
                         <div class="register-checkbox-container activable data-tourorg-option" data-tourorg="n">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -659,7 +656,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M13.1218 14.8446L18.0004 21.9999M10.879 14.8446L6.00041 21.9999M14.0004 13.2C14.0004 14.3045 13.105 15.2 12.0004 15.2C10.8958 15.2 10.0004 14.3045 10.0004 13.2C10.0004 12.0954 10.8958 11.2 12.0004 11.2C13.105 11.2 14.0004 12.0954 14.0004 13.2ZM17.1489 4.53225L5.36462 7.68984C5.09414 7.76232 4.95889 7.79855 4.86969 7.87888C4.79122 7.94953 4.73713 8.04321 4.71518 8.14649C4.69022 8.26391 4.72646 8.39915 4.79893 8.66964L5.67892 11.9538C5.7514 12.2243 5.78763 12.3595 5.86796 12.4487C5.93861 12.5272 6.03229 12.5813 6.13557 12.6032C6.25299 12.6282 6.38823 12.5919 6.65871 12.5195L18.443 9.36188L17.1489 4.53225ZM21.7928 9.49958C20.7109 9.78949 20.1699 9.93444 19.7002 9.83461C19.2871 9.74679 18.9124 9.53045 18.6298 9.21657C18.3085 8.85975 18.1635 8.31878 17.8736 7.23684L17.7183 6.65728C17.4284 5.57535 17.2835 5.03438 17.3833 4.56471C17.4711 4.15158 17.6875 3.77686 18.0013 3.49425C18.3582 3.17296 18.8991 3.02801 19.9811 2.7381C20.2515 2.66562 20.3868 2.62939 20.5042 2.65434C20.6075 2.6763 20.7012 2.73038 20.7718 2.80885C20.8521 2.89806 20.8884 3.0333 20.9609 3.30379L22.3585 8.51979C22.431 8.79027 22.4672 8.92551 22.4422 9.04293C22.4203 9.14621 22.3662 9.23989 22.2877 9.31055C22.1985 9.39087 22.0633 9.42711 21.7928 9.49958ZM3.50212 12.33L4.85441 11.9677C5.1249 11.8952 5.26014 11.8589 5.34935 11.7786C5.42782 11.708 5.4819 11.6143 5.50386 11.511C5.52881 11.3936 5.49258 11.2583 5.4201 10.9879L5.05775 9.63556C4.98528 9.36508 4.94904 9.22983 4.86872 9.14063C4.79806 9.06216 4.70438 9.00807 4.6011 8.98612C4.48368 8.96116 4.34844 8.9974 4.07796 9.06988L2.72566 9.43222C2.45518 9.5047 2.31993 9.54094 2.23073 9.62126C2.15226 9.69191 2.09817 9.78559 2.07622 9.88888C2.05126 10.0063 2.0875 10.1415 2.15998 10.412L2.52232 11.7643C2.5948 12.0348 2.63104 12.17 2.71136 12.2592C2.78201 12.3377 2.87569 12.3918 2.97898 12.4138C3.09639 12.4387 3.23163 12.4025 3.50212 12.33Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Has sido juez árbitro en torneos?
+                        Have you been a referee in tournaments?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-tourjuz-option" data-tourjuz="y">
@@ -667,7 +664,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label">Sí</div>
+                            <div class="register-checkbox-label">Yes</div>
                         </div>
                         <div class="register-checkbox-container activable data-tourjuz-option" data-tourjuz="n">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -681,7 +678,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path d="M14 1.4578C13.053 1.16035 12.0452 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21C16.5228 21 21 16.5228 21 11C21 9.28467 20.5681 7.67022 19.8071 6.25945M16 4.75H16.005M9.50005 20.8883L9.50016 18.6849C9.50017 18.5656 9.54286 18.4502 9.62053 18.3596L12.1063 15.4594C12.3106 15.2211 12.2473 14.8556 11.9748 14.6999L9.11853 13.0677C9.04093 13.0234 8.97663 12.9591 8.93234 12.8814L7.07046 9.61863C6.97356 9.44882 6.78657 9.35107 6.59183 9.36841L1.06418 9.86074M20 5C20 7.20914 18 9 16 11C14 9 12 7.20914 12 5C12 2.79086 13.7909 1 16 1C18.2091 1 20 2.79086 20 5ZM16.25 4.75C16.25 4.88807 16.1381 5 16 5C15.8619 5 15.75 4.88807 15.75 4.75C15.75 4.61193 15.8619 4.5 16 4.5C16.1381 4.5 16.25 4.61193 16.25 4.75Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Tienes experiencia internacional como entrenador?
+                        Do you have international coaching experience?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-intexp-option" data-intexp="y">
@@ -689,7 +686,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label">Sí</div>
+                            <div class="register-checkbox-label">Yes</div>
                         </div>
                         <div class="register-checkbox-container activable data-intexp-option" data-intexp="n">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -706,7 +703,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-experiencethr">
             <div class="register-element-back">
@@ -725,7 +722,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M8.87625 13.0953L4.70122 7.87653C4.44132 7.55166 4.31138 7.38922 4.21897 7.20834C4.13698 7.04787 4.07706 6.87705 4.04084 6.70052C4 6.50155 4 6.29354 4 5.8775V5.2C4 4.0799 4 3.51984 4.21799 3.09202C4.40973 2.71569 4.71569 2.40973 5.09202 2.21799C5.51984 2 6.0799 2 7.2 2H16.8C17.9201 2 18.4802 2 18.908 2.21799C19.2843 2.40973 19.5903 2.71569 19.782 3.09202C20 3.51984 20 4.0799 20 5.2V5.8775C20 6.29354 20 6.50155 19.9592 6.70052C19.9229 6.87705 19.863 7.04787 19.781 7.20834C19.6886 7.38922 19.5587 7.55166 19.2988 7.87652L15.1238 13.0953M5.00005 3L12.0001 12L19 3M15.5355 13.4645C17.4882 15.4171 17.4882 18.5829 15.5355 20.5355C13.5829 22.4882 10.4171 22.4882 8.46446 20.5355C6.51185 18.5829 6.51185 15.4171 8.46446 13.4645C10.4171 11.5118 13.5829 11.5118 15.5355 13.4645Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Has competido a nivel profesional?
+                        Have you competed at a professional level?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-profexp-option" data-profexp="y">
@@ -733,7 +730,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label">Sí</div>
+                            <div class="register-checkbox-label">Yes</div>
                         </div>
                         <div class="register-checkbox-container activable data-profexp-option" data-profexp="n">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -747,7 +744,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path d="M3.00002 20.8174C3.6026 21 4.41649 21 5.8 21H16.2C17.5835 21 18.3974 21 19 20.8174M3.00002 20.8174C2.87082 20.7783 2.75133 20.7308 2.63803 20.673C2.07354 20.3854 1.6146 19.9265 1.32698 19.362C1 18.7202 1 17.8802 1 16.2V5.8C1 4.11984 1 3.27976 1.32698 2.63803C1.6146 2.07354 2.07354 1.6146 2.63803 1.32698C3.27976 1 4.11984 1 5.8 1H16.2C17.8802 1 18.7202 1 19.362 1.32698C19.9265 1.6146 20.3854 2.07354 20.673 2.63803C21 3.27976 21 4.11984 21 5.8V16.2C21 17.8802 21 18.7202 20.673 19.362C20.3854 19.9265 19.9265 20.3854 19.362 20.673C19.2487 20.7308 19.1292 20.7783 19 20.8174M3.00002 20.8174C3.00035 20.0081 3.00521 19.5799 3.07686 19.2196C3.39249 17.6329 4.63288 16.3925 6.21964 16.0769C6.60603 16 7.07069 16 8 16H14C14.9293 16 15.394 16 15.7804 16.0769C17.3671 16.3925 18.6075 17.6329 18.9231 19.2196C18.9948 19.5799 18.9996 20.0081 19 20.8174M15 8.5C15 10.7091 13.2091 12.5 11 12.5C8.79086 12.5 7 10.7091 7 8.5C7 6.29086 8.79086 4.5 11 4.5C13.2091 4.5 15 6.29086 15 8.5Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Compites actualmente?
+                        Are you currently competing?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-compnow-option" data-compnow="y">
@@ -755,7 +752,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label">Sí</div>
+                            <div class="register-checkbox-label">Yes</div>
                         </div>
                         <div class="register-checkbox-container activable data-compnow-option" data-compnow="n">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -772,7 +769,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-preferencesone">
             <div class="register-element-back">
@@ -791,7 +788,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M21 10H3M16 2V6M8 2V6M7.8 22H16.2C17.8802 22 18.7202 22 19.362 21.673C19.9265 21.3854 20.3854 20.9265 20.673 20.362C21 19.7202 21 18.8802 21 17.2V8.8C21 7.11984 21 6.27976 20.673 5.63803C20.3854 5.07354 19.9265 4.6146 19.362 4.32698C18.7202 4 17.8802 4 16.2 4H7.8C6.11984 4 5.27976 4 4.63803 4.32698C4.07354 4.6146 3.6146 5.07354 3.32698 5.63803C3 6.27976 3 7.11984 3 8.8V17.2C3 18.8802 3 19.7202 3.32698 20.362C3.6146 20.9265 4.07354 21.3854 4.63803 21.673C5.27976 22 6.11984 22 7.8 22Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Cuántas horas a la semana das clases?
+                        How many hours per weeek do you teach?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-hours-option" data-hours="0010">
@@ -834,7 +831,7 @@ Estructura general:
                             <path d="M12 15C8.82993 15 6.0108 16.5306 4.216 18.906C3.82971 19.4172 3.63656 19.6728 3.64288 20.0183C3.64776 20.2852 3.81536 20.6219 4.02537 20.7867C4.29719 21 4.67387 21 5.42724 21H18.5728C19.3261 21 19.7028 21 19.9746 20.7867C20.1846 20.6219 20.3522 20.2852 20.3571 20.0183C20.3634 19.6728 20.1703 19.4172 19.784 18.906C17.9892 16.5306 15.1701 15 12 15Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Con qué nivel de alumnos trabajas?
+                        What level of players do you work with?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-level-option" data-level="initiation">
@@ -842,7 +839,7 @@ Estructura general:
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
                                 <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
-                            <div class="register-checkbox-label experience-label">Iniciación</div>
+                            <div class="register-checkbox-label experience-label">Beginner</div>
                         </div>
                         <div class="register-checkbox-container activable data-level-option" data-level="intermed">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -850,7 +847,7 @@ Estructura general:
                                 <path d="M13 10L7 4L1 10" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 14L7 8L1 14" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
-                            <div class="register-checkbox-label experience-label">Intermedio</div>
+                            <div class="register-checkbox-label experience-label">Intermediate</div>
                         </div>
                         <div class="register-checkbox-container activable data-level-option" data-level="advanced">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -859,7 +856,7 @@ Estructura general:
                                 <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 16L7 10L1 16" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
-                            <div class="register-checkbox-label experience-label">Avanzado</div>
+                            <div class="register-checkbox-label experience-label">Advanced</div>
                         </div>
                         <div class="register-checkbox-container activable data-level-option" data-level="profesional">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -869,7 +866,7 @@ Estructura general:
                                 <path d="M13 15L7 9L1 15" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 19L7 13L1 19" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
-                            <div class="register-checkbox-label experience-label">Profesional</div>
+                            <div class="register-checkbox-label experience-label">Professional</div>
                         </div>
                     </div>
                     <div class="register-element-question-smaller" style="margin-top: 2rem;">
@@ -877,7 +874,7 @@ Estructura general:
                             <path d="M12 15C8.82993 15 6.0108 16.5306 4.216 18.906C3.82971 19.4172 3.63656 19.6728 3.64288 20.0183C3.64776 20.2852 3.81536 20.6219 4.02537 20.7867C4.29719 21 4.67387 21 5.42724 21H18.5728C19.3261 21 19.7028 21 19.9746 20.7867C20.1846 20.6219 20.3522 20.2852 20.3571 20.0183C20.3634 19.6728 20.1703 19.4172 19.784 18.906C17.9892 16.5306 15.1701 15 12 15Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M12 12C14.4853 12 16.5 9.98528 16.5 7.5C16.5 5.01472 14.4853 3 12 3C9.51472 3 7.5 5.01472 7.5 7.5C7.5 9.98528 9.51472 12 12 12Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Qué edad tienen tus alumnos?
+                        How old are your players?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-studentsage-option" data-studentsage="youth">
@@ -885,7 +882,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
                                 <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Niños</div>
+                            <div class="register-checkbox-label experience-label">Kids</div>
                         </div>
                         <div class="register-checkbox-container activable data-studentsage-option" data-studentsage="teens">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -893,7 +890,7 @@ Estructura general:
                                 <path d="M13 10L7 4L1 10" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 14L7 8L1 14" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Adolescentes</div>
+                            <div class="register-checkbox-label experience-label">Teenagers</div>
                         </div>
                         <div class="register-checkbox-container activable data-studentsage-option" data-studentsage="adults">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -902,7 +899,7 @@ Estructura general:
                                 <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 16L7 10L1 16" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Adultos</div>
+                            <div class="register-checkbox-label experience-label">Adults</div>
                         </div>
                     </div>
                 </div>
@@ -912,7 +909,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-preferencestwo">
             <div class="register-element-back">
@@ -931,7 +928,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M19 17L17.9999 18.094C17.4695 18.6741 16.7501 19 16.0001 19C15.2501 19 14.5308 18.6741 14.0004 18.094C13.4692 17.5151 12.75 17.1901 12.0002 17.1901C11.2504 17.1901 10.5311 17.5151 9.99997 18.094M1 19H2.67454C3.16372 19 3.40832 19 3.63849 18.9447C3.84256 18.8957 4.03765 18.8149 4.2166 18.7053C4.41843 18.5816 4.59138 18.4086 4.93729 18.0627L17.5 5.49998C18.3285 4.67156 18.3285 3.32841 17.5 2.49998C16.6716 1.67156 15.3285 1.67156 14.5 2.49998L1.93726 15.0627C1.59136 15.4086 1.4184 15.5816 1.29472 15.7834C1.18506 15.9624 1.10425 16.1574 1.05526 16.3615C1 16.5917 1 16.8363 1 17.3255V19Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Cuál es tu disponibilidad para empezar un nuevo proyecto?
+                        What is your availability to start a new job?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-startingtime-option" data-startingtime="now">
@@ -939,7 +936,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
                                 <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label"> Inmediata</div>
+                            <div class="register-checkbox-label experience-label">Inmediately</div>
                         </div>
                         <div class="register-checkbox-container activable data-startingtime-option" data-startingtime="one">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -947,7 +944,7 @@ Estructura general:
                                 <path d="M13 10L7 4L1 10" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 14L7 8L1 14" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">1 mes</div>
+                            <div class="register-checkbox-label experience-label">1 month</div>
                         </div>
                         <div class="register-checkbox-container activable data-startingtime-option" data-startingtime="2o3">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -956,7 +953,7 @@ Estructura general:
                                 <path d="M13 12L7 6L1 12" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 16L7 10L1 16" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">2 o 3 meses</div>
+                            <div class="register-checkbox-label experience-label">2 or 3 months</div>
                         </div>
                         <div class="register-checkbox-container activable data-startingtime-option" data-startingtime="4mo">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -966,7 +963,7 @@ Estructura general:
                                 <path d="M13 15L7 9L1 15" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 19L7 13L1 19" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">4 meses o más</div>
+                            <div class="register-checkbox-label experience-label">4 months or more</div>
                         </div>
                         <div class="register-checkbox-container activable data-startingtime-option" data-startingtime="von">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -976,14 +973,14 @@ Estructura general:
                                 <path d="M13 15L7 9L1 15" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M13 19L7 13L1 19" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">verano / navidad</div>
+                            <div class="register-checkbox-label experience-label">Summer / Christmas</div>
                         </div>
                     </div>
                     <div class="register-element-question-smaller" style="margin-top: 2rem;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M16 7C16 6.07003 16 5.60504 15.8978 5.22354C15.6204 4.18827 14.8117 3.37962 13.7765 3.10222C13.395 3 12.93 3 12 3C11.07 3 10.605 3 10.2235 3.10222C9.18827 3.37962 8.37962 4.18827 8.10222 5.22354C8 5.60504 8 6.07003 8 7M12.8 17.5H17.7C17.98 17.5 18.12 17.5 18.227 17.4455C18.3211 17.3976 18.3976 17.3211 18.4455 17.227C18.5 17.12 18.5 16.98 18.5 16.7V14.3C18.5 14.02 18.5 13.88 18.4455 13.773C18.3976 13.6789 18.3211 13.6024 18.227 13.5545C18.12 13.5 17.98 13.5 17.7 13.5H12.8C12.52 13.5 12.38 13.5 12.273 13.5545C12.1789 13.6024 12.1024 13.6789 12.0545 13.773C12 13.88 12 14.02 12 14.3V16.7C12 16.98 12 17.12 12.0545 17.227C12.1024 17.3211 12.1789 17.3976 12.273 17.4455C12.38 17.5 12.52 17.5 12.8 17.5ZM6.8 21H17.2C18.8802 21 19.7202 21 20.362 20.673C20.9265 20.3854 21.3854 19.9265 21.673 19.362C22 18.7202 22 17.8802 22 16.2V11.8C22 10.1198 22 9.27976 21.673 8.63803C21.3854 8.07354 20.9265 7.6146 20.362 7.32698C19.7202 7 18.8802 7 17.2 7H6.8C5.11984 7 4.27976 7 3.63803 7.32698C3.07354 7.6146 2.6146 8.07354 2.32698 8.63803C2 9.27976 2 10.1198 2 11.8V16.2C2 17.8802 2 18.7202 2.32698 19.362C2.6146 19.9265 3.07354 20.3854 3.63803 20.673C4.27976 21 5.11984 21 6.8 21Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿En qué continentes estarías dispuesto a trabajar?
+                        In which continents would you be willing to work?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-mobility-option" data-mobility="europe">
@@ -991,7 +988,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                                 <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Europa</div>
+                            <div class="register-checkbox-label experience-label">Europe</div>
                         </div>
                         <div class="register-checkbox-container activable data-mobility-option" data-mobility="asia">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -1019,14 +1016,14 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M15 9L9 15M9 9L15 15M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Estados Unidos</div>
+                            <div class="register-checkbox-label experience-label">USA</div>
                         </div>
                         <div class="register-checkbox-container activable data-mobility-option" data-mobility="america">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M15 9L9 15M9 9L15 15M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Resto de América</div>
+                            <div class="register-checkbox-label experience-label">All America</div>
                         </div>
                     </div>
                 </div>
@@ -1036,7 +1033,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-preferencesthree">
             <div class="register-element-back">
@@ -1055,7 +1052,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M14 2.26953V6.40007C14 6.96012 14 7.24015 14.109 7.45406C14.2049 7.64222 14.3578 7.7952 14.546 7.89108C14.7599 8.00007 15.0399 8.00007 15.6 8.00007H19.7305M16 13H8M16 17H8M10 9H8M14 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H15.2C16.8802 22 17.7202 22 18.362 21.673C18.9265 21.3854 19.3854 20.9265 19.673 20.362C20 19.7202 20 18.8802 20 17.2V8L14 2Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿Qué tipo de oportunidad buscas?
+                        What kind of opportunity are you looking for?
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-oportunity-option" data-oportunity="full">
@@ -1063,7 +1060,7 @@ Estructura general:
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <circle cx="12" cy="12" r="8" stroke="#025B7B" stroke-width="1"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Contrato tiempo indefinido</div>
+                            <div class="register-checkbox-label experience-label">Permanent contract</div>
                         </div>
                         <div class="register-checkbox-container activable data-oportunity-option" data-oportunity="part">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -1071,14 +1068,14 @@ Estructura general:
                                 <path d="M17.2 13.9999C17.477 13.9999 17.6155 13.9999 17.7278 14.0614C17.8204 14.1122 17.9065 14.2074 17.9478 14.3046C17.9978 14.4225 17.9852 14.5479 17.96 14.7986C17.8296 16.0987 17.3822 17.3514 16.6518 18.4445C15.7727 19.7601 14.5233 20.7855 13.0615 21.391C11.5997 21.9965 9.99113 22.1549 8.43928 21.8462C6.88743 21.5375 5.46197 20.7756 4.34315 19.6568C3.22433 18.538 2.4624 17.1125 2.15372 15.5606C1.84504 14.0088 2.00347 12.4003 2.60897 10.9385C3.21447 9.47665 4.23985 8.22722 5.55544 7.34817C6.64856 6.61777 7.90125 6.17033 9.20131 6.03989C9.45207 6.01473 9.57745 6.00215 9.69528 6.05214C9.79249 6.09338 9.88776 6.17957 9.9385 6.27218C10 6.38443 10 6.52293 10 6.79993V13.1999C10 13.48 10 13.62 10.0545 13.7269C10.1024 13.821 10.1789 13.8975 10.273 13.9454C10.38 13.9999 10.52 13.9999 10.8 13.9999H17.2Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M14 2.79993C14 2.52292 14 2.38442 14.0615 2.27217C14.1122 2.17957 14.2075 2.09338 14.3047 2.05213C14.4225 2.00214 14.5479 2.01472 14.7987 2.03987C16.6271 2.22327 18.346 3.03223 19.6569 4.34307C20.9677 5.65391 21.7767 7.37283 21.9601 9.20123C21.9852 9.452 21.9978 9.57738 21.9478 9.69521C21.9066 9.79242 21.8204 9.88768 21.7278 9.93842C21.6155 9.99992 21.477 9.99992 21.2 9.99992L14.8 9.99993C14.52 9.99993 14.38 9.99993 14.273 9.94543C14.1789 9.89749 14.1024 9.821 14.0545 9.72692C14 9.61997 14 9.47995 14 9.19993V2.79993Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Contrato temporal</div>
+                            <div class="register-checkbox-label experience-label">Temporary contract</div>
                         </div>
                         <div class="register-checkbox-container activable data-oportunity-option" data-oportunity="temp">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
                                 <path d="M10.707 1.03647C6.38421 1.43621 2.99962 5.07285 2.99962 9.5C2.99962 10.45 3.15547 11.3636 3.44299 12.2166C3.55119 12.5376 3.60529 12.6981 3.61505 12.8214C3.62469 12.9432 3.6174 13.0286 3.58728 13.1469C3.55677 13.2668 3.48942 13.3915 3.35472 13.6408L1.71906 16.6684C1.48575 17.1002 1.36909 17.3161 1.3952 17.4828C1.41794 17.6279 1.50337 17.7557 1.6288 17.8322C1.7728 17.9201 2.01692 17.8948 2.50517 17.8444L7.62619 17.315C7.78121 17.299 7.85882 17.291 7.92949 17.2937C7.999 17.2963 8.04807 17.3029 8.11586 17.3185C8.18478 17.3344 8.27145 17.3678 8.44478 17.4345C9.39283 17.7998 10.4228 18 11.4996 18C15.9304 18 19.5694 14.6098 19.9641 10.2819M19.1209 1.87868C20.2925 3.05025 20.2925 4.94975 19.1209 6.12132C17.9494 7.29289 16.0499 7.29289 14.8783 6.12132C13.7067 4.94975 13.7067 3.05025 14.8783 1.87868C16.0499 0.707107 17.9494 0.707107 19.1209 1.87868Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg> -->
-                            <div class="register-checkbox-label experience-label">Contrato eventual</div>
+                            <div class="register-checkbox-label experience-label">Special event contract</div>
                         </div>
                         <div class="register-checkbox-container activable data-oportunity-option" data-oportunity="esp">
                             <!-- <input class="register-checkbox" type="checkbox" id="coding" name="interest" value="coding" /> -->
@@ -1095,7 +1092,7 @@ Estructura general:
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
                             <path d="M3.99993 11C3.99993 12.6484 4.66466 14.1415 5.74067 15.226C5.84445 15.3305 5.89633 15.3828 5.92696 15.4331C5.95619 15.4811 5.9732 15.5224 5.98625 15.5771C5.99993 15.6343 5.99993 15.6995 5.99993 15.8298V18.2C5.99993 18.48 5.99993 18.62 6.05443 18.727C6.10236 18.8211 6.17885 18.8976 6.27293 18.9455C6.37989 19 6.5199 19 6.79993 19H8.69993C8.97996 19 9.11997 19 9.22693 18.9455C9.32101 18.8976 9.3975 18.8211 9.44543 18.727C9.49993 18.62 9.49993 18.48 9.49993 18.2V17.8C9.49993 17.52 9.49993 17.38 9.55443 17.273C9.60236 17.1789 9.67885 17.1024 9.77293 17.0545C9.87989 17 10.0199 17 10.2999 17H11.6999C11.98 17 12.12 17 12.2269 17.0545C12.321 17.1024 12.3975 17.1789 12.4454 17.273C12.4999 17.38 12.4999 17.52 12.4999 17.8V18.2C12.4999 18.48 12.4999 18.62 12.5544 18.727C12.6024 18.8211 12.6789 18.8976 12.7729 18.9455C12.8799 19 13.0199 19 13.2999 19H15.2C15.48 19 15.62 19 15.727 18.9455C15.8211 18.8976 15.8976 18.8211 15.9455 18.727C16 18.62 16 18.48 16 18.2V17.2243C16 17.0223 16 16.9212 16.0288 16.8401C16.0563 16.7624 16.0911 16.708 16.15 16.6502C16.2114 16.59 16.3155 16.5417 16.5237 16.445C17.5059 15.989 18.344 15.2751 18.9511 14.3902C19.0579 14.2346 19.1112 14.1568 19.1683 14.1108C19.2228 14.0668 19.2717 14.0411 19.3387 14.021C19.4089 14 19.4922 14 19.6587 14H20.2C20.48 14 20.62 14 20.727 13.9455C20.8211 13.8976 20.8976 13.8211 20.9455 13.727C21 13.62 21 13.48 21 13.2V9.78575C21 9.51916 21 9.38586 20.9505 9.28303C20.9013 9.181 20.819 9.09867 20.717 9.04953C20.6141 9 20.4808 9 20.2143 9C20.0213 9 19.9248 9 19.8471 8.9738C19.7633 8.94556 19.7045 8.90798 19.6437 8.84377C19.5874 8.78422 19.5413 8.68464 19.4493 8.48547C19.1538 7.84622 18.7492 7.26777 18.2593 6.77404C18.1555 6.66945 18.1036 6.61716 18.073 6.56687C18.0437 6.51889 18.0267 6.47759 18.0137 6.42294C18 6.36567 18 6.30051 18 6.17018V5.06058C18 4.70053 18 4.52051 17.925 4.39951C17.8593 4.29351 17.7564 4.21588 17.6365 4.18184C17.4995 4.14299 17.3264 4.19245 16.9802 4.29136L14.6077 4.96922C14.5673 4.98074 14.5472 4.9865 14.5267 4.99054C14.5085 4.99414 14.4901 4.99671 14.4716 4.99826C14.4508 5 14.4298 5 14.3879 5H13.959M3.99993 11C3.99993 8.69594 5.29864 6.6952 7.20397 5.6899M3.99993 11H3C1.89543 11 1 10.1046 1 9C1 8.25972 1.4022 7.61337 2 7.26756M14 4.5C14 6.433 12.433 8 10.5 8C8.567 8 7 6.433 7 4.5C7 2.567 8.567 1 10.5 1C12.433 1 14 2.567 14 4.5Z" stroke="#025B7B" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                        ¿En qué rango salarial (€) mensual te encuentras? (opcional)
+                        What salary range (€) per month are you in? (Optional)
                     </div>
                     <div class="register-checkbox-wrapper withmargin">
                         <div class="register-checkbox-container activable data-salary-option" data-salary="0001">
@@ -1126,7 +1123,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-contactinfo">
             <div class="register-element-back">
@@ -1142,7 +1139,7 @@ Estructura general:
                 </div>
                 <div class="register-element-right">
                     <div class="register-element-question-smaller">
-                        Número de teléfono
+                        Phone number
                     </div>
                     <div class="pn-select" id="js_pn-select" style="--prefix-length: 2">
                         <!-- Selected prefix -->
@@ -1181,7 +1178,7 @@ Estructura general:
                         </div>
                     </div>
                     <div class="register-element-question-smaller">
-                        LINKEDIN (opcional)
+                        LINKEDIN (optional)
                     </div>
                     <div class="register-checkbox-wrapper languages-wrapper">
                         <div id="linkedin-container" class="textinput-container">
@@ -1195,7 +1192,7 @@ Estructura general:
                         </div>
                     </div>
                     <div class="register-element-question-smaller">
-                        INSTAGRAM (opcional)
+                        INSTAGRAM (optional)
                     </div>
                     <div class="register-checkbox-wrapper languages-wrapper">
                         <div id="insta-container" class="textinput-container">
@@ -1228,7 +1225,7 @@ Estructura general:
                     <path d="M12 4V20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
             </div>
-                        <div class="non-filled-fields-message">Hay campos obligatorios sin rellenar</div>
+                        <div class="non-filled-fields-message">There are mandatory fields to fill out</div>
         </div>
         <div class="register-element" id="register-pass">
             <div class="register-element-back">
@@ -1256,7 +1253,7 @@ Estructura general:
                         </input>
                     </div>
                     <div class="register-element-question-smaller" style="margin-top: 2rem;">
-                        CONTRASEÑA
+                        Password
                     </div>
                     <div id="pass-container" class="textinput-container">
                         <div id="pass-icon" class="textinput-icon">
@@ -1293,14 +1290,15 @@ Estructura general:
                     </div>
                 </div>
             </div>
-            <div style="color: #AAA; text-align: center; max-width: 600px; font-weight: 300; margin-bottom: 1.8rem; ">La contraseña debe contener al menos ocho caracteres, una minúscula, una mayúscula y un número.</div>
+            <div style="color: #AAA; text-align: center; max-width: 600px; font-weight: 300; margin-bottom: 1.8rem; ">The password must contain at least eight characters, one lowercase, one uppercase, and one number.</div>
             <div id="privacy-policy" style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; width: 30rem; max-width: 90vw;">
                 <input type="checkbox" id="privacy-policy-box" style="width: 20px; height: 20px; ">
-                <div style="display: flex; gap: 0.4rem; color: #025B7B; width: 100%; white-space: nowrap;">Acepto la <a href="terms-conditions.html" style="width: max-content; text-decoration: underline;" target="_blank">política de privacidad</a></div>
+                <div style="display: flex; gap: 0.4rem; color: #025B7B; width: 100%; white-space: nowrap;">I accept the <a href="terms-conditions.html" style="width: max-content; text-decoration: underline;" target="_blank">privacy policy</a></div>
             </div>
             <div id="spam-policy" style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; width: 30rem; max-width: 90vw;">
                 <input type="checkbox" id="spam-policy-box" style="width: 20px; height: 20px;">
-                <div style="color: #025B7B; width: 100%;">Me gustaría recibir avisos de posibles oportunidades y comunicaciones comerciales (opcional)</div>
+                <div style="color: #025B7B; width: 100%;">I would like to receive information about potential opportunities and commercial communications (optional)
+                </div>
             </div>
             <div id="next-conditional-pass" class="register-element-next" style="width: auto; position: relative; padding: 8px 10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" style="position: absolute;" id="create-coach-ok-icon">
@@ -1313,22 +1311,24 @@ Estructura general:
                     </svg>
             </div>
             <div style="position: relative; width: 400px; max-width: 100%; display: flex; justify-content: center;">
-                <div class="non-filled-fields-message-email" style="position: absolute;">Email no válido o en uso</div>
-                <div class="non-filled-fields-message-pass" style="position: absolute;">La contraseña no cumple los requisitos</div>
-                <div class="non-filled-fields-message-pass-coincidence" style="position: absolute;">Las contraseñas no coinciden</div>
-                <div class="non-filled-fields-message-privacy" style="position: absolute;">Debes aceptar la política de privacidad</div>
+                <div class="non-filled-fields-message-email" style="position: absolute;">Invalid or in use email</div>
+                <div class="non-filled-fields-message-pass" style="position: absolute;">The password doesn't meet the requirements</div>
+                <div class="non-filled-fields-message-pass-coincidence" style="position: absolute;">Passwords don't match</div>
+                <div class="non-filled-fields-message-privacy" style="position: absolute;">You must accept the privacy policy</div>
             </div>
         </div>
         <div class="register-element" id="register-finish">
             <div class="register-element-content finish">
                 <div class="register-element-right">
                     <div class="register-element-finish">
-                        ¡Bienvenid@ a Racquet-Link!
+                        Welcome to Racquet-Link!
                     </div>
                 </div>
             </div>
-            <div style="color: black; text-align: center; font-size: 1rem; max-width: 500px;">Te hemos enviado un email de verificación para que puedas completar tu registro.<br> Por si acaso, revisa tu bandeja de SPAM ;&#41; </div>
-            <div style="color: #025B7B; text-align: center; font-size: 1rem; max-width: 500px; margin-top: 2rem; margin-bottom: 1rem;">Haz click aquí para acceder a tu perfil </div>
+            <div style="color: black; text-align: center; font-size: 1rem; max-width: 500px;">We have sent you a verification email so you can complete your registration.
+                <br> Just in case, check your SPAM folder ;&#41; </div>
+            <div style="color: #025B7B; text-align: center; font-size: 1rem; max-width: 500px; margin-top: 2rem; margin-bottom: 1rem;">Click here to access your profile
+            </div>
             <a id="next-conditional-finish" class="register-element-next" href="profilecoach.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
                     <path d="M18 19L21 16M21 16L18 13M21 16H15M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1527,9 +1527,9 @@ Estructura general:
     <div class="Main-cursor"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
-    <script src="js/register-coach-firebase.js" type="module"></script>
-    <script src="js/register-coach.js" type="module"></script>
-    <script src="js/firebase-auth-checker.js" type="module"></script>
+    <script src="../js/register-coach-firebase.js" type="module"></script>
+    <script src="../js/register-coach.js" type="module"></script>
+    <script src="../js/firebase-auth-checker.js" type="module"></script>
 
     
 
