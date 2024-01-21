@@ -593,6 +593,12 @@ body {
   }
 }
 
+@media (max-width: 400px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
 // #region country and Phone Number
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");

@@ -501,6 +501,11 @@ body {
     margin-bottom: 2rem;
   }
 }
+@media (max-width: 400px) {
+  :root {
+    font-size: 12px;
+  }
+}
 #privacy-policy-box:checked {
   accent-color: var(--color-primary);
 }
