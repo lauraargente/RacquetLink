@@ -13,20 +13,20 @@ Estructura general:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Racquet-Link | Perfil Entrenador</title>
+    <title>Racquet-Link | Coach Profile</title>
     <meta name="description" content="Racquet-Link | Bienvenido a tu perfil de Racquet-Link, donde podrás actualizar tus datos cuando quieras.">
-    <link rel="icon" href="assets/RacquetLink-19.svg">
+    <link rel="icon" href="../assets/RacquetLink-19.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/profile-coach.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/profile-coach.css">
     <!-- Quill JS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/headerfooter.css
+    <link rel="stylesheet" href="../css/headerfooter.css
     ">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css'> 
@@ -143,7 +143,7 @@ Estructura general:
                         <a href="contact.html" class="Header-item" aria-label="Contacto">Contacto</a>
                     </li>
                     <li class="Header-li">
-                        <a href="english/profilecoach.html" class="Header-item" aria-label="English">
+                        <a href="../profilecoach.html" class="Header-item" aria-label="English">
                             <img id="data-flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/gb.png" style="width: 1.4rem; height: 1.4rem;" title="Racquet-Link | Change Language" alt="Change language to English.">
                         </a>
                     </li>
@@ -208,15 +208,15 @@ Estructura general:
                   </svg>
             </div>
             <div id="actions-wrapper">
-                <div id="edit-button">Editar<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <div id="edit-button">Edit<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                     <path d="M21 18.0002L19.9999 19.0943C19.4695 19.6744 18.7501 20.0002 18.0001 20.0002C17.2501 20.0002 16.5308 19.6744 16.0004 19.0943C15.4692 18.5154 14.75 18.1903 14.0002 18.1903C13.2504 18.1903 12.5311 18.5154 12 19.0943M3 20.0002H4.67454C5.16372 20.0002 5.40832 20.0002 5.63849 19.945C5.84256 19.896 6.03765 19.8152 6.2166 19.7055C6.41843 19.5818 6.59138 19.4089 6.93729 19.063L19.5 6.50023C20.3285 5.6718 20.3285 4.32865 19.5 3.50023C18.6716 2.6718 17.3285 2.6718 16.5 3.50023L3.93726 16.063C3.59136 16.4089 3.4184 16.5818 3.29472 16.7837C3.18506 16.9626 3.10425 17.1577 3.05526 17.3618C3 17.5919 3 17.8365 3 18.3257V20.0002Z" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg></div>
-                  <div id="loading-edit-button">Guardando<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto;" width="20px" height="20px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                  <div id="loading-edit-button">Saving<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto;" width="20px" height="20px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                     <circle cx="50" cy="50" fill="none" stroke="#025B7B" stroke-width="8" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
                       <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
                     </circle>
                 </svg></div>
-                <div id="save-button">Guardar<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <div id="save-button">Save<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
                     <path d="M7 3V6.4C7 6.96005 7 7.24008 7.10899 7.45399C7.20487 7.64215 7.35785 7.79513 7.54601 7.89101C7.75992 8 8.03995 8 8.6 8H15.4C15.9601 8 16.2401 8 16.454 7.89101C16.6422 7.79513 16.7951 7.64215 16.891 7.45399C17 7.24008 17 6.96005 17 6.4V4M17 21V14.6C17 14.0399 17 13.7599 16.891 13.546C16.7951 13.3578 16.6422 13.2049 16.454 13.109C16.2401 13 15.9601 13 15.4 13H8.6C8.03995 13 7.75992 13 7.54601 13.109C7.35785 13.2049 7.20487 13.3578 7.10899 13.546C7 13.7599 7 14.0399 7 14.6V21M21 9.32548V16.2C21 17.8802 21 18.7202 20.673 19.362C20.3854 19.9265 19.9265 20.3854 19.362 20.673C18.7202 21 17.8802 21 16.2 21H7.8C6.11984 21 5.27976 21 4.63803 20.673C4.07354 20.3854 3.6146 19.9265 3.32698 19.362C3 18.7202 3 17.8802 3 16.2V7.8C3 6.11984 3 5.27976 3.32698 4.63803C3.6146 4.07354 4.07354 3.6146 4.63803 3.32698C5.27976 3 6.11984 3 7.8 3H14.6745C15.1637 3 15.4083 3 15.6385 3.05526C15.8425 3.10425 16.0376 3.18506 16.2166 3.29472C16.4184 3.4184 16.5914 3.59135 16.9373 3.93726L20.0627 7.06274C20.4086 7.40865 20.5816 7.5816 20.7053 7.78343C20.8149 7.96237 20.8957 8.15746 20.9447 8.36154C21 8.59171 21 8.8363 21 9.32548Z" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg></div>
             </div>
@@ -231,14 +231,14 @@ Estructura general:
         <div id="profile-left">
             <div id="profile-content-container-1" class="mobile-fullwidth transparent-content-box" style="background: none; box-shadow: none;">
                 <div id="image-container">
-                    <label id="profile-image-label" for="file"  >Añade una <br>imagen de perfil</label>
+                    <label id="profile-image-label" for="file"  >Add a <br>profile picture</label>
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block; shape-rendering: auto; visibility: hidden;" width="72px" height="72px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" id="profile-pic-loading">
                         <circle cx="50" cy="50" fill="none" stroke="#025B7B" stroke-width="8" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
                           <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
                         </circle>
                         </svg>
                     <input id="profile-picture" type="file" accept="image/*" name="image" id="file" style="display: none;"> 
-                    <img id="output" src="./assets/profilestandard.png" class="profile-image" title="Racquet-Link | Imagen de Perfil" alt="Imagen de perfil del entrenador." width="200" />
+                    <img id="output" src="../assets/profilestandard.png" class="profile-image" title="Racquet-Link | Imagen de Perfil" alt="Imagen de perfil del entrenador." width="200" />
                 </div>
                 <div id="profile-element-container-name" class="profile-information-element">
                     <div class="profile-data" id="data-name">
@@ -251,7 +251,7 @@ Estructura general:
             </div>
 
             <div class="mobile-fullwidth transparent-content-box admin-only">
-                <div class="profile-label" style="margin-bottom: 1rem;">Categoría (Admin)</div>
+                <div class="profile-label" style="margin-bottom: 1rem;">Category (Admin)</div>
                 <div class="adminonly-options-container" id="data-adminstate">
                     <div class="adminonly-option selected" data-adminstate="searching">
                         searching
@@ -260,7 +260,7 @@ Estructura general:
                     <div class="adminonly-option selected" data-adminstate="hired">hired</div>
                 </div>
 
-                <div class="profile-label" style="margin: 2rem 0 1rem 0;">Tipo de coach (Admin)</div>
+                <div class="profile-label" style="margin: 2rem 0 1rem 0;">Coach type (Admin)</div>
                 <div class="adminonly-options-container" id="data-admintype">
                     <div class="adminonly-option selected" data-admintype="regular">regular</div>
                     <div class="adminonly-option selected" data-admintype="head">head</div>
@@ -272,18 +272,18 @@ Estructura general:
             <div  class="mobile-fullwidth transparent-content-box">
                 <div id="tellusmore-container">
                     <div id="tellusmore">
-                        Cuéntanos más sobre ti
+                        Tell us more about you
                     </div>
-                    <textarea id="multilineInput" class="editable-text" maxlength="240" rows="1" placeholder="Habla brevemente sobre tu experiencia... (max 240 caracteres)"></textarea>
+                    <textarea id="multilineInput" class="editable-text" maxlength="240" rows="1" placeholder="Tell us more about your experience... (max 240 characters)"></textarea>
                 </div>
             </div>
 
             <div class="mobile-fullwidth transparent-content-box admin-only">
                 <div id="adminnote-container">
                     <div id="adminnote">
-                        Nota del administrador
+                        Admin note
                     </div>
-                    <textarea id="adminNoteMultilineInput" class="editable-text" maxlength="240" rows="1" placeholder="Este panel solo es visible por los administradores"></textarea>
+                    <textarea id="adminNoteMultilineInput" class="editable-text" maxlength="240" rows="1" placeholder="This panel is only visible for admins"></textarea>
                 </div>
             </div>
 
@@ -292,25 +292,25 @@ Estructura general:
                 <!-- <div id="experience-label-3" class="experience-label">Experiencia</div> -->
                 <div class="profile-label" style="margin: 1rem auto 1rem 0;">Background</div>
                 <div id="experience-container">
-                    <div class="profile-exp " id="data-workedforclub" style="margin-top: 0;">Trabajado para club o academia <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <div class="profile-exp " id="data-workedforclub" style="margin-top: 0;">Have worked for club or academy <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
-                    <div class="profile-exp" id="data-coordinated">Coordinado a otros entrenadores<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <div class="profile-exp" id="data-coordinated">Have coordinated other coaches<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
-                    <div class="profile-exp " id="data-tournaments">Organizado torneos<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <div class="profile-exp " id="data-tournaments">Have organised tournaments<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
-                    <div class="profile-exp" id="data-judge">Juez árbitro en torneos<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <div class="profile-exp" id="data-judge">Have been referee in tournaments<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
-                    <div class="profile-exp " id="data-international">Experiencia Internacional<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <div class="profile-exp " id="data-international">Have international experience<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
-                    <div class="profile-exp " id="data-profesional">Competido profesionalmente<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <div class="profile-exp " id="data-profesional">Have competed professionally<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
-                    <div class="profile-exp " id="data-compiting">Compite actualmente<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <div class="profile-exp " id="data-compiting">Is currently competing professionally<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg></div>
                 </div>
@@ -322,17 +322,17 @@ Estructura general:
                 <div id="profile-content-container-2" class="mobile-fullwidth transparent-content-box">
 
                     <div id="profile-element-container-surname" class="profile-information-element">
-                        <div class="profile-label">Apellidos</div>
+                        <div class="profile-label">Surname</div>
                         <div class="profile-data" id="data-surname">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-surname="+34" style="text-transform: lowercase;" placeholder="apellidos"></input>
+                                <input class="editable-option inputtext" data-surname="+34" style="text-transform: lowercase;" placeholder="surname"></input>
                             </div>
                         </div>
                     </div>
 
                     <div id="profile-element-container-email" class="profile-information-element">
-                        <div class="profile-label">Fecha de nacimiento</div>
+                        <div class="profile-label">Date of birth</div>
                         <div class="profile-data" id="data-email">
                             <div class="data-content"></div>
                             <div class="editable-options input-field">
@@ -352,7 +352,7 @@ Estructura general:
                     </div>
 
                     <div id="profile-element-container-email" class="profile-information-element">
-                        <div class="profile-label">Nacionalidad</div>
+                        <div class="profile-label">Nationality</div>
                         <div class="dropdown">
                             <select id="nationalityDropdown">
                                 <!-- Las opciones se llenarán mediante JavaScript -->
@@ -361,7 +361,7 @@ Estructura general:
                     </div>
 
                     <div id="profile-element-container-email" class="profile-information-element">
-                        <div class="profile-label">País de residencia</div>
+                        <div class="profile-label">Country of residence</div>
                         <div class="dropdown">
                             <select id="residenceDropdown">
                                 <!-- Las opciones se llenarán mediante JavaScript -->
@@ -370,7 +370,7 @@ Estructura general:
                     </div>
 
                     <div id="profile-element-container-languages" class="profile-information-element">
-                        <div class="profile-label">Idiomas</div>
+                        <div class="profile-label">Languages</div>
                         <div class="profile-data" id="data-languages">
                             <div class="data-content"></div>
                             <div class="editable-options">
@@ -388,7 +388,7 @@ Estructura general:
                     </div>
 
                     <div id="profile-element-container-recommendator" class="profile-information-element admin-only">
-                        <div class="profile-label">Recomendador (admin only)</div>
+                        <div class="profile-label">Ambassador (admin only)</div>
                         <div class="profile-data" id="data-recommendator">
                             <div class="data-content"></div>
                             <div class="editable-options">
@@ -409,31 +409,31 @@ Estructura general:
                     </div>
 
                     <div id="profile-element-container-number" class="profile-information-element">
-                        <div class="profile-label">Teléfono</div>
+                        <div class="profile-label">Phone number</div>
                         <div class="profile-data" id="data-number">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-number="+34" style="text-transform: lowercase;" placeholder="teléfono"></input>
+                                <input class="editable-option inputtext" data-number="+34" style="text-transform: lowercase;" placeholder="phone number"></input>
                             </div>
                         </div>
                     </div>
 
                     <div id="profile-element-container-visa" class="profile-information-element">
-                        <div class="profile-label">Visado</div>
+                        <div class="profile-label">Visa</div>
                         <div class="profile-data" id="data-visa">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-visa="visa" style="text-transform: lowercase;" placeholder="visado"></input>
+                                <input class="editable-option inputtext" data-visa="visa" style="text-transform: lowercase;" placeholder="visa"></input>
                             </div>
                         </div>
                     </div>
 
                     <div id="profile-element-container-titles" class="profile-information-element">
-                        <div class="profile-label">Títulos o certificados</div>
+                        <div class="profile-label">Titles or certificates</div>
                         <div class="profile-data" id="data-titles">
                             <div class="data-content"></div>
                             <div class="editable-options">
-                                <input class="editable-option inputtext" data-titles="titles" style="text-transform: lowercase;" placeholder="títulos o certificados"></input>
+                                <input class="editable-option inputtext" data-titles="titles" style="text-transform: lowercase;" placeholder="titles or certificates"></input>
                             </div>
                         </div>
                     </div>
@@ -508,28 +508,28 @@ Estructura general:
                 </div>
                 <div id="profile-content-container-5" class="mobile-fullwidth transparent-content-box">
                     <div id="joboffer">
-                        Currículum o carta presentación
+                        CV or motivation letter
                     </div>
                     <div id="joboffer-container">
-                        <label id="job-offer-label" for="joboffer-input">Sube aquí</label>
+                        <label id="job-offer-label" for="joboffer-input">Upload here</label>
                         <input id="job-offer" type="file" accept="application/pdf" name="joboffer" id="joboffer-input" style="display: none;">
                         <div id="job-offer-output"></div>
                         <div id="downloadLink" class="downloadLink" href="#" target="_blank">
-                            <a class="downloadLink-wording">No hay ofertas subidas</a>
+                            <a class="downloadLink-wording">No uploaded offers</a>
                             <div class="erase-offer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                 <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg></div>
                         </div>
                     </div>
                     <div id="jobvideo">
-                        Vídeo presentación
+                        Video presentation
                     </div>
                     <div id="jobvideo-container">
-                        <label id="job-video-label" for="jobvideo-input">Sube aquí</label>
+                        <label id="job-video-label" for="jobvideo-input">Upload here</label>
                         <input id="job-video" type="file" accept="video/*" name="jobvideo" id="jobvideo-input" style="display: none;">
                         <div id="job-video-output"></div>
                         <div id="downloadVideoLink" class="downloadLink" href="#" target="_blank">
-                            <a class="downloadVideoLink-wording">No hay ofertas subidas</a>
+                            <a class="downloadVideoLink-wording">No uploaded videos</a>
                             <div class="erase-video"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                 <path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="#025B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg></div>
@@ -551,19 +551,19 @@ Estructura general:
                     </div>
                 </div> -->
                 <div id="profile-element-container-sports" class="profile-information-element">
-                    <div class="profile-label">Deportes</div>
+                    <div class="profile-label">Sports</div>
                     <div class="profile-data" id="data-sports">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable" data-sport="tenis">tenis</div>
+                            <div class="editable-option selectable" data-sport="tenis">tennis</div>
                             <div class="editable-option selectable" data-sport="padel">padel</div>
                             <div class="editable-option selectable" data-sport="pickleball">pickleball</div>
-                            <input class="editable-option inputtext" data-other-sport="other" style="text-transform: lowercase;" placeholder="otro"></input>
+                            <input class="editable-option inputtext" data-other-sport="other" style="text-transform: lowercase;" placeholder="other"></input>
                         </div>
                     </div>
                 </div>
                 <div id="profile-element-container-exp" class="profile-information-element">
-                    <div class="profile-label">Años exp.</div>
+                    <div class="profile-label">Years of experience</div>
                     <div class="profile-data" id="data-exp">
                         <div class="data-content"></div>
                         <div class="editable-options">
@@ -575,19 +575,19 @@ Estructura general:
                     </div>
                 </div>
                 <div id="profile-element-container-additionalexperience" class="profile-information-element">
-                    <div class="profile-label">Experiencia adicional</div>
+                    <div class="profile-label">Additional experience</div>
                     <div class="profile-data" id="data-additionalexperience">
                         <div class="data-content"></div>
                         <div class="editable-options">
                             <div class="editable-option selectable" data-experience-additional-option="no">No</div>
-                            <div class="editable-option selectable" data-experience-additional-option="profesionalnow">Soy jugador profesional</div>
-                            <div class="editable-option selectable" data-experience-additional-option="profesionalthen">He sido jugador profesional</div>
-                            <div class="editable-option selectable" data-experience-additional-option="studentathlete">Soy Student Athlete en USA</div>
+                            <div class="editable-option selectable" data-experience-additional-option="profesionalnow">I am a professional player</div>
+                            <div class="editable-option selectable" data-experience-additional-option="profesionalthen">I've been professional in the past</div>
+                            <div class="editable-option selectable" data-experience-additional-option="studentathlete">I am Student Athlete in the US</div>
                         </div>
                     </div>
                 </div>
                 <div id="profile-element-container-weeklyhours" class="profile-information-element">
-                    <div class="profile-label">Dedic. Semanal</div>
+                    <div class="profile-label">Weekly dedication</div>
                     <div class="profile-data" id="data-weeklyhours">
                         <div class="data-content"></div>
                         <div class="editable-options">
@@ -599,69 +599,69 @@ Estructura general:
                     </div>
                 </div>
                 <div id="profile-element-container-alumn" class="profile-information-element">
-                    <div class="profile-label">Tipo alumnado</div>
+                    <div class="profile-label">Teached players level</div>
                     <div class="profile-data" id="data-alumn">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable" data-level="initiation">iniciación</div>
-                            <div class="editable-option selectable" data-level="intermed">intermedio</div>
-                            <div class="editable-option selectable" data-level="advanced">avanzado</div>
-                            <div class="editable-option selectable" data-level="profesional">profesional</div>
+                            <div class="editable-option selectable" data-level="initiation">beginner</div>
+                            <div class="editable-option selectable" data-level="intermed">intermediate</div>
+                            <div class="editable-option selectable" data-level="advanced">advanced</div>
+                            <div class="editable-option selectable" data-level="profesional">professional</div>
                         </div>
                     </div>
                 </div>
                 <div id="profile-element-container-studentsage" class="profile-information-element">
-                    <div class="profile-label">Edad alumnado</div>
+                    <div class="profile-label">Teached players age</div>
                     <div class="profile-data" id="data-studentsage-id">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable" data-studentsage="youth">niños</div>
-                            <div class="editable-option selectable" data-studentsage="teens">adolescentes</div>
-                            <div class="editable-option selectable" data-studentsage="adults">adultos</div>
+                            <div class="editable-option selectable" data-studentsage="youth">kids</div>
+                            <div class="editable-option selectable" data-studentsage="teens">teenagers</div>
+                            <div class="editable-option selectable" data-studentsage="adults">adults</div>
                         </div>
                     </div>
                 </div>
                 <div id="profile-element-container-availability" class="profile-information-element">
-                    <div class="profile-label">Disponibilidad (meses)</div>
+                    <div class="profile-label">Availability (months)</div>
                     <div class="profile-data" id="data-availability">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable" data-startingtime="now">inmediata</div>
+                            <div class="editable-option selectable" data-startingtime="now">inmediately</div>
                             <div class="editable-option selectable" data-startingtime="one">&lt; 1 </div>
                             <div class="editable-option selectable" data-startingtime="2o3">2 - 3</div>
                             <div class="editable-option selectable" data-startingtime="4mo">> 4</div>
-                            <div class="editable-option selectable" data-startingtime="von">verano / navidad</div>
+                            <div class="editable-option selectable" data-startingtime="von">summer / christmas</div>
                         </div>
                     </div>
                 </div>
                 <div id="profile-element-container-mobility" class="profile-information-element">
-                    <div class="profile-label">Continentes contemplados</div>
+                    <div class="profile-label">Continents</div>
                     <div class="profile-data" id="data-mobility">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable" data-mobility="europe">europa</div>
+                            <div class="editable-option selectable" data-mobility="europe">europe</div>
                             <div class="editable-option selectable" data-mobility="asia">asia</div>
-                            <div class="editable-option selectable" data-mobility="africa">áfrica</div>
-                            <div class="editable-option selectable" data-mobility="oceania">oceanía</div>
-                            <div class="editable-option selectable" data-mobility="usa">estados unidos</div>
-                            <div class="editable-option selectable" data-mobility="america">resto de américa</div>
+                            <div class="editable-option selectable" data-mobility="africa">africa</div>
+                            <div class="editable-option selectable" data-mobility="oceania">oceania</div>
+                            <div class="editable-option selectable" data-mobility="usa">usa</div>
+                            <div class="editable-option selectable" data-mobility="america">all america</div>
                         </div>
                     </div>
                 </div>
                 <div id="profile-element-container-oportunity" class="profile-information-element">
-                    <div class="profile-label">Tipos de contrato</div>
+                    <div class="profile-label">type of contract</div>
                     <div class="profile-data" id="data-oportunity">
                         <div class="data-content"></div>
                         <div class="editable-options">
-                            <div class="editable-option selectable" data-oportunity="full">contrato tiempo indefinido</div>
-                            <div class="editable-option selectable" data-oportunity="part">contrato temporal</div>
-                            <div class="editable-option selectable" data-oportunity="temp">contrato eventual</div>
+                            <div class="editable-option selectable" data-oportunity="full">permanent contract</div>
+                            <div class="editable-option selectable" data-oportunity="part">temporary contract</div>
+                            <div class="editable-option selectable" data-oportunity="temp">special event contract</div>
                             <div class="editable-option selectable" data-oportunity="esp">summer job</div>
                         </div>
                     </div>
                 </div>
                 <div id="profile-element-container-range" class="profile-information-element">
-                    <div class="profile-label">Rango actual (€)</div>
+                    <div class="profile-label">Salary range (€)</div>
                     <div class="profile-data" id="data-range">
                         <div class="data-content"></div>
                         <div class="editable-options">
@@ -670,7 +670,7 @@ Estructura general:
                             <div class="editable-option selectable" data-salary="0203">2k - 3k</div>
                             <div class="editable-option selectable" data-salary="0304">3k - 4k</div>
                             <div class="editable-option selectable" data-salary="0499">> 4k</div>
-                            <div class="editable-option selectable" data-salary="0000">sin especificar</div>
+                            <div class="editable-option selectable" data-salary="0000">unspecified</div>
                         </div>
                     </div>
                 </div>
@@ -684,127 +684,105 @@ Estructura general:
     -->
     <div class="Footer">
         <div class="Footer-wrapper">
-                <svg version="1.1" class="Footer-logo" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 755.69 151.98"
-                    style="enable-background:new 0 0 755.69 151.98;" xml:space="preserve">
-                    <style type="text/css">
-                        .st0 {
-                            fill: #025B7B;
-                        }
-
-                        .st1 {
-                            fill: #FFFFFF;
-                        }
-
-                        .st2 {
-                            fill: none;
-                        }
-
-                        .st3 {
-                            fill: #010202;
-                        }
-
-                        .st4 {
-                            fill: #7EC1D3;
-                        }
-
-                        .st5 {
-                            fill: url(#);
-                        }
-                    </style>
+            <div class="Footer-left-group">
+                <svg version="1.1" class="Footer-logo" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 755.69 151.98" style="enable-background:new 0 0 755.69 151.98;" xml:space="preserve">
+                <style type="text/css">
+                    .st0{fill:#025B7B;}
+                    .st1{fill:#FFFFFF;}
+                    .st2{fill:none;}
+                    .st3{fill:#010202;}
+                    .st4{fill:#7EC1D3;}
+                    .st5{fill:url(#);}
+                </style>
+                <g>
                     <g>
-                        <g>
-                            <path class="st1" d="M70.08,37.16c-19.9,0-36.09,16.19-36.09,36.09c0,19.9,16.19,36.09,36.09,36.09h36.09V73.25
+                        <path class="st1" d="M70.08,37.16c-19.9,0-36.09,16.19-36.09,36.09c0,19.9,16.19,36.09,36.09,36.09h36.09V73.25
                             C106.17,53.35,89.98,37.16,70.08,37.16z M95.47,98.64H70.08c-14,0-25.39-11.39-25.39-25.39c0-14,11.39-25.39,25.39-25.39
-                            c14,0,25.39,11.39,25.39,25.39V98.64z" />
-                            <path class="st4" d="M70.08,58.34c-8.23,0-14.91,6.67-14.91,14.91c0,8.23,6.67,14.91,14.91,14.91h14.91V73.25
-                            C84.98,65.02,78.31,58.34,70.08,58.34z" />
-                            <g>
-                                <path class="st4" d="M124.45,132.97L124.45,132.97c0,2.95,2.4,5.35,5.35,5.35h0c2.95,0,5.35-2.4,5.35-5.35v0
-                                c0-2.95-2.4-5.35-5.35-5.35h0C126.85,127.62,124.45,130.02,124.45,132.97z" />
-                            </g>
-                            <path class="st4" d="M127.57,114.69c0,1.48-0.6,2.81-1.57,3.78c-0.97,0.97-2.31,1.57-3.78,1.57c-2.95,0-5.35,2.4-5.35,5.35
+                            c14,0,25.39,11.39,25.39,25.39V98.64z"/>
+                        <path class="st4" d="M70.08,58.34c-8.23,0-14.91,6.67-14.91,14.91c0,8.23,6.67,14.91,14.91,14.91h14.91V73.25
+                            C84.98,65.02,78.31,58.34,70.08,58.34z"/>
+                        <g>
+                            <path class="st4" d="M124.45,132.97L124.45,132.97c0,2.95,2.4,5.35,5.35,5.35h0c2.95,0,5.35-2.4,5.35-5.35v0
+                                c0-2.95-2.4-5.35-5.35-5.35h0C126.85,127.62,124.45,130.02,124.45,132.97z"/>
+                        </g>
+                        <path class="st4" d="M127.57,114.69c0,1.48-0.6,2.81-1.57,3.78c-0.97,0.97-2.31,1.57-3.78,1.57c-2.95,0-5.35,2.4-5.35,5.35
                             c0,2.95-2.4,5.35-5.35,5.35c-1.48,0-2.81-0.6-3.78-1.57c-0.97-0.97-1.57-2.3-1.57-3.78s0.6-2.81,1.57-3.78
                             c0.97-0.97,2.31-1.57,3.78-1.57c1.48,0,2.81-0.6,3.78-1.57c0.97-0.97,1.57-2.31,1.57-3.78c0-2.95,2.4-5.35,5.35-5.35
-                            c1.48,0,2.81,0.6,3.78,1.57C126.97,111.88,127.57,113.21,127.57,114.69z" />
-                            <g>
-                                <path class="st1" d="M70.17,15.76C38.4,15.71,12.54,41.57,12.59,73.34c0.05,31.81,26.29,57.4,58.1,57.4h19.43
+                            c1.48,0,2.81,0.6,3.78,1.57C126.97,111.88,127.57,113.21,127.57,114.69z"/>
+                        <g>
+                            <path class="st1" d="M70.17,15.76C38.4,15.71,12.54,41.57,12.59,73.34c0.05,31.81,26.29,57.4,58.1,57.4h19.43
                                 c2.95,0,5.35-2.4,5.35-5.35v0c0-2.95-2.4-5.35-5.35-5.35H70.64c-25.89,0-47.5-21.18-47.35-47.06
                                 c0.15-25.58,20.93-46.37,46.51-46.51c25.89-0.15,47.06,21.46,47.06,47.35v19.48c0,2.95,2.4,5.35,5.35,5.35h0
-                                c2.95,0,5.35-2.4,5.35-5.35V73.86C127.57,42.05,101.98,15.81,70.17,15.76z" />
-                            </g>
+                                c2.95,0,5.35-2.4,5.35-5.35V73.86C127.57,42.05,101.98,15.81,70.17,15.76z"/>
                         </g>
+                    </g>
+                    <g>
                         <g>
-                            <g>
-                                <path class="st1" d="M220.95,93.78c-2.86,0-3.9-0.79-6.92-5.23l-3.56-7.31c7.04-1.89,10.92-6.81,10.92-13.88
+                            <path class="st1" d="M220.95,93.78c-2.86,0-3.9-0.79-6.92-5.23l-3.56-7.31c7.04-1.89,10.92-6.81,10.92-13.88
                                 c0-8.77-6.04-14.44-15.4-14.44h-25.49v48.53h7.62V83.35c2.97-1.53,6.08-1.74,8.75-1.74h5.39l5.76,12.1
                                 c3.75,7.75,9.56,7.75,15.18,7.75h0.3V93.7l-1.85,0.08H220.95z M188.1,60.54h17.87c3.59,0,7.85,1.12,7.85,6.44
-                                c0,5.8-4.27,7.01-7.85,7.01h-9.12c-2.84,0-5.85,0.13-8.75,1.65V60.54z" />
-                                <path class="st1"
-                                    d="M254.99,52.09h-8.38l2.77,6.21l-20.9,43.16h8.25l1.31-2.41c1.01-1.85,5.64-4.6,14.25-4.6h14.38l3.15,7h8.52
-                                l-23.27-49.19L254.99,52.09z M263.22,86.78h-8.36c-6.43,0-9.77,1.13-11.46,2.11c0,0,9.87-21.34,9.87-21.34L263.22,86.78z" />
-                                <path class="st1"
-                                    d="M322.19,87.22l-0.25,0.33c-3.53,4.7-8.98,7.39-14.98,7.39c-10.28,0-18.65-7.9-18.65-17.62
+                                c0,5.8-4.27,7.01-7.85,7.01h-9.12c-2.84,0-5.85,0.13-8.75,1.65V60.54z"/>
+                            <path class="st1" d="M254.99,52.09h-8.38l2.77,6.21l-20.9,43.16h8.25l1.31-2.41c1.01-1.85,5.64-4.6,14.25-4.6h14.38l3.15,7h8.52
+                                l-23.27-49.19L254.99,52.09z M263.22,86.78h-8.36c-6.43,0-9.77,1.13-11.46,2.11c0,0,9.87-21.34,9.87-21.34L263.22,86.78z"/>
+                            <path class="st1" d="M322.19,87.22l-0.25,0.33c-3.53,4.7-8.98,7.39-14.98,7.39c-10.28,0-18.65-7.9-18.65-17.62
                                 c0-10.5,7.82-18.13,18.58-18.13c5.28,0,10.3,2.07,13.79,5.69l0.23,0.24l4.9-5.74l-0.2-0.2c-4.94-4.95-11.57-7.67-18.65-7.67
-                                c-14.41,0-26.13,11.2-26.13,24.98c0,14.61,11.45,26.06,26.06,26.06c7.62,0,14.84-3.2,19.82-8.78l0.16-0.18L322.19,87.22z" />
-                                <path class="st1" d="M379.44,93.37C379.44,93.37,379.44,93.37,379.44,93.37c3.93-4.65,6-10.21,6-16.11
+                                c-14.41,0-26.13,11.2-26.13,24.98c0,14.61,11.45,26.06,26.06,26.06c7.62,0,14.84-3.2,19.82-8.78l0.16-0.18L322.19,87.22z"/>
+                            <path class="st1" d="M379.44,93.37C379.44,93.37,379.44,93.37,379.44,93.37c3.93-4.65,6-10.21,6-16.11
                                 c0-14.44-11.45-25.74-26.06-25.74c-14.41,0-26.13,11.2-26.13,24.98c0,14.61,11.45,26.06,26.07,26.06c5.1,0,9.97-1.38,14.12-3.99
                                 c0,0,0,0,0,0c2.69,1.88,5.43,3.59,9.16,3.98l0.2,0.02l3.88-6.7l-0.49-0.04C384.18,95.7,381.92,94.86,379.44,93.37z M357.13,89.42
                                 l0.5,0.03c3.37,0.18,5.21,1.26,8.98,4.05c0,0,0,0,0,0c-2.29,0.95-4.72,1.43-7.23,1.43c-10.28,0-18.64-7.9-18.64-17.62
                                 c0-10.5,7.81-18.13,18.58-18.13c10.42,0,18.58,7.77,18.58,17.68c0,4.47-1.66,8.74-4.67,12.05l-1.02-0.75
-                                c-5.22-3.88-6.97-5.2-11.01-5.44l-0.19-0.01L357.13,89.42z" />
-                                <path class="st1" d="M432.24,82.52c0,8.01-5.07,12.41-14.28,12.41c-9.2,0-14.27-4.41-14.27-12.41v-29.6h-7.55v29.6
-                                c0,12.54,8.16,20.03,21.82,20.03c13.67,0,21.83-7.49,21.83-20.03v-29.6h-7.55V82.52z" />
-                                <path class="st1" d="M460.28,82.13c2.97-1.53,6.09-1.74,8.75-1.74h10.78v-7.74h-10.78c-2.84,0-5.85,0.13-8.75,1.65V60.6h26.73
-                                v-7.68h-34.34v48.53h37.16v-7.62h-29.55V82.13z" />
-                                <rect x="622.55" y="52.93" class="st1" width="7.49" height="48.53" />
-                                <polygon class="st1" points="679.21,89 648.98,53.04 648.89,52.93 639.03,52.93 644.97,60.09 644.97,101.46 652.45,101.46 
-                                652.45,69.04 679.41,101.35 679.5,101.46 686.88,101.46 686.88,52.93 679.21,52.93 			" />
-                                <path class="st1" d="M741.25,93.78h-0.45c-1.74,0-4.13-0.6-7.2-5.26l-8.49-12.74l15.95-22.86h-9.16l-23.88,35.09V52.93h-7.62
+                                c-5.22-3.88-6.97-5.2-11.01-5.44l-0.19-0.01L357.13,89.42z"/>
+                            <path class="st1" d="M432.24,82.52c0,8.01-5.07,12.41-14.28,12.41c-9.2,0-14.27-4.41-14.27-12.41v-29.6h-7.55v29.6
+                                c0,12.54,8.16,20.03,21.82,20.03c13.67,0,21.83-7.49,21.83-20.03v-29.6h-7.55V82.52z"/>
+                            <path class="st1" d="M460.28,82.13c2.97-1.53,6.09-1.74,8.75-1.74h10.78v-7.74h-10.78c-2.84,0-5.85,0.13-8.75,1.65V60.6h26.73
+                                v-7.68h-34.34v48.53h37.16v-7.62h-29.55V82.13z"/>
+                            <rect x="622.55" y="52.93" class="st1" width="7.49" height="48.53"/>
+                            <polygon class="st1" points="679.21,89 648.98,53.04 648.89,52.93 639.03,52.93 644.97,60.09 644.97,101.46 652.45,101.46 
+                                652.45,69.04 679.41,101.35 679.5,101.46 686.88,101.46 686.88,52.93 679.21,52.93 			"/>
+                            <path class="st1" d="M741.25,93.78h-0.45c-1.74,0-4.13-0.6-7.2-5.26l-8.49-12.74l15.95-22.86h-9.16l-23.88,35.09V52.93h-7.62
                                 v48.53h7.47l12.74-18.95l7.01,11.23c4.53,7.18,8.22,7.74,12.64,7.74c0.4,0,0.81-0.01,1.22-0.01c0.43-0.01,0.86-0.01,1.3-0.01
-                                h0.31V93.7L741.25,93.78z" />
-                                <g>
-                                    <polygon class="st1"
-                                        points="588.22,93.84 588.22,81 580.6,81 580.6,101.46 614.81,101.46 614.81,93.84 				" />
-                                    <rect x="580.6" y="52.93" class="st1" width="7.62" height="20.46" />
-                                </g>
-                                <g>
-                                    <rect x="512.41" y="81" class="st1" width="7.42" height="20.46" />
-                                    <polygon class="st1" points="495.32,52.93 495.32,60.6 512.41,60.6 512.41,73.38 519.83,73.38 519.83,60.6 536.72,60.6 
-                                    536.72,52.93 				" />
-                                </g>
+                                h0.31V93.7L741.25,93.78z"/>
+                            <g>
+                                <polygon class="st1" points="588.22,93.84 588.22,81 580.6,81 580.6,101.46 614.81,101.46 614.81,93.84 				"/>
+                                <rect x="580.6" y="52.93" class="st1" width="7.62" height="20.46"/>
                             </g>
-                            <path class="st4" d="M564.12,81.33c-1.14,1.14-2.64,1.71-4.14,1.71c-1.5,0-2.99-0.57-4.14-1.71c-2.28-2.28-5.98-2.28-8.27,0
+                            <g>
+                                <rect x="512.41" y="81" class="st1" width="7.42" height="20.46"/>
+                                <polygon class="st1" points="495.32,52.93 495.32,60.6 512.41,60.6 512.41,73.38 519.83,73.38 519.83,60.6 536.72,60.6 
+                                    536.72,52.93 				"/>
+                            </g>
+                        </g>
+                        <path class="st4" d="M564.12,81.33c-1.14,1.14-2.64,1.71-4.14,1.71c-1.5,0-2.99-0.57-4.14-1.71c-2.28-2.28-5.98-2.28-8.27,0
                             c-2.28,2.28-5.98,2.28-8.27,0c-1.14-1.14-1.71-2.64-1.71-4.14c0-1.5,0.57-2.99,1.71-4.13c1.14-1.14,2.64-1.71,4.14-1.71
                             c1.5,0,2.99,0.57,4.14,1.71s2.64,1.71,4.14,1.71c1.5,0,2.99-0.57,4.14-1.71c2.28-2.28,5.98-2.28,8.27,0
-                            c1.14,1.14,1.71,2.64,1.71,4.14C565.83,78.69,565.27,80.18,564.12,81.33z" />
-                        </g>
+                            c1.14,1.14,1.71,2.64,1.71,4.14C565.83,78.69,565.27,80.18,564.12,81.33z"/>
                     </g>
+                </g>
                 </svg>
-                <p class="Footer-text"> Racquet Link es donde unimos talento y oportunidad en el mundo del deporte de
-                    raqueta.
-                    No pierdas la ocasión de encontrar el trabajo de tus sueños.</p>
-                <p class="Footer-p">+34 123 456 789</p>
+                <p class="Footer-text"> Racquet-Link is where we bring together talent and opportunity in the racquet industry. Get registered to find your dream job or connect with the best professionals to make your project a success.</p>
+                <p class="Footer-p">+34 660 214 680</p>
                 <p class="Footer-p">info@racquet-link.com</p>
             </div>
             <div class="Footer-right-group">
 
                 <ul class="Footer-ul">
-                    <h3 class="Footer-h3">Menú</h3>
+                    <h3 class="Footer-h3">Menu</h3>
                     <li class="Footer-li">
                         <a href="index.html" aria-label="Home">Home</a>
                     </li>
                     <li class="Footer-li">
-                        <a href="about.html" aria-label="Sobre Nosotros">Sobre Nosotros</a>
+                        <a href="about.html" aria-label="Sobre Nosotros">About Us</a>
                     </li>
                     <li class="Footer-li">
-                        <a href="services.html" aria-label="Servicios">Servicios</a>
+                        <a href="services.html" aria-label="Servicios">Services</a>
                     </li>
                     <li class="Footer-li">
-                        <a href="news.html" aria-label="Noticias">Noticias</a>
+                        <a href="news.html" aria-label="Noticias">News</a>
                     </li>
                     <li class="Footer-li">
-                        <a href="contact.html" aria-label="Contacto">Contacto</a>
+                        <a href="contact.html" aria-label="Contacto">Contact</a>
                     </li>
                     <li class="Footer-li">
                         <a href="login.html" aria-label="Login">Login</a>
@@ -812,19 +790,19 @@ Estructura general:
                 </ul>
 
                 <ul class="Footer-ul">
-                    <h3 class="Footer-h3">Idioma</h3>
+                    <h3 class="Footer-h3">Language</h3>
                     <li class="Footer-li">
-                        <a href="english/servicesEN.html" aria-label="Home">ENG</a>
+                        <a href="../about.html" aria-label="Español">ESP</a>
                     </li>
-                    <h3 class="Footer-h3">Preguntas</h3>
+                    <h3 class="Footer-h3">Questions</h3>
                     <li class="Footer-li">
                         <a href="services.html" aria-label="FAQs" class="Faqs-link">FAQs</a>
                     </li>
                     <li class="Footer-li">
-                        <a href="terms-conditions.html" aria-label="TermsConditions">Términos y Condiciones</a>
+                        <a href="terms-conditions.html" aria-label="TermsConditions">Terms &amp; Conditions</a>
                     </li>
                     <li class="Footer-li">
-                        <a href="privacy.html" aria-label="Privacy">Privacidad</a>
+                        <a href="privacy.html" aria-label="Privacy">Privacy</a>
                     </li>
                 </ul>
             </div>
@@ -832,7 +810,7 @@ Estructura general:
         <div class="Footer-bottom-group">
             <div class="Footer-line"></div>
             <div class="Footer-bottom-items">
-                <p class="Footer-copyright">Copyright © 2032 Racquet Link®. All rights reserved.</p>
+                <p class="Footer-copyright">Copyright © 2023 Racquet Link®. All rights reserved.</p>
                 <div class="Footer-social">
                     <!-- 
                     <a href="#" class="Social-link" target="_blank">
@@ -865,8 +843,8 @@ Estructura general:
         </div>
     </div>
 
-    <script src="js/profile-coach.js" type="module"></script> 
-    <script src="js/firebase-auth-checker.js" type="module"></script>
+    <script src="../js/profile-coach.js" type="module"></script> 
+    <script src="../js/firebase-auth-checker.js" type="module"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js'></script>
 
 </body>

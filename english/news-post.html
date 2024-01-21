@@ -8,14 +8,13 @@ Estructura general:
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Racquet-Link | Log In</title>
-    <meta name="description" content="Racquet-Link | Accede a tu perfil para actualizar tus datos.">
     <link rel="icon" href="../assets/RacquetLink-19.svg">
+    <title>Racquet-Link | Post</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,7 +22,7 @@ Estructura general:
         rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/contact.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/news-post.css">
     <!-- Quill JS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/headerfooter.css
@@ -141,7 +140,7 @@ Estructura general:
                         <a href="contact.html" class="Header-item" aria-label="Contacto">Contact</a>
                     </li>
                     <li class="Header-li">
-                        <a href="../register-club.html" class="Header-item" aria-label="English">
+                        <a href="../news.html" class="Header-item" aria-label="English">
                             <img id="data-flag" src="https://flagpedia.net/data/flags/emoji/twitter/256x256/es.png" style="width: 1.4rem; height: 1.4rem;" title="Racquet-Link | Change Language" alt="Change language to English.">
                         </a>
                     </li>
@@ -159,7 +158,7 @@ Estructura general:
     
                         </a>
                     </li>
-                </ul> 
+                </ul>  
             </nav>
         </header>
 
@@ -168,73 +167,33 @@ Estructura general:
         Descripción: En este bloque encontramos el contenido principal de la página
         compuesto de 4 secciones/bloques(Banner, Intro, XXXXXX).
     -->
-    <!-- <div class="Main">
-        <div class="Video-wrapper">
-            <video playsinline muted loop poster src="assets/GettyImages-492403705.mp4"></video>
-            <div class="Banner-wrapper">
-                <h2 class="Banner-h2">Noticias</h2>
-                <p class="Banner-p">
-                    Somos Marina y Álvaro, apasionados de los deportes de raqueta y comprometidos con un objetivo claro
-                    y ambicioso: detectar oportunidades en la industria y conectar a profesionales calificados con
-                    proyectos que requieran de su experiencia y dedicación.
-                    <br>
-                    Estamos decididos a continuar construyendo una red global de talentos y oportunidades con una oferta
-                    360º que transforme y profesionalice la industria.
-                </p>
-                <a href="#" class="Banner-button">Conócenos</a>
-            </div>
-        </div>
-    </div> -->
-    <div id="login-container">
-        <div class="login-element" id="login-pass">
-            <div id="title">
-                Login
-            </div>
-            <div class="login-element-content">
-                <div class="login-element-right">
-                    <div class="login-element-question-smaller">
-                        Email
-                    </div>
-                    <div id="email-container" class="textinput-container">
-                        <div id="email-icon" class="textinput-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
-                        </div>
-                        <input type="text" class="login-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="Your email address">
-                        </input>
-                    </div>
-                    <div class="login-element-question-smaller">
-                        Password
-                    </div>
-                    <div id="pass-container" class="textinput-container" style="margin-bottom: 0.6rem;">
-                        <div id="pass-icon" class="textinput-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 18 22" fill="none">
-                                <path d="M8.30201 20.6149C8.5234 20.744 8.6341 20.8086 8.79032 20.8421C8.91156 20.8681 9.08844 20.8681 9.20968 20.8421C9.3659 20.8086 9.4766 20.744 9.69799 20.6149C11.646 19.4784 17 15.9084 17 11V7.20001C17 6.12611 17 5.58916 16.8345 5.20801C16.6662 4.82061 16.4986 4.61452 16.1536 4.37091C15.8141 4.13123 15.1486 3.99283 13.8177 3.71603C12.3508 3.41094 11.2243 2.86004 10.1944 2.06333C9.70051 1.68127 9.45357 1.49025 9.26034 1.43814C9.05644 1.38317 8.94356 1.38317 8.73966 1.43814C8.54643 1.49025 8.29949 1.68127 7.80562 2.06333C6.77572 2.86004 5.6492 3.41094 4.1823 3.71603C2.85137 3.99283 2.18591 4.13123 1.84645 4.37091C1.50142 4.61452 1.33379 4.82061 1.16554 5.20801C1 5.58916 1 6.12611 1 7.2V11C1 15.9084 6.35396 19.4784 8.30201 20.6149Z" stroke="#025b7b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
-                        </div>
-                        <input type="password" class="login-element-textanswer textinput-text adjustablewidth" style="margin-top: 0; padding: 1rem; font-size: 1rem;" placeholder="&#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183; &#183;">
-                        </input>
-                    </div>
-                    <div id="reset-password">I have forgotten my password</div>
-                    <div id="reset-password-message"></div>
-                </div>
-            </div>
-            <div id="next-conditional-pass" class="login-element-next" style="color: white; display: flex; justify-content: center; text-align: center; width: auto; position: relative; padding: 0.2rem 2rem;">
-                <div id="login-ok-icon">Log in</div>
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; margin: auto; display: block; shape-rendering: auto; visibility: hidden;" width="24px" height="24px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" id="login-loading-icon">
-                    <circle cx="50" cy="50" fill="none" stroke="white" stroke-width="8" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
-                      <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.0204081632653061s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
-                    </circle>
-                    </svg>
-            </div>
-            <div style="color: #AAA; text-align: center; max-width: 300px; line-height: 132%;">Don't have account yet? Sign up <div style="display: flex; justify-content: center; gap: 0.8rem;"><a href="register-coach.html" class="login-toregister"> as a coach</a> or <a href="register-club.html"  class="login-toregister" >as a club</a></div></div>
-            <div style="position: relative; width: 400px; max-width: 100%; display: flex; justify-content: center;">
-                <div class="non-filled-fields-message-email" style="visibility: hidden; opacity: 0; transition: 1s; position: absolute; color: #025B7B;">Invalid or already in use email</div>
-                <div class="non-filled-fields-message-pass" style="visibility: hidden; opacity: 0; transition: 1s; position: absolute; color: #025B7B;">The password does not meet the requirements</div>
-            </div>
+
+    <div id="article-loader-container">
+        <div id="article-loader-top" class="article-loader shimmerBG"></div>
+        <div id="article-loader-mid" class="article-loader shimmerBG"></div>
+        <div class="article-loader-low article-loader shimmerBG"></div>
+        <div class="article-loader-low article-loader shimmerBG"></div>
+        <div class="article-loader-low-2 article-loader shimmerBG"></div>
+        <div class="article-loader-low article-loader shimmerBG"></div>
+        <div class="article-loader-low article-loader shimmerBG"></div>
+        <div class="article-loader-low-3 article-loader shimmerBG"></div>
+        <div class="article-loader-low-2 article-loader shimmerBG"></div>
+        <div class="article-loader-low article-loader shimmerBG"></div>
+    </div>
+
+    <div id="article-container">
+        <div id="article-title" class="article-item"></div>
+        <div id="article-content" class="article-item"></div>
+        <div id="article-dateandauthor" class="article-item"></div>
+        <div id="article-tags" class="article-item">
+            <div class="article-tag hidden"></div>
+            <div class="article-tag hidden"></div>
+            <div class="article-tag hidden"></div>
+            <div class="article-tag hidden"></div>
+            <div class="article-tag hidden"></div>
         </div>
     </div>
+
     <!-- 
        Footer.
         Descripción: En este bloque encontramos el footer de la página.
@@ -400,9 +359,12 @@ Estructura general:
         </div>
     </div>
 
-    <script src="js/login.js" type="module"></script>
+    <div class="Main-cursor"></div>
+
     <script src="../js/firebase-auth-checker.js" type="module"></script>
-    
+    <!-- Autoresize input text -->
+    <script src="../js/news-showpost-firebase.js" type="module"></script>
+    <script src="../js/news-showpost.js" type="module"></script>
 
 </body>
 
