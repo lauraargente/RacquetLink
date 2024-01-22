@@ -473,7 +473,7 @@ var injectElement = (element) => {
   const newRow = document.createElement("a");
   newRow.classList.add("row");
   newRow.classList.add("deletable");
-  newRow.href = `profileclub.html?id=${element.clubId}`;
+  newRow.href = `profileclub?id=${element.clubId}`;
   newRow.innerHTML = `
         <div class="cell name">${rowName}</div>
         <div class="cell nationality">${rowCountry}</div>

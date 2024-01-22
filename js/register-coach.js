@@ -867,7 +867,7 @@ nextConditionalPass.addEventListener("click", (e) => {
             );
             document.querySelector(
               "#next-conditional-finish"
-            ).href = `profilecoach.html?id=${registerData.coachId}`;
+            ).href = `profilecoach?id=${registerData.coachId}`;
           });
         })
         .catch((error) => {

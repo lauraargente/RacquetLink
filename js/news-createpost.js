@@ -167,7 +167,7 @@ buttonConfirm.addEventListener('click', () => {
 
   uploadArticle(getNewsData()).then( () => {
     setTimeout(function() {
-      window.location.href = 'news.html';
+      window.location.href = 'news';
     }, 4000);
   })
 

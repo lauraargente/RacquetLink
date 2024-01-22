@@ -687,7 +687,7 @@ var injectElement = (element) => {
   const newRow = document.createElement("a");
   newRow.classList.add("row");
   newRow.classList.add("deletable");
-  newRow.href = `profilecoach.html?id=${element.coachId}`;
+  newRow.href = `profilecoach?id=${element.coachId}`;
   newRow.innerHTML = `
         <div class="cell name">${rowName}</div>
         <div class="cell age">${rowAge}</div>

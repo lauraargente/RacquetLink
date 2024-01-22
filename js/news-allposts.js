@@ -90,7 +90,7 @@ var injectArticleFromData = (articleToPrevArray) => {
 
   var newDiv = document.createElement("a");
   newDiv.classList.add("previsualizercontainer");
-  newDiv.href = `news-post.html?${arrayOfArticlesIds[articleIteration]}`;
+  newDiv.href = `news-post?${arrayOfArticlesIds[articleIteration]}`;
   loadmoreButton.insertAdjacentElement("beforebegin", newDiv);
 
   // if (articleIteration % 2 === 0) {

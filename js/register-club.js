@@ -350,7 +350,7 @@ nextConditionalPassword.addEventListener("click", (e) => {
           firebaseSaveClubData(registerData).then;
           moveForward();
           setUserNameOnHeader(`Club ${registerData.clubName}`, registerData.clubId);
-          document.querySelector('#next-conditional-finish').href = `profileclub.html?id=${registerData.clubId}`;
+          document.querySelector('#next-conditional-finish').href = `profileclub?id=${registerData.clubId}`;
         })
         .catch((error) => {
           console.error(error);

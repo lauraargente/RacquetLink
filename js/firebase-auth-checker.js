@@ -80,12 +80,12 @@ function getCookie(nombre) {
 function setUserNameOnHeader(displayName, displayNameId) {
 
    if (checkIfUserAdmin(displayNameId)) {
-    headerLogged.href = `dashboard.html?id=${displayNameId}`;
+    headerLogged.href = `dashboard?id=${displayNameId}`;
     headerLogged.style.display = 'flex';
     headerLoggedName.innerHTML = 'ADMIN ' + displayName.replace(/^\w+\s*/, '');
    } else {
     var typeOfUser = displayName.trim().split(' ')[0]
-    typeOfUser === 'Coach' ? headerLogged.href = `profilecoach.html?id=${displayNameId}` : headerLogged.href = `profileclub.html?id=${displayNameId}`
+    typeOfUser === 'Coach' ? headerLogged.href = `profilecoach?id=${displayNameId}` : headerLogged.href = `profileclub?id=${displayNameId}`
     headerLogged.style.display = 'flex'
     headerLoggedName.innerHTML = displayName.replace(/^\w+\s*/, '')
   
@@ -97,7 +97,7 @@ function setUserNameOnHeader(displayName, displayNameId) {
 export {setUserNameOnHeader}
 
 var firebaseLogout = () => {
-  window.location.href = 'index.html';
+  window.location.href = 'index';
   setCookie('loggedUser');
   setCookie('loggedUserId');
   return new Promise(function (resolve, reject) {
