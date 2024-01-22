@@ -60,7 +60,7 @@ var profileLabel = document.getElementById("profile-image-label");
 
 var urlActual = window.location.href;
 var id = new URL(urlActual).searchParams.get("id");
-var urlBaseNueva = "../profileclub.html";
+var urlBaseNueva = "../profileclub";
 var nuevoEnlace = urlBaseNueva + "?id=" + id;
 document.getElementById("dynamic-url").href = nuevoEnlace;
 

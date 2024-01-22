@@ -248,7 +248,7 @@ function getCookie(nombre) {
 const nombreCookieId = "loggedUserId";
 const valorCookieId = getCookie(nombreCookieId);
 
-checkIfUserAdmin(valorCookieId) ? "ok" : (window.location.href = "404.html");
+checkIfUserAdmin(valorCookieId) ? "ok" : (window.location.href = "404");
 
 //#endregion
 
@@ -667,7 +667,7 @@ function updateLastCoaches(lastCoaches) {
 
   // Añadir el enlace "Ver tabla de coaches" al final del contenedor
   const linkElement = document.createElement("a");
-  linkElement.href = "coaches-table.html";
+  linkElement.href = "coaches-table";
   linkElement.className = "go-to-table";
   linkElement.innerHTML = `Ver tabla de coaches<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
           <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -742,7 +742,7 @@ function updateLastClubs(lastClubs) {
 
   // Añadir el enlace "Ver tabla de clubs" al final del contenedor
   const linkElement = document.createElement("a");
-  linkElement.href = "clubs-table.html"; // Asegúrate de que esta es la URL correcta
+  linkElement.href = "clubs-table"; // Asegúrate de que esta es la URL correcta
   linkElement.className = "go-to-table";
   linkElement.innerHTML = `Ver tabla de clubs<svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
         <path d="M1 9L5 5L1 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

@@ -21,7 +21,7 @@ const nombreCookieId = "loggedUserId";
 const valorCookieId = getCookie(nombreCookieId);
 // console.log(checkIfUserAdmin(valorCookieId))
 
-checkIfUserAdmin(valorCookieId) ? "ok" : (window.location.href = "404.html");
+checkIfUserAdmin(valorCookieId) ? "ok" : (window.location.href = "404");
 
 //#endregion
 

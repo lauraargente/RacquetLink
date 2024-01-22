@@ -73,7 +73,7 @@ loadmoreButton.addEventListener("click", () => {
 var createNew = document.querySelector("#createNew");
 
 createNew.addEventListener("click", () => {
-  window.location.href = "news-createpost.html";
+  window.location.href = "news-createpost";
 });
 
 var articleIteration = 0;

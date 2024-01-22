@@ -217,7 +217,7 @@ function updateProperty(newValue, propertyKey) {
 
 var urlActual = window.location.href;
 var id = new URL(urlActual).searchParams.get("id");
-var urlBaseNueva = "english/profileclub.html";
+var urlBaseNueva = "english/profileclub";
 var nuevoEnlace = urlBaseNueva + "?id=" + id;
 document.getElementById("dynamic-url").href = nuevoEnlace;
 

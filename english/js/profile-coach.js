@@ -102,7 +102,7 @@ var editableDates = document.querySelectorAll(".inputdate");
 
 var urlActual = window.location.href;
 var id = new URL(urlActual).searchParams.get("id");
-var urlBaseNueva = "../profilecoach.html";
+var urlBaseNueva = "../profilecoach";
 var nuevoEnlace = urlBaseNueva + "?id=" + id;
 document.getElementById("dynamic-url").href = nuevoEnlace;
 
