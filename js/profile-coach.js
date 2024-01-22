@@ -98,6 +98,17 @@ var editableDates = document.querySelectorAll(".inputdate");
 
 //#endregion
 
+//#region (l) href logic for language 
+
+var urlActual = window.location.href;
+var id = new URL(urlActual).searchParams.get("id");
+var urlBaseNueva = "english/profilecoach.html";
+var nuevoEnlace = urlBaseNueva + "?id=" + id;
+document.getElementById("dynamic-url").href = nuevoEnlace;
+
+//#endregion
+
+
 //#region (l) admin-only fields
 
 var adminOnlyFields = document.querySelectorAll(".admin-only");

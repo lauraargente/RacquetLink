@@ -212,6 +212,18 @@ function updateProperty(newValue, propertyKey) {
 
 //#endregion
 
+
+//#region (l) href logic for language 
+
+var urlActual = window.location.href;
+var id = new URL(urlActual).searchParams.get("id");
+var urlBaseNueva = "english/profileclub.html";
+var nuevoEnlace = urlBaseNueva + "?id=" + id;
+document.getElementById("dynamic-url").href = nuevoEnlace;
+
+//#endregion
+
+
 //#region (l) writeData
 
 var fillDataInDocument = (data) => {

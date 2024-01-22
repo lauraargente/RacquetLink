@@ -56,6 +56,16 @@ var profileLabel = document.getElementById("profile-image-label");
 
 //#endregion
 
+//#region href logic for language 
+
+var urlActual = window.location.href;
+var id = new URL(urlActual).searchParams.get("id");
+var urlBaseNueva = "../profileclub.html";
+var nuevoEnlace = urlBaseNueva + "?id=" + id;
+document.getElementById("dynamic-url").href = nuevoEnlace;
+
+//#endregion
+
 //#region (l) admin-only fields
 
 var adminOnlyFields = document.querySelectorAll(".admin-only");
