@@ -3184,3 +3184,13 @@ const faqsLink = document.querySelector(".Faqs-link");
 faqsLink.addEventListener("click", () => {
   localStorage.setItem("seeFaqs", "yes");
 });
+
+//Cuando hago CLICK en headerBurguer hace una FUNCTION
+// a headerNav le TOGGLE la clase isActive
+
+const headerBurguer =document.querySelector('.Header-burguer')
+const headerNav = document.querySelector('.Header-nav')
+   
+headerBurguer.addEventListener(`click`, ()=>{
+    headerNav.classList.toggle('isActive')
+})
