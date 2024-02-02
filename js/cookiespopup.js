@@ -58,7 +58,7 @@ function createConsentPopup() {
           </style>
           <div>
               Esta web utiliza cookies para asegurarte la mejor experiencia posible.
-              <a href="../cookiespolicy.html" style="text-decoration: underline;">Lee nuestra política de cookies</a>
+              <a href="../cookiespolicy" style="text-decoration: underline;">Lee nuestra política de cookies</a>
               <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 1rem;">
                   <button id="acceptCookie" style="padding: 10px 20px; background-color: #025B7B; color: white; border: none; border-radius: 1rem; font-size: 1rem; width: max-content; font-weight: 500; cursor: pointer;">Aceptar todas</button>
                   <button id="declineCookie" style="padding: 10px 20px; background-color: #DDD; color: #025B7B; border: none; border-radius: 1rem; font-size: 1rem; width: max-content; font-weight: 500; cursor: pointer;">Accept solo las esenciales</button>
