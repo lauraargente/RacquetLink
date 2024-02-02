@@ -899,10 +899,6 @@ body {
     -webkit-backdrop-filter: none;
             backdrop-filter: none;
   }
-
-  #profile-general-options #general-options-options #close-general-options {
-    transform: translateX(-430%) translateY(-40%);
-  }
 }
 @media (max-width: 400px) {
   #profile-wrapper {
