@@ -68,7 +68,7 @@ function createConsentPopup() {
   document
     .getElementById("declineCookie")
     .addEventListener("click", function () {
-      setCookie("cookieConsent", "false", 365);
+      setCookie("cookieConsent", "true", 365);
       document.body.removeChild(consentPopup);
     });
 }
