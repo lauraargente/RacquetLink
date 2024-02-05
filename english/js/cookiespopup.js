@@ -57,11 +57,11 @@ function createConsentPopup() {
             }
           </style>
           <div>
-              This website uses cookies to ensure you get the best experience.
+          This website uses cookies from RacquetLink and third parties for record-keeping and statistics. You can accept all or decline those non-essential.
               <a href="../cookiespolicy" target="_blank" style="text-decoration: underline;">Read our cookies policy</a>
               <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 1rem;">
                   <button id="acceptCookie" style="padding: 10px 20px; background-color: #025B7B; color: white; border: none; border-radius: 1rem; font-size: 1rem; width: max-content; font-weight: 500; cursor: pointer;">Accept all</button>
-                  <button id="declineCookie" style="padding: 10px 20px; background-color: #DDD; color: #025B7B; border: none; border-radius: 1rem; font-size: 1rem; width: max-content; font-weight: 500; cursor: pointer;">Accept only essential ones</button>
+                  <button id="declineCookie" style="padding: 10px 20px; background-color: #DDD; color: #025B7B; border: none; border-radius: 1rem; font-size: 1rem; width: max-content; font-weight: 500; cursor: pointer;">Reject non-essential</button>
               </div>
           </div>`;
 
