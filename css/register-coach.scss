@@ -193,7 +193,7 @@ body {
     border-radius: 100px;
     padding: 0.5rem;
     border: 1px solid var(--color-primary);
-    margin: 2rem auto;
+    margin: 1rem auto;
     font-weight: 400;
     &:hover {
         cursor: pointer;
@@ -210,7 +210,7 @@ body {
     border-radius: 100px;
     padding: 0.5rem;
     border: 2px solid var(--color-primary);
-    margin: 1.4rem auto 1rem auto;
+    margin: 1rem auto 1rem auto;
     font-weight: 400;
     background-color: var(--color-primary);
     &:hover {
@@ -543,6 +543,19 @@ body {
   filter: saturate(0%)
 }
 
+@media (max-width: 1000px) {
+  :root {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 600px), screen and (max-height: 800px) {
+  #register-container {
+    margin-top: 8rem;
+  }
+  :root {
+    font-size: 14px;
+  }
+}
 
 @media (max-width: 600px) {
   .register-checkbox-container {
