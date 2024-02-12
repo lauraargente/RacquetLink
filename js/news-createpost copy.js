@@ -79,8 +79,6 @@ import { uploadArticle } from "./news-createpost-firebase.js"
       }
     })
 
-    // articleToPrevArray 
-
     // // Preview Image
     // previewImage.
     // var primeraImagen = divElement.querySelector('img');

@@ -26,7 +26,11 @@
 
   // uploadArticle toma un array de artículo y lo publica en firebase
   var uploadArticle = (articleToUploadArray) => {
-    console.log(articleToUploadArray)
+    console.log(articleToUploadArray.articleLanguage)
+    console.log('asdassdas')
+    console.log('asdassdas')
+    console.log('asdassdas')
+    console.log('asdassdas')
 
     return new Promise(function (resolve, reject) {
 
@@ -38,6 +42,7 @@
             Content: articleToUploadArray.articleContent,
             Tags: articleToUploadArray.articleTags,
             Date: articleToUploadArray.articleDate,
+            articleLanguage: articleToUploadArray.articleLanguage,
             articleNumber: (articleNumber+1),
             DateMagnitude: (new Date).getTime(),
         })

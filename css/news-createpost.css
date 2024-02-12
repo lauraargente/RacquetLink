@@ -193,6 +193,29 @@ textarea:focus, input:focus {
   transition: 0.5s;
 }
 
+.lang-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  border: 1px solid #CCC;
+  width: auto;
+  border-radius: 100px;
+  padding: 0.15rem 0.75rem;
+  color: #AAA;
+}
+.lang-tag:hover {
+  border: 1px solid rgba(2, 91, 123, 0.8039215686);
+  cursor: pointer;
+}
+.lang-tag svg path {
+  stroke: #AAA;
+}
+.lang-tag svg circle {
+  stroke: #AAA;
+}
+
 .tag {
   display: flex;
   justify-content: center;
@@ -214,6 +237,18 @@ textarea:focus, input:focus {
 }
 .tag svg circle {
   stroke: #AAA;
+}
+
+.lang-tag-selected {
+  background-color: rgba(2, 91, 123, 0.8039215686);
+  color: white;
+  border: 1px solid rgba(2, 91, 123, 0.8039215686);
+}
+.lang-tag-selected svg path {
+  stroke: white;
+}
+.lang-tag-selected svg circle {
+  stroke: white;
 }
 
 .tag-selected {

@@ -31,7 +31,7 @@
         const q = query(
           collection(db, 'articles'),
           orderBy("articleNumber", "desc"),
-          where("articleLanguage", "==", "es"),
+          where("articleLanguage", "==", "en"),
           startAt(referenceArticleToLoadFrom),
           limit(10)
         )

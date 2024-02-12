@@ -213,6 +213,31 @@ textarea:focus, input:focus{
     transition: 0.5s;
 }
 
+.lang-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.8rem;
+    border: 1px solid #CCC;
+    width: auto;
+    border-radius: 100px;
+    padding: 0.15rem 0.75rem;
+    color: #AAA;
+    &:hover {
+        border: 1px solid #025b7bcd;
+        cursor: pointer;
+    }
+    svg {
+        path {
+            stroke: #AAA;
+        }
+        circle {
+            stroke: #AAA;
+        }
+    }
+}
+
 .tag {
     display: flex;
     justify-content: center;
@@ -234,6 +259,20 @@ textarea:focus, input:focus{
         }
         circle {
             stroke: #AAA;
+        }
+    }
+}
+
+.lang-tag-selected {
+    background-color: #025b7bcd;
+    color: white;
+    border: 1px solid #025b7bcd;
+    svg {
+        path {
+            stroke: white;
+        }
+        circle {
+            stroke: white;
         }
     }
 }
