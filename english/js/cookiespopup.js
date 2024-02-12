@@ -22,7 +22,11 @@ function createConsentPopup() {
                   z-index: 1000; 
                   background: rgba(0,0,0, 0.5); 
                   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
-                  backdrop-filter: blur(25px); 
+                  backdrop-filter: blur(25px);
+                  -webkit-backface-visibility: hidden;
+                  -moz-backface-visibility: hidden;
+                  -webkit-transform: translate3d(0, 0, 0);
+                  -moz-transform: translate3d(0, 0, 0);
                   border-radius: 1rem; 
                   color: #DDD; 
                   padding: 2rem; 
