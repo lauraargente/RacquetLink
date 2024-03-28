@@ -88,7 +88,7 @@ var filteringApplied = (arrayOfResults) => {
   });
 };
 
-var queryFirebase = (queryData, minDocuments = 10) => {
+var queryFirebase = (queryData, minDocuments = 100) => {
   firebaseQueryTableClub(queryData)
     .then((result) => {
       let countValidDocuments = 0;

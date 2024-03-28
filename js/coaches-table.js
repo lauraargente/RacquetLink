@@ -36,9 +36,10 @@ var searchApplied = (arrayOfResults, currentString) => {
   });
 
   arrayOfResults.forEach((element) => {
-    console.log(element);
+    // console.log(element);
     if (checkName(element.userName, element.userSurname, currentString)) {
       injectElement(element);
+      console.log('ok')
     }
   });
 };
@@ -63,7 +64,7 @@ function compareDates(doc1, doc2) {
   let date1 = new Date(doc1.registerDate);
   let date2 = new Date(doc2.registerDate);
 
-  console.log(date1 - date2);
+  // console.log(date1 - date2);
   return date1 - date2;
 }
 
@@ -88,7 +89,15 @@ var filteringApplied = (arrayOfResults) => {
   });
 };
 
+var endOfCollectionReached = false;
+
 var queryFirebase = (queryData, minDocuments = 100) => {
+  // Si ya hemos alcanzado el final de la colección, retornar temprano.
+  if (endOfCollectionReached) {
+    console.log("No more documents to fetch. End of collection reached.");
+    return;
+  }
+
   firebaseQueryTableCoach(queryData)
     .then((result) => {
       let countValidDocuments = 0;
@@ -108,14 +117,11 @@ var queryFirebase = (queryData, minDocuments = 100) => {
       filteringApplied(arrayOfResults);
 
       if (!result.endOfCollection && countValidDocuments < minDocuments) {
-        console.log(
-          `Número de documentos válidos (${countValidDocuments}) es menor que el mínimo requerido (${minDocuments}). Relanzando la consulta...`
-        );
+        console.log(`Número de documentos válidos (${countValidDocuments}) es menor que el mínimo requerido (${minDocuments}). Relanzando la consulta...`);
         queryFirebase(queryData, minDocuments);
       } else if (result.endOfCollection) {
-        console.log(
-          "Se ha alcanzado el final de la colección. No hay más documentos para recuperar."
-        );
+        console.log("No more documents to fetch. End of collection reached.");
+        endOfCollectionReached = true; // Actualizamos la variable indicando que hemos llegado al final.
       }
     })
     .catch((error) => {

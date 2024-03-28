@@ -14,7 +14,8 @@ let recommendatorsCounter = {
   sergio_cerdeña: 0,
   global_college: 0,
   adriana_armendariz: 0,
-  pablo_aycart: 0,
+  miguel_briega: 0,
+  padelmba: 0,
   radu_sanchez: 0,
 };
 
@@ -91,8 +92,11 @@ firebaseGetAllClubs().then((outputClub) => {
       case "adriana-armendariz":
         recommendatorsCounter.adriana_armendariz++;
         break;
-      case "pablo-aycart":
-        recommendatorsCounter.pablo_aycart++;
+      case "miguel_briega":
+        recommendatorsCounter.miguel_briega++;
+        break;
+      case "padelmba":
+        recommendatorsCounter.pdaelmba++;
         break;
       case "radu-sanchez":
         recommendatorsCounter.radu_sanchez++;
@@ -188,8 +192,11 @@ firebaseGetAllCoaches().then((outputCoach) => {
       case "adriana-armendariz":
         recommendatorsCounter.adriana_armendariz++;
         break;
-      case "pablo-aycart":
-        recommendatorsCounter.pablo_aycart++;
+      case "padelmba":
+        recommendatorsCounter.padelmba++;
+        break;
+      case "miguel_briega":
+        recommendatorsCounter.miguel_briega++;
         break;
       case "radu-sanchez":
         recommendatorsCounter.radu_sanchez++;

@@ -2842,8 +2842,10 @@ var fillDataInDocument = (data) => {
         return "Sergio Cerdeña";
       case "iñigo-jofre":
         return "Iñigo Jofre";
-      case "pablo-aycart":
-        return "Pablo Aycart";
+      case "padelmba":
+        return "Padelmba";
+      case "miguel-briega":
+        return "Miguel Briega";
       case "radu-sanchez":
         return "Radu Sanchez";
       // Agrega más casos según tus necesidades
