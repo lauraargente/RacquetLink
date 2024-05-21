@@ -403,10 +403,13 @@ nextConditionalNation.addEventListener("click", (e) => {
     }
   });
 
+  if (registerData.userLanguages.length === 0) {
+    moveForwardVariable = false;
+  }
+
   moveForwardVariable ? moveForward() : shakeAnimation(e.target);
 });
 
-//#endregion
 
 //#region 3 sports tab
 optionsSports.forEach((option) => {
@@ -3640,12 +3643,32 @@ init(countries);
 
 //#endregion PhoneNumber
 
-//#region (l) Prevent default TAB behaviour
+// #region (l) Prevent default TAB behaviour
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Tab") {
     event.preventDefault();
   }
+});
+
+//#endregion
+
+// #region (l) Prevent clicks before load 
+
+// Función para prevenir eventos de clic
+function preventClick(event) {
+  event.stopImmediatePropagation();
+  event.preventDefault();
+  console.log("Clic prevenido");
+}
+
+// Añadir el event listener para todos los clics en el documento
+document.addEventListener("click", preventClick, true);
+
+// Una vez que la página haya cargado completamente, remover el event listener
+window.addEventListener("load", function() {
+  document.removeEventListener("click", preventClick, true);
+  console.log("Clics habilitados");
 });
 
 //#endregion
