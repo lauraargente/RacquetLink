@@ -25,7 +25,6 @@ function createConsentPopup() {
                   backdrop-filter: blur(25px); 
                   -webkit-backface-visibility: hidden;
                 -moz-backface-visibility: hidden;
-                -webkit-transform: translate3d(0, 0, 0);
                 -moz-transform: translate3d(0, 0, 0);
                   border-radius: 1rem; 
                   color: #DDD; 
