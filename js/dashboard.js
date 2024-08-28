@@ -16,6 +16,8 @@ let recommendatorsCounter = {
   adriana_armendariz: 0,
   miguel_briega: 0,
   padelmba: 0,
+  padelconnect: 0,
+  marcos_delpilar: 0,
   radu_sanchez: 0,
 };
 
@@ -92,11 +94,17 @@ firebaseGetAllClubs().then((outputClub) => {
       case "adriana-armendariz":
         recommendatorsCounter.adriana_armendariz++;
         break;
-      case "miguel_briega":
+      case "miguel-briega":
         recommendatorsCounter.miguel_briega++;
         break;
       case "padelmba":
-        recommendatorsCounter.pdaelmba++;
+        recommendatorsCounter.padelmba++;
+        break
+      case "padelconnect":
+        recommendatorsCounter.padelconnect++;
+        break;
+      case "marcos-delpilar":
+        recommendatorsCounter.marcos_delpilar++;
         break;
       case "radu-sanchez":
         recommendatorsCounter.radu_sanchez++;
@@ -194,6 +202,12 @@ firebaseGetAllCoaches().then((outputCoach) => {
         break;
       case "padelmba":
         recommendatorsCounter.padelmba++;
+        break;
+      case "padelconnect":
+        recommendatorsCounter.padelconnect++;
+        break;
+      case "marcos-delpilar":
+        recommendatorsCounter.marcos_delpilar++;
         break;
       case "miguel_briega":
         recommendatorsCounter.miguel_briega++;

@@ -2310,6 +2310,10 @@ var fillDataInDocument = (data) => {
         return "Iñigo Jofre";
       case "padelmba":
         return "Padelmba";
+      case "padelconnect":
+        return "Padel Connect";
+      case "marcos-delpilar":
+        return "Marcos del Pilar";
       case "miguel-briega":
         return "Miguel Briega";
       case "radu-sanchez":
