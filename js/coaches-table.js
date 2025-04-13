@@ -139,9 +139,15 @@ downloadData.addEventListener("click", () => {
   // Convertir el objeto a un formato CSV
   let csvContent = "data:text/csv;charset=utf-8,";
 
-  // Obtener las claves del primer objeto para los encabezados
-  const headers = Object.keys(arrayOfResults[0]);
+  // Obtener todas las claves presentes en cualquiera de los objetos para los encabezados
+  const headersSet = new Set();
+  arrayOfResults.forEach(obj => {
+    Object.keys(obj).forEach(key => headersSet.add(key));
+  });
+  const headers = Array.from(headersSet);
   csvContent += headers.join(",") + "\r\n"; // Añadir encabezados
+
+
 
   console.log('Testing April')
   console.log(arrayOfResults)
