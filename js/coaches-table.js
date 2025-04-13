@@ -143,6 +143,8 @@ downloadData.addEventListener("click", () => {
   const headers = Object.keys(arrayOfResults[0]);
   csvContent += headers.join(",") + "\r\n"; // Añadir encabezados
 
+  console.log(arrayOfResults)
+
   arrayOfResults.forEach((obj) => {
     let row = headers.map((header) => {
       let value = obj[header];
