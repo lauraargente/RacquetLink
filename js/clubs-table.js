@@ -130,38 +130,33 @@ var queryFirebase = (queryData, minDocuments = 100) => {
 var downloadData = document.querySelector("#download-data");
 
 downloadData.addEventListener("click", () => {
-  // Convertir el objeto a un formato CSV
-  let csvContent = "data:text/csv;charset=utf-8,";
-
-  // Obtener las claves del primer objeto para los encabezados
-  const headers = Object.keys(arrayOfResults[0]);
-  csvContent += headers.join(",") + "\r\n"; // Añadir encabezados
-
-  arrayOfResults.forEach((obj) => {
-    let row = headers.map((header) => {
-      let value = obj[header];
-      if (Array.isArray(value)) {
-        return '"' + value.join(" ") + '"'; // Entre comillas para manejar valores con comas
+  // Crear una versión del array con los arrays convertidos en strings
+  const arrayToExport = arrayOfResults.map(obj => {
+    const cleanObj = {};
+    for (let key in obj) {
+      if (Array.isArray(obj[key])) {
+        cleanObj[key] = obj[key].join(", "); // Convertir arrays a strings separados por coma
       } else {
-        return value;
+        cleanObj[key] = obj[key];
       }
-    });
-    csvContent += row.join(",") + "\r\n";
+    }
+    return cleanObj;
   });
 
-  // Codificar el contenido CSV para que sea un URI
-  const encodedUri = encodeURI(csvContent);
+  // Convertir a JSON con formato legible
+  const jsonContent = JSON.stringify(arrayToExport, null, 2);
+  const blob = new Blob([jsonContent], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
 
-  // Crear un elemento de enlace para la descarga
+  // Crear el enlace de descarga
   const link = document.createElement("a");
-  link.setAttribute("href", encodedUri);
-  link.setAttribute("download", "arrayOfResults.csv");
-
-  // Agregar el enlace al DOM y disparar el evento de clic
-  document.body.appendChild(link); // Necesario para Firefox
+  link.setAttribute("href", url);
+  link.setAttribute("download", "arrayOfResults.json");
+  document.body.appendChild(link);
   link.click();
-  document.body.removeChild(link); // Limpiar después de la descarga
+  document.body.removeChild(link);
 });
+
 
 //#endregion
 
