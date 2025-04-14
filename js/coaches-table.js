@@ -136,14 +136,24 @@ var queryFirebase = (queryData, minDocuments = 100) => {
 var downloadData = document.querySelector("#download-data");
 
 downloadData.addEventListener("click", () => {
-  // Convertir el array en JSON bonito (indentado)
-  const jsonContent = JSON.stringify(arrayOfResults, null, 2);
+  // Creamos una copia del array con los arrays convertidos a strings
+  const cleanedArray = arrayOfResults.map((item) => {
+    const newItem = { ...item };
 
-  // Crear un Blob con el contenido JSON
+    for (let key in newItem) {
+      if (Array.isArray(newItem[key])) {
+        newItem[key] = newItem[key].join(", "); // convierte el array a string sin saltos de línea
+      }
+    }
+
+    return newItem;
+  });
+
+  const jsonContent = JSON.stringify(cleanedArray, null, 2); // Formato bonito (indentado)
+
   const blob = new Blob([jsonContent], { type: "application/json" });
   const url = URL.createObjectURL(blob);
 
-  // Crear y disparar el enlace de descarga
   const link = document.createElement("a");
   link.setAttribute("href", url);
   link.setAttribute("download", "arrayOfResults.json");
@@ -151,6 +161,7 @@ downloadData.addEventListener("click", () => {
   link.click();
   document.body.removeChild(link);
 });
+
 
 
 //#endregion
