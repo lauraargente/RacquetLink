@@ -136,47 +136,22 @@ var queryFirebase = (queryData, minDocuments = 100) => {
 var downloadData = document.querySelector("#download-data");
 
 downloadData.addEventListener("click", () => {
-  // Convertir el objeto a un formato CSV
-  let csvContent = "data:text/csv;charset=utf-8,";
+  // Convertir el array en JSON bonito (indentado)
+  const jsonContent = JSON.stringify(arrayOfResults, null, 2);
 
-  // Obtener todas las claves presentes en cualquiera de los objetos para los encabezados
-  const headersSet = new Set();
-  arrayOfResults.forEach(obj => {
-    Object.keys(obj).forEach(key => headersSet.add(key));
-  });
-  const headers = Array.from(headersSet);
-  csvContent += headers.join(",") + "\r\n"; // Añadir encabezados
+  // Crear un Blob con el contenido JSON
+  const blob = new Blob([jsonContent], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
 
-
-
-  console.log('Testing April')
-  console.log(arrayOfResults)
-
-  arrayOfResults.forEach((obj) => {
-    let row = headers.map((header) => {
-      let value = obj[header];
-      if (Array.isArray(value)) {
-        return '"' + value.join(" ") + '"'; // Entre comillas para manejar valores con comas
-      } else {
-        return value;
-      }
-    });
-    csvContent += row.join(",") + "\r\n";
-  });
-
-  // Codificar el contenido CSV para que sea un URI
-  const encodedUri = encodeURI(csvContent);
-
-  // Crear un elemento de enlace para la descarga
+  // Crear y disparar el enlace de descarga
   const link = document.createElement("a");
-  link.setAttribute("href", encodedUri);
-  link.setAttribute("download", "arrayOfResults.csv");
-
-  // Agregar el enlace al DOM y disparar el evento de clic
-  document.body.appendChild(link); // Necesario para Firefox
+  link.setAttribute("href", url);
+  link.setAttribute("download", "arrayOfResults.json");
+  document.body.appendChild(link);
   link.click();
-  document.body.removeChild(link); // Limpiar después de la descarga
+  document.body.removeChild(link);
 });
+
 
 //#endregion
 
